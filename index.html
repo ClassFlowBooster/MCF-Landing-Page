@@ -73,7 +73,7 @@
 
 /* ---------- Reset léger ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0;
@@ -188,6 +188,33 @@ p { margin: 0; }
 .nav-burger { display: none; width: 42px; height: 42px; border-radius: 10px; border: 1px solid var(--line-2); background: #fff; }
 .nav-burger span { display: block; width: 18px; height: 2px; background: var(--ink); margin: 3px auto; border-radius: 2px; }
 
+/* Menu mobile — panneau plein écran */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; flex-direction: column;
+  padding: 0 24px 36px;
+  background: var(--paper);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .22s ease, transform .22s ease, visibility .22s;
+  overflow-y: auto;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; transform: none; }
+@media (min-width: 721px) { .mobile-menu { display: none; } }
+.mobile-menu-head { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.mobile-menu-close {
+  width: 42px; height: 42px; border-radius: 10px;
+  border: 1px solid var(--line-2); background: #fff; color: var(--ink);
+  display: grid; place-items: center;
+}
+.mobile-menu-links { display: flex; flex-direction: column; flex: 1; margin-top: 18px; }
+.mobile-menu-links a {
+  font-family: var(--serif); font-size: clamp(24px, 7vw, 32px); font-weight: 600;
+  letter-spacing: -0.02em; color: var(--ink);
+  padding: 16px 2px; border-bottom: 1px solid var(--line);
+}
+.mobile-menu-links a:active { color: var(--coral-600); }
+.mobile-menu-cta { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+
 /* =================================================================
    Hero
    ================================================================= */
@@ -290,6 +317,7 @@ p { margin: 0; }
   z-index: 5;
 }
 .demo-pin svg { width: 30px; height: 26px; color: var(--coral-300); }
+.demo-pin--br { right: -6px; bottom: -30px; }
 
 /* =================================================================
    Bandeau « troubles »
@@ -338,7 +366,7 @@ p { margin: 0; }
   overflow: hidden;
 }
 .feat:hover { transform: translateY(-4px); box-shadow: var(--sh-card); border-color: var(--line-2); }
-.feat.hero-feat { grid-column: span 2; display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; background: linear-gradient(135deg, #fff, var(--coral-50)); border-color: var(--coral-200); }
+.feat.hero-feat { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; background: linear-gradient(135deg, #fff, var(--coral-50)); border-color: var(--coral-200); }
 .feat-ic { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 18px; background: var(--coral-50); color: var(--coral-600); border: 1px solid var(--coral-100); }
 .feat-ic svg { width: 25px; height: 25px; }
 .feat-ic.amber { background: var(--amber-50); color: var(--amber-700); border-color: var(--amber-100); }
@@ -521,16 +549,27 @@ p { margin: 0; }
 @media (max-width: 720px) {
   .nav-links { display: none; }
   .nav-burger { display: block; }
-  .nav-cta .btn-text { display: none; }
+  .nav-cta { display: none; }
   .feat-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; gap: 24px; }
   .footer-bot { flex-direction: column; align-items: flex-start; }
   .hero-badge { flex-wrap: wrap; }
 }
-@media (max-width: 460px) {
+@media (max-width: 600px) {
   .demo-panes { grid-template-columns: 1fr; }
   .doc-arrow { left: 50%; top: auto; bottom: -10px; transform: translate(-50%,0) rotate(90deg); }
+}
+@media (max-width: 560px) {
+  .br-md { display: none; }
+  .hero h1 em { white-space: normal; }
+  .demo-pin--br { right: 2px; bottom: -16px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .wrap { padding: 0 18px; }
+  .mobile-menu { padding: 0 18px 36px; }
+}
+@media (max-width: 460px) {
   .troubles-row { gap: 8px; }
 }
 
@@ -566,12 +605,39 @@ p { margin: 0; }
         <a class="btn btn-primary" href="#contact">Demander une démo</a>
       </div>
 
-      <button class="nav-burger" id="burger" aria-label="Ouvrir le menu">
+      <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
     </nav>
   </div>
 </header>
+
+<!-- ====================================================== -->
+<!-- MENU MOBILE (panneau plein écran)                      -->
+<!-- ====================================================== -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-head">
+    <a class="brand" href="#top" aria-label="Class Flow, accueil">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
+      <span class="brand-name">Class Flow</span>
+      <span class="brand-tag">Bêta</span>
+    </a>
+    <button class="mobile-menu-close" id="menuClose" aria-label="Fermer le menu">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu-links" aria-label="Navigation mobile">
+    <a href="#solution">Le produit</a>
+    <a href="#fonctionnalites">Fonctionnalités</a>
+    <a href="#etapes">Comment ça marche</a>
+    <a href="#pour-qui">Pour qui</a>
+    <a href="#confiance">Confiance</a>
+  </nav>
+  <div class="mobile-menu-cta">
+    <a class="btn btn-primary btn-lg btn-block" href="#contact">Demander une démo</a>
+    <a class="btn btn-ghost btn-lg btn-block" href="#contact">Nous contacter</a>
+  </div>
+</div>
 
 <main>
 
@@ -588,7 +654,7 @@ p { margin: 0; }
         </div>
 
         <h1 class="h-display" data-reveal data-delay="1">
-          Adaptez chaque support<br />aux besoins de <em>chaque élève.</em><br />En un clic.
+          Adaptez chaque support <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.
         </h1>
 
         <p class="lede" data-reveal data-delay="2">
@@ -663,7 +729,7 @@ p { margin: 0; }
           </div>
 
           <!-- Annotation manuscrite (rappel de la patte produit) -->
-          <div class="demo-pin" style="right:-6px; bottom:-30px;">
+          <div class="demo-pin demo-pin--br">
             un clic = un doc adapté
           </div>
         </div>
@@ -1135,10 +1201,32 @@ p { margin: 0; }
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
 
-  /* 3) Menu mobile : raccourci vers le formulaire de contact */
-  document.getElementById('burger')?.addEventListener('click', () => {
-    smoothTo(document.getElementById('contact'));
-  });
+  /* 3) Menu mobile : panneau plein écran */
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose = document.getElementById('menuClose');
+
+  function openMenu() {
+    mobileMenu?.classList.add('open');
+    mobileMenu?.setAttribute('aria-hidden', 'false');
+    burger?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    mobileMenu?.classList.remove('open');
+    mobileMenu?.setAttribute('aria-hidden', 'true');
+    burger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  burger?.addEventListener('click', openMenu);
+  menuClose?.addEventListener('click', closeMenu);
+  /* Fermer en suivant un lien ou un CTA du menu */
+  mobileMenu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+  /* Fermer avec Échap */
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  /* Sécurité : refermer si on repasse en desktop */
+  window.addEventListener('resize', () => { if (window.innerWidth > 720) closeMenu(); }, { passive: true });
 
   /* 4) Formulaire : confirmation inline (à brancher sur un back-end réel) */
   const form = document.getElementById('demoForm');
