@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Présentation — Class Flow</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --coral-500: #F0552B;
+  --coral-600: #D43F18;
+  --coral-700: #A82E0F;
+  --paper:   #FBF8F3;
+  --paper-2: #F4EFE6;
+  --ink:     #1F1A14;
+  --ink-2:   #4A4238;
+  --ink-3:   #8A8278;
+  --line:    #E6DFCF;
+  --bad: #D43F18;
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Inter', -apple-system, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+#gate {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 40px 32px;
+  box-shadow: 0 14px 34px rgba(31,26,20,.07);
+  text-align: center;
+}
+
+#gate h1 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+#gate p {
+  margin: 0 0 24px;
+  color: var(--ink-3);
+  font-size: 0.9rem;
+}
+
+#gate form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#gate input[type="password"] {
+  font-family: var(--sans);
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper-2);
+  color: var(--ink);
+  outline: none;
+  text-align: center;
+}
+
+#gate input[type="password"]:focus {
+  border-color: var(--coral-500);
+}
+
+#gate button {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--coral-500);
+  color: #fff;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+
+#gate button:hover {
+  background: var(--coral-600);
+}
+
+#error {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--bad);
+  min-height: 1.2em;
+}
+
+#viewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <h1>Présentation Class Flow</h1>
+  <p>Cette page est privée. Merci de renseigner le mot de passe pour y accéder.</p>
+  <form id="gate-form">
+    <input type="password" id="pwd" placeholder="Mot de passe" autofocus autocomplete="off">
+    <button type="submit">Accéder</button>
+  </form>
+  <div id="error"></div>
+</div>
+
+<iframe id="viewer" title="Présentation Class Flow"></iframe>
+
+<script>
+(function () {
+  var PASSWORD = "presentation./12";
+  var form = document.getElementById('gate-form');
+  var input = document.getElementById('pwd');
+  var error = document.getElementById('error');
+  var gate = document.getElementById('gate');
+  var viewer = document.getElementById('viewer');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (input.value === PASSWORD) {
+      gate.style.display = 'none';
+      viewer.style.display = 'block';
+      viewer.src = 'content.html';
+    } else {
+      error.textContent = "Mot de passe incorrect.";
+      input.value = '';
+      input.focus();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
