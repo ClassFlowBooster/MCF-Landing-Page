@@ -120,6 +120,33 @@ body {
   height: 100%;
   border: 0;
 }
+
+#fs-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: var(--coral-500);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(31,26,20,.18);
+  opacity: 0.85;
+  transition: opacity .15s ease, background .15s ease;
+}
+
+#fs-btn:hover {
+  opacity: 1;
+  background: var(--coral-600);
+}
 </style>
 </head>
 <body>
@@ -135,6 +162,7 @@ body {
 </div>
 
 <iframe id="viewer" title="Présentation Class Flow"></iframe>
+<button id="fs-btn" type="button">⛶ Plein écran</button>
 
 <script>
 (function () {
@@ -144,6 +172,7 @@ body {
   var error = document.getElementById('error');
   var gate = document.getElementById('gate');
   var viewer = document.getElementById('viewer');
+  var fsBtn = document.getElementById('fs-btn');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -151,11 +180,24 @@ body {
       gate.style.display = 'none';
       viewer.style.display = 'block';
       viewer.src = 'content.html';
+      fsBtn.style.display = 'flex';
     } else {
       error.textContent = "Mot de passe incorrect.";
       input.value = '';
       input.focus();
     }
+  });
+
+  fsBtn.addEventListener('click', function () {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', function () {
+    fsBtn.textContent = document.fullscreenElement ? '⛶ Quitter le plein écran' : '⛶ Plein écran';
   });
 })();
 </script>
