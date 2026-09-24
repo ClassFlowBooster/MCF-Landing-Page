@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "mcf": {
+      "source": {
+        "source": "github",
+        "repo": "ClassFlowBooster/MCF-Pilotage"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "mcf@mcf": true
+  }
+}
