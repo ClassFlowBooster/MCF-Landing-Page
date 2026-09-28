@@ -4,6 +4,7 @@ import tarifsEnseignants from "./corps/tarifs-enseignants.mjs";
 import tarifsEcoles from "./corps/tarifs-ecoles.mjs";
 import tarifsParents from "./corps/tarifs-parents.mjs";
 import { fonctionnalites } from "./corps/fonctionnalites.mjs";
+import { telecharger } from "./corps/telecharger.mjs";
 import entree from "./corps/entree.mjs";
 import accueilEnseignants from "./corps/accueil-enseignants.mjs";
 import accueilEcoles from "./corps/accueil-ecoles.mjs";
@@ -50,4 +51,16 @@ export const PAGES = [
     titre: "Fonctionnalités de ClassFlow Adapter",
     description: "Une photo de la leçon, les besoins de votre enfant, une version adaptée à imprimer ou à lire à l'écran, pour tous les enfants du foyer.",
     corps: fonctionnalites("parents-enfants") },
+  { chemin: "/enseignants/telecharger/", espace: "enseignants", rubrique: "telecharger", scripts: ["telecharger.js"],
+    titre: "Télécharger ClassFlow — Mac, Windows, Android, iPhone",
+    description: "Installez ClassFlow en quelques secondes sur Mac, Windows, Android, iPhone ou iPad : l'app s'ouvre depuis votre écran d'accueil ou votre Dock.",
+    corps: telecharger("enseignants") },
+  { chemin: "/ecoles/telecharger/", espace: "ecoles", rubrique: "telecharger", scripts: ["telecharger.js"],
+    titre: "Télécharger ClassFlow — Mac, Windows, Android, iPhone",
+    description: "Installez ClassFlow sur les ordinateurs, tablettes et téléphones de l'équipe : Mac, Windows, Android, iPhone ou iPad, en quelques secondes.",
+    corps: telecharger("ecoles") },
+  { chemin: "/parents-enfants/telecharger/", espace: "parents-enfants", rubrique: "telecharger", scripts: ["telecharger.js"],
+    titre: "Télécharger ClassFlow Adapter — Mac, Windows, Android, iPhone",
+    description: "Installez ClassFlow Adapter sur votre téléphone, votre tablette ou votre ordinateur : Mac, Windows, Android, iPhone ou iPad, en quelques secondes.",
+    corps: telecharger("parents-enfants") },
 ];
