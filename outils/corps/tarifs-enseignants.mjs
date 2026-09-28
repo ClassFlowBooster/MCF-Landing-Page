@@ -1,5 +1,6 @@
 // Page Tarifs de l'espace Enseignants (prix TTC).
 import { texteProf, prixHtml, renvoiHtml, insecables } from "../../assets/js/tarifs-ui.js";
+import { lienMailto } from "../../assets/js/formulaire.js";
 import { controles } from "./commun.mjs";
 
 const t = texteProf(true, false);
@@ -42,5 +43,5 @@ export default `<section class="page" data-tarifs="enseignants">
     </div>
   </div>
 
-  <div class="band"><div style="font-size:30px" aria-hidden="true">💌</div><div style="flex:1"><b>Faites équiper votre école</b><p>Envoyez l'offre école à votre direction en un clic : votre abonnement pourrait être pris en charge, et toute l'équipe en profite.</p></div><a class="btn" data-mailto="direction" href="#">Envoyer à ma direction</a></div>
+  <div class="band"><div style="font-size:30px" aria-hidden="true">💌</div><div style="flex:1"><b>Faites équiper votre école</b><p>Envoyez l'offre école à votre direction en un clic : votre abonnement pourrait être pris en charge, et toute l'équipe en profite.</p></div><a class="btn" data-mailto="direction" href="${lienMailto("direction")}">Envoyer à ma direction</a></div>
 </section>`;

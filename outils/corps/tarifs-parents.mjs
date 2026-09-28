@@ -1,5 +1,6 @@
 // Page Tarifs de l'espace Parents / Enfants : ClassFlow Adapter (prix TTC).
 import { texteAdapter, prixHtml, renvoiHtml, insecables } from "../../assets/js/tarifs-ui.js";
+import { lienMailto } from "../../assets/js/formulaire.js";
 import { controles } from "./commun.mjs";
 
 const e = texteAdapter("essentiel", true, false);
@@ -49,5 +50,5 @@ export default `<section class="page" data-tarifs="parents-enfants">
 
   <div class="reassure"><span>🔒 Paiement sécurisé</span><span>👨‍👩‍👧 Tous les enfants du foyer</span><span>📱 Téléphone, tablette et ordinateur</span></div>
 
-  <div class="band"><div style="font-size:30px" aria-hidden="true">🏫</div><div style="flex:1"><b>Et si l'école de votre enfant s'équipait ?</b><p>Parlez de ClassFlow à l'enseignant·e : les adaptations seraient faites directement en classe.</p></div><a class="btn" data-mailto="ecole" href="#">Envoyer à l'école</a></div>
+  <div class="band"><div style="font-size:30px" aria-hidden="true">🏫</div><div style="flex:1"><b>Et si l'école de votre enfant s'équipait ?</b><p>Parlez de ClassFlow à l'enseignant·e : les adaptations seraient faites directement en classe.</p></div><a class="btn" data-mailto="ecole" href="${lienMailto("ecole")}">Envoyer à l'école</a></div>
 </section>`;
