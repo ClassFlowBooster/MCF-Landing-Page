@@ -89,3 +89,19 @@ test("badges de remise : toujours le pourcentage calculé à partir des prix", a
     for (const v of trouves) assert.ok(attendu[p.espace].includes(v), `${p.chemin} : −${v} % ne correspond pas aux prix`);
   }
 });
+
+test("carte de partage : og:image absolue, dimensions, texte alternatif, fichier PNG 1200 × 630 de moins de 200 Ko", () => {
+  for (const p of PAGES) {
+    const html = page(p);
+    const m = html.match(/<meta property="og:image" content="https:\/\/myclassflow\.fr\/(assets\/img\/og-[\w-]+\.png)" \/>/);
+    assert.ok(m, `${p.chemin} : og:image absent`);
+    for (const balise of ['<meta property="og:image:width" content="1200" />', '<meta property="og:image:height" content="630" />', '<meta name="twitter:card" content="summary_large_image" />'])
+      assert.ok(html.includes(balise), `${p.chemin} : ${balise}`);
+    assert.match(html, /<meta property="og:image:alt" content="[^"]{20,}" \/>/, p.chemin);
+    const png = readFileSync(`./${m[1]}`);
+    assert.equal(png.subarray(1, 4).toString(), "PNG", m[1]);
+    assert.equal(png.readUInt32BE(16), 1200, m[1]);
+    assert.equal(png.readUInt32BE(20), 630, m[1]);
+    assert.ok(png.length < 200 * 1024, `${m[1]} : ${png.length} octets`);
+  }
+});

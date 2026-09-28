@@ -15,6 +15,14 @@ export const ESPACES = {
 
 const echap = (t) => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
+// Cartes de partage (1200 × 630) : une par espace, et une commune pour l'écran d'entrée.
+const CARTES = {
+  "": { fichier: "og-classflow.png", alt: "ClassFlow : les castors professeur, direction et élève, avec l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
+  enseignants: { fichier: "og-enseignants.png", alt: "ClassFlow, espace Enseignants : le castor professeur et l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
+  ecoles: { fichier: "og-ecoles.png", alt: "ClassFlow, espace Écoles : le castor direction et l'accroche « L'école inclusive, outillée pour toute l'équipe »." },
+  "parents-enfants": { fichier: "og-parents-enfants.png", alt: "ClassFlow Adapter, espace Parents / Enfants : le castor élève et l'accroche « Les devoirs de votre enfant, adaptés en une photo »." },
+};
+
 function barre(espace, rubrique, megaMenu) {
   const e = ESPACES[espace];
   const lien = (r, texte) =>
@@ -50,6 +58,7 @@ function pied() {
 }
 
 export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "" }) {
+  const carte = CARTES[chemin === "/" ? "" : espace ?? ""];
   const js = scripts.map((s) => `<script type="module" src="/assets/js/${s}"></script>`).join("\n");
   return `<!DOCTYPE html>
 <html lang="fr">
@@ -63,6 +72,11 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <meta property="og:description" content="${echap(description)}" />
 <meta property="og:url" content="${SITE}${chemin}" />
 <meta property="og:type" content="website" />
+<meta property="og:image" content="${SITE}/assets/img/${carte.fichier}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="${echap(carte.alt)}" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
