@@ -6,12 +6,26 @@ import tarifsParents from "./corps/tarifs-parents.mjs";
 import { fonctionnalites } from "./corps/fonctionnalites.mjs";
 import entree from "./corps/entree.mjs";
 import accueilEnseignants from "./corps/accueil-enseignants.mjs";
+import accueilEcoles from "./corps/accueil-ecoles.mjs";
+import accueilParents from "./corps/accueil-parents.mjs";
 
 export const PAGES = [
   { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["entree.js", "formulaire.js"],
     titre: "ClassFlow — Adaptez chaque support aux besoins de chaque élève",
     description: "ClassFlow adapte vos supports aux élèves DYS, TDAH, TSA et EANA en quelques secondes. Pour les enseignants, les écoles et les familles.",
     surcouche: entree, corps: accueilEnseignants },
+  { chemin: "/enseignants/", espace: "enseignants", rubrique: "", scripts: ["formulaire.js"],
+    titre: "ClassFlow pour les enseignants — adaptez vos supports en quelques secondes",
+    description: "ClassFlow adapte vos exercices et vos leçons aux élèves DYS, TDAH, TSA et EANA grâce à l'IA. Gestion de classe gratuite, 3 adaptations offertes.",
+    corps: accueilEnseignants },
+  { chemin: "/ecoles/", espace: "ecoles", rubrique: "", scripts: ["formulaire.js"],
+    titre: "ClassFlow pour les écoles — l'école inclusive pour toute l'équipe",
+    description: "Une même démarche d'adaptation dans chaque classe et une seule facture pour l'établissement. Le prix par enseignant baisse dès 5 enseignants.",
+    corps: accueilEcoles },
+  { chemin: "/parents-enfants/", espace: "parents-enfants", rubrique: "", scripts: ["formulaire.js"],
+    titre: "ClassFlow Adapter — les devoirs de votre enfant adaptés en une photo",
+    description: "Photographiez la leçon ou l'exercice : ClassFlow Adapter l'adapte aux besoins de votre enfant (DYS, TDAH, TSA). Essai gratuit, sans carte bancaire.",
+    corps: accueilParents },
   { chemin: "/enseignants/tarifs/", espace: "enseignants", rubrique: "tarifs", scripts: ["tarifs-ui.js", "formulaire.js"],
     titre: "Tarifs ClassFlow pour les enseignants — gratuit ou 9,99 €/mois",
     description: "La gestion de classe est gratuite avec 3 adaptations offertes. L’abonnement enseignant adapte tous vos supports à partir de 9,99 € par mois.",
