@@ -1,74 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ClassFlow — Adaptez chaque support aux besoins de chaque élève</title>
-<meta name="description" content="ClassFlow adapte vos supports aux élèves DYS, TDAH, TSA et EANA en quelques secondes. Pour les enseignants, les écoles et les familles." />
-<link rel="canonical" href="https://myclassflow.fr/" />
-<meta property="og:title" content="ClassFlow — Adaptez chaque support aux besoins de chaque élève" />
-<meta property="og:description" content="ClassFlow adapte vos supports aux élèves DYS, TDAH, TSA et EANA en quelques secondes. Pour les enseignants, les écoles et les familles." />
-<meta property="og:url" content="https://myclassflow.fr/" />
-<meta property="og:type" content="website" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="/assets/css/base.css" />
-</head>
-<body data-espace="enseignants">
-<div class="entree" id="entree" role="dialog" aria-modal="true" aria-labelledby="entreeTitre" hidden>
-  <div class="veil"></div>
-  <div class="modal">
-    <h2 id="entreeTitre">Bienvenue sur ClassFlow</h2>
-    <p class="sub">Pour vous montrer ce qui vous concerne, dites-nous qui vous êtes :</p>
-    <div class="choices">
-      <a class="ch" data-espace="enseignants" href="/enseignants/"><div class="ic" aria-hidden="true">🧑‍🏫</div><b>Enseignant·e</b><span>J'adapte mes supports et je prépare ma classe</span></a>
-      <a class="ch" data-espace="ecoles" href="/ecoles/"><div class="ic" aria-hidden="true">🏫</div><b>École</b><span>Je dirige un établissement et j'équipe mon équipe</span></a>
-      <a class="ch" data-espace="parents-enfants" href="/parents-enfants/"><div class="ic" aria-hidden="true">👨‍👧</div><b>Parent / Enfant</b><span>J'adapte les devoirs et les leçons à la maison</span></a>
-    </div>
-    <div class="foot"><label><input type="checkbox" id="seSouvenir" checked> Se souvenir de mon choix</label><span>Vous pourrez changer à tout moment en haut de page</span></div>
-  </div>
-</div><header class="header"><nav class="nav" aria-label="Navigation principale">
-  <a class="brand" href="/enseignants/"><span class="dot" aria-hidden="true"></span>ClassFlow</a>
-  <div class="espace-choix">
-    <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false">🧑‍🏫 Espace Enseignants ▾</button>
-    <div class="espace-menu" role="menu" hidden><a role="menuitem" href="/enseignants/" data-espace="enseignants">🧑‍🏫 Espace Enseignants</a><a role="menuitem" href="/ecoles/" data-espace="ecoles">🏫 Espace Écoles</a><a role="menuitem" href="/parents-enfants/" data-espace="parents-enfants">👨‍👧 Espace Parents / Enfants</a></div>
-  </div>
-  <div class="nav-links">
-    <div class="navrel"><button class="nav-link mega-bouton" type="button" aria-expanded="false" aria-controls="mega">Fonctionnalités</button><div class="mega" id="mega" hidden>
-    <div>
-      <h6>Adapter pour chaque élève</h6>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">✨</span><div><b>Adaptation des supports <span class="tg pay">Abonnement</span></b><span class="t">Vos fiches adaptées à 12 troubles, en quelques secondes</span></div></a>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">💬</span><div><b>Lia, votre assistante <span class="tg pay">Abonnement</span></b><span class="t">Posez vos questions, elle prépare avec vous</span></div></a>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">📋</span><div><b>PPRE, PAI, GEVA-Sco <span class="tg pay">Abonnement</span></b><span class="t">Un premier constat rédigé à partir des évaluations</span></div></a>
-    </div>
-    <div>
-      <h6>Préparer la classe</h6>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">📓</span><div><b>Cahier journal <span class="tg free">Gratuit</span></b><span class="t">Votre journée prête en quelques minutes</span></div></a>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">🗓️</span><div><b>Emploi du temps <span class="tg free">Gratuit</span></b><span class="t">Glissez vos séances, le volume horaire se calcule</span></div></a>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">📝</span><div><b>Fiches de préparation <span class="tg free">Gratuit</span></b><span class="t">Séances et séquences, simplement</span></div></a>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">✅</span><div><b>Agenda et tâches <span class="tg free">Gratuit</span></b><span class="t">Réunions, rendez-vous, choses à faire</span></div></a>
-    </div>
-    <div>
-      <h6>Suivre ses élèves</h6>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">👤</span><div><b>Fiche élève <span class="tg free">Gratuit</span></b><span class="t">Besoins, observations, dispositifs en cours</span></div></a>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">📊</span><div><b>Évaluations <span class="tg free">Gratuit</span></b><span class="t">Progression par matière, d'un coup d'œil</span></div></a>
-      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">📸</span><div><b>Import des élèves par photo <span class="tg free">Gratuit</span></b><span class="t">Une photo de la liste, la classe est créée</span></div></a>
-    </div>
-    <div class="megafoot"><span>La gestion de classe est gratuite, avec 3 adaptations offertes. L'IA en illimité est dans l'abonnement.</span><a href="/enseignants/fonctionnalites/">Voir toutes les fonctionnalités →</a></div>
-  </div></div>
-    <a class="nav-link" href="/enseignants/tarifs/">Tarifs</a>
-    <a class="nav-link" href="/enseignants/telecharger/">Télécharger</a>
-  </div>
-  <span class="sp"></span>
-  <a class="btn" href="https://app.myclassflow.fr">Essayer gratuitement</a>
-  <button class="nav-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuMobile"><span></span><span></span><span></span></button>
-</nav>
-<nav class="mobile-menu" id="menuMobile" hidden aria-label="Navigation mobile">
-  <a href="/enseignants/fonctionnalites/">Fonctionnalités</a><a href="/enseignants/tarifs/">Tarifs</a><a href="/enseignants/telecharger/">Télécharger</a><a role="menuitem" href="/enseignants/" data-espace="enseignants">🧑‍🏫 Espace Enseignants</a><a role="menuitem" href="/ecoles/" data-espace="ecoles">🏫 Espace Écoles</a><a role="menuitem" href="/parents-enfants/" data-espace="parents-enfants">👨‍👧 Espace Parents / Enfants</a>
-</nav></header>
-<main>
-
+// Accueil Enseignants (provisoire : contenu de l'ancienne page unique).
+export default `
   <!-- ==================================================== -->
   <!-- HERO — le différenciateur mis en avant               -->
   <!-- ==================================================== -->
@@ -540,15 +471,4 @@
       </div>
     </div>
   </section>
-
-</main>
-<footer class="footer"><div class="footer-inner">
-  <span>© ClassFlow</span>
-  <a href="/enseignants/">Enseignants</a><a href="/ecoles/">Écoles</a><a href="/parents-enfants/">Parents / Enfants</a>
-  <a href="/presentation/">Présentation</a>
-</div></footer>
-<script type="module" src="/assets/js/navigation.js"></script>
-<script type="module" src="/assets/js/entree.js"></script>
-<script type="module" src="/assets/js/formulaire.js"></script>
-</body>
-</html>
+`;

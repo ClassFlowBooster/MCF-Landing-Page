@@ -4,8 +4,14 @@ import tarifsEnseignants from "./corps/tarifs-enseignants.mjs";
 import tarifsEcoles from "./corps/tarifs-ecoles.mjs";
 import tarifsParents from "./corps/tarifs-parents.mjs";
 import { fonctionnalites } from "./corps/fonctionnalites.mjs";
+import entree from "./corps/entree.mjs";
+import accueilEnseignants from "./corps/accueil-enseignants.mjs";
 
 export const PAGES = [
+  { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["entree.js", "formulaire.js"],
+    titre: "ClassFlow — Adaptez chaque support aux besoins de chaque élève",
+    description: "ClassFlow adapte vos supports aux élèves DYS, TDAH, TSA et EANA en quelques secondes. Pour les enseignants, les écoles et les familles.",
+    surcouche: entree, corps: accueilEnseignants },
   { chemin: "/enseignants/tarifs/", espace: "enseignants", rubrique: "tarifs", scripts: ["tarifs-ui.js", "formulaire.js"],
     titre: "Tarifs ClassFlow pour les enseignants — gratuit ou 9,99 €/mois",
     description: "La gestion de classe est gratuite avec 3 adaptations offertes. L’abonnement enseignant adapte tous vos supports à partir de 9,99 € par mois.",

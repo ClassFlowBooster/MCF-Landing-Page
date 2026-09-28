@@ -166,6 +166,26 @@ select.in:invalid{color:var(--ink-3)}
 .ribbon b{font-family:Fraunces,serif;font-size:19px;color:#fff}
 .ribbon p{margin:3px 0 0;font-size:13px;color:#CFC6B8}
 
+/* ---------- Écran d'entrée ---------- */
+.entree{position:fixed;inset:0;z-index:50;display:grid;place-items:center}
+.entree[hidden]{display:none}
+body.avec-entree>header,body.avec-entree>main,body.avec-entree>footer{filter:blur(6px);pointer-events:none;user-select:none}
+body.avec-entree{overflow:hidden}
+.veil{position:absolute;inset:0;background:rgba(31,26,20,.28)}
+.modal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,92%);background:#fff;border-radius:22px;padding:26px 26px 20px;box-shadow:0 24px 60px rgba(31,26,20,.28);max-height:calc(100vh - 32px);overflow:auto}
+.modal h2{font-family:Fraunces,serif;font-size:26px;margin:0 0 4px;font-weight:600;text-align:center}
+.modal .sub{color:var(--ink-3);text-align:center;font-size:14px;margin:0 0 18px}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ch{border:1.5px solid var(--line);border-radius:16px;padding:16px 12px;text-align:center;background:var(--paper);transition:.15s}
+.ch:first-child{border-color:var(--coral);background:var(--coral-50);box-shadow:0 8px 24px rgba(240,85,43,.18)}
+.ch:hover{border-color:var(--coral)}
+.ic{font-size:30px;line-height:1}
+.ch b{display:block;margin:8px 0 4px;font-size:15px}
+.ch span{font-size:12px;color:var(--ink-3);line-height:1.35;display:block}
+.modal .foot{margin-top:14px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--ink-3)}
+.modal .foot label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.modal .foot input{margin:0;width:12px;height:12px;accent-color:var(--coral)}
+
 /* @@responsive : garder en fin de fichier */
 @media (max-width: 900px){
   .cards,.cards3,.calc,.steps,.grid,.grid.deux{grid-template-columns:1fr}
@@ -174,6 +194,12 @@ select.in:invalid{color:var(--ink-3)}
   .nav .nav-links,.nav .pill{display:none}
   .nav-burger{display:flex}
   .nav{gap:10px}
+}
+@media (max-width: 600px){
+  .choices{grid-template-columns:1fr}
+  .ch{display:grid;grid-template-columns:auto 1fr;column-gap:12px;text-align:left;align-items:center}
+  .ch .ic{grid-row:span 2}
+  .ch b{margin:0 0 2px}
 }
 @media (max-width: 480px){
   .dl{grid-template-columns:1fr}

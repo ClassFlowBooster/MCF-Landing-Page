@@ -49,7 +49,7 @@ function pied() {
 </div></footer>`;
 }
 
-export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "" }) {
+export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "" }) {
   const js = scripts.map((s) => `<script type="module" src="/assets/js/${s}"></script>`).join("\n");
   return `<!DOCTYPE html>
 <html lang="fr">
@@ -69,7 +69,7 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <link rel="stylesheet" href="/assets/css/base.css" />
 </head>
 <body${classeBody ? ` class="${classeBody}"` : ""} data-espace="${espace ?? ""}">
-${espace ? barre(espace, rubrique, megaMenu ?? megaMenuDe(espace)) : ""}
+${surcouche}${espace ? barre(espace, rubrique, megaMenu ?? megaMenuDe(espace)) : ""}
 <main>
 ${corps}
 </main>

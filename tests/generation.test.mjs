@@ -28,7 +28,7 @@ test("les fichiers générés sont à jour (lancer npm run generer)", () => {
 });
 
 // Pages des tâches suivantes, déjà liées par la barre du haut (provisoire).
-const A_VENIR = ["/", "/enseignants/", "/ecoles/", "/parents-enfants/",
+const A_VENIR = ["/enseignants/", "/ecoles/", "/parents-enfants/",
   "/enseignants/fonctionnalites/", "/ecoles/fonctionnalites/", "/parents-enfants/fonctionnalites/",
   "/enseignants/telecharger/", "/ecoles/telecharger/", "/parents-enfants/telecharger/"];
 
