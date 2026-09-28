@@ -2,14 +2,17 @@
 // Les fonctions texte*() et *Html() sont pures (testées, et utilisées par le
 // générateur pour écrire les valeurs par défaut dans le HTML) ; brancher()
 // relie le DOM.
-import { offreEcole, offreEnseignant, offreAdapter, parAn, ttc, euros, indexPalier } from "./tarifs.js";
+import { offreEcole, offreEnseignant, offreAdapter, parAn, euros, indexPalier, TVA } from "./tarifs.js";
 
 export const etatInitial = () => ({ engagement: true, parAn: false });
+
+/** Tous les prix sont affichés TTC ; montant HT correspondant. */
+export const montantHt = (ttcMensuel) => ttcMensuel / (1 + TVA);
 
 export function texteEcole(n, engagement, annuel) {
   const o = offreEcole(n, engagement);
   const mul = annuel ? 12 : 1;
-  const base = annuel ? "/an HT" : "/mois HT";
+  const base = annuel ? "/an TTC" : "/mois TTC";
   return {
     badge: o.remisePct > 0
       ? (engagement ? `Engagement 2 ans · −${o.remisePct} % la 1re année` : `Remise volume · −${o.remisePct} %`)
@@ -18,13 +21,13 @@ export function texteEcole(n, engagement, annuel) {
     // En grand : le prix par enseignant (barré : le prix de référence par enseignant).
     old: o.barreMensuel ? euros((o.barreMensuel / n) * mul) : "",
     pu: euros(o.prixUnitaire * mul),
-    unite: `HT / enseignant / ${annuel ? "an" : "mois"}${engagement ? ", 1re année" : ""}`,
-    // En petit : le total pour l'établissement.
-    tot: `${euros(o.totalMensuel * mul)} HT / ${annuel ? "an" : "mois"}`,
-    ttc: `${euros(ttc(o.totalMensuel) * mul)} / ${annuel ? "an" : "mois"}`,
+    unite: `TTC / enseignant / ${annuel ? "an" : "mois"}${engagement ? ", 1re année" : ""}`,
+    // En petit : le total pour l'établissement (TTC), et son montant HT.
+    tot: `${euros(o.totalMensuel * mul)} TTC / ${annuel ? "an" : "mois"}`,
+    ht: `${euros(montantHt(o.totalMensuel) * mul)} / ${annuel ? "an" : "mois"}`,
     fine: engagement
-      ? `Engagement de 24 mois. 1re année : 9,99 € HT par enseignant. 2e année : ${euros(o.anneeDeux / n)} HT par enseignant, soit ${euros(o.anneeDeux * mul)} ${base} (prix selon vos paliers). Une seule facture, au nom de l’établissement.`
-      : "Sans engagement, résiliable à tout moment. Le prix par enseignant baisse dès 5 enseignants, jusqu’à 9,99 € HT.",
+      ? `Engagement de 24 mois. 1re année : 9,99 € TTC par enseignant. 2e année : ${euros(o.anneeDeux / n)} TTC par enseignant, soit ${euros(o.anneeDeux * mul)} ${base} (prix selon vos paliers). Une seule facture, au nom de l’établissement.`
+      : "Sans engagement, résiliable à tout moment. Le prix par enseignant baisse dès 5 enseignants, jusqu’à 9,99 € TTC.",
     palier: indexPalier(n),
   };
 }
@@ -109,7 +112,7 @@ export function brancher(doc = document) {
       $("eN").textContent = n; $("eLic").textContent = t.lic;
       $("eBadge").hidden = !t.badge; $("eBadge").textContent = t.badge ?? "";
       $("eOld").textContent = insecables(t.old); $("ePu").innerHTML = prixEcoleHtml(t);
-      $("eTotLab").textContent = `Total · ${t.lic}`; $("eTot").textContent = insecables(t.tot); $("eTtc").textContent = insecables(t.ttc); $("eFine").innerHTML = exposants(insecables(t.fine));
+      $("eTotLab").textContent = `Total · ${t.lic}`; $("eTot").textContent = insecables(t.tot); $("eHt").textContent = insecables(t.ht); $("eFine").innerHTML = exposants(insecables(t.fine));
       doc.querySelectorAll("#ePals .pal").forEach((p, i) => p.classList.toggle("on", i === t.palier));
       $("eR").setAttribute("aria-valuetext", t.lic);
       if ($("ePlus")) $("ePlus").hidden = n < 40;

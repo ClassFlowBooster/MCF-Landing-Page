@@ -37,7 +37,7 @@ export default `<section class="page" data-tarifs="enseignants">
       <h3>Votre école paie ?</h3>
       <p class="d">Dès 5 enseignants, le prix baisse pour chacun.</p>
       <div class="old"></div>
-      <div class="price" style="font-size:30px">Dès 9,99 € <small>HT / enseignant / mois</small></div>
+      <div class="price" style="font-size:30px">Dès 9,99 € <small>TTC / enseignant / mois</small></div>
       <div class="fine">Calcul en direct et devis sous 48 h dans l'Espace Écoles.</div>
       <a class="btn ghost" href="/ecoles/tarifs/#devis">Calculer le prix pour mon école</a>
     </div>

@@ -47,3 +47,11 @@ test("13 pages : l'entrée et quatre pages par espace", () => {
   assert.equal(PAGES.length, 13);
   assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 13);
 });
+
+test("prix des écoles en TTC : aucun « HT » sur les pages tarifs, hors la ligne « Montant HT »", () => {
+  for (const chemin of ["/enseignants/tarifs/", "/ecoles/tarifs/", "/ecoles/"]) {
+    const p = PAGES.find((x) => x.chemin === chemin);
+    const texte = page(p).replace(/<[^>]+>/g, " ").replace("Montant HT", "");
+    assert.ok(!/\bHT\b/.test(texte), chemin);
+  }
+});

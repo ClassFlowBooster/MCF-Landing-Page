@@ -1,7 +1,7 @@
 // Envoi des demandes de devis et de contact à la fonction demande-contact, et
 // liens « Envoyer à ma direction / à l'école ». Le « merci » ne s'affiche
 // qu'après la confirmation de l'enregistrement (réponse 201).
-import { offreEcole } from "./tarifs.js";
+import { offreEcole, TVA } from "./tarifs.js";
 
 export const URL_DEMANDES = "https://xjaixtlxfvnkzvalqvau.supabase.co/functions/v1/demande-contact";
 const ECHEC_RESEAU = "Envoi impossible : vérifiez votre connexion et réessayez.";
@@ -11,7 +11,8 @@ export function construireDevis(champs, n, engagement) {
   return {
     type: "devis", espace: "ecoles", ...champs,
     nb_enseignants: n, engagement: engagement ? "2_ans" : "sans",
-    montant_ht_mensuel: Math.round(totalMensuel * 100) / 100,
+    // Les prix affichés sont TTC : le montant HT transmis est le total TTC / (1 + TVA).
+    montant_ht_mensuel: Math.round((totalMensuel / (1 + TVA)) * 100) / 100,
   };
 }
 

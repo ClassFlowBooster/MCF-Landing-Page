@@ -11,8 +11,14 @@ test("construireDevis joint le calcul du curseur", () => {
   assert.equal(d.espace, "ecoles");
   assert.equal(d.nb_enseignants, 12);
   assert.equal(d.engagement, "2_ans");
-  assert.equal(d.montant_ht_mensuel, 119.88);
+  // Prix affichés TTC : le montant HT transmis est le total TTC mensuel / 1,2.
+  assert.equal(d.montant_ht_mensuel, 99.9);
   assert.equal(d.site_web, "");
+});
+
+test("construireDevis : montant HT = total TTC / 1,2, arrondi au centime", () => {
+  assert.equal(construireDevis(CHAMPS, 5, true).montant_ht_mensuel, 41.63);
+  assert.equal(construireDevis(CHAMPS, 12, false).montant_ht_mensuel, 121.42);
 });
 
 test("construireContact", () => {

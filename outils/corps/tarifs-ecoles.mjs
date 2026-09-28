@@ -1,4 +1,4 @@
-// Page « Tarifs & devis » de l'espace Écoles (HT en avant, TTC lisible) :
+// Page « Tarifs & devis » de l’espace Écoles (prix TTC, montant HT dans le détail) :
 // calculateur et formulaire de demande de devis.
 import { texteEcole, prixEcoleHtml, exposants, insecables } from "../../assets/js/tarifs-ui.js";
 import { controles } from "./commun.mjs";
@@ -11,7 +11,7 @@ export default `<section class="page" data-tarifs="ecoles">
   <h1 class="t">Équipez toute votre équipe</h1>
   <p class="lead">Plus vous êtes nombreux, moins chaque enseignant coûte. Devis envoyé sous 48 h.</p>
 
-  ${controles("Engagement 2 ans", "9,99 € HT par enseignant la 1<sup>re</sup> année", "Remise selon le nombre d'enseignants")}
+  ${controles("Engagement 2 ans", "9,99 € TTC par enseignant la 1<sup>re</sup> année", "Remise selon le nombre d'enseignants")}
 
   <div class="calc" id="devis">
     <div class="offer">
@@ -23,7 +23,7 @@ export default `<section class="page" data-tarifs="ecoles">
       <div class="fine" id="eFine">${exposants(insecables(t.fine))}</div>
       <div class="lines">
         <div><span id="eTotLab">Total · ${t.lic}</span><b id="eTot">${insecables(t.tot)}</b></div>
-        <div><span>Montant TTC</span><span id="eTtc">${insecables(t.ttc)}</span></div>
+        <div><span>Montant HT</span><span id="eHt">${insecables(t.ht)}</span></div>
       </div>
     </div>
     <div>

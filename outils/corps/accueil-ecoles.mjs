@@ -83,7 +83,7 @@ export default `<div class="acc">
     <div class="wrap">
       <div class="offer">
         <span class="badge vert">Pour toute l'équipe</span>
-        <div class="price" style="margin-top:10px">Dès 9,99 € <small>HT / enseignant / mois</small></div>
+        <div class="price" style="margin-top:10px">Dès 9,99 € <small>TTC / enseignant / mois</small></div>
         <div class="fine" style="min-height:0">Dès 5 enseignants, le prix baisse pour chacun.</div>
         <a class="btn" href="/ecoles/tarifs/#devis">Calculer mon devis</a>
       </div>

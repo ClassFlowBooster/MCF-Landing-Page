@@ -33,7 +33,7 @@ export const PAGES = [
     corps: tarifsEnseignants },
   { chemin: "/ecoles/tarifs/", espace: "ecoles", rubrique: "tarifs", scripts: ["tarifs-ui.js", "formulaire.js"],
     titre: "Tarifs ClassFlow pour les écoles — calculez votre devis",
-    description: "Équipez toute votre équipe : le prix par enseignant baisse dès 5 enseignants, jusqu’à 9,99 € HT. Calcul en direct et devis sous 48 h.",
+    description: "Équipez toute votre équipe : le prix par enseignant baisse dès 5 enseignants, jusqu’à 9,99 € TTC. Calcul en direct et devis sous 48 h.",
     corps: tarifsEcoles },
   { chemin: "/parents-enfants/tarifs/", espace: "parents-enfants", rubrique: "tarifs", scripts: ["tarifs-ui.js", "formulaire.js"],
     titre: "Tarifs ClassFlow Adapter — essai gratuit, sans carte bancaire",
