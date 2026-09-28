@@ -1,6 +1,6 @@
 // Accueil de l'espace Écoles.
 import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, formulaireContact, ICONES } from "./sections.mjs";
-import { castor } from "./castors.mjs";
+import { castorDe } from "./castors.mjs";
 
 const benefice = (ic, titre, texte) =>
   `<article class="persona"><span class="persona-ic">${ICONES[ic]}</span><h3>${titre}</h3><p>${texte}</p></article>`;
@@ -29,7 +29,7 @@ export default `<div class="acc">
       </div>
       <div class="hero-demo">
         ${comparateur()}
-        ${castor("direction", "castor-hero", 230)}
+        ${castorDe("ecoles", "castor-hero", 230)}
       </div>
     </div>
   </section>

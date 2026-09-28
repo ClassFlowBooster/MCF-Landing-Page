@@ -1,8 +1,7 @@
 // Accueil de l'espace Parents / Enfants (ClassFlow Adapter).
 import { texteAdapter, prixHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
-import { lienMailto } from "../../assets/js/formulaire.js";
-import { COCHE, FLECHE, demo, comparateur, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeau } from "./sections.mjs";
-import { castor } from "./castors.mjs";
+import { COCHE, FLECHE, demo, comparateur, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeauMailto } from "./sections.mjs";
+import { castorDe } from "./castors.mjs";
 
 const e = texteAdapter("essentiel", true, false);
 const i = texteAdapter("illimite", true, false);
@@ -24,7 +23,7 @@ export default `<div class="acc">
       </div>
       <div class="hero-demo">
         ${comparateur()}
-        ${castor("eleve", "castor-hero", 230)}
+        ${castorDe("parents-enfants", "castor-hero", 230)}
       </div>
     </div>
   </section>
@@ -95,7 +94,7 @@ export default `<div class="acc">
     HEBERGE, RGPD],
   { titre: "Les données de votre enfant, protégées", texte: "Les devoirs et les besoins de votre enfant sont des informations sensibles. ClassFlow Adapter est conçu pour les protéger." })}
 
-  ${bandeau(castor("direction", "castor-bande", 88), "Et si l'école de votre enfant s'équipait ?", "Parlez de ClassFlow à l'enseignant·e : les adaptations seraient faites directement en classe.", "Envoyer à l'école", lienMailto("ecole"), 'data-mailto="ecole" ')}
+  ${bandeauMailto("ecole")}
 
   <section class="section" id="questions" style="padding-top:0">
     <div class="wrap">

@@ -1,4 +1,6 @@
 // Sections partagées par les pages d'accueil des trois espaces.
+import { lienMailto } from "../../assets/js/formulaire.js";
+import { castorDe } from "./castors.mjs";
 
 export const COCHE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg>`;
 export const FLECHE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
@@ -168,10 +170,24 @@ export function formulaireContact({ titre, sous, message = "Votre message" }) {
         <div class="form-merci" hidden role="status"><b>Merci, votre message est bien reçu.</b> Nous vous répondons rapidement.</div>`;
 }
 
-/** Bandeau pointillé ; `visuel` : un émoji, ou une balise (castor). */
+/** Bande pointillée seule ; `visuel` : un émoji, ou une balise (castor). */
+export const bande = (visuel, titre, texte, bouton, href, attr = "") =>
+  `<div class="band">${visuel.startsWith("<") ? visuel : `<div style="font-size:30px" aria-hidden="true">${visuel}</div>`}<div style="flex:1"><b>${titre}</b><p>${texte}</p></div><a class="btn" ${attr}href="${href}">${bouton}</a></div>`;
+
+/** Bandeau : la bande dans sa propre section. */
 export const bandeau = (visuel, titre, texte, bouton, href, attr = "") =>
   `<section class="section bandeau apercu" aria-label="${titre.replace(/"/g, "&quot;")}">
     <div class="wrap">
-      <div class="band">${visuel.startsWith("<") ? visuel : `<div style="font-size:30px" aria-hidden="true">${visuel}</div>`}<div style="flex:1"><b>${titre}</b><p>${texte}</p></div><a class="btn" ${attr}href="${href}">${bouton}</a></div>
+      ${bande(visuel, titre, texte, bouton, href, attr)}
     </div>
   </section>`;
+
+// Bandes « Envoyer à ma direction / à l'école » : lien mailto prérempli et
+// castor de l'espace Écoles.
+const MAILTO = {
+  direction: ["Faites équiper votre école", "Envoyez l'offre école à votre direction en un clic : votre abonnement pourrait être pris en charge, et toute l'équipe en profite.", "Envoyer à ma direction"],
+  ecole: ["Et si l'école de votre enfant s'équipait ?", "Parlez de ClassFlow à l'enseignant·e : les adaptations seraient faites directement en classe.", "Envoyer à l'école"],
+};
+const argsMailto = (cible) => [castorDe("ecoles", "castor-bande", 88), ...MAILTO[cible], lienMailto(cible), `data-mailto="${cible}" `];
+export const bandeMailto = (cible) => bande(...argsMailto(cible));
+export const bandeauMailto = (cible) => bandeau(...argsMailto(cible));

@@ -1,9 +1,9 @@
 // Page Tarifs de l'espace Parents / Enfants : ClassFlow Adapter (prix TTC).
 import { texteAdapter, prixHtml, renvoiHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
 import { remiseAdapter } from "../../assets/js/tarifs.js";
-import { lienMailto } from "../../assets/js/formulaire.js";
 import { controles } from "./commun.mjs";
-import { castor } from "./castors.mjs";
+import { castorDe } from "./castors.mjs";
+import { bandeMailto } from "./sections.mjs";
 
 const e = texteAdapter("essentiel", true, false);
 const i = texteAdapter("illimite", true, false);
@@ -39,7 +39,7 @@ export default `<section class="page" data-tarifs="parents-enfants">
 
     <div class="card hl avec-castor">
       <span class="pop">Le plus choisi</span>
-      ${castor("eleve", "castor-carte gauche", 120)}
+      ${castorDe("parents-enfants", "castor-carte gauche", 120)}
       <span class="badge" id="iBadge">${badgeAdapter("illimite")}</span>
       <h3>Illimité</h3>
       <p class="d">Toutes les leçons, tous les exercices</p>
@@ -53,5 +53,5 @@ export default `<section class="page" data-tarifs="parents-enfants">
 
   <div class="reassure"><span>🔒 Paiement sécurisé</span><span>👨‍👩‍👧 Tous les enfants du foyer</span><span>📱 Téléphone, tablette et ordinateur</span></div>
 
-  <div class="band">${castor("direction", "castor-bande", 88)}<div style="flex:1"><b>Et si l'école de votre enfant s'équipait ?</b><p>Parlez de ClassFlow à l'enseignant·e : les adaptations seraient faites directement en classe.</p></div><a class="btn" data-mailto="ecole" href="${lienMailto("ecole")}">Envoyer à l'école</a></div>
+  ${bandeMailto("ecole")}
 </section>`;

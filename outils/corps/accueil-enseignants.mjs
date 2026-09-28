@@ -1,9 +1,8 @@
 // Accueil de l'espace Enseignants (aussi affiché, flouté, derrière l'écran d'entrée de « / »).
 import { texteProf, prixHtml, renvoiHtml, insecables, badgeEnseignant } from "../../assets/js/tarifs-ui.js";
-import { lienMailto } from "../../assets/js/formulaire.js";
 import { THEMES, libelleBadge } from "./catalogue.mjs";
-import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact } from "./sections.mjs";
-import { castor } from "./castors.mjs";
+import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto } from "./sections.mjs";
+import { castorDe } from "./castors.mjs";
 
 const prof = texteProf(true, false);
 
@@ -22,7 +21,7 @@ export default `<div class="acc">
       </div>
       <div class="hero-demo">
         ${comparateur()}
-        ${castor("professeur", "castor-hero", 230)}
+        ${castorDe("enseignants", "castor-hero", 230)}
       </div>
     </div>
   </section>
@@ -90,7 +89,7 @@ export default `<div class="acc">
           <a class="btn" href="https://app.myclassflow.fr">Je commence</a>
         </div>
       </div>
-      <div class="band">${castor("direction", "castor-bande", 88)}<div style="flex:1"><b>Faites équiper votre école</b><p>Envoyez l'offre école à votre direction en un clic : votre abonnement pourrait être pris en charge, et toute l'équipe en profite.</p></div><a class="btn" data-mailto="direction" href="${lienMailto("direction")}">Envoyer à ma direction</a></div>
+      ${bandeMailto("direction")}
       <p class="centre"><a class="lien-suite" href="/enseignants/tarifs/">Voir les tarifs →</a></p>
     </div>
   </section>
