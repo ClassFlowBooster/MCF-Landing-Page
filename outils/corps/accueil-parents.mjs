@@ -2,6 +2,7 @@
 import { texteAdapter, prixHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
 import { COCHE, FLECHE, demo, comparateur, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeauMailto } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
+import { ADAPTATIONS_ESSENTIEL } from "../../assets/js/tarifs.js";
 
 const e = texteAdapter("essentiel", true, false);
 const i = texteAdapter("illimite", true, false);
@@ -68,7 +69,7 @@ export default `<div class="acc">
           <p class="d">Les devoirs de la semaine</p>
           <div class="old">${insecables(e.old)}</div>
           <div class="price">${prixHtml(e)}</div>
-          <span class="quota"><i>Adaptations limitées</i> par mois</span>
+          <span class="quota"><i>${ADAPTATIONS_ESSENTIEL}</i> adaptations par mois</span>
           <div class="grow"></div>
           <a class="btn ghost" href="https://adapter.myclassflow.fr">Je choisis Essentiel</a>
         </div>

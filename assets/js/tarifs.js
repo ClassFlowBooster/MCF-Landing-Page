@@ -4,6 +4,8 @@
 export const PLEIN_TARIF_ECOLE = 14.99;
 export const PLANCHER_ECOLE = 9.99;
 export const TVA = 0.2;
+/** Adaptations incluses chaque mois dans la formule Essentiel d'Adapter. */
+export const ADAPTATIONS_ESSENTIEL = 70;
 
 const PROF = { plein: 14.99, promo: 9.99, moisPromo: 6 };
 const ADAPTER = {

@@ -105,3 +105,13 @@ test("carte de partage : og:image absolue, dimensions, texte alternatif, fichier
     assert.ok(png.length < 200 * 1024, `${m[1]} : ${png.length} octets`);
   }
 });
+
+test("formule Essentiel : le nombre d'adaptations vient de tarifs.js, partout où il est affiché", async () => {
+  const { ADAPTATIONS_ESSENTIEL } = await import("../assets/js/tarifs.js");
+  assert.equal(ADAPTATIONS_ESSENTIEL, 70);
+  for (const chemin of ["/parents-enfants/tarifs/", "/parents-enfants/"]) {
+    const html = page(PAGES.find((p) => p.chemin === chemin));
+    assert.ok(html.includes(`<span class="quota"><i>${ADAPTATIONS_ESSENTIEL}</i> adaptations par mois</span>`), chemin);
+    assert.ok(!/(?<!il)limitées/i.test(html), `${chemin} : « limitées » encore présent`);
+  }
+});

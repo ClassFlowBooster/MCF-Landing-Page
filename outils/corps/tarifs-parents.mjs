@@ -1,6 +1,6 @@
 // Page Tarifs de l'espace Parents / Enfants : ClassFlow Adapter (prix TTC).
 import { texteAdapter, prixHtml, renvoiHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
-import { remiseAdapter } from "../../assets/js/tarifs.js";
+import { remiseAdapter, ADAPTATIONS_ESSENTIEL } from "../../assets/js/tarifs.js";
 import { controles } from "./commun.mjs";
 import { castorDe } from "./castors.mjs";
 import { bandeMailto } from "./sections.mjs";
@@ -32,7 +32,7 @@ export default `<section class="page" data-tarifs="parents-enfants">
       <p class="d">Les devoirs de la semaine</p>
       <div class="old" id="eOld">${insecables(e.old)}</div>
       <div class="price" id="ePrice">${prixHtml(e)}</div>
-      <span class="quota"><i>Adaptations limitées</i> par mois</span>
+      <span class="quota"><i>${ADAPTATIONS_ESSENTIEL}</i> adaptations par mois</span>
       <div class="fine grow" id="eFine">${renvoiHtml(e)}</div>
       <a class="btn ghost" href="https://adapter.myclassflow.fr">Je choisis Essentiel</a>
     </div>
