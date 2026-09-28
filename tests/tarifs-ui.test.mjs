@@ -10,10 +10,10 @@ test("texteEcole 5 enseignants, engagement, au mois (affichage par défaut)", ()
   const t = texteEcole(5, true, false);
   assert.equal(t.badge, "Engagement 2 ans · −26 % la 1re année");
   assert.equal(t.lic, "5 enseignants");
-  assert.equal(t.old, "67,46 €");
-  assert.equal(t.tot, "49,95 €");
-  assert.equal(t.unite, "/mois HT, 1re année");
-  assert.equal(t.pu, "9,99 € HT");
+  assert.equal(t.old, "13,49 €");
+  assert.equal(t.pu, "9,99 €");
+  assert.equal(t.unite, "HT / enseignant / mois, 1re année");
+  assert.equal(t.tot, "49,95 € HT / mois");
   assert.equal(t.ttc, "59,94 € / mois");
   assert.match(t.fine, /2e année : 13,49 € HT par enseignant, soit 67,46 € \/mois HT/);
 });
@@ -21,9 +21,10 @@ test("texteEcole 5 enseignants, engagement, au mois (affichage par défaut)", ()
 test("texteEcole 12 enseignants sans engagement, à l'an", () => {
   const t = texteEcole(12, false, true);
   assert.equal(t.badge, "Remise volume · −19 %");
-  assert.equal(t.old, "2 158,56 €");
-  assert.equal(t.tot, "1 748,43 €");
-  assert.equal(t.unite, "/an HT");
+  assert.equal(t.old, "179,88 €");
+  assert.equal(t.pu, "145,70 €");
+  assert.equal(t.unite, "HT / enseignant / an");
+  assert.equal(t.tot, "1 748,43 € HT / an");
 });
 
 test("texteEcole 1 enseignant sans engagement : pas de badge ni de barré", () => {
@@ -37,5 +38,6 @@ test("texteEcole 25 enseignants engagé : pas de badge ni de barré", () => {
   const t = texteEcole(25, true, false);
   assert.equal(t.badge, null);
   assert.equal(t.old, "");
-  assert.equal(t.tot, "249,75 €");
+  assert.equal(t.pu, "9,99 €");
+  assert.equal(t.tot, "249,75 € HT / mois");
 });

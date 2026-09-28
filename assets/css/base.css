@@ -340,6 +340,7 @@ html{scroll-padding-top:72px}
 .apercu .offer{max-width:520px;margin:0 auto;text-align:center}
 .apercu .offer .price{font-size:40px}
 .apercu .band{max-width:1060px;margin:0 auto}
+.apercu .cards.deux + .band{max-width:760px;margin-top:22px}
 .section.bandeau{padding:clamp(40px,5vw,56px) 0}
 
 /* Appel final et formulaire de contact */

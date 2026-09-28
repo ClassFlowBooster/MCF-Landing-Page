@@ -73,7 +73,12 @@ export const HEBERGE = carteConfiance("bouclier", "Hébergé en France",
 export const RGPD = carteConfiance("cadenas", "Conforme RGPD",
   "Collecte minimale, finalités claires et maîtrise de vos données : ClassFlow est pensé dès la conception pour respecter le RGPD.");
 
+// Section « confiance » (hébergement, RGPD) masquée dans les trois espaces.
+// Repasser à true pour la réafficher : les appels et les textes sont gardés.
+export const AFFICHER_CONFIANCE = false;
+
 export function confiance(cartes, { titre = "Des données d'élèves traitées avec sérieux", texte, note } = {}) {
+  if (!AFFICHER_CONFIANCE) return "";
   return `<section class="section trust" id="confiance">
     <div class="wrap">
       <div class="sec-head center">

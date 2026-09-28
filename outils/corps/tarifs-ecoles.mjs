@@ -1,6 +1,6 @@
 // Page « Tarifs & devis » de l'espace Écoles (HT en avant, TTC lisible) :
 // calculateur et formulaire de demande de devis.
-import { texteEcole, totalEcoleHtml, exposants, insecables } from "../../assets/js/tarifs-ui.js";
+import { texteEcole, prixEcoleHtml, exposants, insecables } from "../../assets/js/tarifs-ui.js";
 import { controles } from "./commun.mjs";
 
 const N = 5;
@@ -18,11 +18,11 @@ export default `<section class="page" data-tarifs="ecoles">
       <span class="badge" id="eBadge">${t.badge}</span>
       <div style="font-weight:600;font-size:15px" id="eLic">${t.lic}</div>
       <div class="old" id="eOld">${insecables(t.old)}</div>
-      <div class="price" id="eTot">${totalEcoleHtml(t)}</div>
+      <div class="price" id="ePu">${prixEcoleHtml(t)}</div>
       <button type="button" class="btn" data-scroll="devis">Recevoir mon devis →</button>
       <div class="fine" id="eFine">${exposants(insecables(t.fine))}</div>
       <div class="lines">
-        <div><span>Prix par enseignant</span><b id="ePu">${t.pu}</b></div>
+        <div><span id="eTotLab">Total · ${t.lic}</span><b id="eTot">${insecables(t.tot)}</b></div>
         <div><span>Montant TTC</span><span id="eTtc">${insecables(t.ttc)}</span></div>
       </div>
     </div>

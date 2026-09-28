@@ -15,10 +15,12 @@ export function texteEcole(n, engagement, annuel) {
       ? (engagement ? `Engagement 2 ans · −${o.remisePct} % la 1re année` : `Remise volume · −${o.remisePct} %`)
       : null,
     lic: `${n} enseignant${n > 1 ? "s" : ""}`,
-    old: o.barreMensuel ? euros(o.barreMensuel * mul) : "",
-    tot: euros(o.totalMensuel * mul),
-    unite: engagement ? `${base}, 1re année` : base,
-    pu: `${euros(o.prixUnitaire)} HT`,
+    // En grand : le prix par enseignant (barré : le prix de référence par enseignant).
+    old: o.barreMensuel ? euros((o.barreMensuel / n) * mul) : "",
+    pu: euros(o.prixUnitaire * mul),
+    unite: `HT / enseignant / ${annuel ? "an" : "mois"}${engagement ? ", 1re année" : ""}`,
+    // En petit : le total pour l'établissement.
+    tot: `${euros(o.totalMensuel * mul)} HT / ${annuel ? "an" : "mois"}`,
     ttc: `${euros(ttc(o.totalMensuel) * mul)} / ${annuel ? "an" : "mois"}`,
     fine: engagement
       ? `Engagement de 24 mois. 1re année : 9,99 € HT par enseignant. 2e année : ${euros(o.anneeDeux / n)} HT par enseignant, soit ${euros(o.anneeDeux * mul)} ${base} (prix selon vos paliers). Une seule facture, au nom de l’établissement.`
@@ -61,8 +63,8 @@ export function renvoiHtml(t) {
   return t.astre ? `<b>*</b> ${t.fine}` : t.fine;
 }
 
-export function totalEcoleHtml(t) {
-  return `${insecables(t.tot)}<small>${exposants(t.unite)}</small>`;
+export function prixEcoleHtml(t) {
+  return `${insecables(t.pu)}<small> ${exposants(t.unite)}</small>`;
 }
 
 /** Lit l'état d'un groupe de pastilles / d'une bascule. */
@@ -106,8 +108,8 @@ export function brancher(doc = document) {
       const t = texteEcole(n, engagement, annuel);
       $("eN").textContent = n; $("eLic").textContent = t.lic;
       $("eBadge").hidden = !t.badge; $("eBadge").textContent = t.badge ?? "";
-      $("eOld").textContent = insecables(t.old); $("eTot").innerHTML = totalEcoleHtml(t);
-      $("ePu").textContent = t.pu; $("eTtc").textContent = insecables(t.ttc); $("eFine").innerHTML = exposants(insecables(t.fine));
+      $("eOld").textContent = insecables(t.old); $("ePu").innerHTML = prixEcoleHtml(t);
+      $("eTotLab").textContent = `Total · ${t.lic}`; $("eTot").textContent = insecables(t.tot); $("eTtc").textContent = insecables(t.ttc); $("eFine").innerHTML = exposants(insecables(t.fine));
       doc.querySelectorAll("#ePals .pal").forEach((p, i) => p.classList.toggle("on", i === t.palier));
       $("eR").setAttribute("aria-valuetext", t.lic);
       if ($("ePlus")) $("ePlus").hidden = n < 40;

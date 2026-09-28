@@ -2,7 +2,7 @@
 import { texteProf, prixHtml, renvoiHtml, insecables } from "../../assets/js/tarifs-ui.js";
 import { lienMailto } from "../../assets/js/formulaire.js";
 import { THEMES, libelleBadge } from "./catalogue.mjs";
-import { COCHE, FLECHE, demo, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeau } from "./sections.mjs";
+import { COCHE, FLECHE, demo, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact } from "./sections.mjs";
 
 const prof = texteProf(true, false);
 
@@ -79,7 +79,7 @@ export default `<div class="acc">
           <a class="btn ghost" href="https://app.myclassflow.fr">Créer mon compte gratuit</a>
         </div>
         <div class="card hl">
-          <span class="badge">Offre de lancement · −33 %</span>
+          <span class="badge">Avec engagement · −33 %</span>
           <h3>ClassFlow Enseignant</h3>
           <p class="d">Pour un·e enseignant·e, toutes classes confondues</p>
           <div class="old">${insecables(prof.old)}</div>
@@ -88,6 +88,7 @@ export default `<div class="acc">
           <a class="btn" href="https://app.myclassflow.fr">Je commence</a>
         </div>
       </div>
+      <div class="band"><div style="font-size:30px" aria-hidden="true">💌</div><div style="flex:1"><b>Faites équiper votre école</b><p>Envoyez l'offre école à votre direction en un clic : votre abonnement pourrait être pris en charge, et toute l'équipe en profite.</p></div><a class="btn" data-mailto="direction" href="${lienMailto("direction")}">Envoyer à ma direction</a></div>
       <p class="centre"><a class="lien-suite" href="/enseignants/tarifs/">Voir les tarifs →</a></p>
     </div>
   </section>
@@ -96,8 +97,6 @@ export default `<div class="acc">
     "Chaque fonctionnalité est imaginée et testée avec des professeurs des écoles. L'outil suit vos pratiques réelles, pas l'inverse.")],
   { texte: "Les informations sur vos élèves sont sensibles. ClassFlow est conçu pour les protéger, dès le premier jour.",
     note: "ClassFlow se construit avec les premiers établissements partenaires." })}
-
-  ${bandeau("💌", "Faites équiper votre école", "Envoyez l'offre école à votre direction en un clic : votre abonnement pourrait être pris en charge, et toute l'équipe en profite.", "Envoyer à ma direction", lienMailto("direction"), 'data-mailto="direction" ')}
 
   <section class="section final" id="contact">
     <div class="wrap final-grid">

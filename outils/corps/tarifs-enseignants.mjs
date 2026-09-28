@@ -23,7 +23,7 @@ export default `<section class="page" data-tarifs="enseignants">
       <a class="btn ghost" href="https://app.myclassflow.fr">Créer mon compte gratuit</a>
     </div>
     <div class="card hl">
-      <span class="badge" id="pBadge">Offre de lancement · −33 %</span>
+      <span class="badge" id="pBadge">Avec engagement · −33 %</span>
       <h3>ClassFlow Enseignant</h3>
       <p class="d">Pour un·e enseignant·e, toutes classes confondues</p>
       <div class="old" id="pOld">${insecables(t.old)}</div>
