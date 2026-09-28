@@ -1,5 +1,5 @@
 // Accueil de l'espace Enseignants (aussi affiché, flouté, derrière l'écran d'entrée de « / »).
-import { texteProf, prixHtml, renvoiHtml, insecables } from "../../assets/js/tarifs-ui.js";
+import { texteProf, prixHtml, renvoiHtml, insecables, badgeEnseignant } from "../../assets/js/tarifs-ui.js";
 import { lienMailto } from "../../assets/js/formulaire.js";
 import { THEMES, libelleBadge } from "./catalogue.mjs";
 import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact } from "./sections.mjs";
@@ -81,7 +81,7 @@ export default `<div class="acc">
           <a class="btn ghost" href="https://app.myclassflow.fr">Créer mon compte gratuit</a>
         </div>
         <div class="card hl">
-          <span class="badge">Avec engagement · −33 %</span>
+          <span class="badge">${badgeEnseignant()}</span>
           <h3>ClassFlow Enseignant</h3>
           <p class="d">Pour un·e enseignant·e, toutes classes confondues</p>
           <div class="old">${insecables(prof.old)}</div>

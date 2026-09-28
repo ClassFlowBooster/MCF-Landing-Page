@@ -1,5 +1,5 @@
 // Page Tarifs de l'espace Enseignants (prix TTC).
-import { texteProf, prixHtml, renvoiHtml, insecables } from "../../assets/js/tarifs-ui.js";
+import { texteProf, prixHtml, renvoiHtml, insecables, badgeEnseignant } from "../../assets/js/tarifs-ui.js";
 import { lienMailto } from "../../assets/js/formulaire.js";
 import { controles } from "./commun.mjs";
 import { castor } from "./castors.mjs";
@@ -25,7 +25,7 @@ export default `<section class="page" data-tarifs="enseignants">
     </div>
     <div class="card hl avec-castor">
       ${castor("professeur", "castor-carte", 120)}
-      <span class="badge" id="pBadge">Avec engagement · −33 %</span>
+      <span class="badge" id="pBadge">${badgeEnseignant()}</span>
       <h3>ClassFlow Enseignant</h3>
       <p class="d">Pour un·e enseignant·e, toutes classes confondues</p>
       <div class="old" id="pOld">${insecables(t.old)}</div>

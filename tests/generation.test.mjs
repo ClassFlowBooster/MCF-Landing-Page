@@ -80,3 +80,12 @@ test("mascottes castor : chaque page référence ses castors, en <img> décorati
     }
   }
 });
+
+test("badges de remise : toujours le pourcentage calculé à partir des prix", async () => {
+  const { remiseEnseignant, remiseAdapter } = await import("../assets/js/tarifs.js");
+  const attendu = { enseignants: [remiseEnseignant()], "parents-enfants": [remiseAdapter("essentiel"), remiseAdapter("illimite")] };
+  for (const p of PAGES.filter((x) => attendu[x.espace] && ["tarifs", ""].includes(x.rubrique))) {
+    const trouves = [...page(p).matchAll(/−(\d+) %/g)].map((m) => Number(m[1]));
+    for (const v of trouves) assert.ok(attendu[p.espace].includes(v), `${p.chemin} : −${v} % ne correspond pas aux prix`);
+  }
+});

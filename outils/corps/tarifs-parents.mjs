@@ -1,5 +1,6 @@
 // Page Tarifs de l'espace Parents / Enfants : ClassFlow Adapter (prix TTC).
-import { texteAdapter, prixHtml, renvoiHtml, insecables } from "../../assets/js/tarifs-ui.js";
+import { texteAdapter, prixHtml, renvoiHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
+import { remiseAdapter } from "../../assets/js/tarifs.js";
 import { lienMailto } from "../../assets/js/formulaire.js";
 import { controles } from "./commun.mjs";
 import { castor } from "./castors.mjs";
@@ -11,7 +12,7 @@ export default `<section class="page" data-tarifs="parents-enfants">
   <h1 class="t">Des devoirs adaptés à votre enfant, en une photo</h1>
   <p class="lead">Prenez en photo la leçon ou l'exercice : ClassFlow Adapter le transforme selon les besoins de votre enfant (DYS, TDAH, TSA…).</p>
 
-  ${controles("Engagement 6 mois", "−50 % les 3 premiers mois", "Résiliable à tout moment")}
+  ${controles("Engagement 6 mois", `−${remiseAdapter("illimite")} % les 3 premiers mois`, "Résiliable à tout moment")}
 
   <div class="cards3">
     <div class="card free">
@@ -26,7 +27,7 @@ export default `<section class="page" data-tarifs="parents-enfants">
     </div>
 
     <div class="card">
-      <span class="badge" id="eBadge">−50 % les 3 premiers mois</span>
+      <span class="badge" id="eBadge">${badgeAdapter("essentiel")}</span>
       <h3>Essentiel</h3>
       <p class="d">Les devoirs de la semaine</p>
       <div class="old" id="eOld">${insecables(e.old)}</div>
@@ -39,7 +40,7 @@ export default `<section class="page" data-tarifs="parents-enfants">
     <div class="card hl avec-castor">
       <span class="pop">Le plus choisi</span>
       ${castor("eleve", "castor-carte gauche", 120)}
-      <span class="badge" id="iBadge">−50 % les 3 premiers mois</span>
+      <span class="badge" id="iBadge">${badgeAdapter("illimite")}</span>
       <h3>Illimité</h3>
       <p class="d">Toutes les leçons, tous les exercices</p>
       <div class="old" id="iOld">${insecables(i.old)}</div>

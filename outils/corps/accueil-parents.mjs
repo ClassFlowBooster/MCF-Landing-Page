@@ -1,5 +1,5 @@
 // Accueil de l'espace Parents / Enfants (ClassFlow Adapter).
-import { texteAdapter, prixHtml, insecables } from "../../assets/js/tarifs-ui.js";
+import { texteAdapter, prixHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
 import { lienMailto } from "../../assets/js/formulaire.js";
 import { COCHE, FLECHE, demo, comparateur, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeau } from "./sections.mjs";
 import { castor } from "./castors.mjs";
@@ -64,7 +64,7 @@ export default `<div class="acc">
           <a class="btn ghost" href="https://adapter.myclassflow.fr">J'essaie gratuitement</a>
         </div>
         <div class="card">
-          <span class="badge">−50 % les 3 premiers mois</span>
+          <span class="badge">${badgeAdapter("essentiel")}</span>
           <h3>Essentiel</h3>
           <p class="d">Les devoirs de la semaine</p>
           <div class="old">${insecables(e.old)}</div>
@@ -75,7 +75,7 @@ export default `<div class="acc">
         </div>
         <div class="card hl">
           <span class="pop">Le plus choisi</span>
-          <span class="badge">−50 % les 3 premiers mois</span>
+          <span class="badge">${badgeAdapter("illimite")}</span>
           <h3>Illimité</h3>
           <p class="d">Toutes les leçons, tous les exercices</p>
           <div class="old">${insecables(i.old)}</div>

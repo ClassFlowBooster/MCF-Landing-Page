@@ -62,6 +62,14 @@ export function parAn(mensuel, moisPromo = 0, prixPromo = mensuel) {
 
 export const ttc = (ht) => ht * (1 + TVA);
 
+/** Montant HT d'un prix TTC, arrondi au centime : seule conversion du site (affichage et devis). */
+export const montantHt = (prixTtc) => Math.round((prixTtc / (1 + TVA)) * 100) / 100;
+
+/** Remise d'une offre avec engagement, en % entier (14,99 → 9,99 : 33). */
+export const remisePct = (plein, promo) => Math.round((1 - promo / plein) * 100);
+export const remiseEnseignant = () => remisePct(PROF.plein, PROF.promo);
+export const remiseAdapter = (formule) => remisePct(ADAPTER[formule].plein, ADAPTER[formule].promo);
+
 // Format « 1 234,56 € » : les espaces insécables de toLocaleString deviennent
 // des espaces simples.
 export function euros(v) {

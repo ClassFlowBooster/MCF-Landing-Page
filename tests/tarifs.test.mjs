@@ -87,3 +87,27 @@ test("ttc et euros", () => {
   assert.equal(euros(1966.99), "1 966,99 €");
   assert.equal(euros(9.99), "9,99 €");
 });
+
+test("remises calculées à partir des prix : enseignant −33 %, Adapter −50 %", async () => {
+  const { remisePct, remiseEnseignant, remiseAdapter } = await import("../assets/js/tarifs.js");
+  assert.equal(remisePct(14.99, 9.99), 33);
+  assert.equal(remisePct(4.99, 2.49), 50);
+  assert.equal(remisePct(10, 10), 0);
+  const o = offreEnseignant(true);
+  assert.equal(remiseEnseignant(), Math.round((1 - o.prix / o.barre) * 100));
+  for (const f of ["essentiel", "illimite"]) {
+    const a = offreAdapter(f, true);
+    assert.equal(remiseAdapter(f), Math.round((1 - a.prix / a.barre) * 100), f);
+  }
+  assert.equal(remiseEnseignant(), 33);
+  assert.equal(remiseAdapter("essentiel"), 50);
+  assert.equal(remiseAdapter("illimite"), 50);
+});
+
+test("montantHt : TTC / (1 + TVA), arrondi au centime", async () => {
+  const { montantHt } = await import("../assets/js/tarifs.js");
+  assert.equal(montantHt(49.95), 41.63);
+  assert.equal(montantHt(119.88), 99.9);
+  assert.equal(montantHt(59.94), 49.95);
+  assert.equal(montantHt(0), 0);
+});

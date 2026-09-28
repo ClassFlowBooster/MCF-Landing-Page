@@ -2,12 +2,13 @@
 // Les fonctions texte*() et *Html() sont pures (testées, et utilisées par le
 // générateur pour écrire les valeurs par défaut dans le HTML) ; brancher()
 // relie le DOM.
-import { offreEcole, offreEnseignant, offreAdapter, parAn, euros, indexPalier, TVA } from "./tarifs.js";
+import { offreEcole, offreEnseignant, offreAdapter, parAn, euros, indexPalier, montantHt, remiseEnseignant, remiseAdapter } from "./tarifs.js";
 
 export const etatInitial = () => ({ engagement: true, parAn: false });
 
-/** Tous les prix sont affichés TTC ; montant HT correspondant. */
-export const montantHt = (ttcMensuel) => ttcMensuel / (1 + TVA);
+/** Textes des badges de remise, calculés à partir des prix (tarifs.js). */
+export const badgeEnseignant = () => `Avec engagement · −${remiseEnseignant()} %`;
+export const badgeAdapter = (formule) => `−${remiseAdapter(formule)} % les 3 premiers mois`;
 
 export function texteEcole(n, engagement, annuel) {
   const o = offreEcole(n, engagement);
@@ -24,7 +25,8 @@ export function texteEcole(n, engagement, annuel) {
     unite: `TTC / enseignant / ${annuel ? "an" : "mois"}${engagement ? ", 1re année" : ""}`,
     // En petit : le total pour l'établissement (TTC), et son montant HT.
     tot: `${euros(o.totalMensuel * mul)} TTC / ${annuel ? "an" : "mois"}`,
-    ht: `${euros(montantHt(o.totalMensuel) * mul)} / ${annuel ? "an" : "mois"}`,
+    // Tous les prix sont affichés TTC ; le montant HT suit la même conversion que le devis.
+    ht: `${euros(montantHt(o.totalMensuel * mul))} / ${annuel ? "an" : "mois"}`,
     fine: engagement
       ? `Engagement de 24 mois. 1re année : 9,99 € TTC par enseignant. 2e année : ${euros(o.anneeDeux / n)} TTC par enseignant, soit ${euros(o.anneeDeux * mul)} ${base} (prix selon vos paliers). Une seule facture, au nom de l’établissement.`
       : "Sans engagement, résiliable à tout moment. Le prix par enseignant baisse dès 5 enseignants, jusqu’à 9,99 € TTC.",

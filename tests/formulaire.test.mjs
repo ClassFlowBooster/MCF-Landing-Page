@@ -68,3 +68,12 @@ test("lienMailto direction", () => {
 test("lienMailto école", () => {
   assert.ok(decodeURIComponent(lienMailto("ecole")).includes("https://myclassflow.fr/ecoles/"));
 });
+
+test("devis : même montant HT que celui affiché par le calculateur", async () => {
+  const { texteEcole } = await import("../assets/js/tarifs-ui.js");
+  const { euros } = await import("../assets/js/tarifs.js");
+  for (let n = 1; n <= 40; n++) for (const eng of [true, false]) {
+    const d = construireDevis(CHAMPS, n, eng);
+    assert.equal(`${euros(d.montant_ht_mensuel)} / mois`, texteEcole(n, eng, false).ht, `${n} ${eng}`);
+  }
+});
