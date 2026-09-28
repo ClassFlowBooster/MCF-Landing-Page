@@ -1,5 +1,6 @@
 // Gabarits communs des pages : <head>, barre du haut, pied de page.
 // Le HTML final est écrit par outils/generer.mjs et commité (site statique).
+import { megaMenu as megaMenuDe } from "./corps/mega-menu.mjs";
 
 export const SITE = "https://myclassflow.fr";
 
@@ -48,7 +49,7 @@ function pied() {
 </div></footer>`;
 }
 
-export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu = "", classeBody = "" }) {
+export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "" }) {
   const js = scripts.map((s) => `<script type="module" src="/assets/js/${s}"></script>`).join("\n");
   return `<!DOCTYPE html>
 <html lang="fr">
@@ -68,7 +69,7 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <link rel="stylesheet" href="/assets/css/base.css" />
 </head>
 <body${classeBody ? ` class="${classeBody}"` : ""} data-espace="${espace ?? ""}">
-${espace ? barre(espace, rubrique, megaMenu) : ""}
+${espace ? barre(espace, rubrique, megaMenu ?? megaMenuDe(espace)) : ""}
 <main>
 ${corps}
 </main>
