@@ -48,7 +48,7 @@ export function insecables(t) {
   return t.replace(/(\d) (\d{3})\b/g, "$1" + String.fromCharCode(0x202f) + "$2");
 }
 
-/** « 1re », « 2e » en exposant, comme sur les maquettes. */
+/** « 1re », « 2e » en exposant. */
 export function exposants(t) {
   return t.replace(/\b1re\b/g, "1<sup>re</sup>").replace(/\b2e\b/g, "2<sup>e</sup>");
 }

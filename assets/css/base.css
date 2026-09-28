@@ -10,7 +10,7 @@ button{font-family:inherit}
 [hidden]{display:none!important}
 :focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:4px}
 
-/* ---------- Composants des maquettes ---------- */
+/* ---------- Composants des pages (tarifs, fonctionnalités, téléchargement) ---------- */
 .page{max-width:var(--largeur);margin:0 auto;padding:24px 26px 28px}
 .nav{display:flex;align-items:center;gap:20px;height:56px;font-size:13px;color:var(--ink-2);border-bottom:1px solid var(--line)}
 .brand{font-weight:700;color:var(--ink);display:flex;gap:8px;align-items:center}
@@ -117,7 +117,7 @@ input[type=range]{width:100%;accent-color:var(--coral)}
 sup.astre{font-size:22px}
 .f label{font-size:0;display:block;position:relative}
 .f .in{width:100%;box-sizing:border-box;font:400 13px Inter,system-ui,sans-serif;color:var(--ink);margin:0;height:calc(13px * 1.21 + 21px)}
-/* hauteur des boutons de la maquette (police par défaut des <button>) */
+/* hauteur des boutons des cartes, identique à celle d’un <button> natif */
 .card .btn,.offer .btn,.f .cta{line-height:1.15}
 .in::placeholder{color:var(--ink-3);opacity:1}
 select.in{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:26px;text-overflow:ellipsis}
@@ -172,7 +172,7 @@ select.in:invalid{color:var(--ink-3)}
 body.avec-entree>header,body.avec-entree>main,body.avec-entree>footer{filter:blur(6px);pointer-events:none;user-select:none}
 body.avec-entree{overflow:hidden}
 .veil{position:absolute;inset:0;background:rgba(31,26,20,.28)}
-.modal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,92%);background:#fff;border-radius:22px;padding:26px 26px 20px;box-shadow:0 24px 60px rgba(31,26,20,.28);max-height:calc(100vh - 32px);overflow:auto}
+.modal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,calc(100% - 84px));background:#fff;border-radius:22px;padding:26px 26px 20px;box-shadow:0 24px 60px rgba(31,26,20,.28);max-height:calc(100vh - 32px);overflow:auto}
 .modal h2{font-family:Fraunces,serif;font-size:26px;margin:0 0 4px;font-weight:600;text-align:center}
 .modal .sub{color:var(--ink-3);text-align:center;font-size:14px;margin:0 0 18px}
 .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
@@ -439,6 +439,9 @@ html{scroll-padding-top:72px}
 @media (max-width: 480px){
   .dl{grid-template-columns:1fr}
   .price{font-size:38px}
+  .offer .price{font-size:44px}
+  .offer .price small{display:block;margin-top:6px}
   .page{padding:24px 16px 24px}
   .header,.footer{padding:0 16px}
+  .header .nav>.btn{white-space:nowrap;padding:7px 12px;font-size:12px}
 }

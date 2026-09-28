@@ -6,7 +6,7 @@ test("état par défaut : engagement et prix au mois", () => {
   assert.deepEqual(etatInitial(), { engagement: true, parAn: false });
 });
 
-test("texteEcole 5 enseignants, engagement, au mois (maquette)", () => {
+test("texteEcole 5 enseignants, engagement, au mois (affichage par défaut)", () => {
   const t = texteEcole(5, true, false);
   assert.equal(t.badge, "Engagement 2 ans · −26 % la 1re année");
   assert.equal(t.lic, "5 enseignants");

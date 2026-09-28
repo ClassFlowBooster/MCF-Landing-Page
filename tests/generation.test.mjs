@@ -27,15 +27,23 @@ test("les fichiers générés sont à jour (lancer npm run generer)", () => {
   }
 });
 
-// Pages des tâches suivantes, déjà liées par la barre du haut (provisoire).
-const A_VENIR = ["/enseignants/telecharger/", "/ecoles/telecharger/", "/parents-enfants/telecharger/"];
-
 test("tous les liens internes pointent vers une page existante", () => {
-  const chemins = new Set([...PAGES.map((p) => p.chemin), ...A_VENIR]);
+  const chemins = new Set(PAGES.map((p) => p.chemin));
   for (const p of PAGES) {
     for (const [, href] of page(p).matchAll(/href="(\/[^"#?]*)/g)) {
       if (href.startsWith("/assets/") || href.startsWith("/presentation/") || href === "/sitemap.xml") continue;
       assert.ok(chemins.has(href), `${p.chemin} → ${href} introuvable`);
     }
   }
+});
+
+test("sitemap.xml et robots.txt à jour", () => {
+  const sitemap = readFileSync("sitemap.xml", "utf8");
+  for (const p of PAGES) assert.ok(sitemap.includes(`<loc>https://myclassflow.fr${p.chemin}</loc>`), p.chemin);
+  assert.match(readFileSync("robots.txt", "utf8"), /Sitemap: https:\/\/myclassflow\.fr\/sitemap\.xml/);
+});
+
+test("13 pages : l'entrée et quatre pages par espace", () => {
+  assert.equal(PAGES.length, 13);
+  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 13);
 });
