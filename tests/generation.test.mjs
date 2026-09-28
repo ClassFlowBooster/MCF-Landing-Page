@@ -55,3 +55,28 @@ test("prix des écoles en TTC : aucun « HT » sur les pages tarifs, hors la lig
     assert.ok(!/\bHT\b/.test(texte), chemin);
   }
 });
+
+test("mascottes castor : chaque page référence ses castors, en <img> décoratif, et les fichiers existent", () => {
+  const ATTENDUS = {
+    "/": ["professeur", "direction", "eleve"],
+    "/enseignants/": ["professeur", "direction"],
+    "/ecoles/": ["direction"],
+    "/parents-enfants/": ["eleve", "direction"],
+    "/enseignants/tarifs/": ["professeur", "direction"],
+    "/parents-enfants/tarifs/": ["eleve", "direction"],
+  };
+  for (const nom of ["professeur", "direction", "eleve"]) assert.ok(existsSync(`./assets/img/castors/${nom}.svg`), nom);
+  for (const [chemin, noms] of Object.entries(ATTENDUS)) {
+    const html = page(PAGES.find((p) => p.chemin === chemin));
+    for (const nom of noms) assert.ok(html.includes(`src="/assets/img/castors/${nom}.svg"`), `${chemin} : castor ${nom} absent`);
+  }
+  for (const p of PAGES) {
+    const html = page(p);
+    assert.ok(!html.includes("<svg version"), `${p.chemin} : castor intégré au HTML`);
+    for (const [img] of html.matchAll(/<img [^>]*castors\/[^>]*>/g)) {
+      assert.match(img, /alt=""/, p.chemin);
+      assert.match(img, /width="\d+" height="\d+"/, p.chemin);
+      assert.match(img, /decoding="async"/, p.chemin);
+    }
+  }
+});

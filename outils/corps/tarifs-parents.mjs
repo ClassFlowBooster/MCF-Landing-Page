@@ -2,6 +2,7 @@
 import { texteAdapter, prixHtml, renvoiHtml, insecables } from "../../assets/js/tarifs-ui.js";
 import { lienMailto } from "../../assets/js/formulaire.js";
 import { controles } from "./commun.mjs";
+import { castor } from "./castors.mjs";
 
 const e = texteAdapter("essentiel", true, false);
 const i = texteAdapter("illimite", true, false);
@@ -35,8 +36,9 @@ export default `<section class="page" data-tarifs="parents-enfants">
       <a class="btn ghost" href="https://adapter.myclassflow.fr">Je choisis Essentiel</a>
     </div>
 
-    <div class="card hl">
+    <div class="card hl avec-castor">
       <span class="pop">Le plus choisi</span>
+      ${castor("eleve", "castor-carte gauche", 120)}
       <span class="badge" id="iBadge">−50 % les 3 premiers mois</span>
       <h3>Illimité</h3>
       <p class="d">Toutes les leçons, tous les exercices</p>
@@ -50,5 +52,5 @@ export default `<section class="page" data-tarifs="parents-enfants">
 
   <div class="reassure"><span>🔒 Paiement sécurisé</span><span>👨‍👩‍👧 Tous les enfants du foyer</span><span>📱 Téléphone, tablette et ordinateur</span></div>
 
-  <div class="band"><div style="font-size:30px" aria-hidden="true">🏫</div><div style="flex:1"><b>Et si l'école de votre enfant s'équipait ?</b><p>Parlez de ClassFlow à l'enseignant·e : les adaptations seraient faites directement en classe.</p></div><a class="btn" data-mailto="ecole" href="${lienMailto("ecole")}">Envoyer à l'école</a></div>
+  <div class="band">${castor("direction", "castor-bande", 88)}<div style="flex:1"><b>Et si l'école de votre enfant s'équipait ?</b><p>Parlez de ClassFlow à l'enseignant·e : les adaptations seraient faites directement en classe.</p></div><a class="btn" data-mailto="ecole" href="${lienMailto("ecole")}">Envoyer à l'école</a></div>
 </section>`;

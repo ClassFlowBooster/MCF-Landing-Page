@@ -168,9 +168,10 @@ export function formulaireContact({ titre, sous, message = "Votre message" }) {
         <div class="form-merci" hidden role="status"><b>Merci, votre message est bien reçu.</b> Nous vous répondons rapidement.</div>`;
 }
 
-export const bandeau = (emoji, titre, texte, bouton, href, attr = "") =>
+/** Bandeau pointillé ; `visuel` : un émoji, ou une balise (castor). */
+export const bandeau = (visuel, titre, texte, bouton, href, attr = "") =>
   `<section class="section bandeau apercu" aria-label="${titre.replace(/"/g, "&quot;")}">
     <div class="wrap">
-      <div class="band"><div style="font-size:30px" aria-hidden="true">${emoji}</div><div style="flex:1"><b>${titre}</b><p>${texte}</p></div><a class="btn" ${attr}href="${href}">${bouton}</a></div>
+      <div class="band">${visuel.startsWith("<") ? visuel : `<div style="font-size:30px" aria-hidden="true">${visuel}</div>`}<div style="flex:1"><b>${titre}</b><p>${texte}</p></div><a class="btn" ${attr}href="${href}">${bouton}</a></div>
     </div>
   </section>`;
