@@ -27,10 +27,10 @@ export function application(espace) {
 export function etapes(appareil, espace) {
   const { hote, nom } = application(espace);
   const D = {
-    mac: { t: "Installer sur Mac", s: "Avec Chrome ou Edge (Safari : menu Fichier → « Ajouter au Dock »).", l: [[`Ouvrez ${hote}`, "dans Chrome ou Edge."], ["Cliquez sur l’icône d’installation", "au bout de la barre d’adresse (un écran avec une flèche)."], ["Cliquez sur « Installer »", `${nom} apparaît dans le Launchpad et le Dock.`]], v: [`Installer ${nom} ?`, "Installer", "Annuler"] },
-    win: { t: "Installer sur Windows", s: "Avec Chrome ou Edge.", l: [[`Ouvrez ${hote}`, "dans Chrome ou Edge."], ["Cliquez sur l’icône d’installation", "au bout de la barre d’adresse."], ["Cliquez sur « Installer »", `${nom} s’ajoute au menu Démarrer ; vous pouvez l’épingler à la barre des tâches.`]], v: [`Installer ${nom} ?`, "Installer", "Annuler"] },
-    and: { t: "Installer sur Android", s: "Le plus souvent, l’app vous le propose d’elle-même.", l: [[`Ouvrez ${hote}`, "dans Chrome, Edge ou Samsung Internet."], ["Touchez « Installer »", "dans la fenêtre proposée par l’app, ou menu <span class=\"kbd\">⋮</span> → « Installer l’application »."], ["C’est prêt", `l’icône ${nom} est sur votre écran d’accueil.`]], v: ["Nouvel onglet", "Favoris", "Installer l’application", "Paramètres"] },
-    ios: { t: "Installer sur iPhone et iPad", s: "Apple ne propose pas de bouton « Installer » : deux gestes suffisent.", l: [[`Ouvrez ${hote}`, "dans Safari, Chrome ou Edge."], ["Touchez « Partager »", "l’icône <span class=\"kbd\">⬆︎</span> en bas (Safari) ou en haut (Chrome, Edge)."], ["Touchez « Sur l’écran d’accueil »", `puis « Ajouter » : l’icône ${nom} apparaît.`]], v: ["Copier", "Ajouter aux favoris", "Sur l’écran d’accueil", "Imprimer"] },
+    mac: { t: "Installer sur Mac", s: "Avec Chrome ou Edge (Safari : menu Fichier → « Ajouter au Dock »).", l: [[`Ouvrez ${hote}`, "dans Chrome ou Edge."], ["Cliquez sur l’icône d’installation", "au bout de la barre d’adresse (un écran avec une flèche)."], ["Cliquez sur « Installer »", `${nom} apparaît dans le Launchpad et le Dock.`]], v: [`Installer ${nom} ?`, "Installer", "Annuler"], hl: 1 },
+    win: { t: "Installer sur Windows", s: "Avec Chrome ou Edge.", l: [[`Ouvrez ${hote}`, "dans Chrome ou Edge."], ["Cliquez sur l’icône d’installation", "au bout de la barre d’adresse."], ["Cliquez sur « Installer »", `${nom} s’ajoute au menu Démarrer ; vous pouvez l’épingler à la barre des tâches.`]], v: [`Installer ${nom} ?`, "Installer", "Annuler"], hl: 1 },
+    and: { t: "Installer sur Android", s: "Le plus souvent, l’app vous le propose d’elle-même.", l: [[`Ouvrez ${hote}`, "dans Chrome, Edge ou Samsung Internet."], ["Touchez « Installer »", "dans la fenêtre proposée par l’app, ou menu <span class=\"kbd\">⋮</span> → « Installer l’application »."], ["C’est prêt", `l’icône ${nom} est sur votre écran d’accueil.`]], v: ["Nouvel onglet", "Favoris", "Installer l’application", "Paramètres"], hl: 2 },
+    ios: { t: "Installer sur iPhone et iPad", s: "Apple ne propose pas de bouton « Installer » : deux gestes suffisent.", l: [[`Ouvrez ${hote}`, "dans Safari, Chrome ou Edge."], ["Touchez « Partager »", "l’icône <span class=\"kbd\">⬆︎</span> en bas (Safari) ou en haut (Chrome, Edge)."], ["Touchez « Sur l’écran d’accueil »", `puis « Ajouter » : l’icône ${nom} apparaît.`]], v: ["Copier", "Ajouter aux favoris", "Sur l’écran d’accueil", "Imprimer"], hl: 2 },
   };
   return D[appareil];
 }
@@ -38,8 +38,9 @@ export function etapes(appareil, espace) {
 export const listeHtml = (d) =>
   d.l.map((x, i) => `<div class="st"><span class="num">${i + 1}</span><div><b>${x[0]}</b><span>${x[1]}</span></div></div>`).join("");
 
+// Écran simulé : seule l'option à toucher (index hl) est surlignée.
 export const ecranHtml = (d) =>
-  d.v.map((x) => `<div class="${/Installer|écran d/.test(x) ? "hl" : ""}">${x}</div>`).join("");
+  d.v.map((x, i) => `<div class="${i === d.hl ? "hl" : ""}">${x}</div>`).join("");
 
 export function brancher(doc = document, nav = navigator) {
   const dl = doc.getElementById("dl");

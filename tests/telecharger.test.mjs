@@ -39,3 +39,13 @@ test("etapes : l'adresse et le nom de l'app suivent l'espace", () => {
   assert.ok(parents.l[2][1].includes("ClassFlow Adapter"));
   assert.ok(!JSON.stringify(parents).includes("app.myclassflow.fr"));
 });
+
+test("écran simulé : une seule ligne surlignée, l'option à toucher, jamais le titre", async () => {
+  const { ecranHtml } = await import("../assets/js/telecharger.js");
+  const attendu = { mac: "Installer", win: "Installer", and: "Installer l’application", ios: "Sur l’écran d’accueil" };
+  for (const espace of ["enseignants", "parents-enfants"]) for (const [appareil, option] of Object.entries(attendu)) {
+    const html = ecranHtml(etapes(appareil, espace));
+    const surlignees = [...html.matchAll(/<div class="hl">([^<]*)<\/div>/g)].map((m) => m[1]);
+    assert.deepEqual(surlignees, [option], `${espace} ${appareil}`);
+  }
+});
