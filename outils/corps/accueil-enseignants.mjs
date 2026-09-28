@@ -2,7 +2,7 @@
 import { texteProf, prixHtml, renvoiHtml, insecables } from "../../assets/js/tarifs-ui.js";
 import { lienMailto } from "../../assets/js/formulaire.js";
 import { THEMES, libelleBadge } from "./catalogue.mjs";
-import { COCHE, FLECHE, demo, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact } from "./sections.mjs";
+import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact } from "./sections.mjs";
 
 const prof = texteProf(true, false);
 
@@ -20,7 +20,7 @@ export default `<div class="acc">
         <div class="hero-reassure"><span>${COCHE} Hébergé en France</span><span>${COCHE} Conforme RGPD</span><span>${COCHE} Conçu avec des enseignants</span></div>
       </div>
       <div class="hero-demo">
-        ${demo()}
+        ${comparateur()}
       </div>
     </div>
   </section>

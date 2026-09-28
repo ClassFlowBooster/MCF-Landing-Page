@@ -11,19 +11,19 @@ import accueilEcoles from "./corps/accueil-ecoles.mjs";
 import accueilParents from "./corps/accueil-parents.mjs";
 
 export const PAGES = [
-  { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["entree.js", "formulaire.js"],
+  { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "entree.js", "formulaire.js"],
     titre: "ClassFlow — Adaptez chaque support aux besoins de chaque élève",
     description: "ClassFlow adapte vos supports aux élèves DYS, TDAH, TSA et EANA en quelques secondes. Pour les enseignants, les écoles et les familles.",
     surcouche: entree, corps: accueilEnseignants },
-  { chemin: "/enseignants/", espace: "enseignants", rubrique: "", scripts: ["formulaire.js"],
+  { chemin: "/enseignants/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "formulaire.js"],
     titre: "ClassFlow pour les enseignants — adaptez vos supports en quelques secondes",
     description: "ClassFlow adapte vos exercices et vos leçons aux élèves DYS, TDAH, TSA et EANA grâce à l'IA. Gestion de classe gratuite, 3 adaptations offertes.",
     corps: accueilEnseignants },
-  { chemin: "/ecoles/", espace: "ecoles", rubrique: "", scripts: ["formulaire.js"],
+  { chemin: "/ecoles/", espace: "ecoles", rubrique: "", scripts: ["comparateur.js", "formulaire.js"],
     titre: "ClassFlow pour les écoles — l'école inclusive pour toute l'équipe",
     description: "Une même démarche d'adaptation dans chaque classe et une seule facture pour l'établissement. Le prix par enseignant baisse dès 5 enseignants.",
     corps: accueilEcoles },
-  { chemin: "/parents-enfants/", espace: "parents-enfants", rubrique: "", scripts: ["formulaire.js"],
+  { chemin: "/parents-enfants/", espace: "parents-enfants", rubrique: "", scripts: ["comparateur.js", "formulaire.js"],
     titre: "ClassFlow Adapter — les devoirs de votre enfant adaptés en une photo",
     description: "Photographiez la leçon ou l'exercice : ClassFlow Adapter l'adapte aux besoins de votre enfant (DYS, TDAH, TSA). Essai gratuit, sans carte bancaire.",
     corps: accueilParents },

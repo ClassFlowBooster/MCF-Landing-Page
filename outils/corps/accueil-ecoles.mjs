@@ -1,11 +1,17 @@
 // Accueil de l'espace Écoles.
-import { COCHE, FLECHE, demo, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, formulaireContact, ICONES } from "./sections.mjs";
+import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, formulaireContact, ICONES } from "./sections.mjs";
 
 const benefice = (ic, titre, texte) =>
   `<article class="persona"><span class="persona-ic">${ICONES[ic]}</span><h3>${titre}</h3><p>${texte}</p></article>`;
 
-const persona = (ic, titre, texte, pied) =>
-  `<article class="persona"><span class="persona-ic">${ICONES[ic]}</span><h3>${titre}</h3><p>${texte}</p><div class="persona-foot">${COCHE} ${pied}</div></article>`;
+const persona = (extrait, titre, texte, pied) =>
+  `<article class="persona avec-extrait"><div class="extrait" aria-hidden="true">${extrait}</div><h3>${titre}</h3><p>${texte}</p><div class="persona-foot">${COCHE} ${pied}</div></article>`;
+
+// Extraits de l'app (illustratifs) en tête des cartes « Pour qui ».
+const trouble = (t) => `<i style="background:var(--t-${t})"></i>`;
+const EXTRAIT_PROF = `<div class="mini"><div class="mini-t"><i></i>Ma semaine · CM1</div><div class="mini-kpi"><div><b>14</b><span>supports adaptés</span></div><div><b>2 h 10</b><span>de temps gagné</span></div></div><div class="mini-barre"><i></i></div></div>`;
+const EXTRAIT_ECOLE = `<div class="mini"><div class="mini-t"><i></i>École · vue d'ensemble</div><div class="mini-classes">${[["CP", ["dys", "tdah"]], ["CE1", ["tsa"]], ["CE2", ["dys", "eana"]], ["CM1", ["dys", "tdah", "tsa"]]].map(([c, ts]) => `<div>${c}<em>${ts.map(trouble).join("")}</em></div>`).join("")}</div><div class="mini-note">Mêmes aménagements pour un élève, d'une classe à l'autre</div></div>`;
+const EXTRAIT_FORMATION = `<div class="mini"><div class="mini-t"><i></i>Parcours · école inclusive</div><div class="mini-modules"><div><b>✓</b>Repérer les besoins d'un élève</div><div><b>✓</b>Choisir les aménagements</div><div><b class="a-faire">3</b>Adapter un support en classe</div></div></div>`;
 
 export default `<div class="acc">
   <section class="section hero">
@@ -21,7 +27,7 @@ export default `<div class="acc">
         <div class="hero-reassure"><span>${COCHE} Hébergé en France</span><span>${COCHE} Conforme RGPD</span><span>${COCHE} Devis sous 48 h</span></div>
       </div>
       <div class="hero-demo">
-        ${demo()}
+        ${comparateur()}
       </div>
     </div>
   </section>
@@ -66,9 +72,9 @@ export default `<div class="acc">
         <p class="llede">De la salle de classe à l'institution, ClassFlow accompagne tous ceux qui font vivre l'inclusion au quotidien.</p>
       </div>
       <div class="who-grid">
-        ${persona("personne", "Professeurs des écoles", "Cycles 2 et 3. Un gain de temps concret chaque semaine et des supports adaptés sans expertise préalable — pour enseigner à toute la classe, vraiment.", "Gain de temps au quotidien")}
-        ${persona("ecole", "Écoles &amp; réseaux inclusifs", "Une démarche d'inclusion homogène et outillée sur tout l'établissement, des dispositifs mieux suivis et des pratiques partagées entre collègues.", "Une politique inclusive concrète")}
-        ${persona("diplome", "Instituts de formation &amp; rectorats", "Un appui à la formation des enseignants (INSPÉ) et à la mission d'inclusion&nbsp;: un outil aligné sur le cadre de l'école inclusive, pour passer de la théorie à la pratique en classe.", "Aligné sur la mission d'inclusion")}
+        ${persona(EXTRAIT_PROF, "Professeurs des écoles", "Cycles 2 et 3. Un gain de temps concret chaque semaine et des supports adaptés sans expertise préalable — pour enseigner à toute la classe, vraiment.", "Gain de temps au quotidien")}
+        ${persona(EXTRAIT_ECOLE, "Écoles &amp; réseaux inclusifs", "Une démarche d'inclusion homogène et outillée sur tout l'établissement, des dispositifs mieux suivis et des pratiques partagées entre collègues.", "Une politique inclusive concrète")}
+        ${persona(EXTRAIT_FORMATION, "Instituts de formation &amp; rectorats", "Un appui à la formation des enseignants (INSPÉ) et à la mission d'inclusion&nbsp;: un outil aligné sur le cadre de l'école inclusive, pour passer de la théorie à la pratique en classe.", "Aligné sur la mission d'inclusion")}
       </div>
     </div>
   </section>

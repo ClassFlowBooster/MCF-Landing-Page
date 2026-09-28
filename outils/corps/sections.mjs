@@ -32,7 +32,44 @@ export function demo({ original = "Original", titre = "Les fractions — exercic
         </div>`;
 }
 
-export const TROUBLES = `<section class="troubles" aria-label="Troubles pris en charge">
+/**
+ * Visuel du header : une seule feuille, un curseur qui passe de la copie
+ * d'origine à la copie adaptée (animé et déplaçable par assets/js/comparateur.js).
+ * Sans JavaScript, le curseur reste au milieu.
+ */
+export function comparateur() {
+  return `<div class="ba" data-comparateur>
+          <div class="ba-feuille">
+            <div class="ba-couche ba-orig" aria-hidden="true">
+              <div class="ba-meta"><span>Prénom : ..............</span><span>CM1 · Mathématiques</span></div>
+              <h6>Les fractions — exercice 3</h6>
+              <p class="ba-ex">Colorie les trois quarts de chaque figure puis compare les deux résultats obtenus en expliquant ta réponse par une phrase complète, puis range les fractions suivantes dans l'ordre croissant : 3/4 ; 1/2 ; 2/8 ; 5/4.</p>
+              <div class="ba-figs">
+                <svg viewBox="0 0 52 52"><rect x="2" y="2" width="48" height="48" fill="none" stroke="#333"/><path d="M26 2v48M2 26h48" stroke="#333"/></svg>
+                <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="none" stroke="#333"/><path d="M26 2v48M2 26h48" stroke="#333"/></svg>
+              </div>
+              <p>Rappel : une fraction représente une partie d'un tout partagé en parts égales ; le dénominateur indique en combien de parts on a partagé, le numérateur combien de parts on prend.</p>
+              <div class="ba-lignes"><i></i><i></i><i></i></div>
+            </div>
+            <div class="ba-couche ba-adap" aria-hidden="true">
+              <div class="ba-meta"><span>Prénom : Léa</span><span>CM1 · Maths</span></div>
+              <h6>Les fractions</h6>
+              <div class="ba-etape"><b>1</b><p><span class="s1">Co</span><span class="s2">lo</span><span class="s1">rie</span> <strong>trois quarts</strong> du carré.</p></div>
+              <div class="ba-figs">
+                <svg viewBox="0 0 58 58"><rect x="2" y="2" width="54" height="54" rx="4" fill="#fff" stroke="#1F1A14" stroke-width="2.5"/><path d="M29 2v54M2 29h54" stroke="#1F1A14" stroke-width="2.5"/></svg>
+              </div>
+              <div class="ba-etape"><b>2</b><p><span class="s1">Fais</span> <span class="s2">pa</span><span class="s1">reil</span> a<span class="s2">vec</span> le <span class="s1">rond</span>.</p></div>
+              <p class="ba-astuce">Une consigne à la fois. Coche quand c'est fait.</p>
+            </div>
+            <span class="ba-etiq ba-etiq-o" aria-hidden="true">Original</span><span class="ba-etiq ba-etiq-a" aria-hidden="true">Adapté · Dyslexie</span>
+            <div class="ba-poignee" aria-hidden="true"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+            <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparer l'exercice d'origine et sa version adaptée pour un élève dyslexique">
+          </div>
+          <div class="ba-aide" aria-hidden="true">glissez pour voir la différence</div>
+        </div>`;
+}
+
+export const TROUBLES =`<section class="troubles" aria-label="Troubles pris en charge">
     <div class="wrap troubles-row">
       <span class="troubles-lead">12 troubles pris en charge —</span>
       <span class="tchip"><span class="dot" style="background:var(--t-dys)"></span>Dyslexie</span>

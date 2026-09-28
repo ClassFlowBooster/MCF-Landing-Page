@@ -1,7 +1,7 @@
 // Accueil de l'espace Parents / Enfants (ClassFlow Adapter).
 import { texteAdapter, prixHtml, insecables } from "../../assets/js/tarifs-ui.js";
 import { lienMailto } from "../../assets/js/formulaire.js";
-import { COCHE, FLECHE, demo, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeau } from "./sections.mjs";
+import { COCHE, FLECHE, demo, comparateur, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeau } from "./sections.mjs";
 
 const e = texteAdapter("essentiel", true, false);
 const i = texteAdapter("illimite", true, false);
@@ -10,15 +10,20 @@ const question = (q, r) => `<details><summary>${q}</summary><p>${r}</p></details
 
 export default `<div class="acc">
   <section class="section hero">
-    <div class="wrap hero-seul">
-      <div class="hero-badge"><span class="pill">Adapter</span><span>Pour les familles, <b>tous les enfants du foyer</b></span></div>
-      <h1 class="h-display">Les devoirs de votre enfant, <em>adaptés en une photo</em></h1>
-      <p class="llede">Prenez en photo la leçon ou l'exercice : ClassFlow Adapter le transforme selon les besoins de votre enfant — DYS, TDAH, TSA…</p>
-      <div class="hero-actions">
-        <a class="lbtn lbtn-primary lbtn-lg" href="https://adapter.myclassflow.fr">Essayer gratuitement ${FLECHE}</a>
-        <a class="lbtn lbtn-ghost lbtn-lg" href="#exemple">Voir un exemple</a>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="hero-badge"><span class="pill">Adapter</span><span>Pour les familles, <b>tous les enfants du foyer</b></span></div>
+        <h1 class="h-display">Les devoirs de votre enfant, <em>adaptés en une photo</em></h1>
+        <p class="llede">Prenez en photo la leçon ou l'exercice : ClassFlow Adapter le transforme selon les besoins de votre enfant — DYS, TDAH, TSA…</p>
+        <div class="hero-actions">
+          <a class="lbtn lbtn-primary lbtn-lg" href="https://adapter.myclassflow.fr">Essayer gratuitement ${FLECHE}</a>
+          <a class="lbtn lbtn-ghost lbtn-lg" href="#exemple">Voir un exemple</a>
+        </div>
+        <div class="hero-reassure"><span>${COCHE} 3 adaptations offertes</span><span>${COCHE} Sans carte bancaire</span><span>${COCHE} Hébergé en France</span></div>
       </div>
-      <div class="hero-reassure"><span>${COCHE} 3 adaptations offertes</span><span>${COCHE} Sans carte bancaire</span><span>${COCHE} Hébergé en France</span></div>
+      <div class="hero-demo">
+        ${comparateur()}
+      </div>
     </div>
   </section>
 
