@@ -90,39 +90,58 @@ function groupe(racine, sel, rappel) {
   });
 }
 
-export function brancher(doc = document) {
+export function brancher(doc = document, win = typeof window !== "undefined" ? window : undefined) {
   const r = doc.querySelector("[data-tarifs]");
   if (!r) return;
   const etat = () => ({ engagement: valeur(r, ".dur") === "eng", parAn: valeur(r, ".seg") === "a" });
   const $ = (id) => doc.getElementById(id);
+  // N'écrit dans le DOM que si la valeur change.
+  const deja = new Map();
+  const ecrire = (id, prop, v) => {
+    const k = `${id}.${prop}`;
+    if (deja.get(k) === v) return;
+    deja.set(k, v);
+    const el = $(id);
+    if (!el) return;
+    if (prop === "aria-valuetext") el.setAttribute(prop, v); else el[prop] = v;
+  };
+  let palier = null;
   const dessiner = () => {
     const { engagement, parAn: annuel } = etat();
     const type = r.dataset.tarifs;
     if (type === "enseignants") {
       const t = texteProf(engagement, annuel);
-      $("pBadge").hidden = !t.badge; $("pOld").textContent = insecables(t.old); $("pPrice").innerHTML = prixHtml(t); $("pFine").innerHTML = renvoiHtml(t);
+      ecrire("pBadge", "hidden", !t.badge); ecrire("pOld", "textContent", insecables(t.old)); ecrire("pPrice", "innerHTML", prixHtml(t)); ecrire("pFine", "innerHTML", renvoiHtml(t));
     }
     if (type === "parents-enfants") {
       for (const [f, p] of [["essentiel", "e"], ["illimite", "i"]]) {
         const t = texteAdapter(f, engagement, annuel);
-        $(`${p}Badge`).hidden = !t.badge; $(`${p}Old`).textContent = insecables(t.old); $(`${p}Price`).innerHTML = prixHtml(t); $(`${p}Fine`).innerHTML = renvoiHtml(t);
+        ecrire(`${p}Badge`, "hidden", !t.badge); ecrire(`${p}Old`, "textContent", insecables(t.old)); ecrire(`${p}Price`, "innerHTML", prixHtml(t)); ecrire(`${p}Fine`, "innerHTML", renvoiHtml(t));
       }
     }
     if (type === "ecoles") {
       const n = Number($("eR").value);
       const t = texteEcole(n, engagement, annuel);
-      $("eN").textContent = n; $("eLic").textContent = t.lic;
-      $("eBadge").hidden = !t.badge; $("eBadge").textContent = t.badge ?? "";
-      $("eOld").textContent = insecables(t.old); $("ePu").innerHTML = prixEcoleHtml(t);
-      $("eTotLab").textContent = `Total · ${t.lic}`; $("eTot").textContent = insecables(t.tot); $("eHt").textContent = insecables(t.ht); $("eFine").innerHTML = exposants(insecables(t.fine));
-      doc.querySelectorAll("#ePals .pal").forEach((p, i) => p.classList.toggle("on", i === t.palier));
-      $("eR").setAttribute("aria-valuetext", t.lic);
-      if ($("ePlus")) $("ePlus").hidden = n < 40;
+      ecrire("eN", "textContent", n); ecrire("eLic", "textContent", t.lic);
+      ecrire("eBadge", "hidden", !t.badge); ecrire("eBadge", "textContent", t.badge ?? "");
+      ecrire("eOld", "textContent", insecables(t.old)); ecrire("ePu", "innerHTML", prixEcoleHtml(t));
+      ecrire("eTotLab", "textContent", `Total · ${t.lic}`); ecrire("eTot", "textContent", insecables(t.tot)); ecrire("eHt", "textContent", insecables(t.ht)); ecrire("eFine", "innerHTML", exposants(insecables(t.fine)));
+      if (t.palier !== palier) { palier = t.palier; doc.querySelectorAll("#ePals .pal").forEach((p, i) => p.classList.toggle("on", i === t.palier)); }
+      ecrire("eR", "aria-valuetext", t.lic);
+      ecrire("ePlus", "hidden", n < 40);
     }
   };
-  groupe(r, ".dur", dessiner);
-  groupe(r, ".seg", dessiner);
-  doc.getElementById("eR")?.addEventListener("input", dessiner);
+  // Un seul redessin par image, quel que soit le nombre d'événements (curseur glissé).
+  let prevu = false;
+  const planifier = () => {
+    if (prevu) return;
+    if (!win?.requestAnimationFrame) { dessiner(); return; }
+    prevu = true;
+    win.requestAnimationFrame(() => { prevu = false; dessiner(); });
+  };
+  groupe(r, ".dur", planifier);
+  groupe(r, ".seg", planifier);
+  doc.getElementById("eR")?.addEventListener("input", planifier);
   dessiner();
 }
 

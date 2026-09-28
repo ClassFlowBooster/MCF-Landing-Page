@@ -50,3 +50,37 @@ test("texteEcole : plus aucun « HT » hors du montant HT", () => {
     for (const [k, v] of Object.entries(t)) if (typeof v === "string") assert.ok(!/\bHT\b/.test(v), `${n} ${eng} ${an} ${k} : ${v}`);
   }
 });
+
+// Fausse page du calculateur école : compte les écritures dans le DOM.
+function fauxCalculateur() {
+  const ecritures = []; let rafs = [];
+  const el = (id) => new Proxy({ id, ecouteurs: {}, classList: { toggle() {} }, dataset: {}, value: "5",
+    addEventListener(t, f) { (this.ecouteurs[t] ??= []).push(f); }, setAttribute(k, v) { ecritures.push(`${id}@${k}`); } }, {
+    set(o, k, v) { if (["textContent", "innerHTML", "hidden"].includes(k)) ecritures.push(`${id}.${k}`); o[k] = v; return true; },
+  });
+  const ids = {}; for (const id of ["eR", "eN", "eLic", "eBadge", "eOld", "ePu", "eTotLab", "eTot", "eHt", "eFine", "ePlus"]) ids[id] = el(id);
+  const bouton = (v, on) => ({ dataset: { v }, classList: { toggle() {} }, setAttribute() {} , on });
+  const racine = { dataset: { tarifs: "ecoles" },
+    querySelector: (s) => (s === ".dur .on" ? bouton("eng") : s === ".seg .on" ? bouton("m") : { addEventListener() {}, querySelectorAll: () => [] }) };
+  const doc = { querySelector: () => racine, getElementById: (id) => ids[id], querySelectorAll: () => [] };
+  const win = { requestAnimationFrame: (f) => rafs.push(f) };
+  return { doc, win, ids, ecritures, image: () => { const l = rafs; rafs = []; l.forEach((f) => f(0)); return l.length; } };
+}
+
+test("curseur école : un seul redessin par image, et rien n'est réécrit à l'identique", async () => {
+  const { brancher } = await import("../assets/js/tarifs-ui.js");
+  const c = fauxCalculateur();
+  brancher(c.doc, c.win);
+  assert.ok(c.ecritures.length > 0, "premier dessin immédiat");
+  c.ecritures.length = 0;
+  for (let n = 6; n <= 25; n++) { c.ids.eR.value = String(n); c.ids.eR.ecouteurs.input.forEach((f) => f()); }
+  assert.equal(c.ecritures.length, 0, "aucune écriture pendant les événements");
+  assert.equal(c.image(), 1, "20 mouvements du curseur → un seul redessin");
+  assert.equal(c.ids.eN.textContent, 25, "dessine la dernière valeur");
+  const apres = c.ecritures.length;
+  assert.ok(apres > 0 && apres <= 13, `${apres} écritures`);
+  c.ecritures.length = 0;
+  c.ids.eR.ecouteurs.input.forEach((f) => f());
+  c.image();
+  assert.equal(c.ecritures.length, 0, "même valeur : aucune écriture");
+});
