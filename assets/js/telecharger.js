@@ -3,8 +3,8 @@
 // detecter(), installationDirecte() et etapes() sont purs (testés, et utilisés
 // par le générateur pour écrire les étapes par défaut dans le HTML).
 
-// Passer à true quand la page /installer de l'app déclenchera l'installation en un clic.
-export const INSTALLEUR_DISPONIBLE = false;
+// app.myclassflow.fr/installer est en prod depuis MCF-App#100 (PR #133, 2026-09-28).
+export const INSTALLEUR_DISPONIBLE = true;
 
 export function detecter(ua, touchPoints, plateforme) {
   if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && touchPoints > 1)) return "ios";
