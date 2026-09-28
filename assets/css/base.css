@@ -486,8 +486,9 @@ html{scroll-padding-top:72px}
 .castor{display:block;pointer-events:none;user-select:none}
 .ch .castor{height:120px;width:auto;margin:-9px auto 0}
 .hero-demo{position:relative}
-/* Debout en bas à gauche de la feuille avant / après, sous la poignée du curseur (z-index 3). */
-.castor-hero{position:absolute;height:230px;width:auto;left:-150px;bottom:-30px;z-index:2;filter:drop-shadow(0 10px 14px rgba(31,26,20,.12))}
+/* Debout en bas à gauche de la feuille avant / après, au premier plan : devant la ligne
+   et la poignée du curseur (z-index 3 et 4) ; pointer-events:none laisse le curseur utilisable. */
+.castor-hero{position:absolute;height:230px;width:auto;left:-150px;bottom:-30px;z-index:5;filter:drop-shadow(0 10px 14px rgba(31,26,20,.12))}
 .card.avec-castor{position:relative}
 .castor-carte{position:absolute;right:-18px;top:-92px;height:120px;width:auto;z-index:1}
 .castor-carte.gauche{right:auto;left:-18px}

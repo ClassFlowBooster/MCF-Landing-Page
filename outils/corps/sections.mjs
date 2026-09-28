@@ -34,7 +34,7 @@ export function demo({ original = "Original", titre = "Les fractions — exercic
 
 /**
  * Visuel du header : une seule feuille, un curseur qui passe de la copie
- * d'origine à la copie adaptée (animé et déplaçable par assets/js/comparateur.js).
+ * d'origine à la copie adaptée (piloté par le défilement et déplaçable, assets/js/comparateur.js).
  * Sans JavaScript, le curseur reste au milieu.
  */
 export function comparateur() {
