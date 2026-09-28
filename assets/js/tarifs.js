@@ -65,5 +65,5 @@ export const ttc = (ht) => ht * (1 + TVA);
 // Format « 1 234,56 € » : les espaces insécables de toLocaleString deviennent
 // des espaces simples.
 export function euros(v) {
-  return v.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/[  ]/g, " ") + " €";
+  return v.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/\s/g, " ") + " €";
 }

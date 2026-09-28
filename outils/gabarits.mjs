@@ -23,11 +23,11 @@ function barre(espace, rubrique, megaMenu) {
   return `<header class="header"><nav class="nav" aria-label="Navigation principale">
   <a class="brand" href="/${espace}/"><span class="dot" aria-hidden="true"></span>ClassFlow</a>
   <div class="espace-choix">
-    <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false">${e.emoji} ${e.libelle} <span class="fleche" aria-hidden="true">▾</span></button>
+    <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false">${e.emoji} ${e.libelle} ▾</button>
     <div class="espace-menu" role="menu" hidden>${autres}</div>
   </div>
   <div class="nav-links">
-    <div class="navrel"><button class="nav-link mega-bouton${rubrique === "fonctionnalites" ? " cur" : ""}" type="button" aria-expanded="false" aria-controls="mega">Fonctionnalités <span class="fleche" aria-hidden="true">▾</span></button>${megaMenu ?? ""}</div>
+    <div class="navrel"><button class="nav-link mega-bouton${rubrique === "fonctionnalites" ? " cur" : ""}" type="button" aria-expanded="false" aria-controls="mega">Fonctionnalités</button>${megaMenu ?? ""}</div>
     ${lien("tarifs", e.tarifs)}
     ${lien("telecharger", "Télécharger")}
   </div>
@@ -64,7 +64,7 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
 <link rel="stylesheet" href="/assets/css/base.css" />
 </head>
 <body${classeBody ? ` class="${classeBody}"` : ""} data-espace="${espace ?? ""}">

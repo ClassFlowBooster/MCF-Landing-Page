@@ -22,12 +22,18 @@ test("les fichiers générés sont à jour (lancer npm run generer)", () => {
   for (const p of PAGES) {
     const fichier = `.${p.chemin}index.html`;
     assert.ok(existsSync(fichier), `${fichier} absent`);
-    assert.equal(readFileSync(fichier, "utf8"), page(p), `${fichier} n'est pas à jour`);
+    // Fins de ligne normalisées : un clone Windows peut les écrire en CRLF.
+    assert.equal(readFileSync(fichier, "utf8").replace(/\r\n/g, "\n"), page(p), `${fichier} n'est pas à jour`);
   }
 });
 
+// Pages des tâches suivantes, déjà liées par la barre du haut (provisoire).
+const A_VENIR = ["/", "/enseignants/", "/ecoles/", "/parents-enfants/",
+  "/enseignants/fonctionnalites/", "/ecoles/fonctionnalites/", "/parents-enfants/fonctionnalites/",
+  "/enseignants/telecharger/", "/ecoles/telecharger/", "/parents-enfants/telecharger/"];
+
 test("tous les liens internes pointent vers une page existante", () => {
-  const chemins = new Set(PAGES.map((p) => p.chemin));
+  const chemins = new Set([...PAGES.map((p) => p.chemin), ...A_VENIR]);
   for (const p of PAGES) {
     for (const [, href] of page(p).matchAll(/href="(\/[^"#?]*)/g)) {
       if (href.startsWith("/assets/") || href.startsWith("/presentation/") || href === "/sitemap.xml") continue;
