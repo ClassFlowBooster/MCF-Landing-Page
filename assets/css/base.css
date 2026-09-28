@@ -1,0 +1,119 @@
+/* =================================================================
+   ClassFlow — styles communs des trois espaces
+   Palette corail + papier chaud, Fraunces (titres) / Inter (texte).
+   ================================================================= */
+
+:root{--coral:#F0552B;--coral-50:#FFF5F0;--coral-100:#FFE4D6;--coral-700:#A82E0F;--paper:#FBF8F3;--paper-2:#F4EFE6;--ink:#1F1A14;--ink-2:#4A4238;--ink-3:#8A8278;--line:#E6DFCF;--good:#10B981;--largeur:1480px}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);margin:0;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:4px}
+
+/* ---------- Composants des maquettes ---------- */
+.page{max-width:var(--largeur);margin:0 auto;padding:24px 26px 28px}
+.nav{display:flex;align-items:center;gap:20px;height:56px;font-size:13px;color:var(--ink-2);border-bottom:1px solid var(--line)}
+.brand{font-weight:700;color:var(--ink);display:flex;gap:8px;align-items:center}
+.dot{width:18px;height:18px;border-radius:5px;background:var(--coral)}
+.pill{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:5px 12px;font-weight:600;color:var(--ink);font-size:12.5px}
+.sp{flex:1}.cur{color:var(--coral);font-weight:600}
+.btn{background:var(--coral);color:#fff;border-radius:99px;padding:8px 16px;font-weight:600;font-size:13px;border:0;cursor:pointer;box-sizing:border-box}
+a.btn{display:inline-block;text-align:center}
+.btn.ghost{background:#fff;color:var(--coral);border:1.5px solid var(--coral)}
+h1.t{font-family:Fraunces,serif;font-size:32px;text-align:center;margin:0 0 6px;font-weight:600}
+.lead{text-align:center;color:var(--ink-2);margin:0 0 20px}
+.controls{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.seg{display:inline-flex;background:#fff;border:1.5px solid var(--line);border-radius:99px;padding:3px}
+.seg button{border:0;background:none;border-radius:99px;padding:7px 15px;font:600 13px Inter;color:var(--ink-2);cursor:pointer}
+.seg button.on{background:var(--ink);color:#fff}
+/* sélecteur de durée : deux pastilles, la meilleure porte un tag */
+.dur{display:inline-flex;gap:8px;padding-top:12px}
+.dur button{position:relative;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:10px 16px;font:600 13.5px Inter;color:var(--ink-2);cursor:pointer;transition:.15s}
+.dur button:hover{border-color:var(--coral-100)}
+.dur button.on{border-color:var(--coral);background:var(--coral-50);color:var(--ink);box-shadow:0 6px 18px rgba(240,85,43,.14)}
+.dur button .sub{display:block;font:500 11.5px Inter;color:var(--ink-3);margin-top:2px}
+.best{position:absolute;top:-11px;right:10px;background:var(--good);color:#fff;font:700 10.5px Inter;letter-spacing:.02em;border-radius:99px;padding:3px 8px;box-shadow:0 3px 8px rgba(16,185,129,.35);white-space:nowrap}
+.cards{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;align-items:stretch}
+.card{display:flex;flex-direction:column}.card>.badge{align-self:flex-start}.card .grow{flex:1}
+.quota{display:inline-block;align-self:flex-start;margin-top:8px;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--paper-2);border-radius:99px;padding:4px 10px}.quota i{font-style:normal;color:var(--coral)}
+.card{background:#fff;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(31,26,20,.07);border:1.5px solid transparent}
+.card.hl{border-color:var(--coral)}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:99px;padding:3px 9px;background:var(--coral-100);color:var(--coral-700)}
+.badge.vert{background:#E7F8F1;color:#047857}
+.card h3{margin:10px 0 2px;font-size:18px}
+.card .d{color:var(--ink-3);font-size:13px;margin:0 0 12px}
+.old{color:var(--ink-3);text-decoration:line-through;font-size:14px;min-height:18px}
+.price{font-family:Fraunces,serif;font-size:44px;font-weight:600;line-height:1}
+.price small{font:500 15px Inter;color:var(--ink-2)}
+.fine{font-size:12px;color:var(--ink-3);line-height:1.45;margin-top:10px;min-height:52px}
+.card .btn{width:100%;margin-top:12px;padding:11px}
+.feat{margin:14px 0 0;padding:0;list-style:none;font-size:13px;color:var(--ink-2)}
+.feat li{padding:3px 0}.feat li:before{content:"✓ ";color:var(--good);font-weight:700}
+.band{margin-top:20px;display:flex;align-items:center;gap:16px;background:#fff;border:1.5px dashed var(--coral);border-radius:18px;padding:16px 20px}
+.band b{font-family:Fraunces,serif;font-size:18px}
+.band p{margin:2px 0 0;font-size:13px;color:var(--ink-2)}
+/* école, façon Hostinger */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:22px;background:#fff;border-radius:22px;padding:22px;box-shadow:0 14px 34px rgba(31,26,20,.07)}
+.offer{border:1.5px solid var(--coral);border-radius:18px;padding:20px;background:#fff;position:relative}
+.offer .badge{margin-bottom:10px}
+.offer .old{font-size:15px}
+.offer .price{font-size:52px}
+.offer .btn{width:100%;margin-top:14px;padding:12px;font-size:14px}
+.offer .fine{margin-top:12px}
+.lines{margin-top:14px;border-top:1px solid var(--line);padding-top:10px;font-size:13px;color:var(--ink-2)}
+.lines div{display:flex;justify-content:space-between;padding:3px 0}
+.lab{font-weight:600;font-size:14px;margin:0 0 8px;display:flex;align-items:center;gap:10px}
+.n{background:var(--ink);color:#fff;border-radius:99px;min-width:34px;height:34px;display:inline-grid;place-items:center;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--coral)}
+.ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3)}
+.paliers{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 14px}
+.pal{font-size:11.5px;border-radius:99px;padding:3px 9px;background:var(--paper-2);color:var(--ink-3)}
+.pal.on{background:var(--coral-100);color:var(--coral-700);font-weight:600}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.f .full{grid-column:1/-1}
+.in{border:1.5px solid var(--line);border-radius:10px;padding:9px 10px;font-size:13px;color:var(--ink-3);background:var(--paper)}
+.cta{width:100%;margin-top:10px;padding:12px;font-size:14px}
+
+/* ---------- Barre du haut ---------- */
+.header{position:sticky;top:0;z-index:40;background:var(--paper);padding:0 26px}
+.header .nav{max-width:var(--largeur);margin:0 auto}
+.brand{font-size:13px}
+.espace-choix,.navrel{position:relative}
+.espace-choix .pill{cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-link{color:var(--ink-2);font-size:13px}
+.nav-link.cur{color:var(--coral);font-weight:600}
+.mega-bouton{border:0;background:none;padding:0;font:inherit;color:var(--ink-2);cursor:pointer}
+.mega-bouton[aria-expanded=true]{color:var(--ink);font-weight:600;background:var(--paper-2);border-radius:8px;padding:5px 9px;margin:0 -9px}
+.mega-bouton.cur{color:var(--coral);font-weight:600}
+[aria-expanded=true]>.fleche{display:inline-block;transform:rotate(180deg)}
+.espace-menu{position:absolute;left:0;top:calc(100% + 8px);z-index:6;min-width:230px;background:#fff;border-radius:14px;box-shadow:0 24px 60px rgba(31,26,20,.16),0 8px 20px rgba(31,26,20,.08);padding:6px;display:flex;flex-direction:column}
+.espace-menu a{padding:8px 10px;border-radius:10px;font-size:13px;font-weight:600;color:var(--ink)}
+.espace-menu a:hover{background:var(--paper)}
+.nav-burger{display:none;flex-direction:column;justify-content:center;width:42px;height:42px;border-radius:10px;border:1.5px solid var(--line);background:#fff;cursor:pointer;padding:0}
+.nav-burger span{display:block;width:18px;height:2px;background:var(--ink);margin:2px auto;border-radius:2px}
+.mobile-menu{max-width:var(--largeur);margin:0 auto;display:flex;flex-direction:column;padding:6px 0 14px;border-bottom:1px solid var(--line)}
+.mobile-menu a{padding:12px 2px;border-bottom:1px solid var(--line);font-weight:600;font-size:15px;color:var(--ink)}
+.mobile-menu a:last-child{border-bottom:0}
+
+/* ---------- Pied de page ---------- */
+.footer{border-top:1px solid var(--line);background:var(--paper-2);padding:0 26px}
+.footer-inner{max-width:var(--largeur);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;padding:22px 0;font-size:13px;color:var(--ink-3)}
+.footer-inner span{margin-right:auto}
+.footer-inner a{color:var(--ink-2)}
+.footer-inner a:hover{color:var(--coral-700)}
+
+/* @@responsive : garder en fin de fichier */
+@media (max-width: 900px){
+  .cards,.cards3,.calc,.steps,.grid{grid-template-columns:1fr}
+  .dl{grid-template-columns:1fr 1fr}
+  .nav .nav-links,.nav .pill{display:none}
+  .nav-burger{display:flex}
+  .nav{gap:10px}
+}
+@media (max-width: 480px){
+  .dl{grid-template-columns:1fr}
+  .price{font-size:38px}
+  .page{padding:24px 16px 24px}
+  .header,.footer{padding:0 16px}
+}
