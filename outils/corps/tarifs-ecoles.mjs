@@ -47,7 +47,7 @@ export default `<section class="page" data-tarifs="ecoles">
         <input class="piege" name="site_web" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="form-erreur" role="alert" hidden></p>
         <button class="btn cta" type="submit">Recevoir mon devis →</button>
-        <p class="form-rgpd">Vos coordonnées servent uniquement à vous envoyer ce devis.</p>
+        <p class="form-rgpd">Vos coordonnées servent uniquement à vous répondre au sujet de ce devis. Elles sont conservées 3 ans après notre dernier échange.</p>
       </form>
       <div class="form-merci" hidden role="status"><b>Merci, votre demande est bien reçue.</b> Nous vous envoyons votre devis sous 48 h.</div>
     </div>
