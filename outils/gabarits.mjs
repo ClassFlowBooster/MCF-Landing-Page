@@ -1,17 +1,23 @@
 // Gabarits communs des pages : <head>, barre du haut, pied de page.
 // Le HTML final est écrit par outils/generer.mjs et commité (site statique).
 import { megaMenu as megaMenuDe } from "./corps/mega-menu.mjs";
+import { castor, castorDe } from "./corps/castors.mjs";
 
 export const SITE = "https://myclassflow.fr";
 
 export const ESPACES = {
-  enseignants: { cle: "enseignants", libelle: "Espace Enseignants", emoji: "🧑‍🏫",
+  enseignants: { cle: "enseignants", libelle: "Espace Enseignants",
     cta: { texte: "Essayer gratuitement", href: "https://app.myclassflow.fr" }, tarifs: "Tarifs" },
-  ecoles: { cle: "ecoles", libelle: "Espace Écoles", emoji: "🏫",
+  ecoles: { cle: "ecoles", libelle: "Espace Écoles",
     cta: { texte: "Demander un devis", href: "/ecoles/tarifs/#devis" }, tarifs: "Tarifs & devis" },
-  "parents-enfants": { cle: "parents-enfants", libelle: "Espace Parents / Enfants", emoji: "👨‍👧",
+  "parents-enfants": { cle: "parents-enfants", libelle: "Espace Parents / Enfants",
     cta: { texte: "Essayer gratuitement", href: "https://adapter.myclassflow.fr" }, tarifs: "Tarifs" },
 };
+
+// Logo de l'en-tête : il n'existe pas encore de logo ClassFlow distinct des
+// mascottes, le castor professeur (celui du favicon) en tient lieu. Décoratif :
+// le nom « ClassFlow » suit dans le lien.
+const LOGO = castor("professeur", "castor-logo", 32);
 
 const echap = (t) => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
@@ -27,12 +33,13 @@ function barre(espace, rubrique, megaMenu) {
   const e = ESPACES[espace];
   const lien = (r, texte) =>
     `<a class="nav-link${rubrique === r ? " cur" : ""}" href="/${espace}/${r ? r + "/" : ""}"${rubrique === r ? ' aria-current="page"' : ""}>${echap(texte)}</a>`;
+  // Menus fermés au chargement : leurs castors ne se téléchargent qu'à l'ouverture.
   const autres = Object.values(ESPACES)
-    .map((x) => `<a role="menuitem" href="/${x.cle}/" data-espace="${x.cle}">${x.emoji} ${x.libelle}</a>`).join("");
+    .map((x) => `<a role="menuitem" href="/${x.cle}/" data-espace="${x.cle}">${castorDe(x.cle, "castor-menu", 26, { differe: true })}${x.libelle}</a>`).join("");
   return `<header class="header"><nav class="nav" aria-label="Navigation principale">
-  <a class="brand" href="/${espace}/"><span class="dot" aria-hidden="true"></span>ClassFlow</a>
+  <a class="brand" href="/${espace}/">${LOGO}ClassFlow</a>
   <div class="espace-choix">
-    <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false">${e.emoji} ${e.libelle} ▾</button>
+    <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false">${castorDe(espace, "castor-menu", 26)}${e.libelle} ▾</button>
     <div class="espace-menu" role="menu" hidden>${autres}</div>
   </div>
   <div class="nav-links">
@@ -68,6 +75,9 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <title>${echap(titre)}</title>
 <meta name="description" content="${echap(description)}" />
 <link rel="canonical" href="${SITE}${chemin}" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
 <meta property="og:title" content="${echap(titre)}" />
 <meta property="og:description" content="${echap(description)}" />
 <meta property="og:url" content="${SITE}${chemin}" />
