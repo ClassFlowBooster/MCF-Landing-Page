@@ -424,6 +424,15 @@ html{scroll-padding-top:72px}
 .form .form-erreur,.form .form-rgpd{margin:0}
 .final .form-merci{margin-top:0}
 
+/* Qui est derrière ClassFlow (fondateurs) */
+.equipe-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:840px;margin:0 auto}
+.fondateur{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--sh-card);padding:clamp(22px,3vw,30px)}
+.fondateur-tete{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.fondateur-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid var(--coral-200);box-shadow:var(--sh-card);flex-shrink:0}
+.acc .fondateur h3{font-size:22px;margin-bottom:4px}
+.fondateur-role{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--coral-600);text-transform:uppercase;letter-spacing:.06em}
+.fondateur-bio{font-size:15.5px;line-height:1.6;color:var(--ink-2)}
+
 /* Questions fréquentes */
 .faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
 .faq details{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:16px 20px;box-shadow:var(--sh-soft)}
@@ -436,7 +445,7 @@ html{scroll-padding-top:72px}
   .hero-grid,.problem-grid,.final-grid{grid-template-columns:1fr}
   .hero .llede{max-width:48ch}
   .demo{transform:none;margin-top:8px}
-  .who-grid,.who-grid.quatre,.trust-grid,.how-steps,.themes{grid-template-columns:1fr}
+  .who-grid,.who-grid.quatre,.trust-grid,.how-steps,.themes,.equipe-grid{grid-template-columns:1fr}
   .step-arrow{display:none}
 }
 @media (max-width: 720px){

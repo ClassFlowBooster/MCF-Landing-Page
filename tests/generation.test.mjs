@@ -117,6 +117,25 @@ test("formule Essentiel : le nombre d'adaptations vient de tarifs.js, partout o�
   }
 });
 
+test("bloc équipe : sur l'accueil des trois espaces, photos en fichiers sans métadonnées EXIF", () => {
+  const avant = { "/enseignants/": 'id="contact"', "/ecoles/": 'id="contact"', "/parents-enfants/": "Et si l'école de votre enfant" };
+  for (const [chemin, suivant] of Object.entries(avant)) {
+    const html = page(PAGES.find((p) => p.chemin === chemin));
+    const bloc = html.indexOf('<section class="section equipe" id="equipe">');
+    assert.ok(bloc > 0, `${chemin} : bloc équipe absent`);
+    assert.ok(bloc < html.indexOf(suivant), `${chemin} : le bloc équipe doit précéder ${suivant}`);
+    assert.ok(html.includes("Qui est derrière ClassFlow"), chemin);
+    for (const nom of ["Benoist de Montgrand", "Joseph Solier"]) assert.ok(html.includes(`alt="Portrait de ${nom}"`), `${chemin} : ${nom}`);
+  }
+  for (const p of PAGES) assert.ok(!page(p).includes("data:image/"), `${p.chemin} : image en base64`);
+  for (const fichier of ["benoist-de-montgrand", "joseph-solier"]) {
+    const jpg = readFileSync(`./assets/img/equipe/${fichier}.jpg`);
+    assert.equal(jpg.readUInt16BE(0), 0xffd8, fichier);
+    assert.ok(!jpg.includes("Exif\0"), `${fichier} : métadonnées EXIF présentes`);
+    assert.ok(jpg.length < 20 * 1024, `${fichier} : ${jpg.length} octets`);
+  }
+});
+
 test("favicon et icône iPhone : castor professeur, PNG aux bonnes dimensions, moins de 10 ko, déclarés sur chaque page", () => {
   const ICONES = [
     ['<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />', "favicon-32.png", 32],

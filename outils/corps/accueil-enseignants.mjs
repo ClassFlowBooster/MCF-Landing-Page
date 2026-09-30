@@ -1,7 +1,7 @@
 // Accueil de l'espace Enseignants (aussi affiché, flouté, derrière l'écran d'entrée de « / »).
 import { texteProf, prixHtml, renvoiHtml, insecables, badgeEnseignant } from "../../assets/js/tarifs-ui.js";
 import { THEMES, libelleBadge } from "./catalogue.mjs";
-import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto } from "./sections.mjs";
+import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 
 const prof = texteProf(true, false);
@@ -98,6 +98,8 @@ export default `<div class="acc">
     "Chaque fonctionnalité est imaginée et testée avec des professeurs des écoles. L'outil suit vos pratiques réelles, pas l'inverse.")],
   { texte: "Les informations sur vos élèves sont sensibles. ClassFlow est conçu pour les protéger, dès le premier jour.",
     note: "ClassFlow se construit avec les premiers établissements partenaires." })}
+
+  ${EQUIPE}
 
   <section class="section final" id="contact">
     <div class="wrap final-grid">
