@@ -1,7 +1,7 @@
 // Gabarits communs des pages : <head>, barre du haut, pied de page.
 // Le HTML final est écrit par outils/generer.mjs et commité (site statique).
 import { megaMenu as megaMenuDe } from "./corps/mega-menu.mjs";
-import { castorDe } from "./corps/castors.mjs";
+import { castor, castorDe } from "./corps/castors.mjs";
 
 export const SITE = "https://myclassflow.fr";
 
@@ -13,6 +13,11 @@ export const ESPACES = {
   "parents-enfants": { cle: "parents-enfants", libelle: "Espace Parents / Enfants",
     cta: { texte: "Essayer gratuitement", href: "https://adapter.myclassflow.fr" }, tarifs: "Tarifs" },
 };
+
+// Logo de l'en-tête : il n'existe pas encore de logo ClassFlow distinct des
+// mascottes, le castor professeur (celui du favicon) en tient lieu. Décoratif :
+// le nom « ClassFlow » suit dans le lien.
+const LOGO = castor("professeur", "castor-logo", 32);
 
 const echap = (t) => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
@@ -32,7 +37,7 @@ function barre(espace, rubrique, megaMenu) {
   const autres = Object.values(ESPACES)
     .map((x) => `<a role="menuitem" href="/${x.cle}/" data-espace="${x.cle}">${castorDe(x.cle, "castor-menu", 26, { differe: true })}${x.libelle}</a>`).join("");
   return `<header class="header"><nav class="nav" aria-label="Navigation principale">
-  <a class="brand" href="/${espace}/"><span class="dot" aria-hidden="true"></span>ClassFlow</a>
+  <a class="brand" href="/${espace}/">${LOGO}ClassFlow</a>
   <div class="espace-choix">
     <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false">${castorDe(espace, "castor-menu", 26)}${e.libelle} ▾</button>
     <div class="espace-menu" role="menu" hidden>${autres}</div>
