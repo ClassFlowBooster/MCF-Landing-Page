@@ -495,6 +495,11 @@ html{scroll-padding-top:72px}
 .castor-carte{position:absolute;right:-18px;top:-92px;height:120px;width:auto;z-index:1}
 .castor-carte.gauche{right:auto;left:-18px}
 .castor-bande{flex:none;height:88px;width:auto;margin:-24px -8px -24px -11px}
+/* logo de l'en-tête : castor professeur devant « ClassFlow » */
+.castor-logo{flex:none;width:32px;height:32px;margin:-6px -2px -6px -4px}
+/* sélecteur d'espace : le castor de chaque espace devant son libellé */
+.castor-menu{flex:none;width:26px;height:26px;margin:-4px 0}
+.espace-choix .pill,.espace-menu a,.mobile-menu a[data-espace]{display:flex;align-items:center;gap:6px}
 
 /* @@responsive : garder en fin de fichier */
 @media (max-width: 900px){
