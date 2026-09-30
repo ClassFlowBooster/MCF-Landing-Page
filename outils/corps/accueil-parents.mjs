@@ -1,6 +1,6 @@
 // Accueil de l'espace Parents / Enfants (ClassFlow Adapter).
 import { texteAdapter, prixHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
-import { COCHE, FLECHE, demo, comparateur, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeauMailto } from "./sections.mjs";
+import { COCHE, FLECHE, demo, comparateur, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeauMailto, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 import { ADAPTATIONS_ESSENTIEL } from "../../assets/js/tarifs.js";
 
@@ -94,6 +94,8 @@ export default `<div class="acc">
     carteConfiance("photo", "Les photos de votre enfant restent privées", "Elles servent uniquement à produire la version adaptée."),
     HEBERGE, RGPD],
   { titre: "Les données de votre enfant, protégées", texte: "Les devoirs et les besoins de votre enfant sont des informations sensibles. ClassFlow Adapter est conçu pour les protéger." })}
+
+  ${EQUIPE}
 
   ${bandeauMailto("ecole")}
 

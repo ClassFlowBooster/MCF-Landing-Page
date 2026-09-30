@@ -153,6 +153,30 @@ export function etapes({ titre, texte, liste, id = "etapes" }) {
   </section>`;
 }
 
+// Fondateurs : bios reprises de la présentation école Saint-Joseph (#3).
+const FONDATEURS = [
+  { photo: "benoist-de-montgrand", nom: "Benoist de Montgrand", role: "Expert en intelligence artificielle",
+    bio: "Depuis un an, il met son expertise au service des entreprises : intégration de l'IA dans les processus de travail, formation des équipes qui veulent monter en compétence." },
+  { photo: "joseph-solier", nom: "Joseph Solier", role: "Ingénieur en cybersécurité",
+    bio: "Après une expérience chez Thales, il conçoit des outils développés de manière sécurisée, avec une rigueur particulière sur la protection des données." },
+];
+
+/** Bloc « Qui est derrière ClassFlow », juste avant l'appel final des pages d'accueil. */
+export const EQUIPE = `<section class="section equipe" id="equipe">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow center">Les fondateurs</span>
+        <h2 class="h-section">Qui est derrière ClassFlow</h2>
+      </div>
+      <div class="equipe-grid">
+        ${FONDATEURS.map((f) => `<article class="fondateur">
+          <div class="fondateur-tete"><img class="fondateur-photo" src="/assets/img/equipe/${f.photo}.jpg" alt="Portrait de ${f.nom}" width="72" height="72" loading="lazy" decoding="async"><div><h3>${f.nom}</h3><p class="fondateur-role">${f.role}</p></div></div>
+          <p class="fondateur-bio">${f.bio}</p>
+        </article>`).join("\n        ")}
+      </div>
+    </div>
+  </section>`;
+
 /** Formulaire de contact (envoyé par assets/js/formulaire.js). */
 export function formulaireContact({ titre, sous, message = "Votre message" }) {
   return `<form class="form" data-contact novalidate>

@@ -1,5 +1,5 @@
 // Accueil de l'espace Écoles.
-import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, formulaireContact, ICONES } from "./sections.mjs";
+import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, formulaireContact, ICONES, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 
 const benefice = (ic, titre, texte) =>
@@ -98,6 +98,8 @@ export default `<div class="acc">
     note: "ClassFlow se construit avec les premiers établissements partenaires." })}
 
   <!-- Établissements partenaires : section à afficher quand nous aurons des logos ou des témoignages de directions. -->
+
+  ${EQUIPE}
 
   <section class="section final" id="contact">
     <div class="wrap final-grid">
