@@ -91,9 +91,9 @@
     </div>
     <div>
       <div class="lab">Nombre d'enseignants <span class="n" id="eN">5</span></div>
-      <input type="range" id="eR" min="1" max="40" value="5" aria-label="Nombre d'enseignants" aria-valuetext="5 enseignants">
-      <div class="ticks" aria-hidden="true"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span><span>40</span></div>
-      <div class="paliers" id="ePals"><span class="pal">1–4 : plein tarif</span><span class="pal on">5–9 : −10 %</span><span class="pal">10–14 : −19 %</span><span class="pal">15–19 : −27 %</span><span class="pal">20 et + : 9,99 €</span></div>
+      <input type="range" id="eR" min="0" max="100" value="20" aria-label="Nombre d'enseignants" aria-valuetext="5 enseignants">
+      <div class="ticks" aria-hidden="true"><span style="--p:0">1</span><span style="--p:20">5</span><span style="--p:40">10</span><span style="--p:60">15</span><span style="--p:80">20</span><span style="--p:100">40</span></div>
+      <div class="paliers" id="ePals" style="grid-template-columns:17.5fr 20.5fr 20fr 20fr 22fr"><span class="pal">1–4 : plein tarif</span><span class="pal on">5–9 : −10 %</span><span class="pal">10–14 : −19 %</span><span class="pal">15–19 : −27 %</span><span class="pal">20 et + : 9,99 €</span></div>
       <p class="plus40" id="ePlus" hidden>Plus de 40 enseignants ? Précisez-le dans votre demande : nous vous faisons un devis sur mesure.</p>
       <form id="formDevis" class="f" novalidate>
         <label class="full">Nom de l'établissement<input class="in" name="etablissement" required maxlength="200" placeholder="Nom de l'établissement"></label>
