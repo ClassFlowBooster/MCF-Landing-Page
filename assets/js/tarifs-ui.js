@@ -4,6 +4,38 @@
 // relie le DOM.
 import { offreEcole, offreEnseignant, offreAdapter, parAn, euros, indexPalier, montantHt, remiseEnseignant, remiseAdapter } from "./tarifs.js";
 
+/**
+ * Échelle du curseur école : [enseignants, position en %]. Chaque palier occupe
+ * un cinquième du curseur, comme les pastilles et les graduations dessous ;
+ * entre deux repères, la position est linéaire et toujours entière.
+ */
+export const CRANS = [[1, 0], [5, 20], [10, 40], [15, 60], [20, 80], [40, 100]];
+
+/** Position (0 à 100) du curseur pour n enseignants. */
+export function positionCurseur(n) {
+  const i = CRANS.findIndex(([m], k) => k > 0 && n <= m);
+  const [[n0, p0], [n1, p1]] = [CRANS[i - 1], CRANS[i]];
+  return p0 + ((n - n0) * (p1 - p0)) / (n1 - n0);
+}
+
+/**
+ * Largeur (en % du curseur) de la pastille de chaque palier : une limite tombe à
+ * mi-chemin entre le dernier nombre d'un palier et le premier du suivant, pour
+ * que le curseur soit toujours au-dessus de la pastille allumée.
+ */
+export function largeursPaliers() {
+  const limites = [0, ...CRANS.slice(1, -1).map(([n, p]) => (positionCurseur(n - 1) + p) / 2), 100];
+  return limites.slice(1).map((l, i) => l - limites[i]);
+}
+
+/** Nombre d'enseignants (le plus proche) pour une position du curseur. */
+export function enseignantsCurseur(p) {
+  const q = Math.min(Math.max(p, 0), 100);
+  const i = CRANS.findIndex(([, m], k) => k > 0 && q <= m);
+  const [[n0, p0], [n1, p1]] = [CRANS[i - 1], CRANS[i]];
+  return Math.round(n0 + ((q - p0) * (n1 - n0)) / (p1 - p0));
+}
+
 export const etatInitial = () => ({ engagement: true, parAn: false });
 
 /** Textes des badges de remise, calculés à partir des prix (tarifs.js). */
@@ -120,7 +152,9 @@ export function brancher(doc = document, win = typeof window !== "undefined" ? w
       }
     }
     if (type === "ecoles") {
-      const n = Number($("eR").value);
+      const n = enseignantsCurseur(Number($("eR").value));
+      // Le curseur se cale sur la position exacte du nombre affiché.
+      if (Number($("eR").value) !== positionCurseur(n)) $("eR").value = String(positionCurseur(n));
       const t = texteEcole(n, engagement, annuel);
       ecrire("eN", "textContent", n); ecrire("eLic", "textContent", t.lic);
       ecrire("eBadge", "hidden", !t.badge); ecrire("eBadge", "textContent", t.badge ?? "");
@@ -142,6 +176,16 @@ export function brancher(doc = document, win = typeof window !== "undefined" ? w
   groupe(r, ".dur", planifier);
   groupe(r, ".seg", planifier);
   doc.getElementById("eR")?.addEventListener("input", planifier);
+  // Les flèches ajoutent ou retirent un enseignant, quelle que soit la largeur du palier.
+  doc.getElementById("eR")?.addEventListener("keydown", (e) => {
+    const pas = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1 }[e.key];
+    if (!pas) return;
+    e.preventDefault();
+    const curseur = doc.getElementById("eR");
+    const n = Math.min(Math.max(enseignantsCurseur(Number(curseur.value)) + pas, CRANS[0][0]), CRANS.at(-1)[0]);
+    curseur.value = String(positionCurseur(n));
+    planifier();
+  });
   dessiner();
 }
 

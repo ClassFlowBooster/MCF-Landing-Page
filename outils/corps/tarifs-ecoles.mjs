@@ -1,11 +1,12 @@
 // Page « Tarifs & devis » de l’espace Écoles (prix TTC, montant HT dans le détail) :
 // calculateur et formulaire de demande de devis.
-import { texteEcole, prixEcoleHtml, exposants, insecables } from "../../assets/js/tarifs-ui.js";
+import { texteEcole, prixEcoleHtml, exposants, insecables, positionCurseur, largeursPaliers, CRANS } from "../../assets/js/tarifs-ui.js";
 import { controles } from "./commun.mjs";
 
 const N = 5;
 const t = texteEcole(N, true, false);
-const PALIERS = ["1–4 : plein tarif", "5–9 : −10 %", "10–14 : −19 %", "15–19 : −27 %", "20 et + : 9,99 €"];
+// Sur petit écran, une pastille ne se coupe qu'après « : » : les autres espaces (« _ ») sont insécables.
+const PALIERS = ["1–4_: plein tarif", "5–9_: −10_%", "10–14_: −19_%", "15–19_: −27_%", "20_et_+_: 9,99_€"].map((p) => p.replaceAll("_", String.fromCharCode(0xa0)));
 
 export default `<section class="page" data-tarifs="ecoles">
   <h1 class="t">Équipez toute votre équipe</h1>
@@ -28,9 +29,9 @@ export default `<section class="page" data-tarifs="ecoles">
     </div>
     <div>
       <div class="lab">Nombre d'enseignants <span class="n" id="eN">${N}</span></div>
-      <input type="range" id="eR" min="1" max="40" value="${N}" aria-label="Nombre d'enseignants" aria-valuetext="${t.lic}">
-      <div class="ticks" aria-hidden="true"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span><span>40</span></div>
-      <div class="paliers" id="ePals">${PALIERS.map((p, i) => `<span class="pal${i === t.palier ? " on" : ""}">${p}</span>`).join("")}</div>
+      <input type="range" id="eR" min="0" max="100" value="${positionCurseur(N)}" aria-label="Nombre d'enseignants" aria-valuetext="${t.lic}">
+      <div class="ticks" aria-hidden="true">${CRANS.map(([n, p]) => `<span style="--p:${p}">${n}</span>`).join("")}</div>
+      <div class="paliers" id="ePals" style="grid-template-columns:${largeursPaliers().map((l) => `${l}fr`).join(" ")}">${PALIERS.map((p, i) => `<span class="pal${i === t.palier ? " on" : ""}">${p}</span>`).join("")}</div>
       <p class="plus40" id="ePlus" hidden>Plus de 40 enseignants ? Précisez-le dans votre demande : nous vous faisons un devis sur mesure.</p>
       <form id="formDevis" class="f" novalidate>
         <label class="full">Nom de l'établissement<input class="in" name="etablissement" required maxlength="200" placeholder="Nom de l'établissement"></label>
