@@ -30,10 +30,10 @@ export const THEMES = [
   ] },
 ];
 
-// ClassFlow Adapter (espace Parents / Enfants).
+// MyClassFlow Famille (espace Parents / Enfants).
 export const ADAPTER = [
   { ico: "📸", nom: "Adapter une leçon en photo", k: "free", badge: "Essai gratuit", court: "Une photo, la version adaptée en quelques secondes",
-    long: "Photographiez la leçon, l'exercice ou la page du cahier : ClassFlow Adapter la transforme en quelques secondes." },
+    long: "Photographiez la leçon, l'exercice ou la page du cahier : MyClassFlow Famille la transforme en quelques secondes." },
   { ico: "🎯", nom: "Choisir les besoins de votre enfant", k: "pay", badge: "Abonnement", court: "Dyslexie, TDAH, TSA… avec ou sans diagnostic",
     long: "Dyslexie, TDAH, TSA… Vous indiquez les besoins de votre enfant, avec ou sans diagnostic : l'adaptation suit." },
   { ico: "🖨️", nom: "Imprimer ou lire à l'écran", k: "pay", badge: "Abonnement", court: "Une version claire et aérée, prête à l'emploi",

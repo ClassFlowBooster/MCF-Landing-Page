@@ -124,7 +124,7 @@ test("bloc équipe : sur l'accueil des trois espaces, photos en fichiers sans m�
     const bloc = html.indexOf('<section class="section equipe" id="equipe">');
     assert.ok(bloc > 0, `${chemin} : bloc équipe absent`);
     assert.ok(bloc < html.indexOf(suivant), `${chemin} : le bloc équipe doit précéder ${suivant}`);
-    assert.ok(html.includes("Qui est derrière ClassFlow"), chemin);
+    assert.ok(html.includes("Qui est derrière MyClassFlow"), chemin);
     for (const nom of ["Benoist de Montgrand", "Joseph Solier"]) assert.ok(html.includes(`alt="Portrait de ${nom}"`), `${chemin} : ${nom}`);
   }
   for (const p of PAGES) assert.ok(!page(p).includes("data:image/"), `${p.chemin} : image en base64`);
@@ -152,7 +152,7 @@ test("favicon et icône iPhone : castor professeur, PNG aux bonnes dimensions, m
   for (const p of PAGES) for (const [balise] of ICONES) assert.ok(page(p).includes(balise), `${p.chemin} : ${balise}`);
 });
 
-test("logo de l'en-tête : le castor professeur devant « ClassFlow », sur chaque page", () => {
+test("logo de l'en-tête : le castor professeur devant « MyClassFlow », sur chaque page", () => {
   for (const p of PAGES.filter((x) => x.espace)) {
     const marque = page(p).match(/<a class="brand"[^>]*>(.*?)<\/a>/)[1];
     assert.match(marque, /^<img class="castor castor-logo" src="\/assets\/img\/castors\/professeur\.svg" alt="" width="32" height="32" decoding="async">ClassFlow$/, p.chemin);

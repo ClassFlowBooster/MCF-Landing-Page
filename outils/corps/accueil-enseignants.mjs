@@ -12,7 +12,7 @@ export default `<div class="acc">
       <div class="hero-copy">
         <div class="hero-badge"><span class="pill">Nouveau</span><span>L'inclusion scolaire, <b>sans la charge de travail</b></span></div>
         <h1 class="h-display">Adaptez chaque support <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.</h1>
-        <p class="llede">ClassFlow régénère vos exercices et vos leçons pour les élèves DYS, TDAH, TSA, EANA… grâce à l'IA. Vous gagnez des heures&nbsp;; chaque enfant reçoit immédiatement un document fait pour lui.</p>
+        <p class="llede">MyClassFlow régénère vos exercices et vos leçons pour les élèves DYS, TDAH, TSA, EANA… grâce à l'IA. Vous gagnez des heures&nbsp;; chaque enfant reçoit immédiatement un document fait pour lui.</p>
         <div class="hero-actions">
           <a class="lbtn lbtn-primary lbtn-lg" href="https://app.myclassflow.fr">Créer mon compte gratuit ${FLECHE}</a>
           <a class="lbtn lbtn-ghost lbtn-lg" href="#etapes">Voir comment ça marche</a>
@@ -81,7 +81,7 @@ export default `<div class="acc">
         </div>
         <div class="card hl">
           <span class="badge">${badgeEnseignant()}</span>
-          <h3>ClassFlow Enseignant</h3>
+          <h3>MyClassFlow Enseignant</h3>
           <p class="d">Pour un·e enseignant·e, toutes classes confondues</p>
           <div class="old">${insecables(prof.old)}</div>
           <div class="price">${prixHtml(prof)}</div>
@@ -96,8 +96,8 @@ export default `<div class="acc">
 
   ${confiance([HEBERGE, RGPD, carteConfiance("equipe", "Conçu avec des enseignants",
     "Chaque fonctionnalité est imaginée et testée avec des professeurs des écoles. L'outil suit vos pratiques réelles, pas l'inverse.")],
-  { texte: "Les informations sur vos élèves sont sensibles. ClassFlow est conçu pour les protéger, dès le premier jour.",
-    note: "ClassFlow se construit avec les premiers établissements partenaires." })}
+  { texte: "Les informations sur vos élèves sont sensibles. MyClassFlow est conçu pour les protéger, dès le premier jour.",
+    note: "MyClassFlow se construit avec les premiers établissements partenaires." })}
 
   ${EQUIPE}
 
@@ -105,7 +105,7 @@ export default `<div class="acc">
     <div class="wrap final-grid">
       <div>
         <span class="eyebrow center" style="color:var(--coral-300)">Demander une démo</span>
-        <h2 style="margin-top:16px;">Découvrez ClassFlow avec votre classe</h2>
+        <h2 style="margin-top:16px;">Découvrez MyClassFlow avec votre classe</h2>
         <p class="llede">Présentez-nous votre contexte&nbsp;: nous vous montrons l'adaptation des supports en direct et répondons à vos questions sur les données et le déploiement.</p>
         <ul class="final-points">
           <li>${COCHE} Démonstration adaptée à votre cycle (2 ou 3)</li>

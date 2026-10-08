@@ -26,7 +26,7 @@ export default `<section class="page" data-tarifs="enseignants">
     <div class="card hl avec-castor">
       ${castorDe("enseignants", "castor-carte", 120)}
       <span class="badge" id="pBadge">${badgeEnseignant()}</span>
-      <h3>ClassFlow Enseignant</h3>
+      <h3>MyClassFlow Enseignant</h3>
       <p class="d">Pour un·e enseignant·e, toutes classes confondues</p>
       <div class="old" id="pOld">${insecables(t.old)}</div>
       <div class="price" id="pPrice">${prixHtml(t)}</div>

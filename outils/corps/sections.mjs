@@ -110,7 +110,7 @@ export const carteConfiance = (ic, titre, texte) =>
 export const HEBERGE = carteConfiance("bouclier", "Hébergé en France",
   "Les données sont stockées sur une infrastructure située en France, pour rester au plus près du cadre scolaire et de la réglementation nationale.");
 export const RGPD = carteConfiance("cadenas", "Conforme RGPD",
-  "Collecte minimale, finalités claires et maîtrise de vos données : ClassFlow est pensé dès la conception pour respecter le RGPD.");
+  "Collecte minimale, finalités claires et maîtrise de vos données : MyClassFlow est pensé dès la conception pour respecter le RGPD.");
 
 // Section « confiance » (hébergement, RGPD) masquée dans les trois espaces.
 // Repasser à true pour la réafficher : les appels et les textes sont gardés.
@@ -161,12 +161,12 @@ const FONDATEURS = [
     bio: "Après une expérience chez Thales, il conçoit des outils développés de manière sécurisée, avec une rigueur particulière sur la protection des données." },
 ];
 
-/** Bloc « Qui est derrière ClassFlow », juste avant l'appel final des pages d'accueil. */
+/** Bloc « Qui est derrière MyClassFlow », juste avant l'appel final des pages d'accueil. */
 export const EQUIPE = `<section class="section equipe" id="equipe">
     <div class="wrap">
       <div class="sec-head center">
         <span class="eyebrow center">Les fondateurs</span>
-        <h2 class="h-section">Qui est derrière ClassFlow</h2>
+        <h2 class="h-section">Qui est derrière MyClassFlow</h2>
       </div>
       <div class="equipe-grid">
         ${FONDATEURS.map((f) => `<article class="fondateur">
@@ -210,7 +210,7 @@ export const bandeau = (visuel, titre, texte, bouton, href, attr = "") =>
 // castor de l'espace Écoles.
 const MAILTO = {
   direction: ["Faites équiper votre école", "Envoyez l'offre école à votre direction en un clic : votre abonnement pourrait être pris en charge, et toute l'équipe en profite.", "Envoyer à ma direction"],
-  ecole: ["Et si l'école de votre enfant s'équipait ?", "Parlez de ClassFlow à l'enseignant·e : les adaptations seraient faites directement en classe.", "Envoyer à l'école"],
+  ecole: ["Et si l'école de votre enfant s'équipait ?", "Parlez de MyClassFlow à l'enseignant·e : les adaptations seraient faites directement en classe.", "Envoyer à l'école"],
 };
 const argsMailto = (cible) => [castorDe("ecoles", "castor-bande", 88), ...MAILTO[cible], lienMailto(cible), `data-mailto="${cible}" `];
 export const bandeMailto = (cible) => bande(...argsMailto(cible));
