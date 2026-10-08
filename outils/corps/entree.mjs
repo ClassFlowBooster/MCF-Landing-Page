@@ -5,7 +5,7 @@ import { castorDe } from "./castors.mjs";
 export default `<div class="entree" id="entree" role="dialog" aria-modal="true" aria-labelledby="entreeTitre" hidden>
   <div class="veil"></div>
   <div class="modal">
-    <h2 id="entreeTitre">Bienvenue sur ClassFlow</h2>
+    <h2 id="entreeTitre">Bienvenue sur MyClassFlow</h2>
     <p class="sub">Pour vous montrer ce qui vous concerne, dites-nous qui vous êtes :</p>
     <div class="choices">
       <a class="ch" data-espace="enseignants" href="/enseignants/">${castorDe("enseignants", "ic", 120)}<b>Enseignant·e</b><span>J'adapte mes supports et je prépare ma classe</span></a>

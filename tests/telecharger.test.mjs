@@ -36,7 +36,7 @@ test("etapes : l'adresse et le nom de l'app suivent l'espace", () => {
   assert.ok(prof.l[0][0].includes("app.myclassflow.fr"));
   const parents = etapes("ios", "parents-enfants");
   assert.ok(parents.l[0][0].includes("adapter.myclassflow.fr"));
-  assert.ok(parents.l[2][1].includes("ClassFlow Adapter"));
+  assert.ok(parents.l[2][1].includes("MyClassFlow Famille"));
   assert.ok(!JSON.stringify(parents).includes("app.myclassflow.fr"));
 });
 

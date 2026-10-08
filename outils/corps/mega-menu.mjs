@@ -10,7 +10,7 @@ export function megaMenu(espace) {
   if (espace === "parents-enfants") {
     return `<div class="mega court" id="mega" hidden>
     <div>
-      <h6>ClassFlow Adapter</h6>
+      <h6>MyClassFlow Famille</h6>
       ${ADAPTER.map((o) => item(o, href)).join("\n      ")}
     </div>
     ${pied("3 adaptations offertes, sans carte bancaire.")}

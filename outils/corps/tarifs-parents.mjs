@@ -1,4 +1,4 @@
-// Page Tarifs de l'espace Parents / Enfants : ClassFlow Adapter (prix TTC).
+// Page Tarifs de l'espace Parents / Enfants : MyClassFlow Famille (prix TTC).
 import { texteAdapter, prixHtml, renvoiHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
 import { remiseAdapter, ADAPTATIONS_ESSENTIEL } from "../../assets/js/tarifs.js";
 import { controles } from "./commun.mjs";
@@ -10,7 +10,7 @@ const i = texteAdapter("illimite", true, false);
 
 export default `<section class="page" data-tarifs="parents-enfants">
   <h1 class="t">Des devoirs adaptés à votre enfant, en une photo</h1>
-  <p class="lead">Prenez en photo la leçon ou l'exercice : ClassFlow Adapter le transforme selon les besoins de votre enfant (DYS, TDAH, TSA…).</p>
+  <p class="lead">Prenez en photo la leçon ou l'exercice : MyClassFlow Famille le transforme selon les besoins de votre enfant (DYS, TDAH, TSA…).</p>
 
   ${controles("Engagement 6 mois", `−${remiseAdapter("illimite")} % les 3 premiers mois`, "Résiliable à tout moment")}
 

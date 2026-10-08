@@ -1,5 +1,5 @@
 // Page Télécharger : détection de l'appareil, étapes d'installation de l'app
-// (ClassFlow, ou ClassFlow Adapter dans l'espace Parents / Enfants).
+// (MyClassFlow, ou MyClassFlow Famille dans l'espace Parents / Enfants).
 // detecter(), installationDirecte() et etapes() sont purs (testés, et utilisés
 // par le générateur pour écrire les étapes par défaut dans le HTML).
 
@@ -20,8 +20,8 @@ export function installationDirecte(appareil, ua) {
 
 export function application(espace) {
   return espace === "parents-enfants"
-    ? { hote: "adapter.myclassflow.fr", nom: "ClassFlow Adapter" }
-    : { hote: "app.myclassflow.fr", nom: "ClassFlow" };
+    ? { hote: "adapter.myclassflow.fr", nom: "MyClassFlow Famille" }
+    : { hote: "app.myclassflow.fr", nom: "MyClassFlow" };
 }
 
 export function etapes(appareil, espace) {

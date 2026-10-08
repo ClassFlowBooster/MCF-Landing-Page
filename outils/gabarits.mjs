@@ -14,19 +14,19 @@ export const ESPACES = {
     cta: { texte: "Essayer gratuitement", href: "https://adapter.myclassflow.fr" }, tarifs: "Tarifs" },
 };
 
-// Logo de l'en-tête : il n'existe pas encore de logo ClassFlow distinct des
+// Logo de l'en-tête : il n'existe pas encore de logo MyClassFlow distinct des
 // mascottes, le castor professeur (celui du favicon) en tient lieu. Décoratif :
-// le nom « ClassFlow » suit dans le lien.
+// le nom « MyClassFlow » suit dans le lien.
 const LOGO = castor("professeur", "castor-logo", 32);
 
 const echap = (t) => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
 // Cartes de partage (1200 × 630) : une par espace, et une commune pour l'écran d'entrée.
 const CARTES = {
-  "": { fichier: "og-classflow.png", alt: "ClassFlow : les castors professeur, direction et élève, avec l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
-  enseignants: { fichier: "og-enseignants.png", alt: "ClassFlow, espace Enseignants : le castor professeur et l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
-  ecoles: { fichier: "og-ecoles.png", alt: "ClassFlow, espace Écoles : le castor direction et l'accroche « L'école inclusive, outillée pour toute l'équipe »." },
-  "parents-enfants": { fichier: "og-parents-enfants.png", alt: "ClassFlow Adapter, espace Parents / Enfants : le castor élève et l'accroche « Les devoirs de votre enfant, adaptés en une photo »." },
+  "": { fichier: "og-classflow.png", alt: "MyClassFlow : les castors professeur, direction et élève, avec l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
+  enseignants: { fichier: "og-enseignants.png", alt: "MyClassFlow, espace Enseignants : le castor professeur et l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
+  ecoles: { fichier: "og-ecoles.png", alt: "MyClassFlow, espace Écoles : le castor direction et l'accroche « L'école inclusive, outillée pour toute l'équipe »." },
+  "parents-enfants": { fichier: "og-parents-enfants.png", alt: "MyClassFlow Famille, espace Parents / Enfants : le castor élève et l'accroche « Les devoirs de votre enfant, adaptés en une photo »." },
 };
 
 function barre(espace, rubrique, megaMenu) {
@@ -37,7 +37,7 @@ function barre(espace, rubrique, megaMenu) {
   const autres = Object.values(ESPACES)
     .map((x) => `<a role="menuitem" href="/${x.cle}/" data-espace="${x.cle}">${castorDe(x.cle, "castor-menu", 26, { differe: true })}${x.libelle}</a>`).join("");
   return `<header class="header"><nav class="nav" aria-label="Navigation principale">
-  <a class="brand" href="/${espace}/">${LOGO}ClassFlow</a>
+  <a class="brand" href="/${espace}/">${LOGO}MyClassFlow</a>
   <div class="espace-choix">
     <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false">${castorDe(espace, "castor-menu", 26)}${e.libelle} ▾</button>
     <div class="espace-menu" role="menu" hidden>${autres}</div>
@@ -58,7 +58,7 @@ function barre(espace, rubrique, megaMenu) {
 
 function pied() {
   return `<footer class="footer"><div class="footer-inner">
-  <span>© ClassFlow</span>
+  <span>© MyClassFlow</span>
   <a href="/enseignants/">Enseignants</a><a href="/ecoles/">Écoles</a><a href="/parents-enfants/">Parents / Enfants</a>
   <a href="/presentation/">Présentation</a>
 </div></footer>`;

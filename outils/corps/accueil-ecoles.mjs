@@ -61,7 +61,7 @@ export default `<div class="acc">
         ${benefice("equipe", "Toute l'équipe équipée", "Chaque enseignant adapte ses supports en quelques secondes.")}
         ${benefice("facture", "Une facture unique", "Au nom de l'établissement, pour tous les enseignants.")}
         ${benefice("cible", "Des adaptations homogènes", "Les mêmes règles d'adaptation pour un élève, d'une année et d'une classe à l'autre.")}
-        ${benefice("diplome", "Une prise en main accompagnée", "Nous présentons ClassFlow à votre équipe.")}
+        ${benefice("diplome", "Une prise en main accompagnée", "Nous présentons MyClassFlow à votre équipe.")}
       </div>
     </div>
   </section>
@@ -71,7 +71,7 @@ export default `<div class="acc">
       <div class="sec-head center">
         <span class="eyebrow center">Pour qui</span>
         <h2 class="h-section">Au service de l'école inclusive</h2>
-        <p class="llede">De la salle de classe à l'institution, ClassFlow accompagne tous ceux qui font vivre l'inclusion au quotidien.</p>
+        <p class="llede">De la salle de classe à l'institution, MyClassFlow accompagne tous ceux qui font vivre l'inclusion au quotidien.</p>
       </div>
       <div class="who-grid">
         ${persona(EXTRAIT_PROF, "Professeurs des écoles", "Cycles 2 et 3. Un gain de temps concret chaque semaine et des supports adaptés sans expertise préalable — pour enseigner à toute la classe, vraiment.", "Gain de temps au quotidien")}
@@ -94,8 +94,8 @@ export default `<div class="acc">
 
   ${confiance([HEBERGE, RGPD, carteConfiance("equipe", "Conçu avec des enseignants",
     "Chaque fonctionnalité est imaginée et testée avec des professeurs des écoles. L'outil suit les pratiques réelles des équipes.")],
-  { texte: "Les informations sur les élèves sont sensibles. ClassFlow est conçu pour les protéger, dès le premier jour.",
-    note: "ClassFlow se construit avec les premiers établissements partenaires." })}
+  { texte: "Les informations sur les élèves sont sensibles. MyClassFlow est conçu pour les protéger, dès le premier jour.",
+    note: "MyClassFlow se construit avec les premiers établissements partenaires." })}
 
   <!-- Établissements partenaires : section à afficher quand nous aurons des logos ou des témoignages de directions. -->
 
@@ -106,11 +106,11 @@ export default `<div class="acc">
       <div>
         <span class="eyebrow center" style="color:var(--coral-300)">Prendre rendez-vous</span>
         <h2 style="margin-top:16px;">Équipez votre équipe dès cette année</h2>
-        <p class="llede">Calculez votre devis en ligne, ou écrivez-nous : nous vous présentons ClassFlow et répondons à vos questions sur les données et le déploiement.</p>
+        <p class="llede">Calculez votre devis en ligne, ou écrivez-nous : nous vous présentons MyClassFlow et répondons à vos questions sur les données et le déploiement.</p>
         <ul class="final-points">
           <li>${COCHE} Devis envoyé sous 48 h</li>
           <li>${COCHE} Une seule facture, au nom de l'établissement</li>
-          <li>${COCHE} Présentation de ClassFlow à votre équipe</li>
+          <li>${COCHE} Présentation de MyClassFlow à votre équipe</li>
         </ul>
         <a class="lbtn lbtn-primary lbtn-lg" href="/ecoles/tarifs/#devis">Recevoir mon devis ${FLECHE}</a>
       </div>
