@@ -38,12 +38,12 @@ export async function envoyer(corps, fetchImpl = fetch) {
 
 const MAILS = {
   direction: {
-    sujet: "ClassFlow pour notre école",
-    corps: "Bonjour,\n\nJ'utilise ClassFlow pour adapter mes supports aux élèves à besoins particuliers. L'école peut équiper toute l'équipe, avec un prix qui baisse dès 5 enseignants :\nhttps://myclassflow.fr/ecoles/tarifs/\n\nBonne journée,",
+    sujet: "MyClassFlow pour notre école",
+    corps: "Bonjour,\n\nJ'utilise MyClassFlow pour adapter mes supports aux élèves à besoins particuliers. L'école peut équiper toute l'équipe, avec un prix qui baisse dès 5 enseignants :\nhttps://myclassflow.fr/ecoles/tarifs/\n\nBonne journée,",
   },
   ecole: {
-    sujet: "ClassFlow pour adapter les supports en classe",
-    corps: "Bonjour,\n\nJ'utilise ClassFlow Adapter à la maison pour adapter les devoirs de mon enfant. L'école pourrait faire ces adaptations directement en classe :\nhttps://myclassflow.fr/ecoles/\n\nBonne journée,",
+    sujet: "MyClassFlow pour adapter les supports en classe",
+    corps: "Bonjour,\n\nJ'utilise MyClassFlow Famille à la maison pour adapter les devoirs de mon enfant. L'école pourrait faire ces adaptations directement en classe :\nhttps://myclassflow.fr/ecoles/\n\nBonne journée,",
   },
 };
 
