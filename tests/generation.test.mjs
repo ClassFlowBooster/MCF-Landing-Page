@@ -155,7 +155,7 @@ test("favicon et icône iPhone : castor professeur, PNG aux bonnes dimensions, m
 test("logo de l'en-tête : le castor professeur devant « MyClassFlow », sur chaque page", () => {
   for (const p of PAGES.filter((x) => x.espace)) {
     const marque = page(p).match(/<a class="brand"[^>]*>(.*?)<\/a>/)[1];
-    assert.match(marque, /^<img class="castor castor-logo" src="\/assets\/img\/castors\/professeur\.svg" alt="" width="32" height="32" decoding="async">ClassFlow$/, p.chemin);
+    assert.match(marque, /^<img class="castor castor-logo" src="\/assets\/img\/castors\/professeur\.svg" alt="" width="32" height="32" decoding="async">MyClassFlow$/, p.chemin);
   }
 });
 
