@@ -82,12 +82,13 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <meta property="og:description" content="${echap(description)}" />
 <meta property="og:url" content="${SITE}${chemin}" />
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content="MyClassFlow" />
 <meta property="og:image" content="${SITE}/assets/img/${carte.fichier}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="${echap(carte.alt)}" />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
+${chemin === "/" ? `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "MyClassFlow", url: `${SITE}/` })}</script>\n` : ""}<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
 <link rel="stylesheet" href="/assets/css/base.css" />
