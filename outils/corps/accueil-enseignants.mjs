@@ -1,7 +1,7 @@
 // Accueil de l'espace Enseignants (aussi affiché, flouté, derrière l'écran d'entrée de « / »).
 import { texteProf, prixHtml, renvoiHtml, insecables, badgeEnseignant } from "../../assets/js/tarifs-ui.js";
 import { THEMES, libelleBadge } from "./catalogue.mjs";
-import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto, EQUIPE } from "./sections.mjs";
+import { COCHE, FLECHE, comparateur, FAMILLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 
 const prof = texteProf(true, false);
@@ -26,7 +26,7 @@ export default `<div class="acc">
     </div>
   </section>
 
-  ${TROUBLES}
+  ${FAMILLES}
 
   <section class="section problem">
     <div class="wrap problem-grid">

@@ -1,5 +1,5 @@
 // Accueil de l'espace Écoles.
-import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, formulaireContact, ICONES, EQUIPE } from "./sections.mjs";
+import { COCHE, FLECHE, comparateur, FAMILLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, formulaireContact, ICONES, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 
 const benefice = (ic, titre, texte) =>
@@ -9,9 +9,8 @@ const persona = (extrait, titre, texte, pied) =>
   `<article class="persona avec-extrait"><div class="extrait" aria-hidden="true">${extrait}</div><h3>${titre}</h3><p>${texte}</p><div class="persona-foot">${COCHE} ${pied}</div></article>`;
 
 // Extraits de l'app (illustratifs) en tête des cartes « Pour qui ».
-const trouble = (t) => `<i style="background:var(--t-${t})"></i>`;
 const EXTRAIT_PROF = `<div class="mini"><div class="mini-t"><i></i>Ma semaine · CM1</div><div class="mini-kpi"><div><b>14</b><span>supports adaptés</span></div><div><b>2 h 10</b><span>de temps gagné</span></div></div><div class="mini-barre"><i></i></div></div>`;
-const EXTRAIT_ECOLE = `<div class="mini"><div class="mini-t"><i></i>École · vue d'ensemble</div><div class="mini-classes">${[["CP", ["dys", "tdah"]], ["CE1", ["tsa"]], ["CE2", ["dys", "eana"]], ["CM1", ["dys", "tdah", "tsa"]]].map(([c, ts]) => `<div>${c}<em>${ts.map(trouble).join("")}</em></div>`).join("")}</div><div class="mini-note">Mêmes aménagements pour un élève, d'une classe à l'autre</div></div>`;
+const EXTRAIT_ECOLE = `<div class="mini"><div class="mini-t"><i></i>École · vue d'ensemble</div><div class="mini-classes">${[["CP", 2], ["CE1", 1], ["CE2", 2], ["CM1", 3]].map(([c, n]) => `<div>${c}<em>${"<i></i>".repeat(n)}</em></div>`).join("")}</div><div class="mini-note">Une même démarche d'adaptation, dans chaque classe</div></div>`;
 const EXTRAIT_FORMATION = `<div class="mini"><div class="mini-t"><i></i>Parcours · école inclusive</div><div class="mini-modules"><div><b>✓</b>Repérer les besoins d'un élève</div><div><b>✓</b>Choisir les aménagements</div><div><b class="a-faire">3</b>Adapter un support en classe</div></div></div>`;
 
 export default `<div class="acc">
@@ -34,7 +33,7 @@ export default `<div class="acc">
     </div>
   </section>
 
-  ${TROUBLES}
+  ${FAMILLES}
 
   <section class="section problem">
     <div class="wrap problem-grid">

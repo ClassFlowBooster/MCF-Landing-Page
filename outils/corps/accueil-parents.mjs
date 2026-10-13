@@ -1,6 +1,6 @@
 // Accueil de l'espace Parents / Enfants (MyClassFlow Famille).
 import { texteAdapter, prixHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
-import { COCHE, FLECHE, demo, comparateur, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeauMailto, EQUIPE } from "./sections.mjs";
+import { COCHE, FLECHE, demo, comparateur, FAMILLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeauMailto, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 import { ADAPTATIONS_ESSENTIEL } from "../../assets/js/tarifs.js";
 
@@ -29,7 +29,7 @@ export default `<div class="acc">
     </div>
   </section>
 
-  ${TROUBLES}
+  ${FAMILLES}
 
   ${etapes({ titre: "Une photo, quelques secondes", texte: "Pas besoin de tout retaper : MyClassFlow Famille part de la page que votre enfant a sous les yeux.", liste: [
     ["1", "Photographiez", "La leçon ou l'exercice", "La leçon, l'exercice ou la page du cahier."],
