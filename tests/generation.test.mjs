@@ -173,7 +173,7 @@ test("sélecteur d'espace : le castor de chaque espace, sans emoji", () => {
 });
 
 test("vocabulaire : les pages décrivent des adaptations, sans catégorie d'élèves", () => {
-  const INTERDITS = /troubl|dys|tdah|\btsa\b|\beana\b|diagnost|\bppre\b|\bpai\b|geva|handicap|besoins? particulier|déficien|patholog|aménagement|dispositif|\bprofils?\b/i;
+  const INTERDITS = /troubl|dys|tdah|\btsa\b|\beana\b|diagnost|\bppre\b|\bpai\b|geva|handicap|besoins? (?:particulier|spécifique|éducatif)|livret de parcours|\blpi\b|neuro|déficien|patholog|aménagement|dispositif|\bprofils?\b/i;
   const sansImages = (t) => t.replace(/data:[a-z/+-]+;base64,[A-Za-z0-9+/=]+/g, "");
   for (const p of PAGES) {
     const m = page(p).match(INTERDITS);
