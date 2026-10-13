@@ -10,7 +10,7 @@ const i = texteAdapter("illimite", true, false);
 
 export default `<section class="page" data-tarifs="parents-enfants">
   <h1 class="t">Des devoirs adaptés à votre enfant, en une photo</h1>
-  <p class="lead">Prenez en photo la leçon ou l'exercice : MyClassFlow Famille le transforme selon les adaptations que vous choisissez pour votre enfant.</p>
+  <p class="lead">Prenez en photo la leçon ou l'exercice : MyClassFlow Famille le transforme selon les critères pédagogiques que vous cochez.</p>
 
   ${controles("Engagement 6 mois", `−${remiseAdapter("illimite")} % les 3 premiers mois`, "Résiliable à tout moment")}
 

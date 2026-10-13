@@ -10,8 +10,8 @@ const persona = (extrait, titre, texte, pied) =>
 
 // Extraits de l'app (illustratifs) en tête des cartes « Pour qui ».
 const EXTRAIT_PROF = `<div class="mini"><div class="mini-t"><i></i>Ma semaine · CM1</div><div class="mini-kpi"><div><b>14</b><span>supports adaptés</span></div><div><b>2 h 10</b><span>de temps gagné</span></div></div><div class="mini-barre"><i></i></div></div>`;
-const EXTRAIT_ECOLE = `<div class="mini"><div class="mini-t"><i></i>École · vue d'ensemble</div><div class="mini-classes">${[["CP", 2], ["CE1", 1], ["CE2", 2], ["CM1", 3]].map(([c, n]) => `<div>${c}<em>${"<i></i>".repeat(n)}</em></div>`).join("")}</div><div class="mini-note">Une même démarche d'adaptation, dans chaque classe</div></div>`;
-const EXTRAIT_FORMATION = `<div class="mini"><div class="mini-t"><i></i>Parcours · prise en main</div><div class="mini-modules"><div><b>✓</b>Choisir les adaptations d'un élève</div><div><b>✓</b>Adapter un support</div><div><b class="a-faire">3</b>Imprimer et partager</div></div></div>`;
+const EXTRAIT_ECOLE = `<div class="mini"><div class="mini-t"><i></i>L'équipe · 4 classes</div><div class="mini-classes">${[["CP", 2], ["CE1", 1], ["CE2", 2], ["CM1", 3]].map(([c, n]) => `<div>${c}<em>${"<i></i>".repeat(n)}</em></div>`).join("")}</div><div class="mini-note">Une même démarche d'adaptation, dans chaque classe</div></div>`;
+const EXTRAIT_FORMATION = `<div class="mini"><div class="mini-t"><i></i>Parcours · prise en main</div><div class="mini-modules"><div><b>✓</b>Cocher les critères pédagogiques</div><div><b>✓</b>Adapter un support</div><div><b class="a-faire">3</b>Imprimer les copies</div></div></div>`;
 
 export default `<div class="acc">
   <section class="section hero">
@@ -43,7 +43,7 @@ export default `<div class="acc">
         <p class="llede">Dans chaque classe, des élèves ont besoin de supports adaptés. Sans outil commun, chaque enseignant réinvente ses adaptations et l'équipe perd la vue d'ensemble.</p>
       </div>
       <div class="pain-list">
-        ${douleur("lignes", "Hétérogène", "D'une classe à l'autre, les adaptations ne se font pas de la même façon.")}
+        ${douleur("lignes", "Hétérogène", "D'une classe à l'autre, chacun adapte à sa manière.")}
         ${douleur("alerte", "Dispersé", "Chacun refait ses documents dans ses propres fichiers, avec ses propres outils.")}
         ${douleur("horloge", "Épuisant", "Adapter chaque support à la main prend des heures chaque semaine.")}
       </div>
@@ -59,7 +59,7 @@ export default `<div class="acc">
       <div class="who-grid quatre">
         ${benefice("equipe", "Toute l'équipe équipée", "Chaque enseignant adapte ses supports en quelques secondes.")}
         ${benefice("facture", "Une facture unique", "Au nom de l'établissement, pour tous les enseignants.")}
-        ${benefice("cible", "Des adaptations homogènes", "Le même catalogue d'adaptations dans toutes les classes de l'école.")}
+        ${benefice("cible", "Des adaptations homogènes", "Les mêmes critères pédagogiques pour toute l'équipe.")}
         ${benefice("diplome", "Une prise en main accompagnée", "Nous présentons MyClassFlow à votre équipe.")}
       </div>
     </div>

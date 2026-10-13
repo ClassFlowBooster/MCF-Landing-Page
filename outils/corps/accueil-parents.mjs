@@ -15,7 +15,7 @@ export default `<div class="acc">
       <div class="hero-copy">
         <div class="hero-badge"><span class="pill">Famille</span><span>Pour les familles, <b>tous les enfants du foyer</b></span></div>
         <h1 class="h-display">Les devoirs de votre enfant, <em>adaptés en une photo</em></h1>
-        <p class="llede">Prenez en photo la leçon ou l'exercice : MyClassFlow Famille le transforme selon les adaptations que vous choisissez pour votre enfant&nbsp;: texte agrandi, lignes espacées, consignes en étapes…</p>
+        <p class="llede">Prenez en photo la leçon ou l'exercice : MyClassFlow Famille le transforme selon les critères pédagogiques que vous cochez&nbsp;: texte agrandi, lignes espacées, consignes en étapes…</p>
         <div class="hero-actions">
           <a class="lbtn lbtn-primary lbtn-lg" href="https://adapter.myclassflow.fr">Essayer gratuitement ${FLECHE}</a>
           <a class="lbtn lbtn-ghost lbtn-lg" href="#exemple">Voir un exemple</a>
@@ -33,7 +33,7 @@ export default `<div class="acc">
 
   ${etapes({ titre: "Une photo, quelques secondes", texte: "Pas besoin de tout retaper : MyClassFlow Famille part de la page que votre enfant a sous les yeux.", liste: [
     ["1", "Photographiez", "La leçon ou l'exercice", "La leçon, l'exercice ou la page du cahier."],
-    ["2", "Choisissez", "Les adaptations utiles", "Texte agrandi, lignes espacées, consignes en étapes… Vous choisissez ce qui aide votre enfant."],
+    ["2", "Cochez", "Les critères utiles", "Texte agrandi, lignes espacées, consignes en étapes… Vous cochez ce qui aide votre enfant."],
     ["3", "Imprimez", "Ou lisez à l'écran", "Une version claire et aérée, prête en quelques secondes."],
   ] })}
 
@@ -93,7 +93,7 @@ export default `<div class="acc">
   ${confiance([
     carteConfiance("photo", "Les photos de votre enfant restent privées", "Elles servent uniquement à produire la version adaptée."),
     HEBERGE, RGPD],
-  { titre: "Les données de votre enfant, protégées", texte: "Les devoirs de votre enfant et les adaptations que vous choisissez doivent être protégés. MyClassFlow Famille est conçu pour cela." })}
+  { titre: "Les données de votre enfant, protégées", texte: "Les devoirs de votre enfant et les critères que vous cochez doivent être protégés. MyClassFlow Famille est conçu pour cela." })}
 
   ${EQUIPE}
 
@@ -106,7 +106,7 @@ export default `<div class="acc">
         <h2 class="h-section">Vos questions</h2>
       </div>
       <div class="faq">
-        ${question("Dois-je expliquer pourquoi mon enfant a besoin d'adaptations ?", "Non. Vous choisissez simplement les adaptations qui l'aident&nbsp;: texte agrandi, lignes espacées, consignes en étapes… Vous pouvez les modifier à tout moment.")}
+        ${question("Dois-je indiquer pourquoi mon enfant a besoin d'un support adapté ?", "Non. Vous cochez simplement les critères pédagogiques qui l'aident&nbsp;: texte agrandi, lignes espacées, consignes en étapes… Vous pouvez les modifier à tout moment.")}
         ${question("Sur quels appareils ?", "Téléphone, tablette et ordinateur : voir la page <a href=\"/parents-enfants/telecharger/\">Télécharger</a>.")}
         ${question("Combien d'enfants ?", "Un abonnement couvre tous les enfants du foyer.")}
         ${question("Puis-je résilier ?", "Sans engagement, à tout moment. Avec engagement, à la fin des 6 mois.")}

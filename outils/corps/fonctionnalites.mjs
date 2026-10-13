@@ -11,8 +11,8 @@ export function fonctionnalites(espace) {
   if (espace === "parents-enfants") {
     return `<section class="page">
   <h1 class="t">Des devoirs adaptés, sans y passer la soirée</h1>
-  <p class="lead">MyClassFlow Famille transforme les leçons et les exercices selon les adaptations que vous choisissez pour votre enfant.</p>
-  <div class="theme"><h3>MyClassFlow Famille</h3><p class="s">Une photo suffit : vous gardez la main sur les adaptations de votre enfant.</p>
+  <p class="lead">MyClassFlow Famille transforme les leçons et les exercices selon les critères pédagogiques que vous cochez.</p>
+  <div class="theme"><h3>MyClassFlow Famille</h3><p class="s">Une photo suffit : vous gardez la main sur les critères choisis.</p>
     <div class="grid deux">
       ${ADAPTER.map(carte).join("\n      ")}
     </div></div>

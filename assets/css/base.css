@@ -263,7 +263,6 @@ html{scroll-padding-top:72px}
 .tline{height:7px;border-radius:4px;background:var(--paper-3);margin-bottom:7px}
 .tline.s{width:60%}.tline.m{width:85%}.tline.l{width:100%}
 .doc.is-adapt .aline{font-size:12.5px;line-height:2;letter-spacing:.04em;word-spacing:.14em;color:var(--ink);font-weight:500;margin-bottom:4px}
-.doc.is-adapt .syll{color:var(--coral-600)}
 .doc-q{margin-top:10px;padding:9px 11px;border-radius:8px;background:var(--paper);font-size:11.5px;color:var(--ink-2)}
 .doc.is-adapt .doc-q{background:#fff;border:1px dashed var(--coral-200);font-weight:500}
 .doc-arrow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--coral-200);display:grid;place-items:center;box-shadow:var(--sh-soft);z-index:3;color:var(--coral-500)}
@@ -290,7 +289,7 @@ html{scroll-padding-top:72px}
 .ba-etape{display:flex;gap:2.2cqi;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:2.5cqi;padding:2.2cqi 2.5cqi;margin-bottom:1.8cqi}
 .ba-etape b{flex:none;width:4.7cqi;height:4.7cqi;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-size:max(9px,2.3cqi)}
 .ba-etape p{margin:0;font-size:max(11px,2.8cqi);line-height:1.7;letter-spacing:.03em;word-spacing:.12em;color:var(--ink)}
-.ba .s1{color:#2D6BDF}.ba .s2{color:#D9431C}
+
 .ba-adap .ba-figs{margin:.8cqi 0 1.8cqi 6.9cqi}
 .ba-adap .ba-figs svg{width:10.5cqi;height:10.5cqi}
 .ba-astuce{margin:2.2cqi 0 0;font-size:max(10px,2.35cqi);color:var(--ink-2)}

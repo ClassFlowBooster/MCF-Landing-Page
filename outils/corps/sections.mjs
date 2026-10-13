@@ -11,7 +11,7 @@ export function demo({ original = "Original", titre = "Les fractions — exercic
   return `<div class="demo" role="img" aria-label="Aperçu : un exercice et sa version adaptée, avec une consigne à la fois et des lignes espacées">
           <div class="demo-bar">
             <span class="demo-select"><span class="dot" style="background:var(--coral-500)"></span>Léa M.${CHEVRON}</span>
-            <span class="demo-select"><span class="dot" style="background:var(--ink-3)"></span>3 adaptations${CHEVRON}</span>
+            <span class="demo-select"><span class="dot" style="background:var(--ink-3)"></span>3 critères${CHEVRON}</span>
             <span class="demo-go" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5z"/></svg>Adapter</span>
           </div>
           <div class="demo-panes">
@@ -24,8 +24,8 @@ export function demo({ original = "Original", titre = "Les fractions — exercic
             <div class="doc is-adapt">
               <span class="doc-tag adapt">Adapté</span>
               <h5>Les fractions</h5>
-              <p class="aline"><span class="syll">Co</span>lo<span class="syll">rie</span> trois quarts.</p>
-              <p class="aline">Re<span class="syll">garde</span> les deux <span class="syll">fi</span>gures.</p>
+              <p class="aline">Colorie trois quarts.</p>
+              <p class="aline">Regarde les deux figures.</p>
               <div class="doc-q">1 consigne à la fois. Police lisible, lignes espacées.</div>
             </div>
             <div class="doc-arrow" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
@@ -56,11 +56,11 @@ export function comparateur() {
             <div class="ba-couche ba-adap" aria-hidden="true">
               <div class="ba-meta"><span>Prénom : Léa</span><span>CM1 · Maths</span></div>
               <h6>Les fractions</h6>
-              <div class="ba-etape"><b>1</b><p><span class="s1">Co</span><span class="s2">lo</span><span class="s1">rie</span> <strong>trois quarts</strong> du carré.</p></div>
+              <div class="ba-etape"><b>1</b><p>Colorie <strong>trois quarts</strong> du carré.</p></div>
               <div class="ba-figs">
                 <svg viewBox="0 0 58 58"><rect x="2" y="2" width="54" height="54" rx="4" fill="#fff" stroke="#1F1A14" stroke-width="2.5"/><path d="M29 2v54M2 29h54" stroke="#1F1A14" stroke-width="2.5"/></svg>
               </div>
-              <div class="ba-etape"><b>2</b><p><span class="s1">Fais</span> <span class="s2">pa</span><span class="s1">reil</span> a<span class="s2">vec</span> le <span class="s1">rond</span>.</p></div>
+              <div class="ba-etape"><b>2</b><p>Fais pareil avec le rond.</p></div>
               <p class="ba-astuce">Une consigne à la fois. Coche quand c'est fait.</p>
             </div>
             <span class="ba-etiq ba-etiq-o" aria-hidden="true">Original</span><span class="ba-etiq ba-etiq-a" aria-hidden="true">Adapté</span>
@@ -71,9 +71,9 @@ export function comparateur() {
         </div>`;
 }
 
-export const FAMILLES = `<section class="familles" aria-label="Familles d'adaptations">
+export const FAMILLES = `<section class="familles" aria-label="Familles de critères pédagogiques">
     <div class="wrap familles-row">
-      <span class="familles-lead">Des adaptations à choisir une à une —</span>
+      <span class="familles-lead">Des critères pédagogiques à cocher —</span>
       ${["Lisibilité", "Consignes", "Structure du document", "Exercices", "Supports visuels"].map((f) => `<span class="fchip">${f}</span>`).join("\n      ")}
     </div>
   </section>`;
