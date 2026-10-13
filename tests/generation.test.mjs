@@ -171,3 +171,16 @@ test("sélecteur d'espace : le castor de chaque espace, sans emoji", () => {
     for (const texte of [pastille, liensEspace]) assert.ok(!/\p{Extended_Pictographic}/u.test(texte.replace("▾", "")), `${p.chemin} : emoji dans le sélecteur`);
   }
 });
+
+test("vocabulaire : les pages décrivent des adaptations, sans catégorie d'élèves", () => {
+  const INTERDITS = /troubl|dys|tdah|\btsa\b|\beana\b|diagnost|\bppre\b|\bpai\b|geva|handicap|besoins? particulier|déficien|patholog|aménagement|dispositif|\bprofils?\b/i;
+  const sansImages = (t) => t.replace(/data:[a-z/+-]+;base64,[A-Za-z0-9+/=]+/g, "");
+  for (const p of PAGES) {
+    const m = page(p).match(INTERDITS);
+    assert.ok(!m, `${p.chemin} : « ${m?.[0]} »`);
+  }
+  for (const fichier of ["presentation/content.html", "assets/js/formulaire.js", "assets/css/base.css"]) {
+    const m = sansImages(readFileSync(fichier, "utf8")).match(INTERDITS);
+    assert.ok(!m, `${fichier} : « ${m?.[0]} »`);
+  }
+});
