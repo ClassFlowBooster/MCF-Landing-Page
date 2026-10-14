@@ -49,7 +49,7 @@ export const PAGES = [
     corps: fonctionnalites("ecoles") },
   { chemin: "/parents-enfants/fonctionnalites/", espace: "parents-enfants", rubrique: "fonctionnalites",
     titre: "Fonctionnalités de MyClassFlow Famille",
-    description: "Une photo de la leçon, quelques critères pédagogiques à cocher, un support adapté à imprimer ou à lire à l'écran, pour tous les enfants du foyer.",
+    description: "Une photo de la leçon, quelques critères pédagogiques à cocher, un support personnalisé à imprimer ou à lire à l'écran, pour tous les enfants du foyer.",
     corps: fonctionnalites("parents-enfants") },
   { chemin: "/enseignants/telecharger/", espace: "enseignants", rubrique: "telecharger", scripts: ["telecharger.js"],
     titre: "Télécharger MyClassFlow — Mac, Windows, Android, iPhone",
