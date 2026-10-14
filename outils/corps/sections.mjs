@@ -67,7 +67,7 @@ export function comparateur() {
             <div class="ba-poignee" aria-hidden="true"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
             <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparer l'exercice d'origine et sa version adaptée">
           </div>
-          <div class="ba-aide" aria-hidden="true">glissez pour voir la différence</div>
+          <div class="ba-aide" aria-hidden="true">glissez pour voir la personnalisation</div>
         </div>`;
 }
 
