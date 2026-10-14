@@ -60,8 +60,8 @@ export default `<div class="acc">
 
   ${etapes({ titre: "Trois étapes, quelques secondes", texte: "De votre support habituel à un document adapté, sans rien réapprendre.", liste: [
     ["1", "Choisir", "Les critères pédagogiques", "Cochez les critères utiles&nbsp;: texte agrandi, lignes espacées, consignes en étapes… Enregistrez-les pour un élève, ou adaptez un support sans le relier à un élève. Importez ou collez le support."],
-    ["2", "Adapter", "L'IA fait le travail", "Police lisible, mise en page aérée, consignes reformulées pas à pas&nbsp;: le document est régénéré selon les critères cochés. Un même support personnalisé sert à tous les élèves qui ont les mêmes critères."],
-    ["3", "Imprimer", "Ou télécharger", "Récupérez le support personnalisé et la version d'origine. Choisissez le nombre de copies à l'impression, ou téléchargez le PDF."],
+    ["2", "Adapter", "L'IA fait le travail", "Police lisible, mise en page aérée, consignes reformulées pas à pas&nbsp;: le document est régénéré selon les critères cochés. Un même support adapté sert à tous les élèves qui ont les mêmes critères."],
+    ["3", "Imprimer", "Ou télécharger", "Récupérez le support adapté et la version d'origine. Choisissez le nombre de copies à l'impression, ou téléchargez le PDF."],
   ] })}
 
   <section class="section apercu" id="tarifs">
