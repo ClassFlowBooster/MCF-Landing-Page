@@ -198,7 +198,7 @@ body.avec-entree{overflow:hidden}
    (classes renommées là où elles croisent les composants ci-dessus :
    .lbtn, .llede, .how-steps, .final). Enveloppe : .acc
    ================================================================= */
-:root{--coral-200:#FFC7AA;--coral-300:#FFA17A;--coral-400:#FF7A4D;--coral-500:#F0552B;--coral-600:#D43F18;--amber-50:#FFF8EA;--amber-100:#FCEAC4;--amber-700:#A8650F;--paper-3:#E9E2D3;--line-2:#D6CCB6;--t-dys:#6366F1;--t-tdah:#06B6D4;--t-tsa:#10B981;--t-eana:#8B5CF6;--t-dyspraxie:#EC4899;--t-visuel:#F59E0B;--serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Inter",-apple-system,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--r-sm:8px;--r-md:12px;--r-lg:18px;--r-xl:26px;--sh-soft:0 1px 2px rgba(31,26,20,.04),0 6px 16px rgba(31,26,20,.05);--sh-card:0 1px 3px rgba(31,26,20,.06),0 14px 34px rgba(31,26,20,.07);--sh-pop:0 24px 60px rgba(31,26,20,.16),0 8px 20px rgba(31,26,20,.08);--sh-coral:0 8px 24px rgba(240,85,43,.28);--maxw:1160px}
+:root{--coral-200:#FFC7AA;--coral-300:#FFA17A;--coral-400:#FF7A4D;--coral-500:#F0552B;--coral-600:#D43F18;--amber-50:#FFF8EA;--amber-100:#FCEAC4;--amber-700:#A8650F;--paper-3:#E9E2D3;--line-2:#D6CCB6;--serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Inter",-apple-system,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--r-sm:8px;--r-md:12px;--r-lg:18px;--r-xl:26px;--sh-soft:0 1px 2px rgba(31,26,20,.04),0 6px 16px rgba(31,26,20,.05);--sh-card:0 1px 3px rgba(31,26,20,.06),0 14px 34px rgba(31,26,20,.07);--sh-pop:0 24px 60px rgba(31,26,20,.16),0 8px 20px rgba(31,26,20,.08);--sh-coral:0 8px 24px rgba(240,85,43,.28);--maxw:1160px}
 html{scroll-padding-top:72px}
 .acc{line-height:1.6;-webkit-font-smoothing:antialiased}
 .acc *,.acc *::before,.acc *::after{box-sizing:border-box}
@@ -263,7 +263,6 @@ html{scroll-padding-top:72px}
 .tline{height:7px;border-radius:4px;background:var(--paper-3);margin-bottom:7px}
 .tline.s{width:60%}.tline.m{width:85%}.tline.l{width:100%}
 .doc.is-adapt .aline{font-size:12.5px;line-height:2;letter-spacing:.04em;word-spacing:.14em;color:var(--ink);font-weight:500;margin-bottom:4px}
-.doc.is-adapt .syll{color:var(--coral-600)}
 .doc-q{margin-top:10px;padding:9px 11px;border-radius:8px;background:var(--paper);font-size:11.5px;color:var(--ink-2)}
 .doc.is-adapt .doc-q{background:#fff;border:1px dashed var(--coral-200);font-weight:500}
 .doc-arrow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--coral-200);display:grid;place-items:center;box-shadow:var(--sh-soft);z-index:3;color:var(--coral-500)}
@@ -290,7 +289,7 @@ html{scroll-padding-top:72px}
 .ba-etape{display:flex;gap:2.2cqi;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:2.5cqi;padding:2.2cqi 2.5cqi;margin-bottom:1.8cqi}
 .ba-etape b{flex:none;width:4.7cqi;height:4.7cqi;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-size:max(9px,2.3cqi)}
 .ba-etape p{margin:0;font-size:max(11px,2.8cqi);line-height:1.7;letter-spacing:.03em;word-spacing:.12em;color:var(--ink)}
-.ba .s1{color:#2D6BDF}.ba .s2{color:#D9431C}
+
 .ba-adap .ba-figs{margin:.8cqi 0 1.8cqi 6.9cqi}
 .ba-adap .ba-figs svg{width:10.5cqi;height:10.5cqi}
 .ba-astuce{margin:2.2cqi 0 0;font-size:max(10px,2.35cqi);color:var(--ink-2)}
@@ -325,19 +324,18 @@ html{scroll-padding-top:72px}
 .mini-classes{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .mini-classes div{border:1px solid var(--line);border-radius:9px;padding:6px 7px;font-weight:600;font-size:11px}
 .mini-classes em{display:flex;gap:3px;margin-top:5px}
-.mini-classes em i{width:8px;height:8px;border-radius:3px}
+.mini-classes em i{width:8px;height:8px;border-radius:3px;background:var(--coral-300)}
 .mini-note{margin-top:9px}
 .mini-modules div{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line)}
 .mini-modules div:last-child{border:0}
 .mini-modules b{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:10px;color:#fff;background:var(--good)}
 .mini-modules b.a-faire{background:var(--line);color:var(--ink-3)}
 
-/* Bande des troubles */
-.troubles{padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2)}
-.troubles-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;justify-content:center}
-.troubles-lead{font-size:13.5px;color:var(--ink-3);margin-right:6px;font-weight:500}
-.tchip{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:6px 13px;font-size:13.5px;font-weight:500;color:var(--ink-2);box-shadow:var(--sh-soft)}
-.tchip .dot{width:8px;height:8px;border-radius:3px}
+/* Bande des familles d'adaptations */
+.familles{padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2)}
+.familles-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;justify-content:center}
+.familles-lead{font-size:13.5px;color:var(--ink-3);margin-right:6px;font-weight:500}
+.fchip{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:6px 13px;font-size:13.5px;font-weight:500;color:var(--ink-2);box-shadow:var(--sh-soft)}
 
 /* Le constat */
 .problem{background:var(--paper)}
@@ -471,7 +469,7 @@ html{scroll-padding-top:72px}
 }
 @media (max-width: 480px){
   .wrap{padding:0 16px}
-  .troubles-row{gap:8px}
+  .familles-row{gap:8px}
   .lbtn{white-space:normal;text-align:center}
 }
 

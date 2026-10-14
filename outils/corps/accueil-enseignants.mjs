@@ -1,7 +1,7 @@
 // Accueil de l'espace Enseignants (aussi affiché, flouté, derrière l'écran d'entrée de « / »).
 import { texteProf, prixHtml, renvoiHtml, insecables, badgeEnseignant } from "../../assets/js/tarifs-ui.js";
 import { THEMES, libelleBadge } from "./catalogue.mjs";
-import { COCHE, FLECHE, comparateur, TROUBLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto, EQUIPE } from "./sections.mjs";
+import { COCHE, FLECHE, comparateur, FAMILLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 
 const prof = texteProf(true, false);
@@ -12,7 +12,7 @@ export default `<div class="acc">
       <div class="hero-copy">
         <div class="hero-badge"><span class="pill">Nouveau</span><span>L'inclusion scolaire, <b>sans la charge de travail</b></span></div>
         <h1 class="h-display">Adaptez chaque support <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.</h1>
-        <p class="llede">MyClassFlow régénère vos exercices et vos leçons pour les élèves DYS, TDAH, TSA, EANA… grâce à l'IA. Vous gagnez des heures&nbsp;; chaque enfant reçoit immédiatement un document fait pour lui.</p>
+        <p class="llede">MyClassFlow régénère vos exercices et vos leçons selon les critères pédagogiques que vous cochez&nbsp;: texte agrandi, mise en page aérée, consignes en étapes… Vous gagnez des heures&nbsp;; chaque élève reçoit un support personnalisé.</p>
         <div class="hero-actions">
           <a class="lbtn lbtn-primary lbtn-lg" href="https://app.myclassflow.fr">Créer mon compte gratuit ${FLECHE}</a>
           <a class="lbtn lbtn-ghost lbtn-lg" href="#etapes">Voir comment ça marche</a>
@@ -26,20 +26,20 @@ export default `<div class="acc">
     </div>
   </section>
 
-  ${TROUBLES}
+  ${FAMILLES}
 
   <section class="section problem">
     <div class="wrap problem-grid">
       <div>
         <span class="eyebrow">Le constat</span>
         <h2 class="h-section" style="margin:16px 0 18px;">Différencier est essentiel.<br /><span class="serif-em text-coral">Mais ça vous prend vos soirées.</span></h2>
-        <p class="llede" style="margin-bottom:14px;">Adapter un exercice pour un élève dyslexique, un autre pour un élève TDAH, rédiger un PPRE, suivre chaque progrès… L'école inclusive est une mission que vous portez tous les jours.</p>
+        <p class="llede" style="margin-bottom:14px;">Agrandir le texte pour un élève, découper les consignes pour un autre, refaire la mise en page, suivre chaque progrès… L'école inclusive est une mission que vous portez tous les jours.</p>
         <p style="color:var(--ink-2); font-size:16px;">Mais aujourd'hui, elle repose sur des heures de remise en forme manuelle, des documents refaits un par un, et une charge mentale qui s'accumule. Le temps passé sur la mise en page, c'est du temps en moins pour vos élèves.</p>
       </div>
       <div class="pain-list">
-        ${douleur("horloge", "Chronophage", "Reformer un même support pour trois profils différents, à la main, chaque semaine.")}
-        ${douleur("alerte", "Complexe", "Connaître les bons aménagements pour chaque trouble demande une expertise que personne n'a le temps d'acquérir seul.")}
-        ${douleur("lignes", "Éparpillé", "Cahier journal, dispositifs, suivi, agenda : autant d'outils séparés, aucune vue d'ensemble.")}
+        ${douleur("horloge", "Chronophage", "Refaire un même support pour trois élèves différents, à la main, chaque semaine.")}
+        ${douleur("alerte", "Complexe", "Trouver la bonne présentation pour chaque élève, puis la refaire à la main dans chaque document, demande un temps que personne n'a.")}
+        ${douleur("lignes", "Éparpillé", "Cahier journal, suivi des élèves, évaluations, agenda : autant d'outils séparés, aucune vue d'ensemble.")}
       </div>
     </div>
   </section>
@@ -59,9 +59,9 @@ export default `<div class="acc">
   </section>
 
   ${etapes({ titre: "Trois étapes, quelques secondes", texte: "De votre support habituel à un document adapté, sans rien réapprendre.", liste: [
-    ["1", "Choisir", "L'élève ou le trouble", "Sélectionnez un élève de votre classe — son profil est déjà connu — ou directement un trouble. Importez ou collez le support à adapter."],
-    ["2", "Adapter", "L'IA fait le travail", "Police lisible, mise en page aérée, consignes reformulées pas à pas&nbsp;: le document est régénéré selon les aménagements adaptés au profil."],
-    ["3", "Partager", "Imprimer ou envoyer", "Récupérez la version adaptée et la version de référence. À imprimer pour l'élève, à archiver dans son suivi, ou à partager en un lien."],
+    ["1", "Choisir", "Les critères pédagogiques", "Cochez les critères utiles&nbsp;: texte agrandi, lignes espacées, consignes en étapes… Enregistrez-les pour un élève, ou adaptez un support sans le relier à un élève. Importez ou collez le support."],
+    ["2", "Adapter", "L'IA fait le travail", "Police lisible, mise en page aérée, consignes reformulées pas à pas&nbsp;: le document est régénéré selon les critères cochés. Un même support adapté sert à tous les élèves qui ont les mêmes critères."],
+    ["3", "Imprimer", "Ou télécharger", "Récupérez le support adapté et la version d'origine. Choisissez le nombre de copies à l'impression, ou téléchargez le PDF."],
   ] })}
 
   <section class="section apercu" id="tarifs">
@@ -96,7 +96,7 @@ export default `<div class="acc">
 
   ${confiance([HEBERGE, RGPD, carteConfiance("equipe", "Conçu avec des enseignants",
     "Chaque fonctionnalité est imaginée et testée avec des professeurs des écoles. L'outil suit vos pratiques réelles, pas l'inverse.")],
-  { texte: "Les informations sur vos élèves sont sensibles. MyClassFlow est conçu pour les protéger, dès le premier jour.",
+  { texte: "Les informations sur vos élèves doivent être protégées. MyClassFlow est conçu pour cela, dès le premier jour.",
     note: "MyClassFlow se construit avec les premiers établissements partenaires." })}
 
   ${EQUIPE}

@@ -10,10 +10,10 @@ test("basculer : clic ouvre / ferme, Échap ferme toujours", () => {
   assert.equal(basculer(false, "Escape"), false);
 });
 
-test("méga-menu enseignants : 10 fonctionnalités, badges conformes", () => {
+test("méga-menu enseignants : 9 fonctionnalités, badges conformes", () => {
   const html = megaMenu("enseignants");
-  assert.equal((html.match(/class="mi"/g) ?? []).length, 10);
-  assert.equal((html.match(/tg pay/g) ?? []).length, 3);
+  assert.equal((html.match(/class="mi"/g) ?? []).length, 9);
+  assert.equal((html.match(/tg pay/g) ?? []).length, 2);
   assert.equal((html.match(/tg free/g) ?? []).length, 7);
   assert.ok(html.includes("Import des élèves par photo <span class=\"tg free\">Gratuit</span>"));
 });

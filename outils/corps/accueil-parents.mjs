@@ -1,6 +1,6 @@
 // Accueil de l'espace Parents / Enfants (MyClassFlow Famille).
 import { texteAdapter, prixHtml, insecables, badgeAdapter } from "../../assets/js/tarifs-ui.js";
-import { COCHE, FLECHE, demo, comparateur, TROUBLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeauMailto, EQUIPE } from "./sections.mjs";
+import { COCHE, FLECHE, demo, comparateur, FAMILLES, confiance, HEBERGE, RGPD, carteConfiance, etapes, bandeauMailto, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 import { ADAPTATIONS_ESSENTIEL } from "../../assets/js/tarifs.js";
 
@@ -15,7 +15,7 @@ export default `<div class="acc">
       <div class="hero-copy">
         <div class="hero-badge"><span class="pill">Famille</span><span>Pour les familles, <b>tous les enfants du foyer</b></span></div>
         <h1 class="h-display">Les devoirs de votre enfant, <em>adaptés en une photo</em></h1>
-        <p class="llede">Prenez en photo la leçon ou l'exercice : MyClassFlow Famille le transforme selon les besoins de votre enfant — DYS, TDAH, TSA…</p>
+        <p class="llede">Prenez en photo la leçon ou l'exercice : MyClassFlow Famille le transforme selon les critères pédagogiques que vous cochez&nbsp;: texte agrandi, lignes espacées, consignes en étapes…</p>
         <div class="hero-actions">
           <a class="lbtn lbtn-primary lbtn-lg" href="https://adapter.myclassflow.fr">Essayer gratuitement ${FLECHE}</a>
           <a class="lbtn lbtn-ghost lbtn-lg" href="#exemple">Voir un exemple</a>
@@ -29,11 +29,11 @@ export default `<div class="acc">
     </div>
   </section>
 
-  ${TROUBLES}
+  ${FAMILLES}
 
   ${etapes({ titre: "Une photo, quelques secondes", texte: "Pas besoin de tout retaper : MyClassFlow Famille part de la page que votre enfant a sous les yeux.", liste: [
     ["1", "Photographiez", "La leçon ou l'exercice", "La leçon, l'exercice ou la page du cahier."],
-    ["2", "Choisissez", "Les besoins de votre enfant", "Les besoins de votre enfant : dyslexie, TDAH, TSA…"],
+    ["2", "Cochez", "Les critères utiles", "Texte agrandi, lignes espacées, consignes en étapes… Vous cochez ce qui aide votre enfant."],
     ["3", "Imprimez", "Ou lisez à l'écran", "Une version claire et aérée, prête en quelques secondes."],
   ] })}
 
@@ -93,7 +93,7 @@ export default `<div class="acc">
   ${confiance([
     carteConfiance("photo", "Les photos de votre enfant restent privées", "Elles servent uniquement à produire la version adaptée."),
     HEBERGE, RGPD],
-  { titre: "Les données de votre enfant, protégées", texte: "Les devoirs et les besoins de votre enfant sont des informations sensibles. MyClassFlow Famille est conçu pour les protéger." })}
+  { titre: "Les données de votre enfant, protégées", texte: "Les devoirs de votre enfant et les critères que vous cochez doivent être protégés. MyClassFlow Famille est conçu pour cela." })}
 
   ${EQUIPE}
 
@@ -106,7 +106,7 @@ export default `<div class="acc">
         <h2 class="h-section">Vos questions</h2>
       </div>
       <div class="faq">
-        ${question("Faut-il un diagnostic ?", "Non. Vous choisissez les besoins de votre enfant, avec ou sans diagnostic.")}
+        ${question("Dois-je indiquer pourquoi mon enfant a besoin d'un support adapté ?", "Non. Vous cochez simplement les critères pédagogiques qui l'aident&nbsp;: texte agrandi, lignes espacées, consignes en étapes… Vous pouvez les modifier à tout moment.")}
         ${question("Sur quels appareils ?", "Téléphone, tablette et ordinateur : voir la page <a href=\"/parents-enfants/telecharger/\">Télécharger</a>.")}
         ${question("Combien d'enfants ?", "Un abonnement couvre tous les enfants du foyer.")}
         ${question("Puis-je résilier ?", "Sans engagement, à tout moment. Avec engagement, à la fin des 6 mois.")}

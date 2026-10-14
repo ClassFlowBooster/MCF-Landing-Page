@@ -8,7 +8,7 @@ const t = texteProf(true, false);
 
 export default `<section class="page" data-tarifs="enseignants">
   <h1 class="t">Un prix simple, pour toute votre classe</h1>
-  <p class="lead">Toutes les adaptations DYS, TDAH, TSA, EANA et tous les outils de préparation.</p>
+  <p class="lead">Toutes les adaptations de vos supports et tous les outils de préparation.</p>
 
   ${controles("Engagement 1 an", "9,99 € les 6 premiers mois", "Résiliable à tout moment")}
 
@@ -32,7 +32,7 @@ export default `<section class="page" data-tarifs="enseignants">
       <div class="price" id="pPrice">${prixHtml(t)}</div>
       <div class="fine" id="pFine">${renvoiHtml(t)}</div>
       <a class="btn" href="https://app.myclassflow.fr">Je commence</a>
-      <ul class="feat"><li>Tout le gratuit, plus :</li><li>Adaptations des supports illimitées</li><li>Lia, votre assistante</li><li>PPRE, PAI, GEVA-Sco assistés par l'IA</li></ul>
+      <ul class="feat"><li>Tout le gratuit, plus :</li><li>Adaptations des supports illimitées</li><li>Lia, votre assistante</li></ul>
     </div>
     <div class="card">
       <span class="badge vert">Pour toute l'équipe</span>

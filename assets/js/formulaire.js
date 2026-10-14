@@ -39,7 +39,7 @@ export async function envoyer(corps, fetchImpl = fetch) {
 const MAILS = {
   direction: {
     sujet: "MyClassFlow pour notre école",
-    corps: "Bonjour,\n\nJ'utilise MyClassFlow pour adapter mes supports aux élèves à besoins particuliers. L'école peut équiper toute l'équipe, avec un prix qui baisse dès 5 enseignants :\nhttps://myclassflow.fr/ecoles/tarifs/\n\nBonne journée,",
+    corps: "Bonjour,\n\nJ'utilise MyClassFlow pour adapter mes supports à mes élèves. L'école peut équiper toute l'équipe, avec un prix qui baisse dès 5 enseignants :\nhttps://myclassflow.fr/ecoles/tarifs/\n\nBonne journée,",
   },
   ecole: {
     sujet: "MyClassFlow pour adapter les supports en classe",
