@@ -30,7 +30,7 @@ export function demo({ original = "Original", titre = "Les fractions — exercic
             </div>
             <div class="doc-arrow" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
           </div>${annotation ? `
-          <div class="demo-pin demo-pin--br">un clic = un doc adapté</div>` : ""}
+          <div class="demo-pin demo-pin--br">un clic = un doc personnalisé</div>` : ""}
         </div>`;
 }
 
