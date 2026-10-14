@@ -173,7 +173,8 @@ test("sélecteur d'espace : le castor de chaque espace, sans emoji", () => {
 });
 
 test("vocabulaire : les pages décrivent des adaptations, sans catégorie d'élèves", () => {
-  const INTERDITS = /troubl|dys|tdah|\btsa\b|\beana\b|diagnost|\bppre\b|\bpai\b|geva|handicap|besoins? (?:particulier|spécifique|éducatif)|livret de parcours|\blpi\b|neuro|déficien|patholog|aménagement|dispositif|\bprofils?\b/i;
+  // « aménagement » autorisé depuis la phrase de la page écoles choisie par Joseph (14 oct. 2026, 13 h 35)
+  const INTERDITS = /troubl|dys|tdah|\btsa\b|\beana\b|diagnost|\bppre\b|\bpai\b|geva|handicap|besoins? (?:particulier|spécifique|éducatif)|livret de parcours|\blpi\b|neuro|déficien|patholog|dispositif|\bprofils?\b/i;
   const sansImages = (t) => t.replace(/data:[a-z/+-]+;base64,[A-Za-z0-9+/=]+/g, "");
   for (const p of PAGES) {
     const m = page(p).match(INTERDITS);
