@@ -6,6 +6,11 @@ import { SITE, donneesStructurees } from "./donnees-structurees.mjs";
 
 export { SITE };
 
+// Balise de vérification Google Search Console (méthode « balise HTML ») : coller
+// ici la valeur de content="…" fournie par la Search Console, puis `npm run generer`.
+// Vide : aucune balise. Inutile si le domaine est validé par un enregistrement DNS.
+export const VERIFICATION_GOOGLE = "";
+
 export const ESPACES = {
   enseignants: { cle: "enseignants", libelle: "Espace Enseignants",
     cta: { texte: "Essayer gratuitement", href: "https://app.myclassflow.fr" }, tarifs: "Tarifs" },
@@ -76,7 +81,7 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>${echap(titre)}</title>
 <meta name="description" content="${echap(description)}" />
-${indexable ? `<link rel="canonical" href="${SITE}${chemin}" />` : `<meta name="robots" content="noindex" />`}
+${chemin === "/" && VERIFICATION_GOOGLE ? `<meta name="google-site-verification" content="${echap(VERIFICATION_GOOGLE)}" />\n` : ""}${indexable ? `<link rel="canonical" href="${SITE}${chemin}" />` : `<meta name="robots" content="noindex" />`}
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
