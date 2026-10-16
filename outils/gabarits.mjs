@@ -2,8 +2,14 @@
 // Le HTML final est écrit par outils/generer.mjs et commité (site statique).
 import { megaMenu as megaMenuDe } from "./corps/mega-menu.mjs";
 import { castor, castorDe } from "./corps/castors.mjs";
+import { SITE, donneesStructurees } from "./donnees-structurees.mjs";
 
-export const SITE = "https://myclassflow.fr";
+export { SITE };
+
+// Balise de vérification Google Search Console (méthode « balise HTML ») : coller
+// ici la valeur de content="…" fournie par la Search Console, puis `npm run generer`.
+// Vide : aucune balise. Inutile si le domaine est validé par un enregistrement DNS.
+export const VERIFICATION_GOOGLE = "";
 
 export const ESPACES = {
   enseignants: { cle: "enseignants", libelle: "Espace Enseignants",
@@ -64,7 +70,8 @@ function pied() {
 </div></footer>`;
 }
 
-export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "" }) {
+// indexable: false (page 404) : ni adresse canonique ni og:url, et « noindex ».
+export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "", indexable = true }) {
   const carte = CARTES[chemin === "/" ? "" : espace ?? ""];
   const js = scripts.map((s) => `<script type="module" src="/assets/js/${s}"></script>`).join("\n");
   return `<!DOCTYPE html>
@@ -74,21 +81,20 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>${echap(titre)}</title>
 <meta name="description" content="${echap(description)}" />
-<link rel="canonical" href="${SITE}${chemin}" />
+${chemin === "/" && VERIFICATION_GOOGLE ? `<meta name="google-site-verification" content="${echap(VERIFICATION_GOOGLE)}" />\n` : ""}${indexable ? `<link rel="canonical" href="${SITE}${chemin}" />` : `<meta name="robots" content="noindex" />`}
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
 <meta property="og:title" content="${echap(titre)}" />
 <meta property="og:description" content="${echap(description)}" />
-<meta property="og:url" content="${SITE}${chemin}" />
-<meta property="og:type" content="website" />
+${indexable ? `<meta property="og:url" content="${SITE}${chemin}" />\n` : ""}<meta property="og:type" content="website" />
 <meta property="og:site_name" content="MyClassFlow" />
 <meta property="og:image" content="${SITE}/assets/img/${carte.fichier}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="${echap(carte.alt)}" />
 <meta name="twitter:card" content="summary_large_image" />
-${chemin === "/" ? `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "MyClassFlow", url: `${SITE}/` })}</script>\n` : ""}<link rel="preconnect" href="https://fonts.googleapis.com" />
+${donneesStructurees(chemin)}<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
 <link rel="stylesheet" href="/assets/css/base.css" />

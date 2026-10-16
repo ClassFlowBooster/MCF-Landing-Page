@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
-import { PAGES } from "../outils/pages.mjs";
+import { PAGES, PAGE_404 } from "../outils/pages.mjs";
 import { page, ESPACES } from "../outils/gabarits.mjs";
 import { CASTOR_DE } from "../outils/corps/castors.mjs";
 
@@ -12,6 +12,20 @@ test("chaque page a un titre, une description, un canonical et la barre de son e
     assert.match(html, /<meta name="description" content="[^"]{50,}"/, p.chemin);
     assert.ok(html.includes(`<link rel="canonical" href="https://myclassflow.fr${p.chemin}"`), p.chemin);
     if (p.espace) assert.ok(html.includes(ESPACES[p.espace].libelle), p.chemin);
+  }
+});
+
+test("référencement : titre, description et grand titre distincts sur chaque page", () => {
+  const vus = { titre: new Map(), description: new Map(), h1: new Map() };
+  for (const p of PAGES) {
+    const html = page(p);
+    const h1s = [...html.matchAll(/<h1[^>]*>(.*?)<\/h1>/gs)];
+    assert.equal(h1s.length, 1, `${p.chemin} : ${h1s.length} grands titres`);
+    const valeurs = { titre: p.titre, description: p.description, h1: h1s[0][1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim() };
+    for (const [cle, v] of Object.entries(valeurs)) {
+      assert.ok(!vus[cle].has(v), `${cle} identique : ${vus[cle].get(v)} et ${p.chemin}`);
+      vus[cle].set(v, p.chemin);
+    }
   }
 });
 
@@ -183,5 +197,39 @@ test("vocabulaire : les pages décrivent des adaptations, sans catégorie d'él�
   for (const fichier of ["presentation/content.html", "assets/js/formulaire.js", "assets/css/base.css"]) {
     const m = sansImages(readFileSync(fichier, "utf8")).match(INTERDITS);
     assert.ok(!m, `${fichier} : « ${m?.[0]} »`);
+  }
+});
+
+test("données structurées : JSON valide, prix affichés sur la page même, questions identiques à la page", () => {
+  const html = Object.fromEntries(PAGES.map((p) => [p.chemin, page(p)]));
+  const graphes = {};
+  for (const [chemin, h] of Object.entries(html)) {
+    const blocs = [...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)];
+    assert.ok(blocs.length <= 1, chemin);
+    if (blocs.length) graphes[chemin] = JSON.parse(blocs[0][1])["@graph"];
+  }
+  for (const chemin of ["/", "/enseignants/", "/enseignants/tarifs/", "/ecoles/tarifs/", "/parents-enfants/", "/parents-enfants/tarifs/"])
+    assert.ok(graphes[chemin]?.some((o) => o["@type"] === "SoftwareApplication"), `${chemin} : application absente`);
+  assert.ok(graphes["/"].some((o) => o["@type"] === "Organization"), "organisation absente de /");
+  for (const [chemin, objets] of Object.entries(graphes))
+    for (const app of objets.filter((o) => o["@type"] === "SoftwareApplication"))
+      for (const o of app.offers)
+        for (const v of [o.price, o.lowPrice, o.highPrice].filter((x) => x && x !== "0.00"))
+          assert.ok(html[chemin].replace(/<script type="application\/ld\+json">.*?<\/script>/s, "").includes(v.replace(".", ",")), `${chemin} : ${app.name} à ${v} € n'est pas affiché sur la page`);
+  const faq = graphes["/parents-enfants/"].find((o) => o["@type"] === "FAQPage");
+  const visibles = [...html["/parents-enfants/"].matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
+  assert.deepEqual(faq.mainEntity.map((q) => q.name), visibles);
+});
+
+test("page 404 : fichier à jour, non indexée, hors du plan du site, liens absolus vers des pages existantes", () => {
+  const html = page(PAGE_404);
+  assert.equal(readFileSync("404.html", "utf8").replace(/\r\n/g, "\n"), html, "404.html n'est pas à jour (npm run generer)");
+  assert.ok(html.includes('<meta name="robots" content="noindex" />'));
+  assert.ok(!html.includes('rel="canonical"') && !html.includes("og:url"));
+  assert.ok(!readFileSync("sitemap.xml", "utf8").includes("404"));
+  const chemins = new Set(PAGES.map((p) => p.chemin));
+  for (const [, href] of html.matchAll(/href="([^"#?]*)"/g)) {
+    if (href.startsWith("http") || href.startsWith("/assets/") || href.startsWith("/presentation/")) continue;
+    assert.ok(chemins.has(href), `404 → ${href} introuvable ou relatif`);
   }
 });
