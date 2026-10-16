@@ -200,9 +200,8 @@ test("vocabulaire : les pages décrivent des adaptations, sans catégorie d'él�
   }
 });
 
-test("données structurées : JSON valide, prix affichés sur le site, questions identiques à la page", () => {
+test("données structurées : JSON valide, prix affichés sur la page même, questions identiques à la page", () => {
   const html = Object.fromEntries(PAGES.map((p) => [p.chemin, page(p)]));
-  const texteSite = Object.values(html).join(" ");
   const graphes = {};
   for (const [chemin, h] of Object.entries(html)) {
     const blocs = [...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)];
@@ -212,11 +211,11 @@ test("données structurées : JSON valide, prix affichés sur le site, questions
   for (const chemin of ["/", "/enseignants/", "/enseignants/tarifs/", "/ecoles/tarifs/", "/parents-enfants/", "/parents-enfants/tarifs/"])
     assert.ok(graphes[chemin]?.some((o) => o["@type"] === "SoftwareApplication"), `${chemin} : application absente`);
   assert.ok(graphes["/"].some((o) => o["@type"] === "Organization"), "organisation absente de /");
-  for (const objets of Object.values(graphes))
+  for (const [chemin, objets] of Object.entries(graphes))
     for (const app of objets.filter((o) => o["@type"] === "SoftwareApplication"))
       for (const o of app.offers)
         for (const v of [o.price, o.lowPrice, o.highPrice].filter((x) => x && x !== "0.00"))
-          assert.ok(texteSite.includes(v.replace(".", ",")), `${app.name} : ${v} € n'est affiché nulle part`);
+          assert.ok(html[chemin].replace(/<script type="application\/ld\+json">.*?<\/script>/s, "").includes(v.replace(".", ",")), `${chemin} : ${app.name} à ${v} € n'est pas affiché sur la page`);
   const faq = graphes["/parents-enfants/"].find((o) => o["@type"] === "FAQPage");
   const visibles = [...html["/parents-enfants/"].matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
   assert.deepEqual(faq.mainEntity.map((q) => q.name), visibles);

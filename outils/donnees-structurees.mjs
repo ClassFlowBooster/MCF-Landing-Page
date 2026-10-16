@@ -1,6 +1,6 @@
 // Données structurées (JSON-LD, schema.org) lues par les moteurs de recherche.
-// Les prix viennent de assets/js/tarifs.js : seulement ceux affichés sur le site.
-import { offreEnseignant, offreAdapter, PLEIN_TARIF_ECOLE, PLANCHER_ECOLE } from "../assets/js/tarifs.js";
+// Les prix viennent de assets/js/tarifs.js : seulement ceux affichés sur la page.
+import { offreEnseignant, offreAdapter, PLANCHER_ECOLE } from "../assets/js/tarifs.js";
 import { QUESTIONS_PARENTS } from "./corps/accueil-parents.mjs";
 
 export const SITE = "https://myclassflow.fr";
@@ -35,11 +35,12 @@ const OFFRES_ENSEIGNANT = [
   offre("Abonnement enseignant avec engagement d'un an", offreEnseignant(true).prix, offreEnseignant(true).renvoi),
 ];
 
+// Seul le prix plancher (« dès 9,99 € ») est affiché en toutes lettres sur les pages
+// Écoles : le plein tarif n'apparaît que dans le calculateur.
 const OFFRE_ECOLE = {
   "@type": "AggregateOffer",
   name: "Abonnement établissement",
   lowPrice: prix(PLANCHER_ECOLE),
-  highPrice: prix(PLEIN_TARIF_ECOLE),
   priceCurrency: "EUR",
   description: "Par enseignant et par mois, TTC : le prix baisse dès 5 enseignants.",
 };
@@ -67,7 +68,7 @@ const FAQ = {
 };
 
 const PAR_PAGE = {
-  "/": [ORGANISATION, SITE_WEB, APP([...OFFRES_ENSEIGNANT, OFFRE_ECOLE])],
+  "/": [ORGANISATION, SITE_WEB, APP(OFFRES_ENSEIGNANT)],
   "/enseignants/": [APP(OFFRES_ENSEIGNANT)],
   "/enseignants/tarifs/": [APP(OFFRES_ENSEIGNANT)],
   "/ecoles/": [APP([OFFRE_ECOLE])],
