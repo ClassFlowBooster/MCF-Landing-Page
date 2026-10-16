@@ -9,7 +9,7 @@ const prof = texteProf(true, false);
 // Grand titre : celui de « / » et celui de /enseignants/ diffèrent, pour que les
 // moteurs de recherche ne voient pas deux pages au même titre.
 export const TITRE_ENTREE = 'Adaptez chaque support <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.';
-export const TITRE_ENSEIGNANTS = 'Adaptez vos exercices et vos leçons <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.';
+export const TITRE_ENSEIGNANTS = 'Vos exercices adaptés <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.';
 
 export default (titre) => `<div class="acc">
   <section class="section hero">
