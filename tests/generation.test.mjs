@@ -5,6 +5,7 @@ import { PAGES, PAGE_404 } from "../outils/pages.mjs";
 import { page, ESPACES } from "../outils/gabarits.mjs";
 import { CASTOR_DE } from "../outils/corps/castors.mjs";
 import { THEMES, lienFiche } from "../outils/corps/catalogue.mjs";
+import { megaMenu } from "../outils/corps/mega-menu.mjs";
 import { FICHES } from "../outils/corps/fiches/index.mjs";
 import { adresseFiche, arianeFiche } from "../outils/corps/fiche.mjs";
 
@@ -248,6 +249,8 @@ test("fiches explicatives : chaque outil relié a sa page, les tarifs Enseignant
   for (const o of relies) {
     assert.ok(html("/enseignants/tarifs/").includes(`<a class="lien-fiche" href="${lienFiche(o)}">`), `tarifs → ${o.nom}`);
     assert.ok(html("/enseignants/fonctionnalites/").includes(`href="${lienFiche(o)}"`), `fonctionnalités → ${o.nom}`);
+    assert.ok(html("/enseignants/").includes(`<a class="lien-fiche" href="${lienFiche(o)}">${o.nom}</a>`), `accueil → ${o.nom}`);
+    assert.ok(megaMenu("enseignants").includes(`<a class="mi" href="${lienFiche(o)}">`), `méga-menu → ${o.nom}`);
   }
   // Q7 (MCF-Pilotage#53) : l'espace Écoles ne renvoie pas encore vers les fiches.
   for (const p of PAGES.filter((x) => x.espace === "ecoles"))
