@@ -2,8 +2,9 @@
 // Le HTML final est écrit par outils/generer.mjs et commité (site statique).
 import { megaMenu as megaMenuDe } from "./corps/mega-menu.mjs";
 import { castor, castorDe } from "./corps/castors.mjs";
+import { SITE, donneesStructurees } from "./donnees-structurees.mjs";
 
-export const SITE = "https://myclassflow.fr";
+export { SITE };
 
 export const ESPACES = {
   enseignants: { cle: "enseignants", libelle: "Espace Enseignants",
@@ -88,7 +89,7 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="${echap(carte.alt)}" />
 <meta name="twitter:card" content="summary_large_image" />
-${chemin === "/" ? `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "MyClassFlow", url: `${SITE}/` })}</script>\n` : ""}<link rel="preconnect" href="https://fonts.googleapis.com" />
+${donneesStructurees(chemin)}<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
 <link rel="stylesheet" href="/assets/css/base.css" />
