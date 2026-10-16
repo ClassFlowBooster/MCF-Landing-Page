@@ -65,7 +65,8 @@ function pied() {
 </div></footer>`;
 }
 
-export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "" }) {
+// indexable: false (page 404) : ni adresse canonique ni og:url, et « noindex ».
+export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "", indexable = true }) {
   const carte = CARTES[chemin === "/" ? "" : espace ?? ""];
   const js = scripts.map((s) => `<script type="module" src="/assets/js/${s}"></script>`).join("\n");
   return `<!DOCTYPE html>
@@ -75,14 +76,13 @@ export function page({ espace, rubrique = "", titre, description, chemin, corps,
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>${echap(titre)}</title>
 <meta name="description" content="${echap(description)}" />
-<link rel="canonical" href="${SITE}${chemin}" />
+${indexable ? `<link rel="canonical" href="${SITE}${chemin}" />` : `<meta name="robots" content="noindex" />`}
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
 <meta property="og:title" content="${echap(titre)}" />
 <meta property="og:description" content="${echap(description)}" />
-<meta property="og:url" content="${SITE}${chemin}" />
-<meta property="og:type" content="website" />
+${indexable ? `<meta property="og:url" content="${SITE}${chemin}" />\n` : ""}<meta property="og:type" content="website" />
 <meta property="og:site_name" content="MyClassFlow" />
 <meta property="og:image" content="${SITE}/assets/img/${carte.fichier}" />
 <meta property="og:image:width" content="1200" />

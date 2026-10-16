@@ -563,3 +563,8 @@ html{scroll-padding-top:72px}
 @media (max-width: 480px){
   .castor-hero{display:none}
 }
+/* Page 404 */
+.introuvable{text-align:center;padding-top:64px;padding-bottom:64px}
+.castor-introuvable{height:140px;width:auto;margin:0 auto 18px}
+.introuvable-liens{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 20px}
+.introuvable .lead a{color:var(--coral);font-weight:600}

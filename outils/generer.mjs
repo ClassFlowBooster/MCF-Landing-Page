@@ -1,8 +1,8 @@
-// Écrit chaque page de PAGES dans <chemin>/index.html, puis sitemap.xml et
-// robots.txt. À relancer après toute modification d'un gabarit ou d'une page :
-// `npm run generer`.
+// Écrit chaque page de PAGES dans <chemin>/index.html, la page 404 dans
+// 404.html, puis sitemap.xml et robots.txt. À relancer après toute
+// modification d'un gabarit ou d'une page : `npm run generer`.
 import { mkdirSync, writeFileSync } from "node:fs";
-import { PAGES } from "./pages.mjs";
+import { PAGES, PAGE_404 } from "./pages.mjs";
 import { page, SITE } from "./gabarits.mjs";
 
 for (const p of PAGES) {
@@ -11,6 +11,9 @@ for (const p of PAGES) {
   writeFileSync(`${dossier}index.html`, page(p));
   console.log(`écrit ${dossier}index.html`);
 }
+
+writeFileSync("404.html", page(PAGE_404));
+console.log("écrit 404.html");
 
 const urls = PAGES.map((p) => `  <url><loc>${SITE}${p.chemin}</loc></url>`).join("\n");
 writeFileSync("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);

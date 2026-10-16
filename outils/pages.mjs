@@ -9,6 +9,7 @@ import entree from "./corps/entree.mjs";
 import accueilEnseignants, { TITRE_ENTREE, TITRE_ENSEIGNANTS } from "./corps/accueil-enseignants.mjs";
 import accueilEcoles from "./corps/accueil-ecoles.mjs";
 import accueilParents from "./corps/accueil-parents.mjs";
+import introuvable from "./corps/introuvable.mjs";
 
 export const PAGES = [
   { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "entree.js", "formulaire.js"],
@@ -64,3 +65,9 @@ export const PAGES = [
     description: "Installez MyClassFlow Famille sur votre téléphone, votre tablette ou votre ordinateur : Mac, Windows, Android, iPhone ou iPad, en quelques secondes.",
     corps: telecharger("parents-enfants") },
 ];
+
+// Page 404 : écrite dans 404.html, hors du plan du site et non indexée.
+export const PAGE_404 = { chemin: "/404.html", indexable: false,
+  titre: "Page introuvable — MyClassFlow",
+  description: "Cette page n'existe pas ou a changé d'adresse. Retrouvez l'espace Enseignants, Écoles ou Parents / Enfants de MyClassFlow.",
+  corps: introuvable };

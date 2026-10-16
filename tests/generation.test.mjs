@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
-import { PAGES } from "../outils/pages.mjs";
+import { PAGES, PAGE_404 } from "../outils/pages.mjs";
 import { page, ESPACES } from "../outils/gabarits.mjs";
 import { CASTOR_DE } from "../outils/corps/castors.mjs";
 
@@ -220,4 +220,17 @@ test("données structurées : JSON valide, prix affichés sur le site, questions
   const faq = graphes["/parents-enfants/"].find((o) => o["@type"] === "FAQPage");
   const visibles = [...html["/parents-enfants/"].matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
   assert.deepEqual(faq.mainEntity.map((q) => q.name), visibles);
+});
+
+test("page 404 : fichier à jour, non indexée, hors du plan du site, liens absolus vers des pages existantes", () => {
+  const html = page(PAGE_404);
+  assert.equal(readFileSync("404.html", "utf8").replace(/\r\n/g, "\n"), html, "404.html n'est pas à jour (npm run generer)");
+  assert.ok(html.includes('<meta name="robots" content="noindex" />'));
+  assert.ok(!html.includes('rel="canonical"') && !html.includes("og:url"));
+  assert.ok(!readFileSync("sitemap.xml", "utf8").includes("404"));
+  const chemins = new Set(PAGES.map((p) => p.chemin));
+  for (const [, href] of html.matchAll(/href="([^"#?]*)"/g)) {
+    if (href.startsWith("http") || href.startsWith("/assets/") || href.startsWith("/presentation/")) continue;
+    assert.ok(chemins.has(href), `404 → ${href} introuvable ou relatif`);
+  }
 });
