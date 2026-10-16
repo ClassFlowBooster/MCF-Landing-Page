@@ -4,6 +4,10 @@ import { readFileSync, existsSync } from "node:fs";
 import { PAGES, PAGE_404 } from "../outils/pages.mjs";
 import { page, ESPACES } from "../outils/gabarits.mjs";
 import { CASTOR_DE } from "../outils/corps/castors.mjs";
+import { THEMES, lienFiche } from "../outils/corps/catalogue.mjs";
+import { megaMenu } from "../outils/corps/mega-menu.mjs";
+import { FICHES } from "../outils/corps/fiches/index.mjs";
+import { adresseFiche, arianeFiche } from "../outils/corps/fiche.mjs";
 
 test("chaque page a un titre, une description, un canonical et la barre de son espace", () => {
   for (const p of PAGES) {
@@ -58,9 +62,9 @@ test("sitemap.xml et robots.txt à jour", () => {
   assert.match(readFileSync("robots.txt", "utf8"), /Sitemap: https:\/\/myclassflow\.fr\/sitemap\.xml/);
 });
 
-test("13 pages : l'entrée et quatre pages par espace", () => {
-  assert.equal(PAGES.length, 13);
-  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 13);
+test("13 pages plus les fiches : l'entrée, quatre pages par espace, une page par fiche", () => {
+  assert.equal(PAGES.length, 13 + FICHES.length);
+  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 13 + FICHES.length);
 });
 
 test("prix des écoles en TTC : aucun « HT » sur les pages tarifs, hors la ligne « Montant HT »", () => {
@@ -194,7 +198,7 @@ test("vocabulaire : les pages décrivent des adaptations, sans catégorie d'él�
     const m = page(p).match(INTERDITS);
     assert.ok(!m, `${p.chemin} : « ${m?.[0]} »`);
   }
-  for (const fichier of ["presentation/content.html", "assets/js/formulaire.js", "assets/css/base.css"]) {
+  for (const fichier of ["presentation/content.html", "assets/js/formulaire.js", "assets/css/base.css", "outils/modeles/fiche-de-preparation.html"]) {
     const m = sansImages(readFileSync(fichier, "utf8")).match(INTERDITS);
     assert.ok(!m, `${fichier} : « ${m?.[0]} »`);
   }
@@ -219,6 +223,38 @@ test("données structurées : JSON valide, prix affichés sur la page même, que
   const faq = graphes["/parents-enfants/"].find((o) => o["@type"] === "FAQPage");
   const visibles = [...html["/parents-enfants/"].matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
   assert.deepEqual(faq.mainEntity.map((q) => q.name), visibles);
+});
+
+test("fiches explicatives : fil d'Ariane et questions balisés, identiques à la page", () => {
+  for (const f of FICHES) {
+    const chemin = adresseFiche(f);
+    const html = page(PAGES.find((p) => p.chemin === chemin));
+    const graphe = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])["@graph"];
+    const ariane = graphe.find((o) => o["@type"] === "BreadcrumbList").itemListElement;
+    assert.deepEqual(ariane.map((e) => e.name), arianeFiche(f).map(([nom]) => nom), chemin);
+    assert.equal(ariane.at(-1).item, `https://myclassflow.fr${chemin}`, chemin);
+    const visibles = [...html.matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
+    assert.deepEqual(graphe.find((o) => o["@type"] === "FAQPage").mainEntity.map((q) => q.name), visibles, chemin);
+    assert.ok(visibles.length >= 4 && visibles.length <= 6, `${chemin} : ${visibles.length} questions`);
+    for (const [, href] of html.matchAll(/href="(\/assets\/[^"]+)"/g)) assert.ok(existsSync(`.${href}`), `${chemin} → ${href} absent`);
+  }
+});
+
+test("fiches explicatives : chaque outil relié a sa page, les tarifs Enseignants y renvoient, pas l'espace Écoles", () => {
+  const chemins = new Set(PAGES.map((p) => p.chemin));
+  const relies = THEMES.flatMap((t) => t.outils).filter((o) => o.fiche);
+  assert.ok(relies.length > 0);
+  for (const o of relies) assert.ok(chemins.has(lienFiche(o)), `${o.nom} → ${lienFiche(o)} sans page`);
+  const html = (chemin) => page(PAGES.find((p) => p.chemin === chemin));
+  for (const o of relies) {
+    assert.ok(html("/enseignants/tarifs/").includes(`<a class="lien-fiche" href="${lienFiche(o)}">`), `tarifs → ${o.nom}`);
+    assert.ok(html("/enseignants/fonctionnalites/").includes(`href="${lienFiche(o)}"`), `fonctionnalités → ${o.nom}`);
+    assert.ok(html("/enseignants/").includes(`<a class="lien-fiche" href="${lienFiche(o)}">${o.nom}</a>`), `accueil → ${o.nom}`);
+    assert.ok(megaMenu("enseignants").includes(`<a class="mi" href="${lienFiche(o)}">`), `méga-menu → ${o.nom}`);
+  }
+  // Q7 (MCF-Pilotage#53) : l'espace Écoles ne renvoie pas encore vers les fiches.
+  for (const p of PAGES.filter((x) => x.espace === "ecoles"))
+    assert.ok(!/href="\/enseignants\/fonctionnalites\/[^"]+\/"/.test(page(p)), `${p.chemin} renvoie vers une fiche`);
 });
 
 test("page 404 : fichier à jour, non indexée, hors du plan du site, liens absolus vers des pages existantes", () => {

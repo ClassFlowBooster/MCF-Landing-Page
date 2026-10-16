@@ -568,3 +568,88 @@ html{scroll-padding-top:72px}
 .castor-introuvable{height:140px;width:auto;margin:0 auto 18px}
 .introuvable-liens{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 20px}
 .introuvable .lead a{color:var(--coral);font-weight:600}
+
+/* ---------- Liens vers les fiches explicatives ---------- */
+.lien-fiche{text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:3px}
+.lien-fiche:hover{color:var(--coral-700);text-decoration-style:solid}
+@media (max-width: 600px){
+  .feat li{padding:4px 0}
+  .lien-fiche{display:inline-block;min-height:24px;line-height:24px}
+}
+
+/* ---------- Fiche explicative (/enseignants/fonctionnalites/<fiche>/) ---------- */
+.fiche{max-width:880px;line-height:1.55;color:var(--ink);box-sizing:border-box}
+.fiche *{box-sizing:border-box}
+.ariane ol{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:13px;color:var(--ink-2)}
+.ariane li+li:before{content:"›";margin-right:8px}
+.ariane a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
+.ariane a:hover{color:var(--coral-700)}
+.fiche-tete{text-align:center;margin-bottom:12px}
+.fiche-tete .tg{display:inline-block;margin-bottom:10px}
+.fiche-intro{max-width:680px;margin:6px auto 0;color:var(--ink-2);font-size:16px}
+.fiche-partie{margin-top:40px}
+.fiche-partie h2{font-family:Fraunces,serif;font-size:25px;font-weight:600;margin:0 0 14px}
+.fiche-partie h3{font-family:Fraunces,serif;font-size:20px;font-weight:600;margin:0 0 10px}
+.fiche-partie p{margin:0 0 10px}
+.benefices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.benefice{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.benefice b{display:block;margin-bottom:4px}
+.benefice p{margin:0;font-size:14px;color:var(--ink-2)}
+.fiche-comment{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start}
+.fiche-etapes{list-style:none;margin:0;padding:0;counter-reset:etape;display:flex;flex-direction:column;gap:14px}
+.fiche-etapes li{counter-increment:etape;position:relative;padding-left:46px}
+.fiche-etapes li:before{content:counter(etape);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:99px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700}
+.fiche-etapes p{margin:2px 0 0;font-size:14.5px;color:var(--ink-2)}
+.maquette-fiche{margin:0}
+.mf-ecran{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 14px 34px rgba(31,26,20,.08);font-size:12.5px;color:var(--ink-2)}
+.mf-chemin{font-size:11.5px;color:var(--ink-2)}
+.mf-titre{font-family:Fraunces,serif;font-size:19px;font-weight:600;color:var(--ink);margin:4px 0 10px}
+.mf-onglets{display:flex;background:var(--paper-2);border-radius:10px;padding:3px;margin-bottom:12px}
+.mf-onglets span{flex:1;text-align:center;padding:5px;border-radius:8px;font-weight:600;color:var(--ink-3)}
+.mf-onglets span.on{background:#fff;color:var(--ink)}
+.mf-etiquette{font:700 10px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:8px 0 6px}
+.mf-puces{display:flex;flex-wrap:wrap;gap:5px}
+.mf-puces span{background:var(--paper-2);border:1px solid var(--line);border-radius:99px;padding:3px 9px}
+.mf-deroule{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.mf-deroule b{color:var(--ink)}
+.mf-bouton{margin-top:14px;background:var(--coral);color:#fff;border-radius:10px;padding:8px;text-align:center;font-weight:600}
+.maquette-fiche figcaption{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}
+.rubriques{margin:14px 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px}
+.rubriques dt{font-weight:700}
+.rubriques dd{margin:2px 0 0;font-size:14px;color:var(--ink-2)}
+.exemple-fiche{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.exemple-tete{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px}
+.exemple-tete b{color:var(--ink-2);font-weight:600;margin-right:4px}
+.tableau-defile{overflow-x:auto;margin:14px 0}
+.tableau-defile table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+.tableau-defile caption{text-align:left;font-weight:700;margin-bottom:6px}
+.tableau-defile th,.tableau-defile td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.tableau-defile thead th{background:var(--paper-2);font-size:12.5px}
+.tableau-defile tbody th,.tableau-defile td:nth-child(2){white-space:nowrap}
+.modele{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#fff;border:1.5px dashed var(--coral);border-radius:18px;padding:16px 20px}
+.modele p{margin:2px 0 0;font-size:13.5px;color:var(--ink-2)}
+.fiche-offre{margin-top:40px}
+.fiche-offre .tg{display:inline-block;margin-bottom:6px}
+.fiche-offre b{display:block}
+.fiche-offre-actions{display:flex;flex-direction:column;align-items:center;gap:8px}
+.fiche-tarifs{display:inline-flex;align-items:center;min-height:32px;color:#F4EFE6;font-size:13px;text-decoration:underline;text-underline-offset:2px}
+.defile-indice{display:none;margin:-6px 0 12px;font-size:12.5px;color:var(--ink-2);text-align:right}
+.fiche .faq{max-width:none}
+.soeurs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.soeur{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.soeur:hover{border-color:var(--coral-100)}
+.soeur b{font-size:14.5px}
+.soeur span.t{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+@media (max-width: 760px){
+  .benefices,.soeurs,.rubriques{grid-template-columns:1fr}
+  .fiche-comment{grid-template-columns:1fr}
+  .maquette-fiche{max-width:320px;margin:0 auto}
+  .modele,.fiche-offre{flex-direction:column;align-items:flex-start}
+  .fiche-offre-actions{align-items:flex-start}
+}
+@media (max-width: 600px){
+  .fiche{padding-left:16px;padding-right:16px}
+  .ariane a{display:inline-flex;align-items:center;min-height:24px}
+  .defile-indice{display:block}
+  .exemple-fiche{padding:16px}
+}

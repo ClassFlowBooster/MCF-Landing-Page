@@ -10,6 +10,8 @@ import accueilEnseignants, { TITRE_ENTREE, TITRE_ENSEIGNANTS } from "./corps/acc
 import accueilEcoles from "./corps/accueil-ecoles.mjs";
 import accueilParents from "./corps/accueil-parents.mjs";
 import introuvable from "./corps/introuvable.mjs";
+import { fiche, adresseFiche } from "./corps/fiche.mjs";
+import { FICHES } from "./corps/fiches/index.mjs";
 
 export const PAGES = [
   { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "entree.js", "formulaire.js"],
@@ -64,6 +66,9 @@ export const PAGES = [
     titre: "Télécharger MyClassFlow Famille — Mac, Windows, Android, iPhone",
     description: "Installez MyClassFlow Famille sur votre téléphone, votre tablette ou votre ordinateur : Mac, Windows, Android, iPhone ou iPad, en quelques secondes.",
     corps: telecharger("parents-enfants") },
+  // Fiches explicatives : rubrique Fonctionnalités de l'espace Enseignants.
+  ...FICHES.map((f) => ({ chemin: adresseFiche(f), espace: "enseignants", rubrique: "fonctionnalites",
+    titre: f.titre, description: f.description, corps: fiche(f) })),
 ];
 
 // Page 404 : écrite dans 404.html, hors du plan du site et non indexée.

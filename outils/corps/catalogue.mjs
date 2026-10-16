@@ -1,6 +1,7 @@
 // Catalogue des fonctionnalités : source unique du méga-menu, des pages
 // Fonctionnalités et de l'aperçu de l'accueil. `court` : ligne du menu ;
-// `long` : texte de la carte ; `page: false` : absente de la page (menu seul).
+// `long` : texte de la carte ; `page: false` : absente de la page (menu seul) ;
+// `fiche` : adresse courte de sa fiche explicative, quand elle existe.
 
 export const THEMES = [
   { titre: "Adapter pour chaque élève", sous: "L'IA fait le travail d'adaptation, vous validez.", outils: [
@@ -14,7 +15,7 @@ export const THEMES = [
       long: "Votre journée se remplit toute seule à partir de l'emploi du temps et des fiches." },
     { ico: "🗓️", nom: "Emploi du temps", k: "free", court: "Glissez vos séances, le volume horaire se calcule",
       long: "Glissez-déposez vos séances, le volume horaire par matière se calcule." },
-    { ico: "📝", nom: "Fiches de préparation", k: "free", court: "Séances et séquences, simplement",
+    { ico: "📝", nom: "Fiches de préparation", k: "free", fiche: "fiche-de-preparation", court: "Séances et séquences, simplement",
       long: "Séances et séquences, avec objectifs et compétences." },
     { ico: "✅", nom: "Agenda et tâches", k: "free", court: "Réunions, rendez-vous, choses à faire", page: false },
   ] },
@@ -41,3 +42,15 @@ export const ADAPTER = [
 ];
 
 export const libelleBadge = (o) => o.badge ?? (o.k === "free" ? "Gratuit" : "Abonnement");
+
+/** Adresse de la fiche explicative d'un outil, ou null s'il n'en a pas encore. */
+export const lienFiche = (o) => (o.fiche ? `/enseignants/fonctionnalites/${o.fiche}/` : null);
+
+/** Outil du catalogue Enseignants, par son nom affiché. */
+export const outil = (nom) => THEMES.flatMap((t) => t.outils).find((o) => o.nom === nom);
+
+/** Texte lié à la fiche de l'outil si elle existe, texte seul sinon. */
+export const nomLie = (o, texte = o.nom) => {
+  const href = lienFiche(o);
+  return href ? `<a class="lien-fiche" href="${href}">${texte}</a>` : texte;
+};
