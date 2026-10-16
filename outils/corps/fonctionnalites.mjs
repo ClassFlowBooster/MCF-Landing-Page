@@ -1,8 +1,9 @@
 // Pages « Fonctionnalités » des trois espaces.
-import { THEMES, ADAPTER, libelleBadge } from "./catalogue.mjs";
+import { THEMES, ADAPTER, libelleBadge, nomLie } from "./catalogue.mjs";
 
-const carte = (o) =>
-  `<div class="fc" data-k="${o.k}"><div class="top"><span class="ico" aria-hidden="true">${o.ico}</span><span class="tg ${o.k}">${libelleBadge(o)}</span></div><b>${o.nom}</b><span class="t">${o.long}</span></div>`;
+// `lie` : nom relié à la fiche de l'outil (espace Enseignants seulement, cf. mega-menu.mjs).
+const carte = (o, lie = false) =>
+  `<div class="fc" data-k="${o.k}"><div class="top"><span class="ico" aria-hidden="true">${o.ico}</span><span class="tg ${o.k}">${libelleBadge(o)}</span></div><b>${lie ? nomLie(o) : o.nom}</b><span class="t">${o.long}</span></div>`;
 
 const ruban = (titre, texte, bouton, href) =>
   `<div class="ribbon"><div><b>${titre}</b><p>${texte}</p></div><a class="btn" href="${href}">${bouton}</a></div>`;
@@ -14,7 +15,7 @@ export function fonctionnalites(espace) {
   <p class="lead">MyClassFlow Famille transforme les leçons et les exercices selon les critères pédagogiques que vous cochez.</p>
   <div class="theme"><h3>MyClassFlow Famille</h3><p class="s">Une photo suffit : vous gardez la main sur les critères choisis.</p>
     <div class="grid deux">
-      ${ADAPTER.map(carte).join("\n      ")}
+      ${ADAPTER.map((o) => carte(o)).join("\n      ")}
     </div></div>
   ${ruban("Essayez gratuitement : 3 adaptations offertes", "Sans carte bancaire. Un abonnement couvre ensuite tous les enfants du foyer.", "Essayer gratuitement", "https://adapter.myclassflow.fr")}
 </section>`;
@@ -27,7 +28,7 @@ export function fonctionnalites(espace) {
 
   ${THEMES.map((t) => `<div class="theme"><h3>${t.titre}</h3><p class="s">${t.sous}</p>
     <div class="grid">
-      ${t.outils.filter((o) => o.page !== false).map(carte).join("\n      ")}
+      ${t.outils.filter((o) => o.page !== false).map((o) => carte(o, !ecoles)).join("\n      ")}
     </div></div>`).join("\n\n  ")}
 
   ${ecoles

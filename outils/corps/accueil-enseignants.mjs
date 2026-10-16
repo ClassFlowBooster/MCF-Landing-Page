@@ -1,6 +1,6 @@
 // Accueil de l'espace Enseignants (aussi affiché, flouté, derrière l'écran d'entrée de « / »).
 import { texteProf, prixHtml, renvoiHtml, insecables, badgeEnseignant } from "../../assets/js/tarifs-ui.js";
-import { THEMES, libelleBadge } from "./catalogue.mjs";
+import { THEMES, libelleBadge, nomLie } from "./catalogue.mjs";
 import { COCHE, FLECHE, comparateur, FAMILLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 
@@ -57,7 +57,7 @@ export default (titre) => `<div class="acc">
         <p class="llede">La gestion de classe est gratuite, avec 3 adaptations offertes. L'IA qui adapte vos supports est dans l'abonnement.</p>
       </div>
       <div class="themes">
-        ${THEMES.map((t) => `<div class="theme-carte"><h3>${t.titre}</h3><p>${t.sous}</p><ul>${t.outils.map((o) => `<li>${o.nom} <span class="tg ${o.k}">${libelleBadge(o)}</span></li>`).join("")}</ul></div>`).join("\n        ")}
+        ${THEMES.map((t) => `<div class="theme-carte"><h3>${t.titre}</h3><p>${t.sous}</p><ul>${t.outils.map((o) => `<li>${nomLie(o)} <span class="tg ${o.k}">${libelleBadge(o)}</span></li>`).join("")}</ul></div>`).join("\n        ")}
       </div>
       <p class="centre"><a class="lien-suite" href="/enseignants/fonctionnalites/">Voir toutes les fonctionnalités →</a></p>
     </div>
