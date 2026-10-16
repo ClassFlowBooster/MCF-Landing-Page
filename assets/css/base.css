@@ -625,11 +625,12 @@ html{scroll-padding-top:72px}
 .tableau-defile caption{text-align:left;font-weight:700;margin-bottom:6px}
 .tableau-defile th,.tableau-defile td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
 .tableau-defile thead th{background:var(--paper-2);font-size:12.5px}
-.tableau-defile tbody th{white-space:nowrap}
+.tableau-defile tbody th,.tableau-defile td:nth-child(2){white-space:nowrap}
 .modele{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#fff;border:1.5px dashed var(--coral);border-radius:18px;padding:16px 20px}
 .modele p{margin:2px 0 0;font-size:13.5px;color:var(--ink-2)}
 .fiche-offre{margin-top:40px}
 .fiche-offre .tg{display:inline-block;margin-bottom:6px}
+.fiche-offre b{display:block}
 .fiche-offre-actions{display:flex;flex-direction:column;align-items:center;gap:8px}
 .fiche-tarifs{color:#F4EFE6;font-size:13px;text-decoration:underline;text-underline-offset:2px}
 .fiche .faq{max-width:none}
