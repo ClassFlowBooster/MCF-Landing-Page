@@ -15,6 +15,20 @@ test("chaque page a un titre, une description, un canonical et la barre de son e
   }
 });
 
+test("référencement : titre, description et grand titre distincts sur chaque page", () => {
+  const vus = { titre: new Map(), description: new Map(), h1: new Map() };
+  for (const p of PAGES) {
+    const html = page(p);
+    const h1s = [...html.matchAll(/<h1[^>]*>(.*?)<\/h1>/gs)];
+    assert.equal(h1s.length, 1, `${p.chemin} : ${h1s.length} grands titres`);
+    const valeurs = { titre: p.titre, description: p.description, h1: h1s[0][1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim() };
+    for (const [cle, v] of Object.entries(valeurs)) {
+      assert.ok(!vus[cle].has(v), `${cle} identique : ${vus[cle].get(v)} et ${p.chemin}`);
+      vus[cle].set(v, p.chemin);
+    }
+  }
+});
+
 test("le nom « Class Flow » en deux mots n'apparaît plus", () => {
   for (const p of PAGES) assert.ok(!page(p).includes("Class Flow "), p.chemin);
 });

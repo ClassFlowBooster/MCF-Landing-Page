@@ -6,12 +6,17 @@ import { castorDe } from "./castors.mjs";
 
 const prof = texteProf(true, false);
 
-export default `<div class="acc">
+// Grand titre : celui de « / » et celui de /enseignants/ diffèrent, pour que les
+// moteurs de recherche ne voient pas deux pages au même titre.
+export const TITRE_ENTREE = 'Adaptez chaque support <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.';
+export const TITRE_ENSEIGNANTS = 'Adaptez vos exercices et vos leçons <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.';
+
+export default (titre) => `<div class="acc">
   <section class="section hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <div class="hero-badge"><span class="pill">Nouveau</span><span>L'inclusion scolaire, <b>sans la charge de travail</b></span></div>
-        <h1 class="h-display">Adaptez chaque support <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.</h1>
+        <h1 class="h-display">${titre}</h1>
         <p class="llede">MyClassFlow régénère vos exercices et vos leçons selon les critères pédagogiques que vous cochez&nbsp;: texte agrandi, mise en page aérée, consignes en étapes… Vous gagnez des heures&nbsp;; chaque élève reçoit un support personnalisé.</p>
         <div class="hero-actions">
           <a class="lbtn lbtn-primary lbtn-lg" href="https://app.myclassflow.fr">Créer mon compte gratuit ${FLECHE}</a>

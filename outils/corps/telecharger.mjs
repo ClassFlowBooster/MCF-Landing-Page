@@ -13,7 +13,7 @@ export function telecharger(espace) {
   const { nom } = application(espace);
   const d = etapes("win", espace);
   return `<section class="page">
-  <h1 class="t">${nom} sur tous vos appareils</h1>
+  <h1 class="t">${nom} sur tous ${espace === "ecoles" ? "les appareils de l'équipe" : "vos appareils"}</h1>
   <p class="lead">Installez l'app en quelques secondes : elle s'ouvre comme n'importe quelle application, depuis votre écran d'accueil ou votre Dock.</p>
 
   <div class="dl" id="dl" role="group" aria-label="Choisir votre appareil">
