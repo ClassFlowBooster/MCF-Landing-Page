@@ -50,6 +50,7 @@ const exemple = `<p>Une fiche de préparation tient sur une page. Voici les rubr
           </tbody>
         </table>
       </div>
+      <p class="defile-indice" aria-hidden="true">Faites défiler le tableau →</p>
       <p><b>Différenciation :</b> la fiche d'exercices existe aussi en version adaptée, avec un texte agrandi, des lignes espacées, des figures déjà partagées et la consigne découpée en étapes. Prolongement pour ceux qui ont fini : comparer 2/3 et 3/4.</p>
       <p><b>Évaluation :</b> l'objectif est atteint quand l'élève range correctement les quatre fractions et justifie au moins une comparaison par une phrase.</p>
       <p><b>Bilan :</b> à remplir après la séance, par exemple « 5/4 a posé problème : reprendre les fractions plus grandes que 1 en séance 4 ».</p>
@@ -110,7 +111,7 @@ export default {
   questions: [
     ["Quelle différence entre une fiche de préparation et une fiche de séquence ?", "La fiche de séquence présente tout un apprentissage sur plusieurs séances : l'objectif final, la liste des séances et l'évaluation. La fiche de préparation détaille une seule de ces séances, phase par phase."],
     ["La fiche de préparation est-elle obligatoire ?", "Aucun texte n'impose un modèle. En revanche, préparer sa classe fait partie du métier : lors d'une visite, l'inspecteur ou le conseiller pédagogique peut demander à voir vos préparations et votre cahier journal."],
-    ["Que doit trouver un remplaçant dans une fiche de préparation ?", "L'objectif, le matériel et où le trouver, le déroulement minuté, et ce que les élèves ont fait à la séance précédente. Une fiche lisible par quelqu'un d'autre est aussi plus facile à reprendre pour vous l'année suivante."],
+    ["Que mettre dans une fiche de préparation pour un remplaçant ?", "L'objectif, le matériel et où le trouver, le déroulement minuté, et ce que les élèves ont fait à la séance précédente. Une fiche lisible par quelqu'un d'autre est aussi plus facile à reprendre pour vous l'année suivante."],
     ["Comment différencier dans une fiche de préparation ?", "Prévoyez, pour le même objectif, un support plus lisible (texte agrandi, lignes espacées, consigne découpée en étapes), une aide matérielle et un prolongement. Dans MyClassFlow, l'abonnement adapte vos supports en quelques secondes selon les critères pédagogiques que vous cochez."],
     ["Peut-on réutiliser ses fiches d'une année sur l'autre ?", "Oui. Dans MyClassFlow, vos fiches restent dans votre banque, rangées en dossiers : vous les dupliquez et les ajustez au lieu de tout réécrire."],
     ["Les fiches de préparation sont-elles gratuites dans MyClassFlow ?", "Oui, comme le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire."],

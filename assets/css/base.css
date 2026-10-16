@@ -580,7 +580,7 @@ html{scroll-padding-top:72px}
 /* ---------- Fiche explicative (/enseignants/fonctionnalites/<fiche>/) ---------- */
 .fiche{max-width:880px;line-height:1.55;color:var(--ink);box-sizing:border-box}
 .fiche *{box-sizing:border-box}
-.ariane ol{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:4px 8px;font-size:13px;color:var(--ink-3)}
+.ariane ol{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:13px;color:var(--ink-2)}
 .ariane li+li:before{content:"›";margin-right:8px}
 .ariane a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
 .ariane a:hover{color:var(--coral-700)}
@@ -602,7 +602,7 @@ html{scroll-padding-top:72px}
 .fiche-etapes p{margin:2px 0 0;font-size:14.5px;color:var(--ink-2)}
 .maquette-fiche{margin:0}
 .mf-ecran{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 14px 34px rgba(31,26,20,.08);font-size:12.5px;color:var(--ink-2)}
-.mf-chemin{font-size:11.5px;color:var(--ink-3)}
+.mf-chemin{font-size:11.5px;color:var(--ink-2)}
 .mf-titre{font-family:Fraunces,serif;font-size:19px;font-weight:600;color:var(--ink);margin:4px 0 10px}
 .mf-onglets{display:flex;background:var(--paper-2);border-radius:10px;padding:3px;margin-bottom:12px}
 .mf-onglets span{flex:1;text-align:center;padding:5px;border-radius:8px;font-weight:600;color:var(--ink-3)}
@@ -613,13 +613,13 @@ html{scroll-padding-top:72px}
 .mf-deroule{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 .mf-deroule b{color:var(--ink)}
 .mf-bouton{margin-top:14px;background:var(--coral);color:#fff;border-radius:10px;padding:8px;text-align:center;font-weight:600}
-.maquette-fiche figcaption{font-size:12px;color:var(--ink-3);text-align:center;margin-top:8px}
+.maquette-fiche figcaption{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}
 .rubriques{margin:14px 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px}
 .rubriques dt{font-weight:700}
 .rubriques dd{margin:2px 0 0;font-size:14px;color:var(--ink-2)}
 .exemple-fiche{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
 .exemple-tete{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px}
-.exemple-tete b{color:var(--ink-3);font-weight:600;margin-right:4px}
+.exemple-tete b{color:var(--ink-2);font-weight:600;margin-right:4px}
 .tableau-defile{overflow-x:auto;margin:14px 0}
 .tableau-defile table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
 .tableau-defile caption{text-align:left;font-weight:700;margin-bottom:6px}
@@ -632,13 +632,14 @@ html{scroll-padding-top:72px}
 .fiche-offre .tg{display:inline-block;margin-bottom:6px}
 .fiche-offre b{display:block}
 .fiche-offre-actions{display:flex;flex-direction:column;align-items:center;gap:8px}
-.fiche-tarifs{color:#F4EFE6;font-size:13px;text-decoration:underline;text-underline-offset:2px}
+.fiche-tarifs{display:inline-flex;align-items:center;min-height:32px;color:#F4EFE6;font-size:13px;text-decoration:underline;text-underline-offset:2px}
+.defile-indice{display:none;margin:-6px 0 12px;font-size:12.5px;color:var(--ink-2);text-align:right}
 .fiche .faq{max-width:none}
 .soeurs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .soeur{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
 .soeur:hover{border-color:var(--coral-100)}
 .soeur b{font-size:14.5px}
-.soeur span.t{display:block;font-size:13px;color:var(--ink-3);margin-top:2px}
+.soeur span.t{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
 @media (max-width: 760px){
   .benefices,.soeurs,.rubriques{grid-template-columns:1fr}
   .fiche-comment{grid-template-columns:1fr}
@@ -648,5 +649,7 @@ html{scroll-padding-top:72px}
 }
 @media (max-width: 600px){
   .fiche{padding-left:16px;padding-right:16px}
+  .ariane a{display:inline-flex;align-items:center;min-height:24px}
+  .defile-indice{display:block}
   .exemple-fiche{padding:16px}
 }
