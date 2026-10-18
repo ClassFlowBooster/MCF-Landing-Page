@@ -34,6 +34,13 @@ test("référencement : titre, description et grand titre distincts sur chaque p
   }
 });
 
+test("titres de l'entrée et de l'espace Enseignants : 50 à 60 caractères, la marque une seule fois", () => {
+  for (const p of PAGES.filter((x) => x.espace === "enseignants")) {
+    assert.ok(p.titre.length >= 50 && p.titre.length <= 60, `${p.chemin} : ${p.titre.length} caractères`);
+    assert.equal(p.titre.match(/MyClassFlow/g).length, 1, p.chemin);
+  }
+});
+
 test("le nom « Class Flow » en deux mots n'apparaît plus", () => {
   for (const p of PAGES) assert.ok(!page(p).includes("Class Flow "), p.chemin);
 });
@@ -255,7 +262,7 @@ test("données structurées : JSON valide, prix affichés sur la page même, que
   assert.ok(graphes["/"].some((o) => o["@type"] === "Organization"), "organisation absente de /");
   for (const [chemin, objets] of Object.entries(graphes))
     for (const app of objets.filter((o) => o["@type"] === "SoftwareApplication"))
-      for (const o of app.offers)
+      for (const o of app.offers ?? [])
         for (const v of [o.price, o.lowPrice, o.highPrice].filter((x) => x && x !== "0.00"))
           assert.ok(html[chemin].replace(/<script type="application\/ld\+json">.*?<\/script>/s, "").includes(v.replace(".", ",")), `${chemin} : ${app.name} à ${v} € n'est pas affiché sur la page`);
   const faq = graphes["/parents-enfants/"].find((o) => o["@type"] === "FAQPage");
@@ -276,6 +283,47 @@ test("fiches explicatives : fil d'Ariane et questions balisés, identiques à la
     assert.ok(visibles.length >= 4 && visibles.length <= 6, `${chemin} : ${visibles.length} questions`);
     for (const [, href] of html.matchAll(/href="(\/assets\/[^"]+)"/g)) assert.ok(existsSync(`.${href}`), `${chemin} → ${href} absent`);
   }
+});
+
+test("fiches explicatives : « À retenir » en tête, intertitres en questions, blocs « Pour qui » et « Fonctionnalités liées » à la fin", () => {
+  const FIXES = ["À retenir", "Questions fréquentes", "Pour qui", "Fonctionnalités liées"];
+  for (const f of FICHES) {
+    const chemin = adresseFiche(f);
+    const html = page(PAGES.find((p) => p.chemin === chemin));
+    const retenir = html.match(/<section class="a-retenir"[^>]*>\s*<h2[^>]*>À retenir<\/h2>\s*<ul>(.*?)<\/ul>/s);
+    assert.ok(retenir, `${chemin} : « À retenir » absent`);
+    assert.equal([...retenir[1].matchAll(/<li>/g)].length, 3, `${chemin} : 3 puces attendues`);
+    assert.ok(html.indexOf('class="a-retenir"') < html.indexOf('class="fiche-partie"'), `${chemin} : « À retenir » doit venir en tête`);
+    const h2 = [...html.matchAll(/<h2[^>]*>(.*?)<\/h2>/g)].map((m) => m[1]);
+    for (const t of h2.filter((x) => !FIXES.includes(x))) assert.ok(t.endsWith(" ?"), `${chemin} : « ${t} » n'est pas une question`);
+    assert.deepEqual(h2.slice(-3), ["Questions fréquentes", "Pour qui", "Fonctionnalités liées"], chemin);
+    assert.equal(f.publics.length, 3, chemin);
+    assert.ok(html.includes(`<meta property="og:image" content="https://myclassflow.fr/assets/img/${f.carte.fichier}" />`), `${chemin} : carte de partage propre à la fiche`);
+  }
+});
+
+test("données structurées : application sur chaque fiche, une seule organisation, aucune note ni aucun avis", () => {
+  const graphes = PAGES.map((p) => [p.chemin, JSON.parse(page(p).match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1] ?? '{"@graph":[]}')["@graph"]]);
+  for (const f of FICHES) {
+    const app = graphes.find(([c]) => c === adresseFiche(f))[1].find((o) => o["@type"] === "SoftwareApplication");
+    assert.ok(app, `${f.slug} : application absente`);
+    assert.equal(app.applicationCategory, "EducationalApplication");
+    assert.ok(app.operatingSystem);
+    if (f.k === "free") assert.deepEqual(app.offers.map((o) => o.price), ["0.00"], f.slug);
+  }
+  const organisations = graphes.flatMap(([, g]) => g.filter((o) => o["@type"] === "Organization"));
+  assert.equal(organisations.length, 1);
+  for (const p of [...PAGES, PAGE_404]) assert.ok(!/aggregateRating|"Review"|"Rating"|ratingValue/i.test(page(p)), `${p.chemin} : note ou avis balisé`);
+});
+
+test("page Fonctionnalités Enseignants : accueil des fiches, fil d'Ariane affiché et balisé, aucune fiche à venir", () => {
+  const html = page(PAGES.find((p) => p.chemin === "/enseignants/fonctionnalites/"));
+  const guides = html.match(/<section class="guides"[^>]*>(.*?)<\/section>/s)[1];
+  assert.deepEqual([...guides.matchAll(/<a class="guide" href="([^"]+)"/g)].map((m) => m[1]), FICHES.map(adresseFiche));
+  assert.ok(html.includes('<nav class="ariane" aria-label="Fil d\'Ariane"><ol><li><a href="/enseignants/">Enseignants</a></li><li aria-current="page">Fonctionnalités</li></ol></nav>'));
+  const ariane = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])["@graph"].find((o) => o["@type"] === "BreadcrumbList");
+  assert.deepEqual(ariane.itemListElement.map((e) => [e.name, e.item]), [["Enseignants", "https://myclassflow.fr/enseignants/"], ["Fonctionnalités", "https://myclassflow.fr/enseignants/fonctionnalites/"]]);
+  assert.ok(!page(PAGES.find((p) => p.chemin === "/ecoles/fonctionnalites/")).includes('class="guides"'));
 });
 
 test("fiches explicatives : chaque outil relié a sa page, les tarifs Enseignants y renvoient, pas l'espace Écoles", () => {

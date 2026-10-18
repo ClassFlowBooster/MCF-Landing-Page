@@ -2,7 +2,7 @@
 <html lang="fr"><head><meta charset="utf-8">
 <!-- trio.png : les trois castors de la carte d'accueil (dessin d'origine, qui n'existe pas en SVG), repris de l'ancienne carte.
      Gabarit des cartes de partage og:image (1200 × 630). Rendu par outils/partage/rendre.sh.
-     Paramètres dans l'URL : page=classflow|ecoles|enseignants|parents-enfants -->
+     Paramètres dans l'URL : page=classflow|ecoles|enseignants|parents-enfants|<slug d'une fiche> -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root{--coral:#F0552B;--paper:#FBF8F3;--ink:#1F1A14;--ink-2:#4A4238;--line:#E6DFCF}
@@ -29,7 +29,8 @@ const PAGES = {
   "classflow": { acc:"Adaptez chaque support aux besoins de chaque élève, en quelques secondes.", tag:"Enseignants · Écoles · Familles", trio:true },
   "ecoles": { acc:"L'école inclusive, outillée pour toute l'équipe.", tag:"Espace Écoles", castors:[["direction",{x:690,y:70,h:520}]] },
   "enseignants": { acc:"Adaptez chaque support aux besoins de chaque élève, en un clic.", tag:"Espace Enseignants", castors:[["professeur",{x:690,y:70,h:520}]] },
-  "parents-enfants": { acc:"Les devoirs de votre enfant, adaptés en une photo.", tag:"Espace Parents / Enfants", castors:[["eleve",{x:690,y:70,h:520}]] }
+  "parents-enfants": { acc:"Les devoirs de votre enfant, adaptés en une photo.", tag:"Espace Parents / Enfants", castors:[["eleve",{x:690,y:70,h:520}]] },
+  "fiche-de-preparation": { acc:"La fiche de préparation : un modèle à imprimer, une séance de CM1 en exemple.", tag:"Fiche gratuite · Enseignants", castors:[["professeur",{x:690,y:70,h:520}]] }
 };
 const p = PAGES[new URLSearchParams(location.search).get("page")];
 nom.textContent = new URLSearchParams(location.search).get("nom") || "MyClassFlow"; acc.textContent = p.acc; tag.textContent = p.tag;

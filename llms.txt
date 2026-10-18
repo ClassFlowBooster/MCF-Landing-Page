@@ -10,7 +10,7 @@ Trois espaces : les enseignants, les écoles (abonnement établissement pour tou
 - [Fonctionnalités](https://myclassflow.fr/enseignants/fonctionnalites/): Adaptation des supports et Lia dans l'abonnement ; fiches de préparation, cahier journal, emploi du temps, fiches élèves et évaluations gratuits.
 - [Fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/): Ce que contient une fiche de préparation, une séance complète de CM1 en exemple, un modèle gratuit à télécharger, et comment MyClassFlow la relie au cahier journal.
 
-## Tarifs
+## Offres et abonnements
 
 - Enseignant : gestion de classe gratuite avec 3 adaptations offertes ; abonnement à 14,99 € TTC par mois sans engagement, ou 9,99 € par mois pendant 6 mois avec un engagement d’un an, puis 14,99 €/mois TTC.
 - École : à partir de 9,99 € TTC par enseignant et par mois, le prix par enseignant baisse dès 5 enseignants ; devis sur la page Tarifs Écoles.

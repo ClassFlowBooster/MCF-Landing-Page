@@ -64,7 +64,7 @@ ${lien("/enseignants/", "Accueil Enseignants")}
 ${lien("/enseignants/fonctionnalites/", "Fonctionnalités")}
 ${FICHES.map((f) => lien(adresseFiche(f), f.ariane)).join("\n")}
 
-## Tarifs
+## Offres et abonnements
 
 - Enseignant : gestion de classe gratuite avec 3 adaptations offertes ; abonnement à ${prix(offreEnseignant(false).prix)} TTC par mois sans engagement, ou ${prix(offreEnseignant(true).prix)} par mois ${offreEnseignant(true).renvoi.replace(/^P/, "p")}
 - École : à partir de ${prix(PLANCHER_ECOLE)} TTC par enseignant et par mois, le prix par enseignant baisse dès 5 enseignants ; devis sur la page Tarifs Écoles.
