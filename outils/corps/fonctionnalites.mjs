@@ -1,5 +1,7 @@
 // Pages « Fonctionnalités » des trois espaces.
 import { THEMES, ADAPTER, libelleBadge, nomLie } from "./catalogue.mjs";
+import { FICHES } from "./fiches/index.mjs";
+import { adresseFiche, filAriane, ARIANE_FONCTIONNALITES } from "./fiche.mjs";
 
 // `lie` : nom relié à la fiche de l'outil (espace Enseignants seulement, cf. mega-menu.mjs).
 const carte = (o, lie = false) =>
@@ -7,6 +9,15 @@ const carte = (o, lie = false) =>
 
 const ruban = (titre, texte, bouton, href) =>
   `<div class="ribbon"><div><b>${titre}</b><p>${texte}</p></div><a class="btn" href="${href}">${bouton}</a></div>`;
+
+// Espace Enseignants : la page sert d'accueil aux fiches explicatives, une carte
+// par fiche existante (aucune carte vers une fiche à venir).
+const guides = () => `<section class="guides" aria-labelledby="guides">
+    <h2 id="guides">Comprendre chaque outil</h2>
+    <div class="guides-liste">
+      ${FICHES.map((f) => `<a class="guide" href="${adresseFiche(f)}"><span class="tg ${f.k}">${f.k === "free" ? "Gratuit" : "Abonnement"}</span><b>${f.ariane}</b><span class="t">${f.accroche}</span></a>`).join("\n      ")}
+    </div>
+  </section>`;
 
 export function fonctionnalites(espace) {
   if (espace === "parents-enfants") {
@@ -22,9 +33,9 @@ export function fonctionnalites(espace) {
   }
   const ecoles = espace === "ecoles";
   return `<section class="page">
-  <h1 class="t">${ecoles ? "Tout ce qu'il faut pour votre équipe" : "Tout ce qu'il faut pour votre classe"}</h1>
+  ${ecoles ? "" : `${filAriane(ARIANE_FONCTIONNALITES)}\n  `}<h1 class="t">${ecoles ? "Tout ce qu'il faut pour votre équipe" : "Tout ce qu'il faut pour votre classe"}</h1>
   <p class="lead">La gestion de classe est gratuite. L'IA qui adapte vos supports est dans l'abonnement.</p>
-  <div class="filters" id="flt" role="group" aria-label="Filtrer les fonctionnalités"><button type="button" class="on" aria-pressed="true" data-f="all">Tout</button><button type="button" aria-pressed="false" data-f="free">Gratuit</button><button type="button" aria-pressed="false" data-f="pay">Abonnement</button></div>
+${ecoles ? "" : `  ${guides()}\n\n  <h2 class="theme-titre">Tous les outils, par usage</h2>\n`}  <div class="filters" id="flt" role="group" aria-label="Filtrer les fonctionnalités"><button type="button" class="on" aria-pressed="true" data-f="all">Tout</button><button type="button" aria-pressed="false" data-f="free">Gratuit</button><button type="button" aria-pressed="false" data-f="pay">Abonnement</button></div>
 
   ${THEMES.map((t) => `<div class="theme"><h3>${t.titre}</h3><p class="s">${t.sous}</p>
     <div class="grid">

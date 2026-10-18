@@ -84,12 +84,18 @@ const illustration = `<figure class="maquette-fiche" aria-label="Illustration : 
 export default {
   slug: "fiche-de-preparation",
   ariane: "Fiche de préparation",
+  accroche: "Ses rubriques, une séance de CM1 rédigée en entier et un modèle vierge à imprimer.",
   k: "free",
   titre: "Fiche de préparation : modèle gratuit et exemple — MyClassFlow",
   description: "Ce que contient une fiche de préparation, une séance complète de CM1 en exemple, un modèle gratuit à télécharger, et comment MyClassFlow la relie au cahier journal.",
   h1: "La fiche de préparation, simplement",
   intro: "Une fiche de préparation décrit une séance de classe : ce que les élèves vont apprendre, avec quel matériel et dans quel ordre. Elle sert à l'enseignant titulaire comme au remplaçant ou au stagiaire. Voici ce qu'elle contient, un exemple complet en CM1 et un modèle gratuit à télécharger.",
-  titreBenefices: "À quoi sert une fiche de préparation",
+  retenir: [
+    "Une fiche de préparation porte sur une seule séance : son objectif, son matériel et ses phases, chacune avec sa durée.",
+    "Aucun modèle n'est imposé. Celui de cette page tient sur une page A4 et se télécharge gratuitement.",
+    "Dans MyClassFlow, vos fiches sont gratuites, rangées dans votre banque, et leur contenu se copie dans la séance du cahier journal.",
+  ],
+  titreBenefices: "À quoi sert une fiche de préparation ?",
   benefices: [
     ["Savoir où l'on va", "L'objectif est écrit avant la séance : chaque phase, chaque exercice et chaque question au tableau servent ce même but."],
     ["Tenir le temps de classe", "Les durées de chaque phase évitent la séance qui déborde ou la mise en commun sacrifiée faute de temps."],
@@ -100,8 +106,9 @@ export default {
     ["Rangez-la dans votre banque", "Classez vos fiches en dossiers, par matière ou par séquence. « Dupliquer » en fait une variante sans repartir de zéro."],
     ["Rattachez-la à une séance", "Son contenu est copié dans la séance de votre cahier journal : le jour venu, tout est prêt."],
   ],
+  titreEtapes: "Comment la préparer dans MyClassFlow ?",
   illustration,
-  blocs: [{ titre: "Ce que contient une fiche de préparation", html: exemple }],
+  blocs: [{ titre: "Que contient une fiche de préparation ?", html: exemple }],
   offre: {
     titre: "Vos fiches de préparation, gratuites dans MyClassFlow",
     texte: "Avec le cahier journal et l'emploi du temps, sans carte bancaire. L'abonnement ajoute l'adaptation des supports par l'IA.",
@@ -115,6 +122,11 @@ export default {
     ["Comment différencier dans une fiche de préparation ?", "Prévoyez, pour le même objectif, un support plus lisible (texte agrandi, lignes espacées, consigne découpée en étapes), une aide matérielle et un prolongement. Dans MyClassFlow, l'abonnement adapte vos supports en quelques secondes selon les critères pédagogiques que vous cochez."],
     ["Peut-on réutiliser ses fiches d'une année sur l'autre ?", "Oui. Dans MyClassFlow, vos fiches restent dans votre banque, rangées en dossiers : vous les dupliquez et les ajustez au lieu de tout réécrire."],
     ["Les fiches de préparation sont-elles gratuites dans MyClassFlow ?", "Oui, comme le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire."],
+  ],
+  publics: [
+    ["Vous avez votre classe à l'année", "Chaque séance préparée reste dans votre banque : vous la dupliquez pour un autre niveau ou vous la reprenez à la rentrée suivante."],
+    ["Vous remplacez", "Une page suffit pour savoir quoi faire : l'objectif, le matériel, les phases minutées et ce que la classe a vu la veille."],
+    ["Vous débutez", "Écrire chaque phase avec sa durée aide à anticiper la séance, et vos préparations sont prêtes le jour d'une visite."],
   ],
   soeurs: ["Cahier journal", "Emploi du temps", "Adaptation des supports"],
 };
