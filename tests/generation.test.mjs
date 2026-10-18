@@ -8,6 +8,7 @@ import { THEMES, lienFiche } from "../outils/corps/catalogue.mjs";
 import { megaMenu } from "../outils/corps/mega-menu.mjs";
 import { FICHES } from "../outils/corps/fiches/index.mjs";
 import { adresseFiche, arianeFiche } from "../outils/corps/fiche.mjs";
+import { sitemap, robots, llms, dateModification, aujourdhui, ROBOTS_IA } from "../outils/racine.mjs";
 
 test("chaque page a un titre, une description, un canonical et la barre de son espace", () => {
   for (const p of PAGES) {
@@ -56,10 +57,47 @@ test("tous les liens internes pointent vers une page existante", () => {
   }
 });
 
-test("sitemap.xml et robots.txt à jour", () => {
-  const sitemap = readFileSync("sitemap.xml", "utf8");
-  for (const p of PAGES) assert.ok(sitemap.includes(`<loc>https://myclassflow.fr${p.chemin}</loc>`), p.chemin);
-  assert.match(readFileSync("robots.txt", "utf8"), /Sitemap: https:\/\/myclassflow\.fr\/sitemap\.xml/);
+test("sitemap.xml, robots.txt et llms.txt à jour", () => {
+  const plan = readFileSync("sitemap.xml", "utf8");
+  for (const p of PAGES) assert.ok(plan.includes(`<loc>https://myclassflow.fr${p.chemin}</loc>`), p.chemin);
+  assert.equal(plan, sitemap(PAGES.map((p) => ({ chemin: p.chemin, lastmod: dateModification(`.${p.chemin}index.html`) }))), "sitemap.xml n'est pas à jour");
+  assert.equal(readFileSync("robots.txt", "utf8"), robots(), "robots.txt n'est pas à jour");
+  assert.equal(readFileSync("llms.txt", "utf8"), llms(PAGES), "llms.txt n'est pas à jour");
+});
+
+test("sitemap : une date de modification réelle par page, jamais dans le futur", () => {
+  const dates = [...readFileSync("sitemap.xml", "utf8").matchAll(/<url><loc>[^<]+<\/loc><lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod><\/url>/g)].map((m) => m[1]);
+  assert.equal(dates.length, PAGES.length);
+  for (const d of dates) assert.ok(d >= "2026-01-01" && d <= aujourdhui(), d);
+});
+
+test("robots.txt : tout le site ouvert, robots des IA autorisés nommément, plan du site déclaré", () => {
+  const txt = robots();
+  const groupes = txt.split("\n\n").filter((g) => g.startsWith("User-agent:"));
+  for (const agent of ["*", ...ROBOTS_IA]) {
+    const g = groupes.find((x) => x.startsWith(`User-agent: ${agent}\n`));
+    assert.ok(g, `${agent} absent`);
+    assert.equal(g, `User-agent: ${agent}\nAllow: /`, agent);
+  }
+  for (const agent of ["GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot", "Google-Extended"]) assert.ok(ROBOTS_IA.includes(agent), agent);
+  assert.ok(!/Disallow/.test(txt));
+  assert.match(txt, /^Sitemap: https:\/\/myclassflow\.fr\/sitemap\.xml$/m);
+});
+
+test("llms.txt : titre, résumé, liens absolus vers des pages existantes, chaque fiche citée, prix de tarifs.js", async () => {
+  const { offreEnseignant, PLANCHER_ECOLE } = await import("../assets/js/tarifs.js");
+  const txt = llms(PAGES);
+  assert.match(txt, /^# MyClassFlow\n\n> .{80,}\n/);
+  const chemins = new Set(PAGES.map((p) => p.chemin));
+  const liens = [...txt.matchAll(/\]\((https:\/\/myclassflow\.fr)?([^)]*)\)/g)];
+  assert.ok(liens.length >= 8);
+  for (const [, absolu, chemin] of liens) {
+    assert.ok(absolu, `${chemin} : lien relatif`);
+    assert.ok(chemins.has(chemin), `${chemin} introuvable`);
+  }
+  for (const f of FICHES) assert.ok(txt.includes(`(https://myclassflow.fr${adresseFiche(f)})`), f.slug);
+  for (const v of [offreEnseignant(false).prix, offreEnseignant(true).prix, PLANCHER_ECOLE]) assert.ok(txt.includes(v.toFixed(2).replace(".", ",")), String(v));
+  assert.ok(!/\b(?:note|avis|étoiles?)\b/i.test(txt), "aucune note ni avis");
 });
 
 test("13 pages plus les fiches : l'entrée, quatre pages par espace, une page par fiche", () => {

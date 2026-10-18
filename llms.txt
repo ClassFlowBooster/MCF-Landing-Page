@@ -1,0 +1,35 @@
+# MyClassFlow
+
+> MyClassFlow est une application pour les enseignants, les écoles et les familles. Elle adapte les exercices et les leçons selon les critères pédagogiques cochés (texte agrandi, mise en page aérée, consignes en étapes) et regroupe la gestion de classe de l'enseignant : fiches de préparation, cahier journal, emploi du temps, fiches élèves et évaluations.
+
+Trois espaces : les enseignants, les écoles (abonnement établissement pour toute l'équipe) et les familles (MyClassFlow Famille, qui adapte les devoirs à partir d'une photo). L'application s'installe sur Mac, Windows, Android, iPhone et iPad.
+
+## Enseignants
+
+- [Accueil Enseignants](https://myclassflow.fr/enseignants/): MyClassFlow adapte vos exercices et vos leçons selon les critères pédagogiques que vous cochez. Fiches de préparation et cahier journal gratuits, 3 adaptations offertes.
+- [Fonctionnalités](https://myclassflow.fr/enseignants/fonctionnalites/): Adaptation des supports et Lia dans l'abonnement ; fiches de préparation, cahier journal, emploi du temps, fiches élèves et évaluations gratuits.
+- [Fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/): Ce que contient une fiche de préparation, une séance complète de CM1 en exemple, un modèle gratuit à télécharger, et comment MyClassFlow la relie au cahier journal.
+
+## Tarifs
+
+- Enseignant : gestion de classe gratuite avec 3 adaptations offertes ; abonnement à 14,99 € TTC par mois sans engagement, ou 9,99 € par mois pendant 6 mois avec un engagement d’un an, puis 14,99 €/mois TTC.
+- École : à partir de 9,99 € TTC par enseignant et par mois, le prix par enseignant baisse dès 5 enseignants ; devis sur la page Tarifs Écoles.
+- Famille : essai gratuit de 3 adaptations sans carte bancaire, puis dès 2,49 € par mois pour tous les enfants du foyer.
+
+- [Tarifs Enseignants](https://myclassflow.fr/enseignants/tarifs/): La gestion de classe est gratuite avec 3 adaptations offertes. L’abonnement enseignant adapte tous vos supports à partir de 9,99 € par mois.
+- [Tarifs Écoles](https://myclassflow.fr/ecoles/tarifs/): Équipez toute votre équipe : le prix par enseignant baisse dès 5 enseignants, jusqu’à 9,99 € TTC. Calcul en direct et devis sous 48 h.
+- [Tarifs Famille](https://myclassflow.fr/parents-enfants/tarifs/): Adaptez les devoirs de votre enfant en une photo. Essai gratuit de 3 adaptations, puis dès 2,49 € par mois pour tous les enfants du foyer.
+
+## Questions fréquentes
+
+- [Questions sur la fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/): Quelle différence entre une fiche de préparation et une fiche de séquence ? La fiche de préparation est-elle obligatoire ? Que mettre dans une fiche de préparation pour un remplaçant ? Comment différencier dans une fiche de préparation ? Peut-on réutiliser ses fiches d'une année sur l'autre ? Les fiches de préparation sont-elles gratuites dans MyClassFlow ?
+- [Questions des familles](https://myclassflow.fr/parents-enfants/): réponses sur les critères pédagogiques, les appareils, le nombre d'enfants et la résiliation.
+
+## Écoles et familles
+
+- [Espace Écoles](https://myclassflow.fr/ecoles/): Une même démarche d'adaptation dans chaque classe et une seule facture pour l'établissement. Le prix par enseignant baisse dès 5 enseignants.
+- [Espace Parents / Enfants](https://myclassflow.fr/parents-enfants/): Photographiez la leçon ou l'exercice : MyClassFlow Famille le transforme selon les critères pédagogiques que vous cochez. Essai gratuit, sans carte bancaire.
+
+## Optional
+
+- [Installer l'application](https://myclassflow.fr/enseignants/telecharger/): Installez MyClassFlow en quelques secondes sur Mac, Windows, Android, iPhone ou iPad : l'app s'ouvre depuis votre écran d'accueil ou votre Dock.
