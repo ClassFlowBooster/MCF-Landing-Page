@@ -30,7 +30,7 @@ const PAGES = {
   "ecoles": { acc:"L'école inclusive, outillée pour toute l'équipe.", tag:"Espace Écoles", castors:[["direction",{x:690,y:70,h:520}]] },
   "enseignants": { acc:"Adaptez chaque support aux besoins de chaque élève, en un clic.", tag:"Espace Enseignants", castors:[["professeur",{x:690,y:70,h:520}]] },
   "parents-enfants": { acc:"Les devoirs de votre enfant, adaptés en une photo.", tag:"Espace Parents / Enfants", castors:[["eleve",{x:690,y:70,h:520}]] },
-  "fiche-de-preparation": { acc:"La fiche de préparation : un modèle à imprimer, une séance de CM1 en exemple.", tag:"Fiche gratuite · Enseignants", castors:[["professeur",{x:690,y:70,h:520}]] }
+  "fiche-de-preparation": { acc:"Chaque séance préparée, puis retrouvée dans votre cahier journal.", tag:"Fiche gratuite · Enseignants", castors:[["professeur",{x:690,y:70,h:520}]] }
 };
 const p = PAGES[new URLSearchParams(location.search).get("page")];
 nom.textContent = new URLSearchParams(location.search).get("nom") || "MyClassFlow"; acc.textContent = p.acc; tag.textContent = p.tag;

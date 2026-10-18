@@ -85,10 +85,10 @@ export default {
   slug: "fiche-de-preparation",
   ariane: "Fiche de préparation",
   // Carte de partage : outils/partage/gabarit.html?page=fiche-de-preparation.
-  carte: { fichier: "og-fiche-de-preparation.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « La fiche de préparation : un modèle à imprimer, une séance de CM1 en exemple »." },
-  accroche: "Ses rubriques, une séance de CM1 rédigée en entier et un modèle vierge à imprimer.",
+  carte: { fichier: "og-fiche-de-preparation.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Chaque séance préparée, puis retrouvée dans votre cahier journal »." },
+  accroche: "Une séance de CM1 détaillée phase par phase, puis copiée dans le cahier journal.",
   k: "free",
-  titre: "Fiche de préparation : un modèle, un exemple — MyClassFlow",
+  titre: "Fiche de préparation, séance par séance — MyClassFlow",
   description: "Ce que contient une fiche de préparation, une séance complète de CM1 en exemple, un modèle gratuit à télécharger, et comment MyClassFlow la relie au cahier journal.",
   h1: "La fiche de préparation, simplement",
   intro: "Une fiche de préparation décrit une séance de classe : ce que les élèves vont apprendre, avec quel matériel et dans quel ordre. Elle sert à l'enseignant titulaire comme au remplaçant ou au stagiaire. Voici ce qu'elle contient, un exemple complet en CM1 et un modèle gratuit à télécharger.",

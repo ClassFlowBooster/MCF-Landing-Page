@@ -35,7 +35,7 @@ export function fonctionnalites(espace) {
   return `<section class="page">
   ${ecoles ? "" : `${filAriane(ARIANE_FONCTIONNALITES)}\n  `}<h1 class="t">${ecoles ? "Tout ce qu'il faut pour votre équipe" : "Tout ce qu'il faut pour votre classe"}</h1>
   <p class="lead">La gestion de classe est gratuite. L'IA qui adapte vos supports est dans l'abonnement.</p>
-${ecoles ? "" : `  ${guides()}\n\n  <h2 class="theme-titre">Tous les outils, par usage</h2>\n`}  <div class="filters" id="flt" role="group" aria-label="Filtrer les fonctionnalités"><button type="button" class="on" aria-pressed="true" data-f="all">Tout</button><button type="button" aria-pressed="false" data-f="free">Gratuit</button><button type="button" aria-pressed="false" data-f="pay">Abonnement</button></div>
+${ecoles ? "" : `  ${guides()}\n\n  <h2 class="theme-titre">Par besoin : adapter, préparer, suivre</h2>\n`}  <div class="filters" id="flt" role="group" aria-label="Filtrer les fonctionnalités"><button type="button" class="on" aria-pressed="true" data-f="all">Tout</button><button type="button" aria-pressed="false" data-f="free">Gratuit</button><button type="button" aria-pressed="false" data-f="pay">Abonnement</button></div>
 
   ${THEMES.map((t) => `<div class="theme"><h3>${t.titre}</h3><p class="s">${t.sous}</p>
     <div class="grid">
