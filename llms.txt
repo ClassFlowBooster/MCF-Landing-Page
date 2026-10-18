@@ -14,7 +14,7 @@ Trois espaces : les enseignants, les écoles (abonnement établissement pour tou
 
 - Enseignant : gestion de classe gratuite avec 3 adaptations offertes ; abonnement à 14,99 € TTC par mois sans engagement, ou 9,99 € par mois pendant 6 mois avec un engagement d’un an, puis 14,99 €/mois TTC.
 - École : à partir de 9,99 € TTC par enseignant et par mois, le prix par enseignant baisse dès 5 enseignants ; devis sur la page Tarifs Écoles.
-- Famille : essai gratuit de 3 adaptations sans carte bancaire, puis dès 2,49 € par mois pour tous les enfants du foyer.
+- Famille : essai gratuit de 3 adaptations sans carte bancaire, puis un abonnement pour tous les enfants du foyer ; formule Essentiel à 4,99 € TTC par mois sans engagement, ou 2,49 € par mois pendant 3 mois avec un engagement de 6 mois, puis 4,99 €/mois TTC.
 
 - [Tarifs Enseignants](https://myclassflow.fr/enseignants/tarifs/): La gestion de classe est gratuite avec 3 adaptations offertes. L’abonnement enseignant adapte tous vos supports à partir de 9,99 € par mois.
 - [Tarifs Écoles](https://myclassflow.fr/ecoles/tarifs/): Équipez toute votre équipe : le prix par enseignant baisse dès 5 enseignants, jusqu’à 9,99 € TTC. Calcul en direct et devis sous 48 h.

@@ -6,6 +6,7 @@ import { FICHES } from "./corps/fiches/index.mjs";
 import { adresseFiche } from "./corps/fiche.mjs";
 import { offreEnseignant, offreAdapter, PLANCHER_ECOLE, euros } from "../assets/js/tarifs.js";
 
+// Sans Git, la génération échoue : mieux vaut aucune date qu'une date inventée.
 const git = (...args) => execFileSync("git", args, { encoding: "utf8" }).trim();
 
 /**
@@ -68,7 +69,7 @@ ${FICHES.map((f) => lien(adresseFiche(f), f.ariane)).join("\n")}
 
 - Enseignant : gestion de classe gratuite avec 3 adaptations offertes ; abonnement à ${prix(offreEnseignant(false).prix)} TTC par mois sans engagement, ou ${prix(offreEnseignant(true).prix)} par mois ${offreEnseignant(true).renvoi.replace(/^P/, "p")}
 - École : à partir de ${prix(PLANCHER_ECOLE)} TTC par enseignant et par mois, le prix par enseignant baisse dès 5 enseignants ; devis sur la page Tarifs Écoles.
-- Famille : essai gratuit de 3 adaptations sans carte bancaire, puis dès ${prix(offreAdapter("essentiel", true).prix)} par mois pour tous les enfants du foyer.
+- Famille : essai gratuit de 3 adaptations sans carte bancaire, puis un abonnement pour tous les enfants du foyer ; formule Essentiel à ${prix(offreAdapter("essentiel", false).prix)} TTC par mois sans engagement, ou ${prix(offreAdapter("essentiel", true).prix)} par mois ${offreAdapter("essentiel", true).renvoi.replace(/^P/, "p")}
 
 ${lien("/enseignants/tarifs/", "Tarifs Enseignants")}
 ${lien("/ecoles/tarifs/", "Tarifs Écoles")}
