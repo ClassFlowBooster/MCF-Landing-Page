@@ -22,7 +22,7 @@ Trois espaces : les enseignants, les écoles (abonnement établissement pour tou
 
 ## Questions fréquentes
 
-- [Questions sur la fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/): Quelle différence entre une fiche de préparation et une fiche de séquence ? La fiche de préparation est-elle obligatoire ? Que mettre dans une fiche de préparation pour un remplaçant ? Comment différencier dans une fiche de préparation ? Peut-on réutiliser ses fiches d'une année sur l'autre ? Les fiches de préparation sont-elles gratuites dans MyClassFlow ?
+- [Questions sur la fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/): Une fiche de préparation par séance, ou une seule pour toute la séquence ? Doit-on montrer ses fiches de préparation lors d'une inspection ? Que mettre dans une fiche de préparation pour un remplaçant ? Où noter la différenciation dans une fiche de préparation ? Que faire de ses fiches de préparation l'année suivante ? Les fiches de préparation sont-elles gratuites dans MyClassFlow ?
 - [Questions des familles](https://myclassflow.fr/parents-enfants/): réponses sur les critères pédagogiques, les appareils, le nombre d'enfants et la résiliation.
 
 ## Écoles et familles
