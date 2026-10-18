@@ -8,7 +8,7 @@ Trois espaces : les enseignants, les écoles (abonnement établissement pour tou
 
 - [Accueil Enseignants](https://myclassflow.fr/enseignants/): MyClassFlow adapte vos exercices et vos leçons selon les critères pédagogiques que vous cochez. Fiches de préparation et cahier journal gratuits, 3 adaptations offertes.
 - [Fonctionnalités](https://myclassflow.fr/enseignants/fonctionnalites/): Adaptation des supports et Lia dans l'abonnement ; fiches de préparation, cahier journal, emploi du temps, fiches élèves et évaluations gratuits.
-- [Fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/): Ce que contient une fiche de préparation, une séance complète de CM1 en exemple, un modèle gratuit à télécharger, et comment MyClassFlow la relie au cahier journal.
+- [Fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/): Une trame de fiche de préparation en sept rubriques, une séance de CE1 sur la mesure des longueurs, le modèle à imprimer, et le lien avec le cahier journal de MyClassFlow.
 
 ## Offres et abonnements
 
@@ -22,7 +22,7 @@ Trois espaces : les enseignants, les écoles (abonnement établissement pour tou
 
 ## Questions fréquentes
 
-- [Questions sur la fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/): Une fiche de préparation par séance, ou une seule pour toute la séquence ? Doit-on montrer ses fiches de préparation lors d'une inspection ? Que mettre dans une fiche de préparation pour un remplaçant ? Où noter la différenciation dans une fiche de préparation ? Que faire de ses fiches de préparation l'année suivante ? Les fiches de préparation sont-elles gratuites dans MyClassFlow ?
+- [Questions sur la fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/): Jusqu'où détailler une fiche de préparation ? Comment laisser une fiche de préparation lisible pour un remplaçant ? Comment relier une fiche de préparation au cahier journal ? Comment prévoir des aides dans une fiche de préparation ? Comment retrouver une fiche de préparation l'année suivante ? Les fiches de préparation sont-elles gratuites dans MyClassFlow ?
 - [Questions des familles](https://myclassflow.fr/parents-enfants/): réponses sur les critères pédagogiques, les appareils, le nombre d'enfants et la résiliation.
 
 ## Écoles et familles

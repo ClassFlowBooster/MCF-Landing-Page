@@ -2,62 +2,64 @@
 // Ce qui est dit de l'app est vérifié dans MCF-App : champs titre, matière, domaine,
 // compétences, objectifs, matériel et déroulé libre ; banque en dossiers ; « Dupliquer » ;
 // « Rattacher à une séance » copie le contenu dans la séance du cahier journal.
+// Trame, exemple et questions écrits pour ne ressembler à aucun concurrent
+// (contrôles de ressemblance du 18/10/2026, rapport feat-53-fiches-fonctionnalites).
 
 export const MODELE_PDF = "/assets/docs/modele-fiche-de-preparation.pdf";
 
-// Exemple : séance 3 d'une séquence sur les fractions, CM1 (même thème que la
-// démonstration de l'accueil Enseignants).
+// Exemple : mesurer des longueurs avec la règle graduée, en CE1.
 const PHASES = [
-  ["Rituel", "5 min", "Collectif", "Calcul mental sur les moitiés et les quarts : « la moitié de 8 », « le quart de 12 »… Réponses sur l'ardoise."],
-  ["Découverte", "10 min", "Collectif", "Au tableau, deux bandes identiques : l'une colorée aux 3/4, l'autre à la moitié. « Laquelle est la plus colorée ? Comment en être sûr ? » Les élèves proposent, on garde les idées au tableau."],
-  ["Recherche", "15 min", "Par deux", "Chaque binôme plie et colorie des bandes de papier pour représenter 1/2, 3/4, 2/8 et 5/4, puis les range de la plus petite à la plus grande."],
-  ["Mise en commun", "5 min", "Collectif", "On compare les bandes des binômes. On écrit ensemble ce qu'on retient : avec le même dénominateur, on compare les numérateurs ; une fraction dont le numérateur dépasse le dénominateur est plus grande que 1."],
-  ["Entraînement", "10 min", "Individuel", "Exercice : colorier les trois quarts de deux figures, puis ranger 3/4 ; 1/2 ; 2/8 ; 5/4 dans l'ordre croissant."],
+  ["Le défi", "5 min", "Toute la classe", "Deux rubans de longueurs proches sont scotchés aux deux bouts du tableau. « Lequel est le plus long ? On n'a pas le droit de les décoller. » Les élèves proposent : comparer à l'œil, reporter avec une ficelle, utiliser la règle."],
+  ["Essais", "10 min", "À deux", "Chaque binôme mesure trois bandes de papier avec sa règle et note les longueurs. L'enseignant circule et repère qui pose la règle à partir de son bord."],
+  ["On en parle", "8 min", "Toute la classe", "Deux binômes ont trouvé des longueurs différentes pour la même bande : on compare leur façon de poser la règle. On écrit ensemble la marche à suivre : le zéro au début de la bande, on lit le nombre à l'autre bout, on écrit « cm »."],
+  ["À soi", "12 min", "Seul", "Sur la fiche : mesurer quatre segments, puis tracer un segment de 7 cm."],
+  ["Vérification", "5 min", "Toute la classe", "Un segment au tableau, la longueur sur l'ardoise. Pour finir, on revient au défi : on mesure les deux rubans."],
 ];
 
+// Notre trame : sept rubriques, dans l'ordre où l'on se pose les questions en préparant.
 const RUBRIQUES = [
-  ["L'en-tête", "Niveau, matière, domaine, date, durée, et la place de la séance dans la séquence (séance 3 sur 6, par exemple)."],
-  ["L'objectif", "Ce que les élèves sauront faire à la fin de la séance, en une phrase qui commence par un verbe : comparer, ranger, rédiger…"],
-  ["Les compétences du programme", "Celles que la séance travaille, reprises des programmes de l'Éducation nationale."],
-  ["Le matériel", "Pour vous et pour les élèves : supports, manipulations, ardoises, fiches d'exercices."],
-  ["Le déroulement", "Les phases de la séance, chacune avec sa durée, son organisation (collectif, en groupes, individuel), ce que fait l'enseignant et ce que font les élèves."],
-  ["La différenciation", "Comment le même objectif reste accessible à chacun : un support plus lisible, une aide matérielle, un prolongement pour ceux qui ont fini."],
-  ["L'évaluation et le bilan", "Comment vous saurez que l'objectif est atteint, puis, après la séance, ce qui a marché et ce qu'il faudra reprendre."],
+  ["Le but", "Ce que les élèves sauront faire en sortant, en une phrase, avec la compétence des programmes qu'elle travaille."],
+  ["Le fil de la séance", "Les moments qui se suivent, chacun avec sa durée, la façon dont la classe travaille et la consigne telle que vous la direz."],
+  ["Les obstacles attendus", "L'erreur que vous voyez venir, et ce que vous ferez quand elle arrivera."],
+  ["Ce qu'il faut sous la main", "Le matériel de l'enseignant et celui des élèves, prêt avant d'entrer en classe."],
+  ["Les aides prévues", "Pour le même but, un autre chemin : un support plus lisible, un outil en plus, et de quoi continuer pour ceux qui ont fini."],
+  ["Le signe que c'est acquis", "Ce que vous regarderez pour savoir si le but est atteint."],
+  ["Après coup", "Deux lignes écrites le soir : ce qui a marché, ce qu'il faudra reprendre."],
 ];
 
-const exemple = `<p>Une fiche de préparation tient sur une page. Voici les rubriques qu'on y retrouve presque toujours, puis une séance complète de CM1 rédigée avec elles.</p>
+const exemple = `<p>Chacun a sa façon de préparer. La trame que nous proposons tient sur une page et suit l'ordre des questions qu'on se pose : où va-t-on, comment, qu'est-ce qui peut coincer, avec quoi, et comment saura-t-on que c'est réussi.</p>
     <dl class="rubriques">
       ${RUBRIQUES.map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join("\n      ")}
     </dl>
 
     <div class="exemple-fiche">
-      <h3>Exemple : comparer des fractions, en CM1</h3>
+      <h3>Exemple : mesurer un segment avec la règle, en CE1</h3>
       <ul class="exemple-tete">
-        <li><b>Niveau</b> CM1</li>
-        <li><b>Matière</b> Mathématiques, nombres et calculs</li>
-        <li><b>Séquence</b> Les fractions, séance 3 sur 6</li>
-        <li><b>Durée</b> 45 min</li>
+        <li><b>Niveau</b> CE1</li>
+        <li><b>Matière</b> Mathématiques, grandeurs et mesures</li>
+        <li><b>Séquence</b> Les longueurs</li>
+        <li><b>Durée</b> 40 min</li>
       </ul>
-      <p><b>Objectif :</b> comparer et ranger des fractions simples en s'appuyant sur des représentations.</p>
-      <p><b>Compétence du programme :</b> comprendre et utiliser la notion de fraction simple ; comparer des fractions.</p>
-      <p><b>Matériel :</b> bandes de papier, crayons de couleur, ardoises, fiche d'exercices en version d'origine et en version adaptée.</p>
-      <div class="tableau-defile" tabindex="0" role="region" aria-label="Déroulement de la séance, tableau défilant">
+      <p><b>Le but :</b> mesurer la longueur d'un segment au centimètre près avec une règle graduée. Compétence du programme : comparer, estimer, mesurer des longueurs.</p>
+      <div class="tableau-defile" tabindex="0" role="region" aria-label="Le fil de la séance, tableau défilant">
         <table>
-          <caption>Déroulement de la séance</caption>
-          <thead><tr><th scope="col">Phase</th><th scope="col">Durée</th><th scope="col">Organisation</th><th scope="col">Ce qui se passe</th></tr></thead>
+          <caption>Le fil de la séance</caption>
+          <thead><tr><th scope="col">Moment</th><th scope="col">Durée</th><th scope="col">La classe travaille</th><th scope="col">Ce qui se passe</th></tr></thead>
           <tbody>
             ${PHASES.map(([phase, duree, orga, texte]) => `<tr><th scope="row">${phase}</th><td>${duree}</td><td>${orga}</td><td>${texte}</td></tr>`).join("\n            ")}
           </tbody>
         </table>
       </div>
       <p class="defile-indice" aria-hidden="true">Faites défiler le tableau →</p>
-      <p><b>Différenciation :</b> la fiche d'exercices existe aussi en version adaptée, avec un texte agrandi, des lignes espacées, des figures déjà partagées et la consigne découpée en étapes. Prolongement pour ceux qui ont fini : comparer 2/3 et 3/4.</p>
-      <p><b>Évaluation :</b> l'objectif est atteint quand l'élève range correctement les quatre fractions et justifie au moins une comparaison par une phrase.</p>
-      <p><b>Bilan :</b> à remplir après la séance, par exemple « 5/4 a posé problème : reprendre les fractions plus grandes que 1 en séance 4 ».</p>
+      <p><b>Les obstacles attendus :</b> poser la règle à partir de son bord, ou partir de la graduation 1. La longueur trouvée est alors fausse. Réponse prévue : faire poser le doigt sur le zéro avant chaque mesure.</p>
+      <p><b>Ce qu'il faut sous la main :</b> une règle par élève, des bandes de papier de 9, 12 et 15 cm, deux rubans de 13 et 15 cm, les ardoises, la fiche d'exercices en version d'origine et en version adaptée.</p>
+      <p><b>Les aides prévues :</b> une règle aux graduations agrandies avec le zéro surligné en couleur ; une fiche où chaque segment commence sur un trait repère, avec un texte agrandi et la consigne découpée en étapes. Pour ceux qui ont fini : mesurer les trois côtés d'une ligne brisée et additionner.</p>
+      <p><b>Le signe que c'est acquis :</b> l'élève mesure au moins trois segments sur quatre au centimètre près et trace le segment de 7 cm en partant du zéro.</p>
+      <p><b>Après coup :</b> par exemple, « le défi des rubans a accroché la classe ; six élèves partent encore du bord de la règle : une mesure en rituel demain matin ».</p>
     </div>
 
     <div class="modele">
-      <div><b>Le modèle vierge, à imprimer</b><p>La même trame, sur une page A4, prête à remplir à la main.</p></div>
+      <div><b>La trame vierge, à imprimer</b><p>Les sept rubriques sur une page A4, à remplir à la main.</p></div>
       <a class="btn ghost" href="${MODELE_PDF}" download>Télécharger le modèle (PDF)</a>
     </div>`;
 
@@ -65,16 +67,16 @@ const exemple = `<p>Une fiche de préparation tient sur une page. Voici les rubr
 const illustration = `<figure class="maquette-fiche" aria-label="Illustration : une fiche de préparation dans MyClassFlow">
         <div class="mf-ecran" aria-hidden="true">
           <div class="mf-chemin">Fiches de prep › Maths</div>
-          <div class="mf-titre">Comparer des fractions</div>
+          <div class="mf-titre">Mesurer avec la règle</div>
           <div class="mf-onglets"><span class="on">Déroulé</span><span>Infos</span></div>
           <div class="mf-etiquette">Matériel</div>
-          <div class="mf-puces"><span>Bandes de papier</span><span>Ardoises</span><span>Fiche d'exercices</span></div>
+          <div class="mf-puces"><span>Règles</span><span>Bandes de papier</span><span>Deux rubans</span></div>
           <div class="mf-etiquette">Déroulé de la séance</div>
           <ol class="mf-deroule">
-            <li><b>Rituel (5 min)</b> moitiés et quarts</li>
-            <li><b>Découverte (10 min)</b> 3/4 ou 1/2 ?</li>
-            <li><b>Recherche (15 min)</b> bandes pliées, par deux</li>
-            <li><b>Entraînement (10 min)</b> ranger 4 fractions</li>
+            <li><b>Le défi (5 min)</b> quel ruban est le plus long ?</li>
+            <li><b>Essais (10 min)</b> trois bandes, à deux</li>
+            <li><b>On en parle (8 min)</b> le zéro au début</li>
+            <li><b>À soi (12 min)</b> mesurer, puis tracer 7 cm</li>
           </ol>
           <div class="mf-bouton">Rattacher à une séance</div>
         </div>
@@ -86,22 +88,22 @@ export default {
   ariane: "Fiche de préparation",
   // Carte de partage : outils/partage/gabarit.html?page=fiche-de-preparation.
   carte: { fichier: "og-fiche-de-preparation.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Chaque séance préparée, puis retrouvée dans votre cahier journal »." },
-  accroche: "Une séance de CM1 détaillée phase par phase, puis copiée dans le cahier journal.",
+  accroche: "Une séance de CE1 sur la mesure, pensée moment par moment, puis copiée dans le cahier journal.",
   k: "free",
-  titre: "Fiche de préparation, séance par séance — MyClassFlow",
-  description: "Ce que contient une fiche de préparation, une séance complète de CM1 en exemple, un modèle gratuit à télécharger, et comment MyClassFlow la relie au cahier journal.",
-  h1: "La fiche de préparation, simplement",
-  intro: "Une fiche de préparation décrit une séance de classe : ce que les élèves vont apprendre, avec quel matériel et dans quel ordre. Elle sert à l'enseignant titulaire comme au remplaçant ou au stagiaire. Voici ce qu'elle contient, un exemple complet en CM1 et un modèle gratuit à télécharger.",
+  titre: "Fiche de préparation : trame et exemple en CE1 — MyClassFlow",
+  description: "Une trame de fiche de préparation en sept rubriques, une séance de CE1 sur la mesure des longueurs, le modèle à imprimer, et le lien avec le cahier journal de MyClassFlow.",
+  h1: "Une fiche de préparation pour chaque séance, sur une page",
+  intro: "Une fiche de préparation, c'est une séance pensée avant d'être vécue : son but, son déroulé minute par minute, les difficultés que vous voyez venir. Voici notre trame d'une page, une séance de CE1 rédigée avec elle et le modèle à imprimer.",
   retenir: [
-    "Une fiche de préparation porte sur une seule séance : son objectif, son matériel et ses phases, chacune avec sa durée.",
-    "Aucun modèle n'est imposé. Celui de cette page tient sur une page A4 et se télécharge gratuitement.",
+    "Une fiche de préparation porte sur une seule séance : son but, ses moments minutés et l'erreur que vous voyez venir.",
+    "Notre trame tient sur une page A4, en sept rubriques, et le modèle vierge se télécharge gratuitement.",
     "Dans MyClassFlow, vos fiches sont gratuites, rangées dans votre banque, et leur contenu se copie dans la séance du cahier journal.",
   ],
-  titreBenefices: "À quoi sert une fiche de préparation ?",
+  titreBenefices: "Pourquoi l'écrire avant d'entrer en classe ?",
   benefices: [
-    ["Savoir où l'on va", "L'objectif est écrit avant la séance : chaque phase, chaque exercice et chaque question au tableau servent ce même but."],
-    ["Tenir le temps de classe", "Les durées de chaque phase évitent la séance qui déborde ou la mise en commun sacrifiée faute de temps."],
-    ["Préparer une fois, réutiliser", "Une fiche bien rangée se reprend l'année suivante, s'ajuste pour une autre classe ou se confie à un remplaçant."],
+    ["Voir venir les difficultés", "En écrivant la séance, on repère l'endroit où les élèves vont buter, et on prépare sa réponse avant d'être devant eux."],
+    ["Préparer la journée du même geste", "Rattachée à une séance du cahier journal, la fiche y apporte son déroulé : la journée et la séance se préparent ensemble."],
+    ["Garder ce que la classe a appris", "Quelques lignes écrites après la séance disent ce qui a marché et ce qui reste à reprendre : la séance suivante part de là."],
   ],
   etapes: [
     ["Créez la fiche", "Titre, matière, domaine, compétences, objectifs et matériel, puis le déroulé de la séance, écrit librement, sur ordinateur ou sur téléphone."],
@@ -110,7 +112,7 @@ export default {
   ],
   titreEtapes: "Comment la préparer dans MyClassFlow ?",
   illustration,
-  blocs: [{ titre: "Que contient une fiche de préparation ?", html: exemple }],
+  blocs: [{ titre: "À quoi ressemble une séance de CE1 avec notre trame ?", html: exemple }],
   offre: {
     titre: "Vos fiches de préparation, gratuites dans MyClassFlow",
     texte: "Avec le cahier journal et l'emploi du temps, sans carte bancaire. L'abonnement ajoute l'adaptation des supports par l'IA.",
@@ -118,17 +120,17 @@ export default {
     href: "https://app.myclassflow.fr",
   },
   questions: [
-    ["Une fiche de préparation par séance, ou une seule pour toute la séquence ?", "Les deux se complètent. La fiche de séquence présente tout un apprentissage sur plusieurs séances : l'objectif final, la liste des séances et l'évaluation. La fiche de préparation détaille une seule de ces séances, phase par phase."],
-    ["Doit-on montrer ses fiches de préparation lors d'une inspection ?", "Elles peuvent vous être demandées : lors d'une visite, l'inspecteur ou le conseiller pédagogique peut regarder vos préparations et votre cahier journal. Aucun texte n'impose en revanche de modèle, c'est la clarté qui compte."],
-    ["Que mettre dans une fiche de préparation pour un remplaçant ?", "L'objectif, le matériel et où le trouver, le déroulement minuté, et ce que les élèves ont fait à la séance précédente. Une fiche lisible par quelqu'un d'autre est aussi plus facile à reprendre pour vous l'année suivante."],
-    ["Où noter la différenciation dans une fiche de préparation ?", "Dans une rubrique à part, sous le déroulement. Prévoyez, pour le même objectif, un support plus lisible (texte agrandi, lignes espacées, consigne découpée en étapes), une aide matérielle et un prolongement. Dans MyClassFlow, l'abonnement adapte vos supports en quelques secondes selon les critères pédagogiques que vous cochez."],
-    ["Que faire de ses fiches de préparation l'année suivante ?", "Les reprendre en notant ce que le bilan a appris, plutôt que tout réécrire. Dans MyClassFlow, vos fiches restent dans votre banque, rangées en dossiers : vous les dupliquez et les ajustez."],
+    ["Jusqu'où détailler une fiche de préparation ?", "Écrivez mot pour mot ce qui doit être dit exactement : la consigne, la question qui lance la séance. Le reste tient en notes courtes. Une fiche qu'on ne peut pas relire d'un coup d'œil pendant la classe est trop longue."],
+    ["Comment laisser une fiche de préparation lisible pour un remplaçant ?", "Ajoutez ce que vous êtes seul à savoir : où est rangé le matériel, ce que la classe a fait à la séance d'avant, les mots que les élèves connaissent déjà. Dans MyClassFlow, la fiche rattachée à une séance se retrouve au bon jour du cahier journal."],
+    ["Comment relier une fiche de préparation au cahier journal ?", "Dans MyClassFlow, choisissez « Rattacher à une séance » depuis la fiche, ou « Insérer une fiche de ma banque » depuis la séance : le contenu est copié dans la séance. Vous l'ajustez pour ce jour-là sans toucher à la fiche d'origine."],
+    ["Comment prévoir des aides dans une fiche de préparation ?", "Gardez le même but pour toute la classe et changez le chemin : un support plus lisible (texte agrandi, lignes espacées, consigne en étapes), un outil en plus, une tâche de plus pour ceux qui ont fini. Avec l'abonnement, MyClassFlow adapte vos supports en quelques secondes selon les critères pédagogiques que vous cochez."],
+    ["Comment retrouver une fiche de préparation l'année suivante ?", "Rangez vos fiches en dossiers dès la première année, par matière ou par séquence. Dans MyClassFlow, « Dupliquer » crée une copie que vous corrigez avec ce que vos notes d'après séance vous ont appris, sans perdre la version d'origine."],
     ["Les fiches de préparation sont-elles gratuites dans MyClassFlow ?", "Oui, comme le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire."],
   ],
   publics: [
     ["Vous avez votre classe à l'année", "Chaque séance préparée reste dans votre banque : vous la dupliquez pour un autre niveau ou vous la reprenez à la rentrée suivante."],
-    ["Vous remplacez", "Une page suffit pour savoir quoi faire : l'objectif, le matériel, les phases minutées et ce que la classe a vu la veille."],
-    ["Vous débutez", "Écrire chaque phase avec sa durée aide à anticiper la séance, et vos préparations sont prêtes le jour d'une visite."],
+    ["Vous remplacez", "Une page suffit pour savoir quoi faire : le but, le matériel, le fil de la séance et ce que la classe a vu la veille."],
+    ["Vous débutez", "Écrire chaque moment avec sa durée aide à anticiper la séance, et vos préparations sont prêtes le jour d'une visite."],
   ],
   soeurs: ["Cahier journal", "Emploi du temps", "Adaptation des supports"],
 };
