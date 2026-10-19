@@ -620,6 +620,18 @@ html{scroll-padding-top:72px}
 .mf-seances i{font-style:normal;font-size:11px;font-weight:600;color:var(--coral-700, #B83A17)}
 .mf-seances li.pause{background:var(--paper-2);border-style:dashed}
 .tableau-defile .cj-jour td:nth-child(2){white-space:normal}
+.mf-grille{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:6px}
+.mf-grille span{border-radius:6px;padding:4px 2px;text-align:center;font-size:10.5px;font-weight:600;color:var(--ink)}
+.mf-grille .j{font-weight:700;color:var(--ink-2)}
+.mf-grille .fr{background:var(--coral-100)}.mf-grille .ma{background:var(--amber-100)}.mf-grille .p{background:var(--paper-2);border:1px dashed var(--line);color:var(--ink-2)}
+.mf-grille .eps,.mf-grille .hg,.mf-grille .ar{background:#fff;border:1px solid var(--line)}
+.mf-volumes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.mf-volumes li{display:grid;grid-template-columns:96px 1fr 44px;align-items:center;gap:6px}
+.mf-volumes i{display:block;height:7px;border-radius:99px;background:var(--coral)}
+.mf-volumes b{color:var(--ink);text-align:right}
+.mf-total{margin-top:10px;font-weight:700;color:var(--ink)}
+.edt-total th,.edt-total td{font-weight:700;background:var(--paper-2)}
+.edt-source{font-size:13px;color:var(--ink-2)}
 .cj-pause th,.cj-pause td{background:var(--paper-2);color:var(--ink-2)}
 .cj-fiche{display:inline-block;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--paper-2);border-radius:99px;padding:1px 8px}
 .maquette-fiche figcaption{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}
