@@ -9,7 +9,7 @@
 const exemple = `<p>Une fiche n'a pas besoin d'être longue pour servir. Celle-ci tient en trois blocs, et chacun a un usage précis dans la classe.</p>
 
     <div class="exemple-fiche">
-      <h3>Inès, CE1 : sa fiche en octobre</h3>
+      <h3>Trois repères pour Inès, en CE1</h3>
       <dl class="fe-blocs">
         <div><dt>Critères pédagogiques</dt><dd><ul class="fe-puces"><li>Agrandir le texte</li><li>Augmenter l'interligne</li><li>Consignes courtes et directes</li></ul>Ils servent chaque fois qu'un support est adapté pour elle.</dd></div>
         <div><dt>Observations</dt><dd><ul class="fe-obs"><li>Mesure juste quand elle part du zéro de la règle ; le lui rappeler en début de séance.</li><li>Relit la consigne à voix basse avant de commencer : la laisser faire.</li></ul>Deux phrases factuelles, écrites après la classe, que vous pourrez relire en janvier.</dd></div>
@@ -64,7 +64,7 @@ export default {
     href: "https://app.myclassflow.fr",
   },
   questions: [
-    ["Que noter dans une fiche élève, et que laisser de côté ?", "Ce qui vous aide à enseigner : les aides qui marchent pour lui, ce que vous avez vu en classe, en phrases courtes et factuelles. Laissez de côté les informations de santé, les jugements et tout ce que vous n'écririez pas devant sa famille."],
+    ["Que garder dans une fiche élève ?", "Un repère utile pour la prochaine séance : une aide qui a marché, un point à reprendre, en une phrase. Le reste n'a pas sa place dans la fiche : ni donnée médicale, ni appréciation sur la personne."],
     ["Que sont les critères pédagogiques d'une fiche élève ?", "Des aides de mise en page ou de consigne, choisies dans une liste : agrandir le texte, changer de police, augmenter l'interligne, espacer les lettres, fond crème, consignes courtes… Certains ont un réglage, comme la taille du texte. Ils servent à adapter les supports pour cet élève."],
     ["Peut-on créer toute la classe d'un coup ?", "Oui : depuis le téléphone, une photo de votre liste de classe suffit à créer tous les élèves. Vous pouvez aussi les ajouter un par un."],
     ["Lia peut-elle écrire dans une fiche élève ?", "Elle peut vous proposer une observation à ajouter, à modifier ou à retirer, mais rien n'est écrit sans votre validation. Lia fait partie de l'abonnement Enseignant."],
