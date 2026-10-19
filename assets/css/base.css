@@ -662,7 +662,7 @@ html{scroll-padding-top:72px}
 .ip-relecture th,.ip-relecture td{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left}
 .ip-relecture th{font-size:11.5px;color:var(--ink-2)}
 .ip-signale td{background:var(--amber-50)}
-.ip-signale td:last-child{font-weight:600;color:var(--amber-700)}
+.ip-signale td:last-child{font-weight:700;color:var(--ink)}
 .cj-pause th,.cj-pause td{background:var(--paper-2);color:var(--ink-2)}
 .cj-fiche{display:inline-block;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--paper-2);border-radius:99px;padding:1px 8px}
 .maquette-fiche figcaption{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}

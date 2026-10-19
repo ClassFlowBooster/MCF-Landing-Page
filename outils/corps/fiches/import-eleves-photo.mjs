@@ -66,7 +66,7 @@ export default {
   etapes: [
     ["Photographiez la liste", "Sur votre téléphone, dans « Classe », « Photographier la liste » : prenez la photo ou choisissez-la dans la photothèque."],
     ["Relisez", "Corrigez un prénom ou un nom, et choisissez les élèves à ajouter."],
-    ["Ajoutez-les", "« Ajouter N élèves » remplit la classe. Chaque élève a ensuite sa fiche, prête à recevoir ses critères."],
+    ["Ajoutez-les", "« Ajouter N élèves » remplit la classe : chaque élève apparaît dans « Classe », et sa fiche s'ouvre d'un toucher."],
   ],
   illustration,
   blocs: [{ titre: "Une liste de huit élèves, de la photo à la classe", html: exemple }],
