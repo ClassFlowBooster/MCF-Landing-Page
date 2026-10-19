@@ -75,7 +75,7 @@ export default {
   titreBenefices: "Pourquoi le poser dans MyClassFlow",
   benefices: [
     ["La répartition sous les yeux", "Le total de chaque matière change à chaque cours que vous posez : vous voyez la semaine se répartir, et un manque se repère avant la rentrée, pas en février."],
-    ["Une base hebdomadaire que vous corrigez", "La piscine change de jour en janvier ? Vous modifiez le jour du créneau ; un créneau qui ne sert plus s'archive sans être détruit."],
+    ["Une base hebdomadaire que vous corrigez", "L'anglais passe du mardi au jeudi en janvier ? Vous modifiez le jour du créneau ; un créneau qui ne sert plus s'archive sans être détruit."],
     ["Une copie papier dans la classe", "« Imprimer l'emploi du temps » donne la semaine type en PDF, à consulter sans écran."],
   ],
   etapes: [
@@ -92,7 +92,7 @@ export default {
     href: "https://app.myclassflow.fr",
   },
   questions: [
-    ["Comment MyClassFlow calcule-t-il le volume horaire ?", "Il additionne la durée des créneaux de type « Cours », matière par matière, et les classe du plus grand au plus petit avec le total d'enseignement de la semaine. Les récréations, pauses et rituels n'entrent dans aucun total : si votre calcul mental du matin fait partie des mathématiques, posez-le comme un cours de mathématiques."],
+    ["Mon rituel de calcul mental compte-t-il dans les heures de mathématiques ?", "Seulement si vous le posez comme un cours de mathématiques. Dans MyClassFlow, un créneau de type « Rituel », comme une récréation ou une pause, reste en dehors des totaux par matière : gardez ce type pour l'appel, la date ou la météo."],
     ["Une semaine de quatre jours et demi change-t-elle quelque chose ?", "Non : la grille va du lundi au vendredi, le mercredi matin se remplit comme les autres jours. Seule la plage horaire, commune à toute la semaine, se règle sur la journée la plus longue."],
     ["L'emploi du temps sert-il au cahier journal ?", "Il lui donne son cadre : sur téléphone, les récréations de l'emploi du temps s'affichent dans la vue Journal, et les heures proposées pour une séance restent dans la plage horaire de la classe. Les séances du jour, elles, s'ajoutent dans le cahier journal."],
     ["Sur l'année, quel horaire chaque matière doit-elle atteindre en CM1 et en CM2 ?", "288 heures de français, 180 de mathématiques, 54 de langues vivantes, 108 d'EPS, 72 de sciences et technologie, 72 d'enseignements artistiques et 90 d'histoire, de géographie et d'enseignement moral et civique : 864 heures (arrêté du 9 novembre 2015). La répartition d'une semaine à l'autre peut varier, du moment que le total de l'année est tenu."],
