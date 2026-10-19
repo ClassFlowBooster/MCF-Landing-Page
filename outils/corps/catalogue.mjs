@@ -1,7 +1,8 @@
 // Catalogue des fonctionnalités : source unique du méga-menu, des pages
 // Fonctionnalités et de l'aperçu de l'accueil. `court` : ligne du menu ;
 // `long` : texte de la carte ; `page: false` : absente de la page (menu seul) ;
-// `fiche` : adresse courte de sa fiche explicative, quand elle existe.
+// `fiche` : adresse courte de sa fiche explicative, quand elle existe ;
+// `lie` : partie du nom qui porte le lien, quand la fiche ne couvre pas tout le nom.
 
 export const THEMES = [
   { titre: "Adapter pour chaque élève", sous: "L'IA fait le travail d'adaptation, vous validez.", outils: [
@@ -17,7 +18,7 @@ export const THEMES = [
       long: "Cours, récréations et rituels posés une fois pour l'année : MyClassFlow additionne les heures de chaque matière." },
     { ico: "📝", nom: "Fiches de préparation", k: "free", fiche: "fiche-de-preparation", court: "Séances et séquences, simplement",
       long: "Séances et séquences, avec objectifs et compétences." },
-    { ico: "✅", nom: "Agenda et tâches", k: "free", fiche: "taches", court: "Réunions, rendez-vous, choses à faire", page: false },
+    { ico: "✅", nom: "Agenda et tâches", k: "free", fiche: "taches", lie: "tâches", court: "Réunions, rendez-vous, choses à faire", page: false },
   ] },
   { titre: "Suivre ses élèves", sous: "Repérez d'un coup d'œil qui a besoin de quoi.", outils: [
     { ico: "👤", nom: "Fiche élève", k: "free", fiche: "fiches-eleves", court: "Critères pédagogiques, observations, évaluations",
@@ -49,8 +50,10 @@ export const lienFiche = (o) => (o.fiche ? `/enseignants/fonctionnalites/${o.fic
 /** Outil du catalogue Enseignants, par son nom affiché. */
 export const outil = (nom) => THEMES.flatMap((t) => t.outils).find((o) => o.nom === nom);
 
-/** Texte lié à la fiche de l'outil si elle existe, texte seul sinon. */
+/** Texte lié à la fiche de l'outil si elle existe, texte seul sinon ; seule la partie `lie` du nom porte le lien. */
 export const nomLie = (o, texte = o.nom) => {
   const href = lienFiche(o);
-  return href ? `<a class="lien-fiche" href="${href}">${texte}</a>` : texte;
+  if (!href) return texte;
+  const lie = texte === o.nom && o.lie ? o.lie : texte;
+  return texte.replace(lie, `<a class="lien-fiche" href="${href}">${lie}</a>`);
 };
