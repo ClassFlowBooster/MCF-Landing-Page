@@ -24,7 +24,7 @@ export const THEMES = [
       long: "Évaluations, observations et critères pédagogiques de l'élève, au même endroit." },
     { ico: "📊", nom: "Évaluations", k: "free", court: "Progression par matière, d'un coup d'œil",
       long: "La progression par matière, élève par élève." },
-    { ico: "📸", nom: "Import des élèves par photo", k: "free", court: "Une photo de la liste, la classe est créée",
+    { ico: "📸", nom: "Import des élèves par photo", k: "free", fiche: "import-eleves-photo", court: "Une photo de la liste, la classe est créée",
       long: "Une photo de votre liste de classe, et tous vos élèves sont créés." },
   ] },
 ];
