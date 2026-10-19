@@ -4,7 +4,8 @@ import { readFileSync, existsSync } from "node:fs";
 import { PAGES, PAGE_404 } from "../outils/pages.mjs";
 import { page, ESPACES } from "../outils/gabarits.mjs";
 import { CASTOR_DE } from "../outils/corps/castors.mjs";
-import { THEMES, lienFiche } from "../outils/corps/catalogue.mjs";
+import { THEMES, lienFiche, nomLie } from "../outils/corps/catalogue.mjs";
+import { fonctionnalites } from "../outils/corps/fonctionnalites.mjs";
 import { megaMenu } from "../outils/corps/mega-menu.mjs";
 import { FICHES } from "../outils/corps/fiches/index.mjs";
 import { adresseFiche, arianeFiche } from "../outils/corps/fiche.mjs";
@@ -251,8 +252,9 @@ test("fiches explicatives : chaque outil relié a sa page, les tarifs Enseignant
   const html = (chemin) => page(PAGES.find((p) => p.chemin === chemin));
   for (const o of relies) {
     assert.ok(html("/enseignants/tarifs/").includes(`<a class="lien-fiche" href="${lienFiche(o)}">`), `tarifs → ${o.nom}`);
-    assert.ok(html("/enseignants/fonctionnalites/").includes(`href="${lienFiche(o)}"`), `fonctionnalités → ${o.nom}`);
-    assert.ok(html("/enseignants/").includes(`<a class="lien-fiche" href="${lienFiche(o)}">${o.nom}</a>`), `accueil → ${o.nom}`);
+    // Contenu propre de la page Fonctionnalités (hors méga-menu) ; un outil `page: false` n'y a pas de carte.
+    if (o.page !== false) assert.ok(fonctionnalites("enseignants").includes(`href="${lienFiche(o)}"`), `fonctionnalités → ${o.nom}`);
+    assert.ok(html("/enseignants/").includes(nomLie(o)), `accueil → ${o.nom}`);
     assert.ok(megaMenu("enseignants").includes(`<a class="mi" href="${lienFiche(o)}">`), `méga-menu → ${o.nom}`);
   }
   // Q7 (MCF-Pilotage#53) : l'espace Écoles ne renvoie pas encore vers les fiches.
