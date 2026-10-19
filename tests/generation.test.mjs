@@ -234,7 +234,10 @@ test("fiches explicatives : fil d'Ariane et questions balisés, identiques à la
     assert.deepEqual(ariane.map((e) => e.name), arianeFiche(f).map(([nom]) => nom), chemin);
     assert.equal(ariane.at(-1).item, `https://myclassflow.fr${chemin}`, chemin);
     const visibles = [...html.matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
-    assert.deepEqual(graphe.find((o) => o["@type"] === "FAQPage").mainEntity.map((q) => q.name), visibles, chemin);
+    const balisees = graphe.find((o) => o["@type"] === "FAQPage").mainEntity;
+    assert.deepEqual(balisees.map((q) => q.name), visibles, chemin);
+    const reponses = [...html.matchAll(/<\/summary><p>(.*?)<\/p><\/details>/g)].map((m) => m[1]);
+    assert.deepEqual(balisees.map((q) => q.acceptedAnswer.text), reponses, `${chemin} : réponses`);
     assert.ok(visibles.length >= 4 && visibles.length <= 6, `${chemin} : ${visibles.length} questions`);
     for (const [, href] of html.matchAll(/href="(\/assets\/[^"]+)"/g)) assert.ok(existsSync(`.${href}`), `${chemin} → ${href} absent`);
   }
