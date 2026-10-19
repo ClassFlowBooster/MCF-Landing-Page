@@ -650,6 +650,13 @@ html{scroll-padding-top:72px}
 .ad-trait:before{content:"";position:absolute;left:0;top:-4px;width:2px;height:10px;background:var(--coral)}
 .ad-rep{color:var(--ink-2)}
 .ad-note{font-size:13px;color:var(--ink-2)}
+.fe-blocs{margin:0 0 14px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.fe-blocs>div{border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.fe-blocs dt{font-weight:700;margin-bottom:6px}
+.fe-blocs dd{margin:0;font-size:13.5px;color:var(--ink-2)}
+.fe-puces{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-wrap:wrap;gap:5px}
+.fe-puces li{background:var(--paper-2);border-radius:99px;padding:2px 9px;color:var(--ink)}
+.fe-obs{margin:0 0 8px;padding-left:18px;color:var(--ink)}
 .cj-pause th,.cj-pause td{background:var(--paper-2);color:var(--ink-2)}
 .cj-fiche{display:inline-block;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--paper-2);border-radius:99px;padding:1px 8px}
 .maquette-fiche figcaption{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}
@@ -680,7 +687,7 @@ html{scroll-padding-top:72px}
 .soeur b{font-size:14.5px}
 .soeur span.t{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
 @media (max-width: 760px){
-  .benefices,.soeurs,.rubriques,.ad-criteres,.ad-duo{grid-template-columns:1fr}
+  .benefices,.soeurs,.rubriques,.ad-criteres,.ad-duo,.fe-blocs{grid-template-columns:1fr}
   .fiche-comment{grid-template-columns:1fr}
   .maquette-fiche{max-width:320px;margin:0 auto}
   .modele,.fiche-offre{flex-direction:column;align-items:flex-start}

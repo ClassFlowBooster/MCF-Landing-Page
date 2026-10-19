@@ -3,5 +3,6 @@ import ficheDePreparation from "./fiche-de-preparation.mjs";
 import cahierJournal from "./cahier-journal.mjs";
 import emploiDuTemps from "./emploi-du-temps.mjs";
 import adaptationDesSupports from "./adaptation-des-supports.mjs";
+import fichesEleves from "./fiches-eleves.mjs";
 
-export const FICHES = [ficheDePreparation, cahierJournal, emploiDuTemps, adaptationDesSupports];
+export const FICHES = [ficheDePreparation, cahierJournal, emploiDuTemps, adaptationDesSupports, fichesEleves];
