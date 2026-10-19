@@ -663,6 +663,14 @@ html{scroll-padding-top:72px}
 .ip-relecture th{font-size:11.5px;color:var(--ink-2)}
 .ip-signale td{background:var(--amber-50)}
 .ip-signale td:last-child{font-weight:700;color:var(--ink)}
+.ta-liste{list-style:none;margin:12px 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ta-liste li{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px}
+.ta-case{flex:none;width:16px;height:16px;border:2px solid var(--line-2, var(--line));border-radius:5px}
+.ta-titre{flex:1}
+.ta-lien{display:inline-block;font-size:12px;font-weight:600;background:var(--paper-2);border-radius:99px;padding:1px 8px;color:var(--ink-2)}
+.ta-quand{flex:none;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.ta-faites{font-size:14px;color:var(--ink-2)}
+.ta-faites b{color:var(--ink);margin-right:8px}
 .cj-pause th,.cj-pause td{background:var(--paper-2);color:var(--ink-2)}
 .cj-fiche{display:inline-block;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--paper-2);border-radius:99px;padding:1px 8px}
 .maquette-fiche figcaption{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}

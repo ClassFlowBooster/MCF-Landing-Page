@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tâches de l'enseignant : votre liste à faire — MyClassFlow</title>
+<meta name="description" content="La liste des tâches de MyClassFlow : chaque chose à faire avec son échéance, rangée par classe, reliée aux élèves concernés et cochée d'un geste sur téléphone. Une semaine de CE1 en exemple." />
+<link rel="canonical" href="https://myclassflow.fr/enseignants/fonctionnalites/taches/" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+<meta property="og:title" content="Tâches de l'enseignant : votre liste à faire — MyClassFlow" />
+<meta property="og:description" content="La liste des tâches de MyClassFlow : chaque chose à faire avec son échéance, rangée par classe, reliée aux élèves concernés et cochée d'un geste sur téléphone. Une semaine de CE1 en exemple." />
+<meta property="og:url" content="https://myclassflow.fr/enseignants/fonctionnalites/taches/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="MyClassFlow" />
+<meta property="og:image" content="https://myclassflow.fr/assets/img/og-enseignants.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="MyClassFlow, espace Enseignants : le castor professeur et l'accroche « Adaptez chaque support aux besoins de chaque élève »." />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Enseignants","item":"https://myclassflow.fr/enseignants/"},{"@type":"ListItem","position":2,"name":"Fonctionnalités","item":"https://myclassflow.fr/enseignants/fonctionnalites/"},{"@type":"ListItem","position":3,"name":"Tâches","item":"https://myclassflow.fr/enseignants/fonctionnalites/taches/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Une tâche peut-elle ne concerner que quelques élèves ?","acceptedAnswer":{"@type":"Answer","text":"Oui : choisissez les élèves dans le champ « Élèves ». La tâche apparaît alors sur leur fiche, et depuis la tâche, un lien mène à la fiche de chaque élève."}},{"@type":"Question","name":"Tâche ou séance du cahier journal : où noter quoi ?","acceptedAnswer":{"@type":"Answer","text":"Ce qui se passe en classe, à une heure donnée, va dans le cahier journal. Ce que vous avez à faire, en classe ou en dehors, avant une date, est une tâche : photocopier, récupérer, commander, préparer."}},{"@type":"Question","name":"MyClassFlow envoie-t-il un rappel avant l'échéance ?","acceptedAnswer":{"@type":"Answer","text":"Non. L'échéance range la liste, du plus proche au plus lointain, mais aucune notification n'est envoyée : c'est en ouvrant les tâches que vous voyez ce qui arrive."}},{"@type":"Question","name":"Les tâches fonctionnent-elles sur téléphone et sur ordinateur ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le téléphone a un écran « Tâches » avec « À faire » et « Terminées ». Sur ordinateur, les tâches s'affichent dans les cartes « À faire » de l'accueil, où vous les créez, les modifiez et les marquez faites."}},{"@type":"Question","name":"Lia peut-elle créer une tâche pour moi ?","acceptedAnswer":{"@type":"Answer","text":"Elle peut vous proposer d'en créer, d'en modifier ou d'en clore une ; rien n'est enregistré sans votre validation. Lia fait partie de l'abonnement Enseignant."}},{"@type":"Question","name":"Les tâches sont-elles gratuites dans MyClassFlow ?","acceptedAnswer":{"@type":"Answer","text":"Oui, comme le cahier journal, l'emploi du temps et les fiches élèves. Le compte gratuit ne demande pas de carte bancaire."}}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
+<link rel="stylesheet" href="/assets/css/base.css" />
+</head>
+<body data-espace="enseignants">
+<header class="header"><nav class="nav" aria-label="Navigation principale">
+  <a class="brand" href="/enseignants/"><img class="castor castor-logo" src="/assets/img/castors/professeur.svg" alt="" width="32" height="32" decoding="async">MyClassFlow</a>
+  <div class="espace-choix">
+    <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" decoding="async">Espace Enseignants ▾</button>
+    <div class="espace-menu" role="menu" hidden><a role="menuitem" href="/enseignants/" data-espace="enseignants"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Enseignants</a><a role="menuitem" href="/ecoles/" data-espace="ecoles"><img class="castor castor-menu" src="/assets/img/castors/direction.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Écoles</a><a role="menuitem" href="/parents-enfants/" data-espace="parents-enfants"><img class="castor castor-menu" src="/assets/img/castors/eleve.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Parents / Enfants</a></div>
+  </div>
+  <div class="nav-links">
+    <div class="navrel"><button class="nav-link mega-bouton cur" type="button" aria-expanded="false" aria-controls="mega">Fonctionnalités</button><div class="mega" id="mega" hidden>
+    <div>
+      <h6>Adapter pour chaque élève</h6>
+      <a class="mi" href="/enseignants/fonctionnalites/adaptation-des-supports/"><span class="ico" aria-hidden="true">✨</span><div><b>Adaptation des supports <span class="tg pay">Abonnement</span></b><span class="t">Vos fiches personnalisées en quelques secondes, selon vos critères</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">💬</span><div><b>Lia, votre assistante <span class="tg pay">Abonnement</span></b><span class="t">Posez vos questions, elle prépare avec vous</span></div></a>
+    </div>
+    <div>
+      <h6>Préparer la classe</h6>
+      <a class="mi" href="/enseignants/fonctionnalites/cahier-journal/"><span class="ico" aria-hidden="true">📓</span><div><b>Cahier journal <span class="tg free">Gratuit</span></b><span class="t">Chaque séance du jour, sa fiche à côté</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/emploi-du-temps/"><span class="ico" aria-hidden="true">🗓️</span><div><b>Emploi du temps <span class="tg free">Gratuit</span></b><span class="t">Le total d'heures de chaque matière, sans calcul</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/fiche-de-preparation/"><span class="ico" aria-hidden="true">📝</span><div><b>Fiches de préparation <span class="tg free">Gratuit</span></b><span class="t">Séances et séquences, simplement</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/taches/"><span class="ico" aria-hidden="true">✅</span><div><b>Agenda et tâches <span class="tg free">Gratuit</span></b><span class="t">Réunions, rendez-vous, choses à faire</span></div></a>
+    </div>
+    <div>
+      <h6>Suivre ses élèves</h6>
+      <a class="mi" href="/enseignants/fonctionnalites/fiches-eleves/"><span class="ico" aria-hidden="true">👤</span><div><b>Fiche élève <span class="tg free">Gratuit</span></b><span class="t">Critères pédagogiques, observations, évaluations</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">📊</span><div><b>Évaluations <span class="tg free">Gratuit</span></b><span class="t">Progression par matière, d'un coup d'œil</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/import-eleves-photo/"><span class="ico" aria-hidden="true">📸</span><div><b>Import des élèves par photo <span class="tg free">Gratuit</span></b><span class="t">Une photo de la liste, la classe est créée</span></div></a>
+    </div>
+    <div class="megafoot"><span>La gestion de classe est gratuite, avec 3 adaptations offertes. L'IA en illimité est dans l'abonnement.</span><a href="/enseignants/fonctionnalites/">Voir toutes les fonctionnalités →</a></div>
+  </div></div>
+    <a class="nav-link" href="/enseignants/tarifs/">Tarifs</a>
+    <a class="nav-link" href="/enseignants/telecharger/">Télécharger</a>
+  </div>
+  <span class="sp"></span>
+  <a class="btn" href="https://app.myclassflow.fr">Essayer gratuitement</a>
+  <button class="nav-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuMobile"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-menu" id="menuMobile" hidden aria-label="Navigation mobile">
+  <a href="/enseignants/fonctionnalites/">Fonctionnalités</a><a href="/enseignants/tarifs/">Tarifs</a><a href="/enseignants/telecharger/">Télécharger</a><a role="menuitem" href="/enseignants/" data-espace="enseignants"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Enseignants</a><a role="menuitem" href="/ecoles/" data-espace="ecoles"><img class="castor castor-menu" src="/assets/img/castors/direction.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Écoles</a><a role="menuitem" href="/parents-enfants/" data-espace="parents-enfants"><img class="castor castor-menu" src="/assets/img/castors/eleve.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Parents / Enfants</a>
+</nav></header>
+<main>
+<article class="page fiche">
+  <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/enseignants/">Enseignants</a></li><li><a href="/enseignants/fonctionnalites/">Fonctionnalités</a></li><li aria-current="page">Tâches</li></ol></nav>
+  <header class="fiche-tete">
+    <span class="tg free">Gratuit</span>
+    <h1 class="t">Vos choses à faire, rangées par classe</h1>
+    <p class="fiche-intro">Photocopies, autorisations de sortie, cahiers à rendre : MyClassFlow garde la liste de ce que vous avez à faire pour chaque classe, avec son échéance, et la relie aux élèves concernés quand il y en a.</p>
+  </header>
+
+  <section class="fiche-partie">
+    <h2>Ce que la liste fait pour vous</h2>
+    <div class="benefices">
+      <div class="benefice"><b>Le plus urgent en haut</b><p>Chaque tâche a son échéance, aujourd'hui, demain ou une date : la liste se range d'elle-même, les tâches sans date en dernier.</p></div>
+      <div class="benefice"><b>Les élèves concernés, nommés</b><p>Une tâche reliée à des élèves apparaît aussi sur leur fiche : en l'ouvrant, vous voyez ce qui reste à faire pour eux.</p></div>
+      <div class="benefice"><b>Fait, d'un geste</b><p>Sur téléphone, un balayage la passe dans « Terminées » ; un autre la remet à faire si vous vous êtes trompé.</p></div>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Comment ça marche dans MyClassFlow</h2>
+    <div class="fiche-comment">
+      <ol class="fiche-etapes">
+        <li><b>« Nouvelle tâche »</b><p>Un titre et une échéance ; si besoin, une matière, des élèves et un détail.</p></li>
+        <li><b>Retrouvez-la</b><p>Dans l'écran « Tâches » du téléphone, dans les cartes « À faire » de l'accueil sur ordinateur, et sur la fiche des élèves reliés.</p></li>
+        <li><b>Cochez-la</b><p>Elle passe dans « Terminées ». Vous pouvez toujours la modifier ou la supprimer.</p></li>
+      </ol>
+      <figure class="maquette-fiche" aria-label="Illustration : la liste des tâches dans MyClassFlow">
+        <div class="mf-ecran" aria-hidden="true">
+          <div class="mf-chemin">Tâches</div>
+          <div class="mf-titre">À faire</div>
+          <ul class="mf-seances">
+            <li><span>Demain</span><b>Rendre les cahiers</b></li>
+            <li><span>Jeudi</span><b>Photocopies mesure</b></li>
+            <li><span>Vendredi</span><b>Autorisations</b><i>2 élèves</i></li>
+          </ul>
+          <div class="mf-etiquette">Terminées</div>
+          <ul class="mf-seances"><li class="pause"><s>Planning des services</s></li></ul>
+          <div class="mf-bouton">Nouvelle tâche</div>
+        </div>
+        <figcaption>Illustration avec des données fictives.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>La semaine d'une classe de CE1, en tâches</h2>
+    <p>Rangées comme dans l'app : la plus proche en haut, celle sans date en bas. Deux élèves n'ont pas rendu leur autorisation : la tâche leur est reliée, et elle apparaît aussi sur leur fiche.</p>
+
+    <div class="exemple-fiche">
+      <h3>Cinq choses à faire, une déjà faite</h3>
+      <ol class="ta-liste">
+        <li><span class="ta-case" aria-hidden="true"></span><span class="ta-titre">Rendre les cahiers de lecture</span><span class="ta-quand">Demain</span></li>
+        <li><span class="ta-case" aria-hidden="true"></span><span class="ta-titre">Photocopier la fiche de mesure, version d'origine et version adaptée <span class="ta-lien">Mathématiques</span></span><span class="ta-quand">Jeudi</span></li>
+        <li><span class="ta-case" aria-hidden="true"></span><span class="ta-titre">Récupérer les autorisations de sortie au musée <span class="ta-lien">Maël, Nour</span></span><span class="ta-quand">Vendredi</span></li>
+        <li><span class="ta-case" aria-hidden="true"></span><span class="ta-titre">Préparer la réunion avec les familles</span><span class="ta-quand">12 nov.</span></li>
+        <li><span class="ta-case" aria-hidden="true"></span><span class="ta-titre">Commander des règles aux graduations agrandies</span><span class="ta-quand">Sans échéance</span></li>
+      </ol>
+      <p class="ta-faites"><b>Terminées</b> <s>Afficher le planning des services de la classe</s></p>
+      <p class="ad-note">Tâches et prénoms inventés pour la page.</p>
+    </div>
+  </section>
+
+  <div class="ribbon fiche-offre">
+    <div><span class="tg free">Gratuit</span><b>Vos tâches, gratuites dans MyClassFlow</b><p>Avec le cahier journal, l'emploi du temps et les fiches élèves, sans carte bancaire. L'abonnement ajoute l'adaptation des supports par l'IA.</p></div>
+    <div class="fiche-offre-actions"><a class="btn" href="https://app.myclassflow.fr">Créer mon compte gratuit</a><a class="fiche-tarifs" href="/enseignants/tarifs/">Voir les tarifs</a></div>
+  </div>
+
+  <section class="fiche-partie">
+    <h2>Questions fréquentes</h2>
+    <div class="faq">
+      <details><summary>Une tâche peut-elle ne concerner que quelques élèves ?</summary><p>Oui : choisissez les élèves dans le champ « Élèves ». La tâche apparaît alors sur leur fiche, et depuis la tâche, un lien mène à la fiche de chaque élève.</p></details>
+      <details><summary>Tâche ou séance du cahier journal : où noter quoi ?</summary><p>Ce qui se passe en classe, à une heure donnée, va dans le cahier journal. Ce que vous avez à faire, en classe ou en dehors, avant une date, est une tâche : photocopier, récupérer, commander, préparer.</p></details>
+      <details><summary>MyClassFlow envoie-t-il un rappel avant l'échéance ?</summary><p>Non. L'échéance range la liste, du plus proche au plus lointain, mais aucune notification n'est envoyée : c'est en ouvrant les tâches que vous voyez ce qui arrive.</p></details>
+      <details><summary>Les tâches fonctionnent-elles sur téléphone et sur ordinateur ?</summary><p>Oui. Le téléphone a un écran « Tâches » avec « À faire » et « Terminées ». Sur ordinateur, les tâches s'affichent dans les cartes « À faire » de l'accueil, où vous les créez, les modifiez et les marquez faites.</p></details>
+      <details><summary>Lia peut-elle créer une tâche pour moi ?</summary><p>Elle peut vous proposer d'en créer, d'en modifier ou d'en clore une ; rien n'est enregistré sans votre validation. Lia fait partie de l'abonnement Enseignant.</p></details>
+      <details><summary>Les tâches sont-elles gratuites dans MyClassFlow ?</summary><p>Oui, comme le cahier journal, l'emploi du temps et les fiches élèves. Le compte gratuit ne demande pas de carte bancaire.</p></details>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Les outils qui vont avec</h2>
+    <div class="soeurs">
+      <a class="soeur" href="/enseignants/fonctionnalites/cahier-journal/"><span class="ico" aria-hidden="true">📓</span><span><b>Cahier journal</b> <span class="tg free">Gratuit</span><span class="t">Chaque séance du jour, sa fiche à côté</span></span></a>
+      <a class="soeur" href="/enseignants/fonctionnalites/fiches-eleves/"><span class="ico" aria-hidden="true">👤</span><span><b>Fiche élève</b> <span class="tg free">Gratuit</span><span class="t">Critères pédagogiques, observations, évaluations</span></span></a>
+      <a class="soeur" href="/enseignants/fonctionnalites/"><span class="ico" aria-hidden="true">💬</span><span><b>Lia, votre assistante</b> <span class="tg pay">Abonnement</span><span class="t">Posez vos questions, elle prépare avec vous</span></span></a>
+    </div>
+  </section>
+</article>
+</main>
+<footer class="footer"><div class="footer-inner">
+  <span>© MyClassFlow</span>
+  <a href="/enseignants/">Enseignants</a><a href="/ecoles/">Écoles</a><a href="/parents-enfants/">Parents / Enfants</a>
+  <a href="/presentation/">Présentation</a>
+</div></footer>
+<script type="module" src="/assets/js/navigation.js"></script>
+
+</body>
+</html>

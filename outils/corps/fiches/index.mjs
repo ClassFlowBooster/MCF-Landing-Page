@@ -5,5 +5,6 @@ import emploiDuTemps from "./emploi-du-temps.mjs";
 import adaptationDesSupports from "./adaptation-des-supports.mjs";
 import fichesEleves from "./fiches-eleves.mjs";
 import importElevesPhoto from "./import-eleves-photo.mjs";
+import taches from "./taches.mjs";
 
-export const FICHES = [ficheDePreparation, cahierJournal, emploiDuTemps, adaptationDesSupports, fichesEleves, importElevesPhoto];
+export const FICHES = [ficheDePreparation, cahierJournal, emploiDuTemps, adaptationDesSupports, fichesEleves, importElevesPhoto, taches];
