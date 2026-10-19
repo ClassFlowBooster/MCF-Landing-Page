@@ -33,7 +33,7 @@ export default `<section class="page" data-tarifs="enseignants">
       <div class="price" id="pPrice">${prixHtml(t)}</div>
       <div class="fine" id="pFine">${renvoiHtml(t)}</div>
       <a class="btn" href="https://app.myclassflow.fr">Je commence</a>
-      <ul class="feat"><li>Tout le gratuit, plus :</li><li>Adaptations des supports illimitées</li><li>Lia, votre assistante</li></ul>
+      <ul class="feat"><li>Tout le gratuit, plus :</li><li>${nomLie(outil("Adaptation des supports"), "Adaptations des supports")} illimitées</li><li>Lia, votre assistante</li></ul>
     </div>
     <div class="card">
       <span class="badge vert">Pour toute l'équipe</span>
