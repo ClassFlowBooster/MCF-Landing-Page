@@ -1,0 +1,48 @@
+# Contrôle quotidien du site en ligne (outils/controle-en-ligne.mjs).
+# En cas d'échec : une seule issue ouverte, étiquetée « controle-quotidien » ; un commentaire
+# n'y est ajouté que si la liste des problèmes change. Elle se ferme d'elle-même au retour à la normale.
+name: Contrôle quotidien du site
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  controler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Contrôler le site
+        id: controle
+        run: node outils/controle-en-ligne.mjs rapport.md
+        continue-on-error: true
+      - name: Ouvrir, compléter ou fermer l'issue de suivi
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ECHEC: ${{ steps.controle.outcome == 'failure' }}
+        run: |
+          ETIQUETTE=controle-quotidien
+          gh label create "$ETIQUETTE" --color B60205 --description "Contrôle quotidien du site en échec" 2>/dev/null || true
+          ISSUE=$(gh issue list --label "$ETIQUETTE" --state open --json number --jq '.[0].number // empty')
+          if [ "$ECHEC" = "true" ]; then
+            # Empreinte des seuls problèmes : les temps de réponse varient chaque jour.
+            EMPREINTE=$(sed -n '/^\*\*/,/^$/p' rapport.md | sha256sum | cut -c1-12)
+            CORPS=$(printf '%s\n\n<!-- empreinte:%s -->' "$(cat rapport.md)" "$EMPREINTE")
+            if [ -z "$ISSUE" ]; then
+              gh issue create --title "Contrôle quotidien du site en échec" --label "$ETIQUETTE" --body "$CORPS"
+            elif ! gh issue view "$ISSUE" --json body,comments --jq '[.body] + [.comments[].body] | last' | grep -q "empreinte:$EMPREINTE"; then
+              gh issue comment "$ISSUE" --body "$CORPS"
+            fi
+            exit 1
+          elif [ -n "$ISSUE" ]; then
+            gh issue close "$ISSUE" --comment "Le contrôle du $(date +%F) est revenu à la normale."
+          fi
