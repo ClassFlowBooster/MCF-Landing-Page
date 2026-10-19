@@ -14,7 +14,7 @@ test("IndexNow : seules les pages générées modifiées sont signalées", () =>
   assert.deepEqual(adressesModifiees(fichiers), ["https://myclassflow.fr/", "https://myclassflow.fr/enseignants/tarifs/"]);
 });
 
-test("IndexNow : les dates du sitemap du dépôt se lisent par adresse", () => {
-  const dates = datesDuSitemap(readFileSync("sitemap.xml", "utf8"));
-  assert.match(dates["https://myclassflow.fr/"], /^\d{4}-\d{2}-\d{2}$/);
+test("IndexNow : les dates d'un sitemap (lastmod, PR #29) se lisent par adresse", () => {
+  const xml = "<url><loc>https://myclassflow.fr/</loc><lastmod>2026-10-19</lastmod></url>";
+  assert.deepEqual(datesDuSitemap(xml), { "https://myclassflow.fr/": "2026-10-19" });
 });
