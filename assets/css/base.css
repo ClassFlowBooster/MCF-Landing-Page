@@ -671,6 +671,15 @@ html{scroll-padding-top:72px}
 .ta-quand{flex:none;font-size:12.5px;font-weight:600;color:var(--ink-2)}
 .ta-faites{font-size:14px;color:var(--ink-2)}
 .ta-faites b{color:var(--ink);margin-right:8px}
+.li-fil{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.li-q{align-self:flex-end;max-width:80%;margin:0;background:var(--ink);color:#fff;border-radius:14px 14px 4px 14px;padding:8px 12px;font-size:14px}
+.li-r{align-self:flex-start;max-width:85%;background:var(--paper-2);border-radius:14px 14px 14px 4px;padding:8px 12px;font-size:14px}
+.li-r p{margin:0}
+.li-action{margin-top:8px!important;display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px}
+.li-action b{background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px}
+.li-action i{font-style:normal;border:1px solid var(--line);border-radius:99px;padding:1px 10px;background:#fff}
+.mf-ecran .li-q{font-size:12px;margin-bottom:6px;max-width:100%}
+.mf-ecran .li-r{font-size:12px;max-width:100%}
 .cj-pause th,.cj-pause td{background:var(--paper-2);color:var(--ink-2)}
 .cj-fiche{display:inline-block;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--paper-2);border-radius:99px;padding:1px 8px}
 .maquette-fiche figcaption{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}

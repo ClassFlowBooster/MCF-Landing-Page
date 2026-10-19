@@ -6,5 +6,6 @@ import adaptationDesSupports from "./adaptation-des-supports.mjs";
 import fichesEleves from "./fiches-eleves.mjs";
 import importElevesPhoto from "./import-eleves-photo.mjs";
 import taches from "./taches.mjs";
+import lia from "./lia.mjs";
 
-export const FICHES = [ficheDePreparation, cahierJournal, emploiDuTemps, adaptationDesSupports, fichesEleves, importElevesPhoto, taches];
+export const FICHES = [ficheDePreparation, cahierJournal, emploiDuTemps, adaptationDesSupports, fichesEleves, importElevesPhoto, taches, lia];
