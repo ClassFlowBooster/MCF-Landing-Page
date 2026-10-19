@@ -11,7 +11,7 @@ export const THEMES = [
       long: "Une question de pédagogie, une idée de séance : Lia répond et vous propose des actions à valider." },
   ] },
   { titre: "Préparer la classe", sous: "Tout est relié : l'emploi du temps nourrit le cahier journal.", outils: [
-    { ico: "📓", nom: "Cahier journal", k: "free", court: "Chaque séance du jour, sa fiche à côté",
+    { ico: "📓", nom: "Cahier journal", k: "free", fiche: "cahier-journal", court: "Chaque séance du jour, sa fiche à côté",
       long: "Jour après jour, vos séances avec leurs objectifs et la fiche de prep qui les accompagne, à garder en PDF." },
     { ico: "🗓️", nom: "Emploi du temps", k: "free", court: "Le total d'heures de chaque matière, sans calcul",
       long: "Cours, récréations et rituels posés une fois pour l'année : MyClassFlow additionne les heures de chaque matière." },

@@ -21,7 +21,7 @@ export default `<section class="page" data-tarifs="enseignants">
       <div class="old"></div>
       <div class="price">0 €</div>
       <span class="quota"><i>3</i> adaptations offertes</span>
-      <ul class="feat grow"><li>Cahier journal, emploi du temps, ${nomLie(outil("Fiches de préparation"), "fiches de prep")}</li><li>Agenda et tâches</li><li>Fiches élèves et évaluations</li><li>Import des élèves par photo</li></ul>
+      <ul class="feat grow"><li>${nomLie(outil("Cahier journal"))}, emploi du temps, ${nomLie(outil("Fiches de préparation"), "fiches de prep")}</li><li>Agenda et tâches</li><li>Fiches élèves et évaluations</li><li>Import des élèves par photo</li></ul>
       <a class="btn ghost" href="https://app.myclassflow.fr">Créer mon compte gratuit</a>
     </div>
     <div class="card hl avec-castor">
