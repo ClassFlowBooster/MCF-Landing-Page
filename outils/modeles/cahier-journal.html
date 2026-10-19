@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Cahier journal — modèle MyClassFlow</title>
+<!-- Source du modèle vierge : `npm run modeles` l'imprime en
+     assets/docs/modele-cahier-journal.pdf (une page A4, une journée). -->
+<style>
+@page{size:A4 portrait;margin:12mm}
+*{box-sizing:border-box}
+body{font:10pt/1.35 Inter,Helvetica,Arial,sans-serif;color:#1F1A14;margin:0;width:184mm}
+h1{font:600 17pt Georgia,serif;margin:0}
+.tete{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #F0552B;padding-bottom:4px;margin-bottom:8px}
+.marque{font-size:8.5pt;color:#8A8278}
+table{width:100%;border-collapse:collapse}
+td,th{border:1px solid #BFB6A4;padding:4px 6px;vertical-align:top;text-align:left}
+th{background:#F4EFE6;font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em}
+.lab{font-size:8.5pt;font-weight:700;color:#4A4238;display:block}
+.infos td{height:11mm;width:25%}
+.jour{margin-top:6px}
+.jour td{height:21.5mm}
+.jour th:nth-child(1){width:10%}.jour th:nth-child(2){width:15%}.jour th:nth-child(3){width:30%}.jour th:nth-child(4){width:18%}
+.bloc{margin-top:6px}
+.bloc td{height:17mm;width:50%}
+.pied{margin-top:6px;font-size:8pt;color:#8A8278;text-align:right}
+</style>
+</head>
+<body>
+<div class="tete"><h1>Cahier journal</h1><span class="marque">Modèle gratuit MyClassFlow · myclassflow.fr</span></div>
+<table class="infos">
+  <tr><td><span class="lab">Jour et date</span></td><td><span class="lab">Classe</span></td><td><span class="lab">Semaine n°</span></td><td><span class="lab">Absents</span></td></tr>
+</table>
+<table class="jour">
+  <thead><tr><th>Heure</th><th>Matière</th><th>Séance : ce que les élèves en retirent</th><th>Ce qu'il faut</th><th>Ce qui s'est passé</th></tr></thead>
+  <tbody>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+<table class="bloc">
+  <tr><td><span class="lab">Reporté à un autre jour</span></td><td><span class="lab">Pour demain : à reprendre, à préparer</span></td></tr>
+</table>
+<p class="pied">Retrouvez votre cahier journal, vos fiches de préparation et votre emploi du temps sur myclassflow.fr</p>
+</body>
+</html>
