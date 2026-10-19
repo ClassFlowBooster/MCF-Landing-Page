@@ -65,10 +65,10 @@ export default {
   titre: "Adapter un exercice selon des critères pédagogiques — MyClassFlow",
   description: "Adapter un exercice ou une leçon selon des critères pédagogiques cochés : texte agrandi, interligne, consignes courtes. Les critères de l'app, une mesure en CE1 du document importé au résultat, les versions par élève ou par groupe.",
   h1: "Du support de la classe aux versions à imprimer",
-  intro: "Vous prenez en photo ou importez l'exercice prévu pour la classe, vous cochez les critères pédagogiques qui aident tel élève ou tel groupe, et MyClassFlow en tire une version adaptée, à relire puis à imprimer à côté de l'originale. Un outil de différenciation pédagogique, qui s'occupe de la mise en page pendant que vous gardez la main sur le fond.",
+  intro: "Vous prenez en photo ou importez l'exercice prévu pour la classe, vous cochez les critères pédagogiques qui aident tel élève ou tel groupe, et MyClassFlow en tire une version adaptée, à relire puis à imprimer à côté de l'originale. Pour la différenciation pédagogique, c'est un support par élève ou par groupe, tiré de l'exercice de toute la classe.",
   titreBenefices: "Ce que l'adaptation vous évite",
   benefices: [
-    ["Une mise en page à ne pas refaire", "La présentation des variantes est produite par l'IA à partir de l'exercice de la classe ; vous gardez la relecture pédagogique."],
+    ["Une mise en page à ne pas refaire", "Les variantes sortent de l'exercice prévu pour la classe : vous relisez et vous imprimez, sans repasser par le traitement de texte."],
     ["Se souvenir de qui a besoin de quoi", "Les critères de chaque élève restent sur sa fiche : vous les retrouvez au moment d'adapter, sans les recocher."],
     ["Trier les copies au photocopieur", "L'impression prépare ensemble la version d'origine et chaque version adaptée ; « Tout télécharger (.zip) » les garde dans un seul fichier."],
   ],
