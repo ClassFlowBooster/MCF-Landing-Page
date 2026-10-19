@@ -613,6 +613,15 @@ html{scroll-padding-top:72px}
 .mf-deroule{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 .mf-deroule b{color:var(--ink)}
 .mf-bouton{margin-top:14px;background:var(--coral);color:#fff;border-radius:10px;padding:8px;text-align:center;font-weight:600}
+.mf-seances{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.mf-seances li{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 9px}
+.mf-seances span{font-size:11.5px;min-width:44px}
+.mf-seances b{color:var(--ink)}
+.mf-seances i{font-style:normal;font-size:11px;font-weight:600;color:var(--coral-700, #B83A17)}
+.mf-seances li.pause{background:var(--paper-2);border-style:dashed}
+.tableau-defile .cj-jour td:nth-child(2){white-space:normal}
+.cj-pause th,.cj-pause td{background:var(--paper-2);color:var(--ink-2)}
+.cj-fiche{display:inline-block;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--paper-2);border-radius:99px;padding:1px 8px}
 .maquette-fiche figcaption{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}
 .rubriques{margin:14px 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px}
 .rubriques dt{font-weight:700}
