@@ -20,7 +20,7 @@ export const THEMES = [
     { ico: "✅", nom: "Agenda et tâches", k: "free", court: "Réunions, rendez-vous, choses à faire", page: false },
   ] },
   { titre: "Suivre ses élèves", sous: "Repérez d'un coup d'œil qui a besoin de quoi.", outils: [
-    { ico: "👤", nom: "Fiche élève", k: "free", court: "Critères pédagogiques, observations, évaluations",
+    { ico: "👤", nom: "Fiche élève", k: "free", fiche: "fiches-eleves", court: "Critères pédagogiques, observations, évaluations",
       long: "Évaluations, observations et critères pédagogiques de l'élève, au même endroit." },
     { ico: "📊", nom: "Évaluations", k: "free", court: "Progression par matière, d'un coup d'œil",
       long: "La progression par matière, élève par élève." },
