@@ -72,5 +72,5 @@ export default {
     ["Lia prépare-t-elle des séances ou des supports ?", "Non. Elle ne crée ni ne modifie vos séances, vos fiches de préparation ni vos supports. Pour un support, utilisez « Adapter un support » ; pour une séance, le Planning."],
     ["Lia est-elle comprise dans le compte gratuit ?", "Non, Lia fait partie de l'abonnement Enseignant, avec les adaptations des supports illimitées. Le cahier journal, l'emploi du temps, les fiches élèves et les tâches restent gratuits."],
   ],
-  soeurs: ["Agenda et tâches", "Fiche élève", "Adaptation des supports"],
+  soeurs: ["Tâches", "Fiche élève", "Adaptation des supports"],
 };

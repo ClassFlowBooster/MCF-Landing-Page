@@ -40,10 +40,10 @@ export default `<div class="acc">
 
   ${FAMILLES}
 
-  ${etapes({ titre: "Une photo, quelques secondes", texte: "Pas besoin de tout retaper : MyClassFlow Famille part de la page que votre enfant a sous les yeux.", liste: [
+  ${etapes({ titre: "Une photo, trois étapes", texte: "Pas besoin de tout retaper : MyClassFlow Famille part de la page que votre enfant a sous les yeux.", liste: [
     ["1", "Photographiez", "La leçon ou l'exercice", "La leçon, l'exercice ou la page du cahier."],
     ["2", "Cochez", "Les critères utiles", "Texte agrandi, lignes espacées, consignes en étapes… Vous cochez ce qui aide votre enfant."],
-    ["3", "Imprimez", "Ou lisez à l'écran", "Une version claire et aérée, prête en quelques secondes."],
+    ["3", "Imprimez", "Ou lisez à l'écran", "Une version claire et aérée, prête à imprimer ou à lire."],
   ] })}
 
   <section class="section exemple" id="exemple">

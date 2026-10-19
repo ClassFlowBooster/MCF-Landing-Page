@@ -1,4 +1,4 @@
-// Fiche explicative « Tâches » (MCF-Pilotage#53), reliée depuis la ligne « Agenda et tâches ».
+// Fiche explicative « Tâches » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // titre, détail, échéance sans heure (« Aujourd'hui », « Demain » ou « Date… »), matière, élèves
 // liés ; tri par échéance, sans échéance en dernier ; « À faire » et « Terminées » sur téléphone,
