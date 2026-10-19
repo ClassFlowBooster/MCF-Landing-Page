@@ -1,8 +1,9 @@
 // Fiche explicative « Adaptation des supports » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
-// « Adapter un support » ; sources « Photo », « Photothèque » ou « Fichier » (PDF, images, Word),
-// 8 pages au plus ; critères par familles (libellés exacts ci-dessous) ; versions par élève ou
-// par groupe, « Lancer l'adaptation » ; « Imprimer », « Télécharger », « Tout télécharger (.zip) ».
+// « Adapter un support » ; sources « Photo », « Photothèque » ou « Fichier » (PDF ou image ; un
+// document Word est refusé au lancement), 8 pages au plus ; critères par familles (libellés exacts ci-dessous) ; versions par élève ou
+// par groupe, « Lancer l'adaptation » ; « Imprimer », « Télécharger », « Tout télécharger (.zip) »,
+// suppression d'une version ; « Renommer » vise le support.
 // Aucun décompte d'adaptations dans l'app (MCF-App#124) : on garde la formule des tarifs.
 // Vocabulaire : des critères pédagogiques, jamais une catégorie d'élèves.
 
@@ -73,9 +74,9 @@ export default {
     ["Trier les copies au photocopieur", "L'impression prépare ensemble la version d'origine et chaque version adaptée ; « Tout télécharger (.zip) » les garde dans un seul fichier."],
   ],
   etapes: [
-    ["Ajoutez le support", "« Adapter un support », un titre, puis une photo, une image de la photothèque ou un fichier PDF, image ou Word, jusqu'à 8 pages. Les pages se réordonnent ou se retirent."],
+    ["Ajoutez le support", "« Adapter un support », un titre, puis une photo, une image de la photothèque ou un fichier PDF ou image, jusqu'à 8 pages. Les photos et fichiers ajoutés se réordonnent ou se retirent."],
     ["Dites pour qui", "Partez des critères de vos élèves ou de vos groupes, ou choisissez les critères pour l'occasion. Puis « Lancer l'adaptation »."],
-    ["Imprimez ou téléchargez", "Chaque version s'imprime, se télécharge ou se renomme ; une version inutile se supprime."],
+    ["Imprimez ou téléchargez", "Chaque version s'imprime ou se télécharge, et une version inutile se supprime. Le support, lui, peut être renommé."],
   ],
   illustration,
   blocs: [{ titre: "Les critères de l'app, puis une mesure en CE1", html: exemple }],
@@ -87,7 +88,7 @@ export default {
   },
   questions: [
     ["Quels critères pédagogiques peut-on cocher pour adapter un exercice ?", "Ils sont rangés par familles. Lisibilité : agrandir le texte, changer de police, augmenter l'interligne, espacer les lettres, raccourcir les lignes, fond crème. Consignes : consignes courtes et directes, vocabulaire simple, lexique des mots difficiles. Structure : textes en paragraphes courts, afficher la progression. D'autres critères complètent ces familles dans l'app."],
-    ["Quels documents peut-on adapter ?", "Une photo prise sur le moment, une image de votre photothèque, ou un fichier PDF, image (PNG, JPG, WEBP) ou Word, jusqu'à 8 pages par support. Pour un document Word, un seul fichier à la fois."],
+    ["Quels documents peut-on adapter ?", "Une photo prise sur le moment, une image de votre photothèque, ou un fichier PDF ou image (PNG, JPG, WEBP), jusqu'à 8 pages par support. Un document Word s'exporte d'abord en PDF."],
     ["Faut-il relier l'adaptation à un élève ?", "Non. Vous pouvez partir des critères enregistrés sur la fiche d'un élève, adapter pour un groupe, ou cocher des critères pour l'occasion. Un même support peut sortir en plusieurs versions."],
     ["L'adaptation peut-elle modifier l'exercice ?", "Elle vise à garder son but et à changer sa présentation et la formulation des consignes, selon les critères cochés. C'est une IA qui produit la version : relisez-la avant de l'imprimer, et supprimez-la si elle ne convient pas."],
     ["L'adaptation remplace-t-elle la différenciation pédagogique ?", "Non, elle en est un outil. Différencier, c'est aussi changer le matériel, l'accompagnement ou la tâche ; l'adaptation s'occupe du support, pour que chaque élève puisse travailler sur le même exercice que la classe."],

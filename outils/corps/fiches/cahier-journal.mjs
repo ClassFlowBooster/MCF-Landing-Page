@@ -2,7 +2,7 @@
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // Planning › Cahier journal en vue jour ou semaine ; champs titre, matière, horaires, domaine,
 // compétences, séquence, objectifs (type, matériel et déroulé sur ordinateur) ; « Insérer une
-// fiche de ma banque » ; « Reporter » copie le contenu ; PDF jour ou semaine, impression sur
+// fiche de ma banque » ; « Reporter » ajoute le contenu à une séance déjà prévue, sans l'écraser ; PDF jour ou semaine, impression sur
 // ordinateur ; récréations de l'emploi du temps dans la vue Journal du téléphone.
 // Rien sur un remplissage automatique ni sur un champ bilan : l'app ne les a pas.
 
@@ -40,7 +40,7 @@ const exemple = `<p>Une journée réelle ne suit jamais tout à fait ce qui éta
       </div>
       <p class="defile-indice" aria-hidden="true">Faites défiler le tableau →</p>
       <p><b>La séance de mathématiques</b> a sa fiche de préparation rattachée : son déroulé, son matériel et ses aides sont dans la séance, sans recopie.</p>
-      <p><b>À 14 h 30, la séance d'EMC n'a pas eu lieu</b> : la discussion sur la cour a pris plus de temps que prévu. Elle est reportée à jeudi, avec son objectif et son contenu.</p>
+      <p><b>À 14 h 30, la séance d'EMC n'a pas eu lieu</b> : la discussion sur la cour a pris plus de temps que prévu. Son contenu est reporté sur la séance d'EMC de jeudi.</p>
     </div>
 
     <div class="modele">
@@ -78,11 +78,11 @@ export default {
   benefices: [
     ["Le fil de la classe, créneau après créneau", "Chaque séance à sa place entre les récréations, avec son objectif : à 10 h 40, vous savez ce qui vient ensuite."],
     ["Une classe qui peut changer de mains", "Imprimé ou transmis en PDF, il donne à votre remplaçant l'objectif de chaque séance et son déroulé, sans qu'il ait à vous appeler."],
-    ["Rien ne se perd quand une séance glisse", "Une séance qui n'a pas eu lieu se reporte à un autre jour avec tout son contenu : il n'y a rien à réécrire."],
+    ["Rien ne se perd quand une séance glisse", "Le contenu d'une séance qui n'a pas eu lieu s'ajoute à une séance déjà prévue un autre jour : objectifs, compétences, matériel et déroulé, sans rien réécrire."],
   ],
   etapes: [
     ["Remplissez le jour", "Dans le Planning, « Ajouter une séance » : titre, matière, horaires, domaine, compétences, séquence et objectifs. « Insérer une fiche de ma banque » y copie une fiche de préparation ; sur ordinateur s'ajoutent le matériel et le déroulé."],
-    ["Déplacez ce qui a sauté", "Une séance n'a pas eu lieu ? « Reporter » l'envoie à un autre jour avec son contenu : rien à réécrire, rien d'oublié."],
+    ["Reportez ce qui a sauté", "Une séance n'a pas eu lieu ? « Reporter » ajoute son contenu à une séance déjà prévue, sans effacer ce que celle-ci contenait."],
     ["Gardez-en la trace", "Téléchargez le cahier journal en PDF, pour un jour ou pour la semaine, en choisissant les jours. Sur ordinateur, vous pouvez aussi l'imprimer directement."],
   ],
   illustration,
@@ -96,9 +96,9 @@ export default {
   questions: [
     ["Qu'est-ce qu'un remplaçant doit trouver dans votre cahier journal pour prendre la classe ?", "Pour chaque séance : l'heure, la matière, ce que les élèves doivent savoir faire à la fin et ce qui a été fait juste avant. Ajoutez où trouver le matériel. Dans MyClassFlow, une fiche de préparation rattachée apporte en plus le déroulé complet de la séance ; laissez-lui le PDF du jour ou de la semaine."],
     ["Emploi du temps, cahier journal, fiche de préparation : trois échelles de temps ?", "Oui. L'emploi du temps est la semaine type, posée une fois pour l'année. La fiche de préparation détaille une séance. Le cahier journal dit ce qui se passe tel jour, à telle heure. Dans MyClassFlow, la fiche se rattache à la séance du cahier journal, qui reste dans les horaires de votre classe."],
-    ["Que faire d'une séance prévue qui n'a pas eu lieu ?", "Reportez-la plutôt que de la supprimer. Dans MyClassFlow, « Reporter » la place à un autre jour et y copie son contenu pédagogique : objectifs, compétences, déroulé."],
+    ["Que faire d'une séance prévue qui n'a pas eu lieu ?", "Reportez-la plutôt que de la supprimer. Dans MyClassFlow, « Reporter » ajoute son contenu pédagogique (objectifs, compétences, matériel, déroulé) à une séance déjà prévue un autre jour, sans effacer ce que celle-ci contenait."],
     ["Peut-on imprimer son cahier journal ?", "Oui. Depuis un ordinateur, MyClassFlow l'imprime ou le télécharge en PDF, au format jour ou semaine. Depuis un téléphone, vous le téléchargez en PDF."],
-    ["Peut-on garder une page papier à côté d'un cahier journal numérique ?", "Oui, c'est même une bonne façon de faire : on prépare dans MyClassFlow, on imprime la page du jour, et on y note au crayon ce qui s'est passé pendant la classe. Le soir, une séance qui a sauté se reporte à un autre jour, avec son contenu. Le modèle vierge ci-dessus sert aussi à ceux qui préfèrent tout tenir à la main."],
+    ["Peut-on garder une page papier à côté d'un cahier journal numérique ?", "Oui, c'est même une bonne façon de faire : on prépare dans MyClassFlow, on imprime la page du jour, et on y note au crayon ce qui s'est passé pendant la classe. Le soir, le contenu d'une séance qui a sauté se reporte sur une séance déjà prévue. Le modèle vierge ci-dessus sert aussi à ceux qui préfèrent tout tenir à la main."],
     ["Le cahier journal est-il gratuit dans MyClassFlow ?", "Oui, comme les fiches de préparation et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire."],
   ],
   soeurs: ["Fiches de préparation", "Emploi du temps", "Adaptation des supports"],
