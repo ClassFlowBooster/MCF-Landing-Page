@@ -17,7 +17,7 @@ export const THEMES = [
       long: "Cours, récréations et rituels posés une fois pour l'année : MyClassFlow additionne les heures de chaque matière." },
     { ico: "📝", nom: "Fiches de préparation", k: "free", fiche: "fiche-de-preparation", court: "Séances et séquences, simplement",
       long: "Séances et séquences, avec objectifs et compétences." },
-    { ico: "✅", nom: "Agenda et tâches", k: "free", court: "Réunions, rendez-vous, choses à faire", page: false },
+    { ico: "✅", nom: "Agenda et tâches", k: "free", fiche: "taches", court: "Réunions, rendez-vous, choses à faire", page: false },
   ] },
   { titre: "Suivre ses élèves", sous: "Repérez d'un coup d'œil qui a besoin de quoi.", outils: [
     { ico: "👤", nom: "Fiche élève", k: "free", fiche: "fiches-eleves", court: "Critères pédagogiques, observations, évaluations",
