@@ -12,6 +12,11 @@ permissions:
   contents: read
   issues: write
 
+# Un seul contrôle à la fois : deux lancements simultanés pourraient ouvrir deux issues.
+concurrency:
+  group: controle-quotidien
+  cancel-in-progress: false
+
 jobs:
   controler:
     runs-on: ubuntu-latest
@@ -34,9 +39,9 @@ jobs:
           gh label create "$ETIQUETTE" --color B60205 --description "Contrôle quotidien du site en échec" 2>/dev/null || true
           ISSUE=$(gh issue list --label "$ETIQUETTE" --state open --json number --jq '.[0].number // empty')
           if [ "$ECHEC" = "true" ]; then
-            # Empreinte des seuls problèmes : les temps de réponse varient chaque jour.
-            EMPREINTE=$(sed -n '/^\*\*/,/^$/p' rapport.md | sha256sum | cut -c1-12)
-            CORPS=$(printf '%s\n\n<!-- empreinte:%s -->' "$(cat rapport.md)" "$EMPREINTE")
+            # Empreinte de la seule liste des problèmes, écrite par le script dans le rapport.
+            EMPREINTE=$(grep -o 'empreinte:[0-9a-f]*' rapport.md | cut -d: -f2)
+            CORPS=$(cat rapport.md)
             if [ -z "$ISSUE" ]; then
               gh issue create --title "Contrôle quotidien du site en échec" --label "$ETIQUETTE" --body "$CORPS"
             elif ! gh issue view "$ISSUE" --json body,comments --jq '[.body] + [.comments[].body] | last' | grep -q "empreinte:$EMPREINTE"; then

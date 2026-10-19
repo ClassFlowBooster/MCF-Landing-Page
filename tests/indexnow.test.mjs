@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { CLE, adressesModifiees, datesDuSitemap, requete } from "../outils/indexnow.mjs";
+import { CLE, adressesModifiees, baseDeComparaison, requete } from "../outils/indexnow.mjs";
 
 test("IndexNow : la clé est servie à la racine, sous son propre nom", () => {
   assert.match(CLE, /^[0-9a-f]{32}$/);
@@ -14,7 +14,9 @@ test("IndexNow : seules les pages générées modifiées sont signalées", () =>
   assert.deepEqual(adressesModifiees(fichiers), ["https://myclassflow.fr/", "https://myclassflow.fr/enseignants/tarifs/"]);
 });
 
-test("IndexNow : les dates d'un sitemap (lastmod, PR #29) se lisent par adresse", () => {
-  const xml = "<url><loc>https://myclassflow.fr/</loc><lastmod>2026-10-19</lastmod></url>";
-  assert.deepEqual(datesDuSitemap(xml), { "https://myclassflow.fr/": "2026-10-19" });
+
+test("IndexNow : premier push comparé à l'arbre vide, sinon au commit précédent", () => {
+  assert.equal(baseDeComparaison("0000000000000000000000000000000000000000"), "4b825dc642cb6eb9a060e54bf8d69288fbee4904");
+  assert.equal(baseDeComparaison(""), "4b825dc642cb6eb9a060e54bf8d69288fbee4904");
+  assert.equal(baseDeComparaison("abc123"), "abc123");
 });

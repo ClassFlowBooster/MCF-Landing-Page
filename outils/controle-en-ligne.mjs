@@ -4,6 +4,7 @@
 // adresse, rien d'autre : ce n'est pas du trafic simulé.
 // Usage : node outils/controle-en-ligne.mjs [rapport.md] — code de sortie 1 si un contrôle échoue.
 // CONTROLE_BASE=http://127.0.0.1:8000 le fait tourner sur une copie locale, sans toucher au site.
+import { createHash } from "node:crypto";
 import { writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { SITE } from "./gabarits.mjs";
@@ -44,13 +45,16 @@ export function verifierDonneesStructurees(html) {
   return problemes;
 }
 
+/** Empreinte de la liste des problèmes : l'issue de suivi n'est commentée que si elle change. */
+export const empreinte = (problemes) => createHash("sha256").update([...problemes].sort().join("\n")).digest("hex").slice(0, 12);
+
 /** Liens et fichiers internes d'une page (href et src commençant par /). */
 export const liensInternes = (html) =>
   [...new Set([...html.matchAll(/(?:href|src)="(\/[^"#?]*)/g)].map((m) => m[1]))];
 
 async function obtenir(adresse) {
   const debut = Date.now();
-  const rep = await fetch(adresse.replace(SITE, BASE), { headers: ENTETES, redirect: "follow" });
+  const rep = await fetch(adresse.replace(SITE, BASE), { headers: ENTETES, redirect: "manual", signal: AbortSignal.timeout(20_000) });
   const texte = await rep.text();
   return { statut: rep.status, ms: Date.now() - debut, texte };
 }
@@ -68,6 +72,7 @@ async function principal(sortie) {
 
   const robots = await verifier(`${SITE}/robots.txt`);
   if (robots && (robots.statut !== 200 || !robots.texte.includes(`Sitemap: ${SITE}/sitemap.xml`))) problemes.push("robots.txt absent ou sans ligne Sitemap");
+  if (!CLE) problemes.push("fichier de clé IndexNow absent du dépôt");
   const cle = CLE && (await verifier(`${SITE}/${CLE}.txt`));
   if (cle && (cle.statut !== 200 || cle.texte.trim() !== CLE)) problemes.push("clé IndexNow non servie à la racine");
 
@@ -76,7 +81,7 @@ async function principal(sortie) {
     const r = await verifier(adresse);
     if (!r) continue;
     lignes.push(`| ${adresse.slice(SITE.length)} | ${r.statut} | ${r.ms} ms |`);
-    if (r.statut !== 200) problemes.push(`${adresse} : HTTP ${r.statut}`);
+    if (r.statut !== 200) problemes.push(`${adresse} : HTTP ${r.statut}${r.statut >= 300 && r.statut < 400 ? " (redirection)" : ""}`);
     if (r.ms > SEUIL_MS) problemes.push(`${adresse} : ${r.ms} ms (seuil ${SEUIL_MS} ms)`);
     for (const p of verifierDonneesStructurees(r.texte)) problemes.push(`${adresse} : ${p}`);
     for (const l of liensInternes(r.texte)) internes.add(l);
@@ -91,6 +96,7 @@ async function principal(sortie) {
     problemes.length ? `**${problemes.length} problème(s)**\n\n${problemes.map((p) => `- ${p}`).join("\n")}` : "**Tout est en ordre.**",
     "", "| Page | HTTP | Temps |", "|---|---|---|", ...lignes,
     "", `${internes.size} liens et fichiers internes vérifiés.`,
+    "", `<!-- empreinte:${problemes.length ? empreinte(problemes) : "aucune"} -->`,
   ].join("\n");
   if (sortie) writeFileSync(sortie, rapport);
   console.log(rapport);

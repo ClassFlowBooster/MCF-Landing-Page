@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { lireSitemap, verifierDonneesStructurees, liensInternes } from "../outils/controle-en-ligne.mjs";
+import { lireSitemap, verifierDonneesStructurees, liensInternes, empreinte } from "../outils/controle-en-ligne.mjs";
 
 test("contrôle : le sitemap du dépôt est valide", () => {
   const { adresses, problemes } = lireSitemap(readFileSync("sitemap.xml", "utf8"));
@@ -23,4 +23,9 @@ test("contrôle : données structurées illisibles ou sans @context", () => {
 
 test("contrôle : liens et fichiers internes, sans doublon ni ancre", () => {
   assert.deepEqual(liensInternes('<a href="/a/">x</a><img src="/i.png"><a href="/a/#b">y</a><a href="https://x.fr/">z</a>'), ["/a/", "/i.png"]);
+});
+
+test("contrôle : l'empreinte ne dépend que de la liste des problèmes, pas de leur ordre", () => {
+  assert.equal(empreinte(["b", "a"]), empreinte(["a", "b"]));
+  assert.notEqual(empreinte(["a", "b"]), empreinte(["a", "c"]));
 });
