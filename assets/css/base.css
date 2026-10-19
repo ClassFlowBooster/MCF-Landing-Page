@@ -620,10 +620,11 @@ html{scroll-padding-top:72px}
 .mf-seances i{font-style:normal;font-size:11px;font-weight:600;color:var(--coral-700, #B83A17)}
 .mf-seances li.pause{background:var(--paper-2);border-style:dashed}
 .tableau-defile .cj-jour td:nth-child(2){white-space:normal}
-.mf-grille{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:6px}
+.mf-grille{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:6px}
 .mf-grille span{border-radius:6px;padding:4px 2px;text-align:center;font-size:10.5px;font-weight:600;color:var(--ink)}
 .mf-grille .j{font-weight:700;color:var(--ink-2)}
 .mf-grille .fr{background:var(--coral-100)}.mf-grille .ma{background:var(--amber-100)}.mf-grille .p{background:var(--paper-2);border:1px dashed var(--line);color:var(--ink-2)}
+.mf-grille .v{background:none}
 .mf-grille .eps,.mf-grille .hg,.mf-grille .ar{background:#fff;border:1px solid var(--line)}
 .mf-volumes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
 .mf-volumes li{display:grid;grid-template-columns:96px 1fr 44px;align-items:center;gap:6px}
