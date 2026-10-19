@@ -8,7 +8,7 @@ export const THEMES = [
   { titre: "Adapter pour chaque élève", sous: "L'IA fait le travail d'adaptation, vous validez.", outils: [
     { ico: "✨", nom: "Adaptation des supports", k: "pay", fiche: "adaptation-des-supports", court: "Vos fiches personnalisées en quelques secondes, selon vos critères",
       long: "Cochez des critères pédagogiques, avec ou sans élève relié&nbsp;: l'exercice ressort avec un texte agrandi, une mise en page aérée, des consignes en étapes." },
-    { ico: "💬", nom: "Lia, votre assistante", k: "pay", court: "Posez vos questions, elle prépare avec vous",
+    { ico: "💬", nom: "Lia, votre assistante", k: "pay", fiche: "lia", court: "Posez vos questions, elle prépare avec vous",
       long: "Une question de pédagogie, une idée de séance : Lia répond et vous propose des actions à valider." },
   ] },
   { titre: "Préparer la classe", sous: "Tout est relié : l'emploi du temps nourrit le cahier journal.", outils: [
