@@ -23,22 +23,22 @@ const exemple = `<p>Les critères se rangent en familles. En voici une partie, a
     </div>
 
     <div class="exemple-fiche">
-      <h3>La fiche d'exercices de la séance de mesure, en CE1</h3>
+      <h3>Une mesure en CE1, du document importé au résultat</h3>
       <p>La même fiche que dans notre <a href="/enseignants/fonctionnalites/fiche-de-preparation/">exemple de fiche de préparation</a>. Trois critères cochés : « Agrandir le texte », « Augmenter l'interligne » et « Consignes courtes et directes ».</p>
       <div class="ad-duo">
         <figure class="ad-feuille">
-          <figcaption>La version d'origine</figcaption>
+          <figcaption>Support importé</figcaption>
           <p class="ad-consigne">Mesure chacun des segments ci-dessous avec ta règle graduée, écris sa longueur en centimètres à côté, puis trace sur ton cahier un segment de 7 cm en commençant au point rouge.</p>
           <ol class="ad-traits">${SEGMENTS.map((s) => trait(s, false)).join("")}</ol>
         </figure>
         <figure class="ad-feuille adaptee">
-          <figcaption>Une version adaptée</figcaption>
+          <figcaption>Résultat à contrôler</figcaption>
           <ol class="ad-etapes"><li>Pose le zéro de la règle au début du trait.</li><li>Lis le nombre au bout du trait.</li><li>Écris la longueur.</li></ol>
           <ol class="ad-traits">${SEGMENTS.map((s) => trait(s, true)).join("")}</ol>
           <p class="ad-consigne">Ensuite : trace un trait de 7 cm sur ton cahier.</p>
         </figure>
       </div>
-      <p class="ad-note">Exemple reconstitué pour la page. Le but de l'exercice ne change pas : c'est la présentation et la façon de dire la consigne qui changent.</p>
+      <p class="ad-note">Exemple reconstitué pour la page. Il montre ce que vise l'adaptation : garder le but de l'exercice, changer sa présentation et la façon de dire la consigne.</p>
     </div>`;
 
 // Illustration : écran « Adapter un support » reconstitué en HTML, données fictives.
@@ -62,13 +62,13 @@ export default {
   slug: "adaptation-des-supports",
   ariane: "Adaptation des supports",
   k: "pay",
-  titre: "Adapter un exercice en quelques secondes avec l'IA — MyClassFlow",
-  description: "Adapter un exercice ou une leçon selon des critères pédagogiques cochés : texte agrandi, interligne, consignes courtes. Les critères de l'app, une fiche de CE1 avant et après, les versions par élève ou par groupe.",
-  h1: "Un support, une version adaptée pour chaque élève",
-  intro: "Vous prenez en photo ou importez l'exercice prévu pour la classe, vous cochez les critères pédagogiques qui aident tel élève ou tel groupe, et MyClassFlow en tire une version adaptée, prête à imprimer à côté de l'originale. C'est la différenciation pédagogique, sans refaire la fiche à la main.",
+  titre: "Adapter un exercice selon des critères pédagogiques — MyClassFlow",
+  description: "Adapter un exercice ou une leçon selon des critères pédagogiques cochés : texte agrandi, interligne, consignes courtes. Les critères de l'app, une mesure en CE1 du document importé au résultat, les versions par élève ou par groupe.",
+  h1: "Du support de la classe aux versions à imprimer",
+  intro: "Vous prenez en photo ou importez l'exercice prévu pour la classe, vous cochez les critères pédagogiques qui aident tel élève ou tel groupe, et MyClassFlow en tire une version adaptée, à relire puis à imprimer à côté de l'originale. Un outil de différenciation pédagogique, qui s'occupe de la mise en page pendant que vous gardez la main sur le fond.",
   titreBenefices: "Ce que l'adaptation vous évite",
   benefices: [
-    ["Refaire la fiche le soir", "Le même exercice et le même but pour toute la classe ; seule la présentation change, en quelques secondes au lieu d'une soirée de mise en page."],
+    ["Une mise en page à ne pas refaire", "La présentation des variantes est produite par l'IA à partir de l'exercice de la classe ; vous gardez la relecture pédagogique."],
     ["Se souvenir de qui a besoin de quoi", "Les critères de chaque élève restent sur sa fiche : vous les retrouvez au moment d'adapter, sans les recocher."],
     ["Trier les copies au photocopieur", "L'impression prépare ensemble la version d'origine et chaque version adaptée ; « Tout télécharger (.zip) » les garde dans un seul fichier."],
   ],
@@ -78,7 +78,7 @@ export default {
     ["Imprimez ou téléchargez", "Chaque version s'imprime, se télécharge ou se renomme ; une version inutile se supprime."],
   ],
   illustration,
-  blocs: [{ titre: "Les critères, et une fiche de CE1 avant et après", html: exemple }],
+  blocs: [{ titre: "Les critères de l'app, puis une mesure en CE1", html: exemple }],
   offre: {
     titre: "L'adaptation des supports, dans l'abonnement Enseignant",
     texte: "3 adaptations offertes pour l'essayer avec le compte gratuit. L'abonnement Enseignant rend les adaptations illimitées et ajoute Lia, votre assistante.",
@@ -89,7 +89,7 @@ export default {
     ["Quels critères pédagogiques peut-on cocher pour adapter un exercice ?", "Ils sont rangés par familles. Lisibilité : agrandir le texte, changer de police, augmenter l'interligne, espacer les lettres, raccourcir les lignes, fond crème. Consignes : consignes courtes et directes, vocabulaire simple, lexique des mots difficiles. Structure : textes en paragraphes courts, afficher la progression. D'autres critères complètent ces familles dans l'app."],
     ["Quels documents peut-on adapter ?", "Une photo prise sur le moment, une image de votre photothèque, ou un fichier PDF, image (PNG, JPG, WEBP) ou Word, jusqu'à 8 pages par support. Pour un document Word, un seul fichier à la fois."],
     ["Faut-il relier l'adaptation à un élève ?", "Non. Vous pouvez partir des critères enregistrés sur la fiche d'un élève, adapter pour un groupe, ou cocher des critères pour l'occasion. Un même support peut sortir en plusieurs versions."],
-    ["La version adaptée change-t-elle le contenu de l'exercice ?", "Le but reste le même : ce sont la présentation et la façon de formuler les consignes qui changent, selon les critères cochés. Relisez la version adaptée avant de l'imprimer, comme vous relisez une photocopie."],
+    ["L'adaptation peut-elle modifier l'exercice ?", "Elle vise à garder son but et à changer sa présentation et la formulation des consignes, selon les critères cochés. C'est une IA qui produit la version : relisez-la avant de l'imprimer, et supprimez-la si elle ne convient pas."],
     ["L'adaptation remplace-t-elle la différenciation pédagogique ?", "Non, elle en est un outil. Différencier, c'est aussi changer le matériel, l'accompagnement ou la tâche ; l'adaptation s'occupe du support, pour que chaque élève puisse travailler sur le même exercice que la classe."],
     ["Peut-on adapter des supports avec le compte gratuit ?", "Oui : 3 adaptations sont offertes pour essayer. Les adaptations illimitées font partie de l'abonnement Enseignant."],
   ],
