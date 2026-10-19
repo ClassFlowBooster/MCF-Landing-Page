@@ -2,5 +2,6 @@
 import ficheDePreparation from "./fiche-de-preparation.mjs";
 import cahierJournal from "./cahier-journal.mjs";
 import emploiDuTemps from "./emploi-du-temps.mjs";
+import adaptationDesSupports from "./adaptation-des-supports.mjs";
 
-export const FICHES = [ficheDePreparation, cahierJournal, emploiDuTemps];
+export const FICHES = [ficheDePreparation, cahierJournal, emploiDuTemps, adaptationDesSupports];

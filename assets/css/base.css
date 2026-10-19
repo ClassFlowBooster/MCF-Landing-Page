@@ -633,6 +633,23 @@ html{scroll-padding-top:72px}
 .mf-total{margin-top:10px;font-weight:700;color:var(--ink)}
 .edt-total th,.edt-total td{font-weight:700;background:var(--paper-2)}
 .edt-source{font-size:13px;color:var(--ink-2)}
+.ad-criteres{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 22px}
+.ad-criteres>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.ad-criteres ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:5px}
+.ad-criteres li{font-size:13px;background:var(--paper-2);border-radius:99px;padding:2px 9px}
+.ad-duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.ad-feuille{margin:0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:12.5px;line-height:1.35;color:var(--ink)}
+.ad-feuille figcaption{font:700 11px Inter;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin-bottom:8px}
+.ad-feuille.adaptee{font-size:16px;line-height:1.9;border-color:var(--coral-200)}
+.ad-consigne{margin:0 0 8px}
+.ad-etapes{margin:0 0 8px;padding-left:22px}
+.ad-traits{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:8px}
+.ad-traits li{display:flex;align-items:center;gap:8px}
+.ad-nom{font-weight:700;min-width:14px}
+.ad-trait{display:inline-block;height:2px;background:var(--ink);position:relative}
+.ad-trait:before{content:"";position:absolute;left:0;top:-4px;width:2px;height:10px;background:var(--coral)}
+.ad-rep{color:var(--ink-2)}
+.ad-note{font-size:13px;color:var(--ink-2)}
 .cj-pause th,.cj-pause td{background:var(--paper-2);color:var(--ink-2)}
 .cj-fiche{display:inline-block;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--paper-2);border-radius:99px;padding:1px 8px}
 .maquette-fiche figcaption{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}
@@ -663,7 +680,7 @@ html{scroll-padding-top:72px}
 .soeur b{font-size:14.5px}
 .soeur span.t{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
 @media (max-width: 760px){
-  .benefices,.soeurs,.rubriques{grid-template-columns:1fr}
+  .benefices,.soeurs,.rubriques,.ad-criteres,.ad-duo{grid-template-columns:1fr}
   .fiche-comment{grid-template-columns:1fr}
   .maquette-fiche{max-width:320px;margin:0 auto}
   .modele,.fiche-offre{flex-direction:column;align-items:flex-start}
