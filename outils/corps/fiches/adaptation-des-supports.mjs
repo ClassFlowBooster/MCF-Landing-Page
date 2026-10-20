@@ -18,7 +18,7 @@ const CRITERES = [
 const SEGMENTS = [["A", 9], ["B", 4], ["C", 12], ["D", 6]];
 const trait = ([nom, cm], grand) => `<li><span class="ad-nom">${nom}</span><span class="ad-trait" style="width:${cm * 5}%"></span>${grand ? `<span class="ad-rep">… cm</span>` : ""}</li>`;
 
-const exemple = `<p>Les critères se rangent en familles. En voici une partie, avec les mots exacts de MyClassFlow :</p>
+const exemple = `<p><a class="btn" href="/enseignants/outils/comparer-adaptations/">Comparer trois documents et leurs adaptations</a></p><p>Les critères se rangent en familles. En voici une partie, avec les mots exacts de MyClassFlow :</p>
     <div class="ad-criteres">
       ${CRITERES.map(([famille, liste]) => `<div><b>${famille}</b><ul>${liste.map((c) => `<li>${c}</li>`).join("")}</ul></div>`).join("\n      ")}
     </div>

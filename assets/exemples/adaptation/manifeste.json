@@ -1,0 +1,100 @@
+{
+  "sourceApp": "d91a67df8759e30ae138cdaee7a90399841189eb",
+  "documents": [
+    {
+      "slug": "lecture-jardin",
+      "niveau": "CE1",
+      "titre": "Le jardin sur le toit"
+    },
+    {
+      "slug": "mesures-rubans",
+      "niveau": "CE2",
+      "titre": "Des rubans pour la maquette"
+    },
+    {
+      "slug": "sciences-germination",
+      "niveau": "CM1",
+      "titre": "Deux pots, une différence"
+    }
+  ],
+  "groupes": [
+    {
+      "id": "lisibilite",
+      "nom": "Lisibilité",
+      "criteres": [
+        {
+          "code": "lis.taille_texte",
+          "valeur": "16",
+          "libelle": "Agrandir le texte · 16 pt"
+        },
+        {
+          "code": "lis.interligne",
+          "valeur": "1_5",
+          "libelle": "Augmenter l’interligne · 1,5"
+        },
+        {
+          "code": "lis.fond_creme",
+          "libelle": "Fond crème"
+        }
+      ]
+    },
+    {
+      "id": "consignes",
+      "nom": "Consignes",
+      "criteres": [
+        {
+          "code": "con.phrases_directes",
+          "libelle": "Consignes courtes et directes"
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "nom": "Structure",
+      "criteres": [
+        {
+          "code": "str.consigne_fond",
+          "libelle": "Fond de couleur sous les consignes"
+        },
+        {
+          "code": "str.progression",
+          "libelle": "Afficher la progression"
+        },
+        {
+          "code": "str.verification",
+          "libelle": "Case de vérification"
+        }
+      ]
+    },
+    {
+      "id": "exercices",
+      "nom": "Exercices",
+      "criteres": [
+        {
+          "code": "exo.lignes_ecriture",
+          "valeur": "simple",
+          "libelle": "Lignes d’écriture · Simples"
+        },
+        {
+          "code": "exo.tableaux_agrandis",
+          "libelle": "Tableaux agrandis"
+        }
+      ]
+    },
+    {
+      "id": "visuel",
+      "nom": "Supports visuels",
+      "criteres": [
+        {
+          "code": "vis.pictogrammes",
+          "libelle": "Pictogrammes devant les consignes"
+        },
+        {
+          "code": "vis.sens_lecture",
+          "libelle": "Flèche de sens de lecture"
+        }
+      ]
+    }
+  ],
+  "resultats": {}
+}
