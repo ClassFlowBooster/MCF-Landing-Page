@@ -1,7 +1,7 @@
 // Fiche explicative « Cahier journal » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // Planning › Cahier journal en vue jour ou semaine ; champs titre, matière, horaires, domaine,
-// compétences, séquence, objectifs (type, matériel et déroulé sur ordinateur) ; « Insérer une
+// compétences, séquence, objectifs ; « Insérer une
 // fiche de ma banque » ; « Reporter » ajoute le contenu à une séance déjà prévue, sans l'écraser ; PDF jour ou semaine, impression sur
 // ordinateur ; récréations de l'emploi du temps dans la vue Journal du téléphone.
 // Rien sur un remplissage automatique ni sur un champ bilan : l'app ne les a pas.
@@ -81,7 +81,7 @@ export default {
     ["Rien ne se perd quand une séance glisse", "Le contenu d'une séance qui n'a pas eu lieu s'ajoute à une séance déjà prévue un autre jour : objectifs, compétences, matériel et déroulé, sans rien réécrire."],
   ],
   etapes: [
-    ["Remplissez le jour", "Dans le Planning, « Ajouter une séance » : titre, matière, horaires, domaine, compétences, séquence et objectifs. « Insérer une fiche de ma banque » y copie une fiche de préparation ; sur ordinateur s'ajoutent le matériel et le déroulé."],
+    ["Remplissez le jour", "Sur ordinateur comme sur téléphone, préparez votre cahier journal dans le Planning. « Ajouter une séance » permet de renseigner le titre, la matière, les horaires, le domaine, les compétences, la séquence et les objectifs. « Insérer une fiche de ma banque » y copie une fiche de préparation."],
     ["Reportez ce qui a sauté", "Une séance n'a pas eu lieu ? « Reporter » ajoute son contenu à une séance déjà prévue, sans effacer ce que celle-ci contenait."],
     ["Gardez-en la trace", "Téléchargez le cahier journal en PDF, pour un jour ou pour la semaine, en choisissant les jours. Sur ordinateur, vous pouvez aussi l'imprimer directement."],
   ],
