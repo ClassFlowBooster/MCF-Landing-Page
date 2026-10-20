@@ -24,6 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
 <link rel="stylesheet" href="/assets/css/base.css" />
+<link rel="stylesheet" href="/assets/css/visuels-app.css" />
 </head>
 <body data-espace="enseignants">
 <header class="header"><nav class="nav" aria-label="Navigation principale">
@@ -89,22 +90,7 @@
         <li><b>Reportez ce qui a sauté</b><p>Une séance n'a pas eu lieu ? « Reporter » ajoute son contenu à une séance déjà prévue, sans effacer ce que celle-ci contenait.</p></li>
         <li><b>Gardez-en la trace</b><p>Téléchargez le cahier journal en PDF, pour un jour ou pour la semaine, en choisissant les jours. Sur ordinateur, vous pouvez aussi l'imprimer directement.</p></li>
       </ol>
-      <figure class="maquette-fiche" aria-label="Illustration : une journée du cahier journal dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Planning › Cahier journal</div>
-          <div class="mf-titre">Mardi</div>
-          <div class="mf-onglets"><span class="on">Jour</span><span>Semaine</span></div>
-          <ol class="mf-seances">
-            <li><span>8 h 30</span><b>Rituel : les doubles</b></li>
-            <li><span>8 h 45</span><b>Lecture : le hérisson</b></li>
-            <li><span>9 h 45</span><b>Mesurer avec la règle</b><i>Fiche rattachée</i></li>
-            <li class="pause"><span>10 h 25</span>Récréation</li>
-            <li><span>10 h 40</span><b>Copie : la phrase du jour</b></li>
-          </ol>
-          <div class="mf-bouton">Ajouter une séance</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>
+      <figure class="maquette-fiche appv-figure" aria-label="Illustration : Cahier journal dans MyClassFlow"><div class="appv" aria-hidden="true"><div class="appv-rail"><span class="appv-logo">C</span><span class="appv-rail-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 3l9 7v11h-6v-7H9v7H3Z"/></svg><small>Accueil</small></span><span class="appv-rail-item is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14v16H5ZM8 2v6m8-6v6M5 11h14"/></svg><small>Planning</small></span><span class="appv-rail-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6Zm8 0v6h5M9 13h7m-7 4h7"/></svg><small>Base commune</small></span><span class="appv-rail-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z"/></svg><small>Supports</small></span><span class="appv-rail-bottom">?</span></div><div class="appv-side"><div class="appv-side-title">Planning</div><div class="appv-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l6 6M17 10a7 7 0 1 0-14 0 7 7 0 0 0 14 0"/></svg> Rechercher…</div><div class="appv-overline">Planning</div><div class="appv-side-link is-active">Cahier journal</div><div class="appv-side-link ">Emploi du temps</div><div class="appv-side-link ">Fiches de prep</div><div class="appv-account"><span class="appv-avatar">CM</span><div>Camille Moreau<small>CE1 · Les Tilleuls</small></div></div></div><div class="appv-main appv-journal"><div class="appv-crumb">Accueil › Planning › Cahier journal</div><div class="appv-heading"><div><div class="appv-title">Mardi 12 janvier</div><div class="appv-muted">CE1 · 4 séances</div></div><span class="appv-action">+ Ajouter une séance</span></div><div class="appv-toolbar"><span>‹</span><span>Aujourd’hui</span><span>›</span><span class="appv-toggle"><b>Jour</b><span>Semaine</span></span></div><div class="appv-day-label">MARDI 12 JANVIER</div><div class="appv-lesson" style="--subject:#06B6D4"><span class="appv-time">08:30</span><div><span class="appv-subject">Mathématiques</span><b>Rituel : les doubles</b><small>Donner les doubles des nombres jusqu’à 10.</small></div><span>⋯</span></div><div class="appv-lesson" style="--subject:#6366F1"><span class="appv-time">08:45</span><div><span class="appv-subject">Français</span><b>Lecture : le hérisson</b><small>Retrouver deux informations dans le texte.</small></div><span>⋯</span></div><div class="appv-lesson" style="--subject:#06B6D4"><span class="appv-time">09:45</span><div><span class="appv-subject">Mathématiques</span><b>Mesurer avec la règle</b><small>Mesurer au centimètre près, à partir du zéro.</small></div><span>⋯</span></div><div class="appv-lesson" style="--subject:#6366F1"><span class="appv-time">10:40</span><div><span class="appv-subject">Français</span><b>Copie : la phrase du jour</b><small>Copier une phrase sans erreur.</small></div><span>⋯</span></div></div></div><figcaption>Vue reconstituée de MyClassFlow · données fictives.</figcaption></figure>
     </div>
   </section>
 

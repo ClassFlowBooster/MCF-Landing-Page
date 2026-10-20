@@ -1,3 +1,4 @@
+import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Import des élèves par photo » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // photo sur téléphone seulement (« Photographier la liste », « Prendre une photo », « Choisir dans
@@ -34,20 +35,7 @@ const exemple = `<p>Une liste de rentrée fictive, photographiée sur le bureau 
     </div>`;
 
 // Illustration : écran de relecture du téléphone reconstitué en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : la relecture d'une liste de classe dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Classe › Ajouter des élèves</div>
-          <div class="mf-titre">Relecture</div>
-          <ul class="mf-seances">
-            <li><b>Adam Brunet</b></li>
-            <li><b>Chloé Duval</b></li>
-            <li><b>Maël R?naud</b><i>À vérifier</i></li>
-            <li><b>Lucas Petit</b><i>En double dans la liste</i></li>
-          </ul>
-          <div class="mf-bouton">Ajouter 6 élèves</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
+const illustration = illustrations["import-eleves-photo"];
 
 export default {
   slug: "import-eleves-photo",

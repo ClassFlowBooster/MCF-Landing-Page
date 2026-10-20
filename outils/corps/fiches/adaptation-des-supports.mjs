@@ -1,3 +1,4 @@
+import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Adaptation des supports » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // « Adapter un support » ; sources « Photo », « Photothèque » ou « Fichier » (PDF ou image ; un
@@ -43,21 +44,7 @@ const exemple = `<p>Les critères se rangent en familles. En voici une partie, a
     </div>`;
 
 // Illustration : écran « Adapter un support » reconstitué en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : adapter un support dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Adaptation › Adapter un support</div>
-          <div class="mf-titre">Mesurer des segments</div>
-          <div class="mf-etiquette">Source</div>
-          <div class="mf-puces"><span>Photo</span><span>Photothèque</span><span>Fichier</span></div>
-          <div class="mf-etiquette">Pour qui</div>
-          <ul class="mf-seances">
-            <li><b>Groupe bleu</b><i>3 critères</i></li>
-            <li><b>Inès</b><i>critères de sa fiche</i></li>
-          </ul>
-          <div class="mf-bouton">Lancer l'adaptation</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
+const illustration = illustrations["adaptation-des-supports"];
 
 export default {
   slug: "adaptation-des-supports",

@@ -1,3 +1,4 @@
+import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Tâches » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // titre, détail, échéance sans heure (« Aujourd'hui », « Demain » ou « Date… »), matière, élèves
@@ -28,21 +29,7 @@ const exemple = `<p>Rangées comme dans l'app : la plus proche en haut, celle sa
     </div>`;
 
 // Illustration : écran « Tâches » du téléphone reconstitué en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : la liste des tâches dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Tâches</div>
-          <div class="mf-titre">À faire</div>
-          <ul class="mf-seances">
-            <li><span>Demain</span><b>Rendre les cahiers</b></li>
-            <li><span>Jeudi</span><b>Photocopies mesure</b></li>
-            <li><span>Vendredi</span><b>Autorisations</b><i>2 élèves</i></li>
-          </ul>
-          <div class="mf-etiquette">Terminées</div>
-          <ul class="mf-seances"><li class="pause"><s>Planning des services</s></li></ul>
-          <div class="mf-bouton">Nouvelle tâche</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
+const illustration = illustrations["taches"];
 
 export default {
   slug: "taches",

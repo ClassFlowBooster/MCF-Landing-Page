@@ -1,3 +1,4 @@
+import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Fiche élève » (MCF-Pilotage#53), adresse au pluriel comme la ligne des tarifs.
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // fiche ouverte depuis « Classe » (téléphone) ou « Mes élèves » (ordinateur, recherche, tri,
@@ -20,21 +21,7 @@ const exemple = `<p>Une fiche n'a pas besoin d'être longue pour servir. Celle-c
     </div>`;
 
 // Illustration : fiche élève du téléphone reconstituée en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : une fiche élève dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Classe › Fiche élève</div>
-          <div class="mf-titre">Inès</div>
-          <div class="mf-etiquette">Critères pédagogiques</div>
-          <div class="mf-puces"><span>Agrandir le texte</span><span>Augmenter l'interligne</span><span>Consignes courtes</span></div>
-          <div class="mf-etiquette">Fil de suivi</div>
-          <ul class="mf-seances">
-            <li>Mesure juste quand elle part du zéro.</li>
-            <li>Relit la consigne avant de commencer.</li>
-          </ul>
-          <div class="mf-bouton">Modifier l'élève</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
+const illustration = illustrations["fiches-eleves"];
 
 export default {
   slug: "fiches-eleves",

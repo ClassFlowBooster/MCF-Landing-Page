@@ -1,3 +1,4 @@
+import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Lia, votre assistante » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // bouton rond sur ordinateur, « Demander à Lia » au centre du dock du téléphone ; champ écrit ou
@@ -26,16 +27,7 @@ const exemple = `<p>L'enseignant de la classe de CE1 des autres fiches, un soir 
     </div>`;
 
 // Illustration : un échange avec Lia reconstitué en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : une proposition de Lia à valider">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Lia</div>
-          <div class="mf-titre">Demander à Lia</div>
-          <p class="li-q">Note qu'Inès a mesuré correctement ses quatre segments.</p>
-          <div class="li-r"><p>Je propose d'ajouter ce commentaire à son fil de suivi.</p><p class="li-action"><span>Ajouter le commentaire ?</span><b>Valider</b></p></div>
-          <div class="mf-bouton">Dicter</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
+const illustration = illustrations["lia"];
 
 export default {
   slug: "lia",

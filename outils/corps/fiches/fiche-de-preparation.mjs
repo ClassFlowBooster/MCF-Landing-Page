@@ -1,3 +1,4 @@
+import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Fiche de préparation » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App : champs titre, matière, domaine,
 // compétences, objectifs, matériel et déroulé libre ; banque en dossiers ; « Dupliquer » ;
@@ -57,24 +58,7 @@ const exemple = `<p>Chacun a sa façon de préparer. La trame que nous proposons
     </div>`;
 
 // Illustration : écran de fiche de l'app reconstitué en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : une fiche de préparation dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Fiches de prep › Maths</div>
-          <div class="mf-titre">Mesurer avec la règle</div>
-          <div class="mf-onglets"><span class="on">Déroulé</span><span>Infos</span></div>
-          <div class="mf-etiquette">Matériel</div>
-          <div class="mf-puces"><span>Règles</span><span>Bandes de papier</span><span>Deux rubans</span></div>
-          <div class="mf-etiquette">Déroulé de la séance</div>
-          <ol class="mf-deroule">
-            <li><b>Le défi (5 min)</b> quel ruban est le plus long ?</li>
-            <li><b>Essais (10 min)</b> trois bandes, à deux</li>
-            <li><b>On en parle (8 min)</b> le zéro au début</li>
-            <li><b>À soi (12 min)</b> mesurer, puis tracer 7 cm</li>
-          </ol>
-          <div class="mf-bouton">Rattacher à une séance</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
+const illustration = illustrations["fiche-de-preparation"];
 
 export default {
   slug: "fiche-de-preparation",
