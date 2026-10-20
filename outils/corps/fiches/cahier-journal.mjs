@@ -6,8 +6,6 @@
 // ordinateur ; récréations de l'emploi du temps dans la vue Journal du téléphone.
 // Rien sur un remplissage automatique ni sur un champ bilan : l'app ne les a pas.
 
-export const MODELE_PDF = "/assets/docs/modele-cahier-journal.pdf";
-
 // Exemple : un mardi de CE1, dont la séance de mesure de la fiche de préparation.
 const JOURNEE = [
   ["8 h 30", "Mathématiques", "Rituel : les doubles", "Donner sans compter les doubles des nombres jusqu'à 10."],
@@ -31,7 +29,7 @@ const exemple = `<p>Une journée réelle ne suit jamais tout à fait ce qui éta
       <h3>Cahier journal CE1 : une fiche liée, un imprévu et son report</h3>
       <div class="tableau-defile" tabindex="0" role="region" aria-label="Le mardi en CE1, tableau défilant">
         <table class="cj-jour">
-          <caption>Mardi, CE1</caption>
+          <caption>Mardi, CE1 — exemple de contenu, distinct de la mise en page du PDF exporté</caption>
           <thead><tr><th scope="col">Créneau</th><th scope="col">Discipline</th><th scope="col">Séance</th><th scope="col">Ce que la classe apprend</th></tr></thead>
           <tbody>
             ${JOURNEE.map(ligne).join("\n            ")}
@@ -44,8 +42,7 @@ const exemple = `<p>Une journée réelle ne suit jamais tout à fait ce qui éta
     </div>
 
     <div class="modele">
-      <div><b>La page du jour, à imprimer</b><p>Une journée sur une page A4, avec une colonne de notes après la classe.</p></div>
-      <a class="btn ghost" href="${MODELE_PDF}" download>Télécharger le modèle (PDF)</a>
+      <div><b>Le PDF de votre cahier journal</b><p>Depuis MyClassFlow, exportez le cahier du jour détaillé en A4 portrait : horaires, matières, objectifs et compétences, déroulé et modalités, matériel. Sa longueur dépend des séances. Le semainier propose une vue d'ensemble abrégée sur une page A4 paysage.</p></div>
     </div>`;
 
 // Illustration : vue Jour du cahier journal reconstituée en HTML, données fictives.
@@ -71,7 +68,7 @@ export default {
   ariane: "Cahier journal",
   k: "free",
   titre: "Cahier journal numérique : vos séances du jour — MyClassFlow",
-  description: "Le cahier journal dans MyClassFlow : chaque créneau relié à ce que la classe apprend, la fiche de préparation rattachée, les imprévus reportés, le PDF du jour ou de la semaine. Un mardi de CE1 et la page du jour à imprimer.",
+  description: "Le cahier journal dans MyClassFlow : chaque créneau relié à ce que la classe apprend, la fiche de préparation rattachée, les imprévus reportés, le PDF du jour ou de la semaine. Un mardi de CE1 et les formats PDF du cahier journal.",
   h1: "Votre cahier journal, au rythme de la classe",
   intro: "Le cahier journal relie chaque créneau de la journée à ce que la classe doit y apprendre. Vous l'ouvrez le matin pour savoir où vous allez ; imprimé, il guide celui qui vous remplace. MyClassFlow le tient avec vous, sur ordinateur et sur téléphone.",
   titreBenefices: "Ce que le cahier journal change dans votre journée",
@@ -98,7 +95,7 @@ export default {
     ["Emploi du temps, cahier journal, fiche de préparation : trois échelles de temps ?", "Oui. L'emploi du temps est la semaine type, posée une fois pour l'année. La fiche de préparation détaille une séance. Le cahier journal dit ce qui se passe tel jour, à telle heure. Dans MyClassFlow, la fiche se rattache à la séance du cahier journal, qui reste dans les horaires de votre classe."],
     ["Que faire d'une séance prévue qui n'a pas eu lieu ?", "Reportez-la plutôt que de la supprimer. Dans MyClassFlow, « Reporter » ajoute son contenu pédagogique (objectifs, compétences, matériel, déroulé) à une séance déjà prévue un autre jour, sans effacer ce que celle-ci contenait."],
     ["Peut-on imprimer son cahier journal ?", "Oui. Depuis un ordinateur, MyClassFlow l'imprime ou le télécharge en PDF, au format jour ou semaine. Depuis un téléphone, vous le téléchargez en PDF."],
-    ["Peut-on garder une page papier à côté d'un cahier journal numérique ?", "Oui, c'est même une bonne façon de faire : on prépare dans MyClassFlow, on imprime la page du jour, et on y note au crayon ce qui s'est passé pendant la classe. Le soir, le contenu d'une séance qui a sauté se reporte sur une séance déjà prévue. Le modèle vierge ci-dessus sert aussi à ceux qui préfèrent tout tenir à la main."],
+    ["Peut-on garder une page papier à côté d'un cahier journal numérique ?", "Oui, c'est même une bonne façon de faire : on prépare dans MyClassFlow, on imprime la page du jour, et on y note au crayon ce qui s'est passé pendant la classe. Le soir, le contenu d'une séance qui a sauté se reporte sur une séance déjà prévue. Le document imprimé est le PDF exporté depuis votre cahier journal dans l'app."],
     ["Le cahier journal est-il gratuit dans MyClassFlow ?", "Oui, comme les fiches de préparation et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire."],
   ],
   soeurs: ["Fiches de préparation", "Emploi du temps", "Adaptation des supports"],
