@@ -5,8 +5,6 @@
 // Trame, exemple et questions écrits pour ne ressembler à aucun concurrent
 // (contrôles de ressemblance du 18/10/2026, rapport feat-53-fiches-fonctionnalites).
 
-export const MODELE_PDF = "/assets/docs/modele-fiche-de-preparation.pdf";
-
 // Exemple : mesurer des longueurs avec la règle graduée, en CE1.
 const PHASES = [
   ["Le défi", "5 min", "Toute la classe", "Deux rubans de longueurs proches sont scotchés aux deux bouts du tableau. « Lequel est le plus long ? On n'a pas le droit de les décoller. » Les élèves proposent : comparer à l'œil, reporter avec une ficelle, utiliser la règle."],
@@ -56,11 +54,6 @@ const exemple = `<p>Chacun a sa façon de préparer. La trame que nous proposons
       <p><b>Les aides prévues :</b> une règle aux graduations agrandies avec le zéro surligné en couleur ; une fiche où chaque segment commence sur un trait repère, avec un texte agrandi et la consigne découpée en étapes. Pour ceux qui ont fini : mesurer les trois côtés d'une ligne brisée et additionner.</p>
       <p><b>Le signe que c'est acquis :</b> l'élève mesure au moins trois segments sur quatre au centimètre près et trace le segment de 7 cm en partant du zéro.</p>
       <p><b>Après coup :</b> par exemple, « le défi des rubans a accroché la classe ; six élèves partent encore du bord de la règle : une mesure en rituel demain matin ».</p>
-    </div>
-
-    <div class="modele">
-      <div><b>La trame vierge, à imprimer</b><p>Les sept rubriques sur une page A4, à remplir à la main.</p></div>
-      <a class="btn ghost" href="${MODELE_PDF}" download>Télécharger le modèle (PDF)</a>
     </div>`;
 
 // Illustration : écran de fiche de l'app reconstitué en HTML, données fictives.
@@ -88,9 +81,9 @@ export default {
   ariane: "Fiche de préparation",
   k: "free",
   titre: "Fiche de préparation : trame d'une page et exemple en CE1 — MyClassFlow",
-  description: "Une trame de fiche de préparation en sept rubriques, une séance de CE1 sur la mesure des longueurs, le modèle à imprimer, et le lien avec le cahier journal de MyClassFlow.",
+  description: "Une trame de fiche de préparation en sept rubriques, une séance de CE1 sur la mesure des longueurs, et le lien avec le cahier journal de MyClassFlow.",
   h1: "Une fiche de préparation pour chaque séance, sur une page",
-  intro: "Une fiche de préparation, c'est une séance pensée avant d'être vécue : son but, son déroulé minute par minute, les difficultés que vous voyez venir. Voici notre trame d'une page, une séance de CE1 rédigée avec elle et le modèle à imprimer.",
+  intro: "Une fiche de préparation, c'est une séance pensée avant d'être vécue : son but, son déroulé minute par minute, les difficultés que vous voyez venir. Voici une trame en sept rubriques et une séance de CE1 rédigée avec elle.",
   titreBenefices: "Pourquoi l'écrire avant d'entrer en classe",
   benefices: [
     ["Voir venir les difficultés", "En écrivant la séance, on repère l'endroit où les élèves vont buter, et on prépare sa réponse avant d'être devant eux."],

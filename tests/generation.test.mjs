@@ -199,7 +199,7 @@ test("vocabulaire : les pages décrivent des adaptations, sans catégorie d'él�
     const m = page(p).match(INTERDITS);
     assert.ok(!m, `${p.chemin} : « ${m?.[0]} »`);
   }
-  for (const fichier of ["presentation/content.html", "assets/js/formulaire.js", "assets/css/base.css", "outils/modeles/fiche-de-preparation.html"]) {
+  for (const fichier of ["presentation/content.html", "assets/js/formulaire.js", "assets/css/base.css"]) {
     const m = sansImages(readFileSync(fichier, "utf8")).match(INTERDITS);
     assert.ok(!m, `${fichier} : « ${m?.[0]} »`);
   }
