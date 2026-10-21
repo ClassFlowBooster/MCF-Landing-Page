@@ -18,11 +18,23 @@ Consommation : 20 questions par semaine sur les abonnements existants.
 
 ## Planification macOS
 
-Seulement sur go de Joseph : copier le plist dans `~/Library/LaunchAgents/`, remplacer `__DEPOT__` et `__HOME__`, puis :
+Seulement sur go de Joseph. Le relevé tourne depuis un worktree dédié sur `main` (le checkout principal peut être sur une autre branche) ; ses résultats vont alors dans `~/Documents/ClassFlowBooster/MCF-Pilotage/docs/suivi-ia/`, sans commit.
 
+    D=~/Documents/ClassFlowBooster/MCF-Landing-Page-suivi-ia
+    git -C ~/Documents/ClassFlowBooster/MCF-Landing-Page fetch origin
+    git -C ~/Documents/ClassFlowBooster/MCF-Landing-Page worktree add --detach "$D" origin/main
+    sed -e "s#__DEPOT__#$D#g" -e "s#__HOME__#$HOME#g" "$D/outils/suivi-ia/fr.myclassflow.suivi-ia.plist" > ~/Library/LaunchAgents/fr.myclassflow.suivi-ia.plist
+    plutil -lint ~/Library/LaunchAgents/fr.myclassflow.suivi-ia.plist
     launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/fr.myclassflow.suivi-ia.plist
+    launchctl print gui/$(id -u)/fr.myclassflow.suivi-ia | head -20
 
-Il planifie le lundi à 8 h, passe par la file `lourd.sh` et écrit dans `~/Library/Logs/mcf-suivi-ia.log`.
+Chaque lundi à 8 h (au réveil du Mac s'il dormait), par la file `lourd.sh` ; journal : `~/Library/Logs/mcf-suivi-ia.log`. Lancer tout de suite pour essayer : `launchctl kickstart gui/$(id -u)/fr.myclassflow.suivi-ia`. Mettre le relevé à jour après un merge : `git -C "$D" checkout --detach origin/main` après un `fetch`.
+
+Retour arrière :
+
+    launchctl bootout gui/$(id -u)/fr.myclassflow.suivi-ia
+    rm ~/Library/LaunchAgents/fr.myclassflow.suivi-ia.plist
+    git -C ~/Documents/ClassFlowBooster/MCF-Landing-Page worktree remove ~/Documents/ClassFlowBooster/MCF-Landing-Page-suivi-ia
 
 ## Limite honnête
 
