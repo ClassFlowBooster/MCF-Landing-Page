@@ -9,7 +9,7 @@
 
 // Quelques critères de l'app, avec leurs libellés exacts, par famille.
 const CRITERES = [
-  ["Lisibilité", ["Agrandir le texte", "Changer de police", "Augmenter l'interligne", "Espacer les lettres", "Raccourcir les lignes", "Fond crème"]],
+  ["Lisibilité", ["Changer de police", "Augmenter l'interligne", "Espacer les lettres", "Raccourcir les lignes", "Fond crème"]],
   ["Consignes", ["Consignes courtes et directes", "Vocabulaire simple", "Lexique des mots difficiles"]],
   ["Structure", ["Textes en paragraphes courts", "Afficher la progression"]],
 ];
