@@ -28,9 +28,6 @@
   position: relative;
 }
 
-.appv-figure--tel .appv-proto-viewport { max-width: 390px; margin-inline: auto; }
-.appv-figure--tel .appv-proto-stage { width: 390px; max-height: none; zoom: min(1, tan(atan2(100cqw, 390px))); }
-
 /* La racine reprend les règles « body » du proto (centrage, défilement) : on les neutralise. */
 .appv-proto-stage > .appv-proto {
   display: block !important;
@@ -43,9 +40,12 @@
 
 .appv-figure figcaption { margin-top: .65rem; color: var(--ink-2, #4a4238); font-size: .9rem; }
 
-@container (max-width: 389px) {
-  .appv-figure--tel .appv-proto-viewport { border-radius: 10px; }
-}
+/* Fiche élève : dans l'app, la fenêtre agrandie couvre tout l'écran, rail compris. */
+[data-proto="fiches-eleves"] .appv-proto .rail { visibility: hidden; }
+[data-proto="fiches-eleves"] .appv-proto div[style*="margin-bottom:26px"][style*="display:flex"] { flex-direction: row; text-align: left; }
+[data-proto="fiches-eleves"] .appv-proto div[style*="display:flex"] > .inp { width: auto; flex: 0 0 auto; }
 
-/* Tabbar du proto téléphone : dans l'extrait, elle suit le contenu au lieu de flotter sur l'écran. */
-.appv-figure--tel .appv-proto .tabbar { transform: none !important; margin: 12px auto 16px !important; }
+/* Adaptation : « Pour qui adapter ? » en boutons segmentés, le choix courant en orange clair, comme dans l'app. */
+[data-proto="adaptation-des-supports"] .appv-proto div[style*="gap:8px"] > .btn { flex: 0 0 auto; width: auto; }
+[data-proto="adaptation-des-supports"] .appv-proto div[style*="gap:8px"] > .btn-primary { background: var(--coral-50); color: var(--coral-700); border: 1px solid var(--coral-300); box-shadow: none; }
+[data-proto="adaptation-des-supports"] .appv-proto div[style*="gap:8px"] > .btn-ghost { border: 1px solid var(--line-2); }

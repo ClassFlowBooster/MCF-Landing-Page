@@ -133,6 +133,10 @@ function nomsKeyframes(css) {
 }
 
 const serialise = `(root, kind, vue) => {
+  // Les contrôles deviennent des span : on fige d'abord leur style calculé, pour garder le rendu du proto.
+  const PROPRIETES = ['display', 'box-sizing', 'width', 'height', 'min-width', 'min-height', 'padding', 'margin', 'border', 'border-radius', 'background', 'color', 'font', 'line-height', 'letter-spacing', 'text-align', 'align-items', 'justify-content', 'gap', 'flex', 'flex-direction', 'white-space', 'box-shadow', 'opacity', 'vertical-align'];
+  const styles = new Map();
+  root.querySelectorAll('button,input,select,textarea,a').forEach((e, i) => { e.setAttribute('data-appvp-i', i); const c = getComputedStyle(e); styles.set(String(i), PROPRIETES.map((p) => p + ':' + c.getPropertyValue(p)).join(';')); });
   const clone = root.cloneNode(true);
   const texte = (avant, apres) => {
     const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
@@ -149,9 +153,9 @@ const serialise = `(root, kind, vue) => {
   // rendu des vrais composants du proto. Ainsi ni le proto source ni son CSS ne sont modifiés.
   if (vue === 'adaptation-des-supports') {
     const classe = carte('1 · Classe concernée');
-    if (classe) classe.innerHTML = '<div class="card-h"><h3>1 · Classe concernée</h3></div><span class="inp" style="display:inline-flex;min-width:220px">CE1 — Les Tilleuls</span>';
-    const resultat = carte('3 · Ce que vous allez obtenir');
-    if (resultat) resultat.innerHTML = '<div class="card-h"><h3>3 · Pour qui adapter ?</h3></div><div class="support-targets"><div class="support-target active"><b>Selon mes élèves</b><span class="chip chip-coral">Inès Martin</span><div class="criteria-family">Lisibilité<br><span class="chip">Espacer les lettres</span><span class="chip">Augmenter l’interligne</span></div><div class="criteria-family">Consignes<br><span class="chip">Consignes courtes et directes</span></div></div><div class="support-target"><b>Pour toute la classe</b><span style="color:var(--ink-3)">Mêmes critères pour tous les élèves</span></div><div class="support-target"><b>Pour des groupes</b><span style="color:var(--ink-3)">Choisir les groupes à adapter</span></div></div>';
+    if (classe) classe.innerHTML = '<div class="card-h"><h3>1 · Classe concernée</h3></div><span class="inp" style="display:flex;align-items:center;justify-content:space-between">CE1 · Les Tilleuls <span>⌄</span></span><div style="font-size:12px;font-weight:600;color:var(--ink-2);margin-top:14px">Pour qui adapter ?</div><div style="display:flex;gap:8px;margin-top:8px"><span class="btn btn-primary">Selon mes élèves</span><span class="btn btn-ghost">Pour toute la classe</span><span class="btn btn-ghost">Pour des groupes</span></div>';
+    const resultat = carte('3 · Ce que vous allez obtenir') || carte('3 · Ce que tu vas obtenir');
+    if (resultat) resultat.innerHTML = '<div class="card-h"><h3>3 · Ce que tu vas obtenir</h3></div><div style="font-size:13px;color:var(--ink-2)">1 élève a des critères pédagogiques : 1 support adapté sera préparé.</div><div style="font-size:12px;color:var(--ink-3);margin-top:4px">Les critères se choisissent sur la fiche de chaque élève.</div><div class="support-target active" style="margin-top:12px"><b>Inès Martin</b><div class="criteria-family">Lisibilité<br><span class="chip">Espacer les lettres · Moyen</span><span class="chip">Augmenter l’interligne · 1,5</span></div><div class="criteria-family">Consignes<br><span class="chip">Consignes courtes et directes</span></div></div><div style="display:flex;justify-content:flex-end;margin-top:14px"><span class="btn btn-primary">Lancer l’adaptation</span></div>';
     [...clone.querySelectorAll('.side-section')].filter((e) => e.textContent.trim() === "Dispositif d'accompagnement").forEach((e) => { let n = e; while ((n = n.nextElementSibling) && !n.matches('hr,.side-section')) n.remove(); e.remove(); });
   }
   if (vue === 'fiches-eleves') {
@@ -170,15 +174,19 @@ const serialise = `(root, kind, vue) => {
       const suivi = notes?.outerHTML || '';
       grille.innerHTML = '<div style="display:flex;flex-direction:column;gap:16px"><div class="card card-pad"><div class="card-h"><h3>Critères pédagogiques</h3></div><div class="criteria-family">Lisibilité<br><span class="chip">Espacer les lettres</span><span class="chip">Augmenter l’interligne</span></div><div class="criteria-family">Consignes<br><span class="chip">Consignes courtes et directes</span></div></div><div class="card card-pad"><div class="card-h"><h3>Tâches liées</h3><span class="chip">1</span></div><div style="font-size:13px;color:var(--ink-2)">Photocopier la fiche de mesure, version adaptée</div><div style="font-size:11px;color:var(--ink-3);margin-top:4px">Pour Inès · 5 novembre</div></div></div><div style="display:flex;flex-direction:column;gap:16px">' + suivi + '</div>';
     }
+    // La capture de référence est la feuille desktop actuelle : elle reste une
+    // fenêtre au-dessus de « Ma classe », pas une carte dans la page du proto.
+    clone.insertAdjacentHTML('beforeend', '<div class="appv-pupil-overlay" style="position:fixed;inset:0;background:rgba(31,26,20,.16);z-index:80;display:flex;align-items:stretch;justify-content:center"><div style="width:calc(100% - 42px);background:#fff;box-shadow:0 10px 30px rgba(31,26,20,.18);display:flex;flex-direction:column"><div style="height:78px;padding:0 20px;display:flex;align-items:center;gap:13px;border-bottom:1px solid var(--line);background:var(--paper)"><span style="width:43px;height:43px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#665ff2;color:#fff;font-weight:700;font-size:17px">I</span><div style="flex:1"><div style="font-family:var(--serif);font-size:20px;font-weight:600">Inès Martin</div><div style="font-size:12px;color:var(--ink-3);margin-top:2px">CE1 · 8 ans</div></div><span class="btn btn-ghost">✎</span><span style="font-weight:700;color:var(--ink-3)">•••</span><span style="padding:9px 13px;border-radius:20px;background:var(--paper-2);font-size:12px">‹&nbsp; 3/24 &nbsp;›</span><span class="btn btn-ghost">↗</span><span style="font-size:25px;color:var(--ink-3)">×</span></div><div style="padding:16px 20px;overflow:hidden;flex:1"><div class="card card-pad" style="margin-bottom:26px"><div class="card-h"><h3>Critères pédagogiques</h3></div><div style="font-size:13px;color:var(--ink-3);margin-bottom:14px">Coche ce qui aide Inès : ses supports adaptés en tiennent compte.</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:18px"><div><div style="font-size:12px;font-weight:700;color:var(--ink-2);margin-bottom:8px">Lisibilité</div><div style="display:flex;gap:8px;align-items:center;margin:8px 0"><span style="color:var(--coral-600)">☑</span><span style="font-size:13px">Espacer les lettres</span><span class="chip">Moyen</span></div><div style="display:flex;gap:8px;align-items:center"><span style="color:var(--coral-600)">☑</span><span style="font-size:13px">Augmenter l’interligne</span><span class="chip">1,5</span></div></div><div><div style="font-size:12px;font-weight:700;color:var(--ink-2);margin-bottom:8px">Consignes</div><div style="display:flex;gap:8px;align-items:center"><span style="color:var(--coral-600)">☑</span><span style="font-size:13px">Consignes courtes et directes</span></div></div></div></div><div style="display:flex;align-items:center;margin-bottom:16px"><h3 style="font-family:var(--serif);font-size:15px;margin:0;flex:1">Tâches de Inès</h3><span class="btn btn-primary">+&nbsp; Ajouter</span></div><div class="card" style="padding:12px 14px;margin-bottom:26px;display:flex;gap:10px;align-items:center"><span style="color:var(--coral-600)">☐</span><div style="flex:1;font-size:13px">Photocopier la fiche de mesure</div><span class="chip">5 nov.</span></div><h3 style="font-family:var(--serif);font-size:15px;margin:0 0 10px">Le fil de Inès</h3><div style="padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);display:flex;align-items:center;gap:8px"><span style="font-size:11px;color:var(--ink-3);font-weight:600">Catégorie :</span><span class="inp" style="font-size:12px;padding:8px 10px">Comportement&nbsp;⌄</span><span style="flex:1;font-size:13px;color:var(--ink-3)">Ajouter un commentaire sur Inès…</span><span class="btn btn-ghost">♩</span><span class="btn btn-primary">Ajouter</span></div><div style="margin-top:12px"><div style="padding:0 0 12px 32px;position:relative"><span style="position:absolute;left:0;width:22px;height:22px;border-radius:50%;background:#14b87a;color:#fff;text-align:center;line-height:22px">↗</span><b style="font-size:12px;color:#0baf72">Progression</b> <span style="font-size:11px;color:var(--ink-3)">6 nov.</span><div style="font-size:13px;margin-top:5px">Mesure correctement quatre segments en partant du zéro.</div></div><div style="padding:0 0 12px 32px;position:relative"><span style="position:absolute;left:0;width:22px;height:22px;border-radius:50%;background:#4084f5;color:#fff;text-align:center;line-height:22px">●</span><b style="font-size:12px;color:#3478e9">Comportement</b> <span style="font-size:11px;color:var(--ink-3)">4 nov.</span><div style="font-size:13px;margin-top:5px">Attend son tour et reformule la consigne avant de commencer.</div></div><div style="padding:0 0 12px 32px;position:relative"><span style="position:absolute;left:0;width:22px;height:22px;border-radius:50%;background:#8b5cf6;color:#fff;text-align:center;line-height:22px">✦</span><b style="font-size:12px;color:#7c4ff0">Académique</b> <span style="font-size:11px;color:var(--ink-3)">30 oct.</span><div style="font-size:13px;margin-top:5px">En lecture, relit la consigne courte avant de répondre.</div></div><div style="padding-left:32px;position:relative"><span style="position:absolute;left:0;width:22px;height:22px;border-radius:50%;background:#14b87a;color:#fff;text-align:center;line-height:22px">↗</span><b style="font-size:12px;color:#0baf72">Progression</b> <span style="font-size:11px;color:var(--ink-3)">27 oct.</span><div style="font-size:13px;margin-top:5px">La règle reste posée sur le zéro : progrès à consolider.</div></div></div></div><div style="padding:10px 18px;border-top:1px solid var(--line);background:var(--paper);font-size:11px;color:var(--ink-3)">← → changer d’élève · Échap fermer</div></div></div>');
   }
   if (vue === 'lia') {
     texte('24 élèves', '4 élèves'); texte('8 à besoins', '1 élève avec critères'); texte('3 dispositifs en cours', '5 tâches à faire');
+    [...clone.querySelectorAll('span,div')].filter((e) => !e.children.length && /^(8|3)$/.test(e.textContent.trim())).forEach((e) => e.remove());
   }
   if (vue === 'fiche-de-preparation') {
     retireAction('Partager dans la base');
   }
   // Notions absentes de l'app actuelle (arrière-plans des surimpressions compris) : on retire le bloc entier.
-  const absent = /PPRE|\bPAI\b|GEVA|dispositif|besoins? déclarés|à besoins|évaluations?\b|base commune|Bonjour Anne|Durand|Lilas/i;
+  const absent = /PPRE|\bPAI\b|GEVA|dispositif|besoins? (déclarés|particuliers?)|à besoins|Dyslexie|Dyscalculie|Dysorthographie|Dyspraxie|TDAH|Haut potentiel|Allophone|troubles?\b|évaluations?\b|base commune|Bonjour Anne|Durand|Lilas/i;
   const bloc = '.card,.dash-card,.task-line,.side-link,.nav-item,li,tr,[class*="row"],[class*="item"]';
   const textes = []; const parcours = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
   for (let n = parcours.nextNode(); n; n = parcours.nextNode()) if (absent.test(n.nodeValue)) textes.push(n);
@@ -199,7 +207,7 @@ const serialise = `(root, kind, vue) => {
     }
   });
   clone.querySelectorAll('.rail-wordmark').forEach((e) => { e.textContent = 'MyClassFlow'; });
-  clone.querySelectorAll('.rail-logo').forEach((e) => { e.textContent = 'M'; });
+  clone.querySelectorAll('.rail-logo').forEach((e) => { e.innerHTML = '<img src="/assets/img/castors/professeur.svg" alt="" width="28" height="28" decoding="async" style="display:block">'; });
   const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
   for (let node = walker.nextNode(); node; node = walker.nextNode()) node.nodeValue = node.nodeValue.replace(/ClassFlow|SuperProf/g, 'MyClassFlow');
   clone.querySelectorAll('.ocr-check input[type="checkbox"]').forEach((old) => {
@@ -210,6 +218,9 @@ const serialise = `(root, kind, vue) => {
   clone.querySelectorAll('button,input,select,textarea,a').forEach((old) => {
     const tag = old.tagName === 'TEXTAREA' ? 'div' : 'span'; const replacement = document.createElement(tag);
     [...old.attributes].forEach((a) => { if (!/^(href|target|type|name|value|checked|selected|autofocus|tabindex|on)/i.test(a.name)) replacement.setAttribute(a.name, a.value); });
+    const fige = styles.get(old.getAttribute('data-appvp-i'));
+    if (fige) replacement.setAttribute('style', fige + ';' + (old.getAttribute('style') || ''));
+    replacement.removeAttribute('data-appvp-i');
     replacement.setAttribute('tabindex', '-1');
     if (old.tagName === 'INPUT' || old.tagName === 'TEXTAREA') replacement.textContent = old.value || old.placeholder || '';
     else if (old.tagName === 'SELECT') replacement.textContent = old.selectedOptions[0]?.textContent || '';
@@ -219,6 +230,12 @@ const serialise = `(root, kind, vue) => {
   if (vue === 'import-eleves-photo') {
     clone.querySelectorAll('.ocr-field span').forEach((e) => e.classList.add('ocr-field-static'));
     [...clone.querySelectorAll('*')].filter((e) => e.textContent.trim() === 'Corriger les évaluations').forEach((e) => e.closest('.card,.todo-row,[class*="task"]')?.remove());
+  }
+  if (vue === 'import-eleves-photo') {
+    // La modale bureau marque le second Lucas de la liste fictive : le proto
+    // ne déduplique autrement que contre le roster existant.
+    const lucas = [...clone.querySelectorAll('*')].filter((e) => !e.children.length && e.textContent.trim() === 'Lucas');
+    if (lucas[1]) lucas[1].parentElement?.insertAdjacentHTML('beforeend', '<span class="chip chip-amber" style="margin-left:8px">En double dans la liste</span>');
   }
   return '<div class="appv-proto appv-proto--' + kind + '">' + clone.outerHTML + '</div>';
 }`;
@@ -236,7 +253,7 @@ async function rendUneVue(nom, vue, origine, navigateur) {
   if (!await navigateur.evaluer(`!!document.querySelector(${json(pret)})`)) throw new Error(`${nom} : ${pret} absent après 10 s\n${navigateur.erreurs.slice(-5).join('\n').slice(0, 1500)}`);
   for (const etape of vue.sequence || []) {
     if (etape.evenement) {
-      await navigateur.evaluer(`window.dispatchEvent(new CustomEvent(${json(etape.evenement)}))`);
+      await navigateur.evaluer(`window.dispatchEvent(new CustomEvent(${json(etape.evenement)}, { detail: ${json(etape.detail || null)} }))`);
       continue;
     }
     const clique = await navigateur.evaluer(`(() => { const wanted = ${json(etape.texte)}; const candidates = [...document.querySelectorAll(${json(etape.selecteur || '*')})]; const e = candidates.find((x) => x.textContent.trim() === wanted || x.getAttribute('aria-label') === wanted); if (e) { e.click(); return true; } return false; })()`);

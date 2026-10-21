@@ -33,13 +33,13 @@ try {
       await send('Page.navigate', { url: `${base}/enseignants/fonctionnalites/${slug}/` });
       for (let n = 0; n < 60; n++) { if (await ev('document.readyState==="complete" && !!document.querySelector(".appv-proto")')) break; await sleep(100); }
       await ev('Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,8000))])');
-      const result = await ev(`(()=>{const f=document.querySelector('.appv-figure'),a=f.querySelector('.appv-proto'),r=f.querySelector('.appv-proto-viewport');const h=a.querySelector('h1,.sh-title,.sp-title');return {width:${width},slug:'${slug}',pageWidth:document.documentElement.scrollWidth,viewportWidth:r.clientWidth,forbidden:/Base commune|Éditeur|(?<!My)ClassFlow/.test(a.textContent),titleFont:h?{family:getComputedStyle(h).fontFamily,size:getComputedStyle(h).fontSize,weight:getComputedStyle(h).fontWeight}:null}})()`);
+      const result = await ev(`(()=>{const f=document.querySelector('.appv-figure'),a=f.querySelector('.appv-proto'),r=f.querySelector('.appv-proto-viewport'),h=a.querySelector('h1,.sh-title,.sp-title');return {width:${width},slug:'${slug}',pageWidth:document.documentElement.scrollWidth,viewportWidth:r.clientWidth,desktop:!a.classList.contains('appv-proto--tel'),forbidden:/Base commune|Éditeur|(?<!My)ClassFlow/.test(a.textContent),titleFont:h?{family:getComputedStyle(h).fontFamily,size:getComputedStyle(h).fontSize,weight:getComputedStyle(h).fontWeight}:null}})()`);
       await capture(`${slug}-${width}`);
       report.push(result);
     }
   }
   writeFileSync(`${out}/rapport.json`, JSON.stringify({ report, errors }, null, 2));
-  const failed = report.filter((r) => r.forbidden || r.pageWidth > r.width + 1);
+  const failed = report.filter((r) => !r.desktop || r.forbidden || r.pageWidth > r.width + 1);
   console.log(JSON.stringify({ captures: report.length, errors, failed }, null, 2));
   if (failed.length || errors.length) process.exitCode = 1;
 } finally { ws?.close(); chrome.kill(); }

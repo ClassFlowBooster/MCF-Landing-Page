@@ -11,8 +11,9 @@ test('les huit fiches utilisent chacune son fragment extrait du proto', () => {
   for (const slug of slugs) {
     const source = readFileSync(new URL(`${slug}.html`, racine), 'utf8');
     const html = illustrations[slug];
-    assert.match(source, /class="appv-proto appv-proto--(?:bureau|tel)"/);
-    assert.match(html, /class="appv-proto appv-proto--(?:bureau|tel)"/, slug);
+    assert.match(source, /class="appv-proto appv-proto--bureau"/);
+    assert.match(html, /class="appv-proto appv-proto--bureau"/, slug);
+    assert.doesNotMatch(source, /appv-proto--tel/, slug);
     assert.match(html, /aria-hidden="true"/, slug);
     assert.match(html, /Écran de MyClassFlow, données fictives\./, slug);
   }
@@ -38,14 +39,13 @@ test('le CSS du proto reste entièrement scopé sous .appv-proto', () => {
   }
 });
 
-test('le cadre met l\'extrait à l\'échelle sans JavaScript, avec une découpe et le format des deux exports', () => {
+test('le cadre met les huit extraits bureau à l\'échelle sans JavaScript, avec une découpe', () => {
   const css = readFileSync(new URL('../assets/css/visuels-fiches.css', import.meta.url), 'utf8');
   assert.match(css, /container-type:\s*inline-size/);
   assert.match(css, /overflow:\s*hidden/);
   // tan(atan2(a, b)) donne a / b sans unité ; calc(100cqw / 1440) serait une longueur, invalide dans zoom ou scale().
   assert.match(css, /zoom:\s*min\(1,\s*tan\(atan2\(100cqw,\s*1440px\)\)\)/);
-  assert.match(css, /zoom:\s*min\(1,\s*tan\(atan2\(100cqw,\s*390px\)\)\)/);
   assert.doesNotMatch(css, /calc\(100cqw\s*\/\s*\d/);
   assert.match(css, /1440px/);
-  assert.match(css, /390px/);
+  assert.doesNotMatch(css, /appv-figure--tel|390px|--tel/);
 });

@@ -23,12 +23,12 @@ Les correctifs de données, d'état et de retrait du lancement sont déclarés d
 | Vue | Séquence | Racine | Point à contrôler au rendu |
 | --- | --- | --- | --- |
 | `cahier-journal` | état initial | `.app` | semaine du 2 au 6 novembre 2026, sans évaluations |
-| `taches` | « Voir toutes les tâches » | `.sp` | largeur 390 px et tabbar dans le flux |
+| `taches` | état initial | `.app` | carte « À faire » du tableau de bord CE1, 5 tâches et 1 terminée |
 | `emploi-du-temps` | état initial | `.app` | CM2, 4 jours et demi, 21 h 45 |
 | `fiche-de-preparation` | ouvre « Mesurer des longueurs » | `.app` | objectif et référentiel de mesure ; sans partage dans la base |
-| `adaptation-des-supports` | état initial | `.app` | support unique et cibles selon les critères pédagogiques |
-| `fiches-eleves` | état initial | `.app` | Inès Martin ; critères, fil de suivi et tâches liées |
+| `adaptation-des-supports` | état initial | `.app` | titre, PDF ajouté et résultat « Selon mes élèves » pour Inès |
+| `fiches-eleves` | état initial | `.app` | fenêtre Inès Martin ; critères, fil de suivi et tâche liée |
 | `lia` | hash `lia=expanded&conv=1` | `.app` | Lia ne propose que commentaire ou tâche |
-| `import-eleves-photo` | événement `sp:import-ocr`, attente 1,65 s | `.sp` | étape `.ocr-correction`, huit lignes |
+| `import-eleves-photo` | ouvre « Ajouter des élèves », lance l’import, attente 1,65 s | `.app` | fenêtre bureau de relecture, huit lignes |
 
-Les patchs par vue restent déclaratifs dans `vues.mjs` : journal (graines, identité, horloge et retrait des évaluations), tâches (graines et correctif de gabarit), EDT (créneaux CM2), fiche (graines de mesure puis ouverture), supports (support unique et cibles par critères), fiche élève (identité et suivi), Lia (conversation et contexte) et OCR (lignes et événement). Le post-traitement de `extraire.mjs` ne modifie que le DOM exporté : il enlève les éléments de prototype non présents dans l’app et convertit les contrôles interactifs en rendu statique.
+Les patchs par vue restent déclaratifs dans `vues.mjs` : journal (graines, identité, horloge et retrait des évaluations), tâches (graines TodoStore bureau), EDT (créneaux CM2), fiche (graines de mesure puis ouverture), supports (support nommé, PDF et critères), fiche élève (fenêtre Inès et suivi), Lia (proposition de tâche) et import (fenêtre bureau, huit lignes et événement). Le post-traitement de `extraire.mjs` ne modifie que le DOM exporté : il enlève les éléments de prototype non présents dans l’app et convertit les contrôles interactifs en rendu statique.

@@ -36,6 +36,19 @@ export const TASK_SEED = TACHES.map((tache, index) => ({
   due: dates[index], pupils: (tache.eleves || []).map((nom) => nom === 'Inès' ? 'Inès Martin' : nom === 'Maël' ? 'Maël Renaud' : nom === 'Nour' ? 'Nour Saïdi' : nom), done: false,
 }));
 
+// Format du TodoStore bureau : la sixième entrée permet de rendre aussi le
+// groupe « terminées » de TodoCard. Les identifiants correspondent au roster
+// CE1 injecté dans les vues bureau.
+export const DESKTOP_TASK_SEED = TASK_SEED.map((task, index) => ({
+  id: task.id, classId: 'c1', title: task.title, detail: task.sub,
+  due: task.due, subj: task.subj || null,
+  pupilId: task.pupils[0] === 'Inès Martin' ? 'e2' : task.pupils[0] === 'Maël Renaud' ? 'e3' : task.pupils[0] === 'Nour Saïdi' ? 'e4' : null,
+  done: false,
+})).concat([{
+  id: 'task-ce1-done', classId: 'c1', title: 'Préparer les règles graduées',
+  detail: 'Matériel rangé pour la séance de mesure.', due: '2026-11-02', subj: 'math', pupilId: null, done: true,
+}]);
+
 export const CLASSE = CLASSE_CE1;
 
 // Données spécifiques aux autres écrans du proto. Elles restent dans ce module afin que
@@ -68,15 +81,15 @@ export const OCR_ROWS = IMPORT.map(([first, last, note]) => ({
   checked: note !== 'Déjà dans la classe',
 }));
 
+export const IMPORT_ROWS = IMPORT.map(([first, last]) => [first, last === 'R?naud' ? 'Renaud' : last]);
+
 export const LIA_CONVERSATIONS = [{
-  id: 1, title: 'Mesures et suivi d’Inès', date: "Aujourd’hui",
-  preview: 'Commentaire proposé pour Inès Martin.',
+  id: 1, title: 'Tâche de mesure', date: "Aujourd’hui",
+  preview: 'Tâche proposée pour jeudi.',
   messages: [
-    { role: 'user', text: 'Qu’est-ce qui me reste à faire cette semaine ?' },
-    { role: 'lia', text: 'Trois tâches : rendre les cahiers de lecture demain, photocopier la fiche de mesure pour jeudi, récupérer les autorisations de Maël et Nour pour vendredi.' },
-    { role: 'user', text: 'Note qu’Inès a mesuré correctement ses quatre segments aujourd’hui.' },
-    { role: 'lia', text: 'Je propose d’ajouter ce commentaire au fil de suivi d’Inès Martin. Rien n’est enregistré sans votre validation.' },
-    { propose: { kind: 'obs', title: 'Inès a mesuré correctement ses quatre segments.', detail: 'Commentaire · Inès Martin', status: 'pending' } },
+    { role: 'user', text: 'Ajoute une tâche : photocopier la fiche de mesure pour jeudi.' },
+    { role: 'lia', text: 'Bien sûr. Voici la tâche que je te propose. Rien n’est enregistré tant que tu ne l’as pas validée.' },
+    { propose: { kind: 'tache', title: 'Photocopier la fiche de mesure', detail: 'Jeudi 5 nov. · CE1 · Inès Martin', status: 'pending' } },
   ],
 }];
 

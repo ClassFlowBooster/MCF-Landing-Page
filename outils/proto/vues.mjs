@@ -1,4 +1,4 @@
-import { CLASSES, EDT_SLOTS_OFFSETS, FICHES_PREP, LIA_CONVERSATIONS, MOBILE_CLASSES, OCR_ROWS, PROF, PUPILS, SEED_SEANCES, SUBJECTS, TASK_SEED } from './donnees.mjs';
+import { CLASSES, DESKTOP_TASK_SEED, EDT_SLOTS_OFFSETS, FICHES_PREP, IMPORT_ROWS, LIA_CONVERSATIONS, PROF, SEED_SEANCES, SUBJECTS } from './donnees.mjs';
 
 const literal = (value) => JSON.stringify(value, null, 2);
 
@@ -20,16 +20,13 @@ export const VUES = {
     ],
   },
   taches: {
-    type: 'tel', url: '/mobile/index.html', root: '.sp', taille: { width: 390, height: 900 }, attente: 1400,
-    etatInitial: "try { localStorage.setItem('sp_mob_onboarding_seen', '1'); } catch (_) {}",
-    sequence: [{ texte: 'Voir toutes les tâches', selecteur: 'button, [role="button"]' }],
-    css: '.sp{width:390px !important;min-width:390px !important;max-width:390px !important;height:auto !important;min-height:900px !important;overflow:visible !important}.sp-screen{min-height:calc(100% - 76px) !important;padding-bottom:18px !important}.tabbar{position:static !important;width:390px !important;box-sizing:border-box !important;margin-top:0 !important}',
+    type: 'bureau', url: '/index.html#accueil', root: '.app', taille: { width: 1440, height: 900 }, attente: 1400,
     patches: [
-      { fichier: 'mobile/sp-taches.jsx', constante: 'TASK_SEED', valeur: TASK_SEED },
-      { fichier: 'mobile/sp-core.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
-      { fichier: 'mobile/sp-core.jsx', constante: 'CLASSES', valeur: MOBILE_CLASSES },
-      { fichier: 'mobile/sp-core.jsx', apres: 'Object.assign(window,', texte: `window.PUPILS = ${literal(PUPILS)};\n\n` },
-      { fichier: 'mobile/sp-lancement.jsx', retrait: true },
+      { fichier: 'todo-store.jsx', constante: 'TODO_SEED', valeur: DESKTOP_TASK_SEED },
+      { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
+      { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
+      { fichier: 'prof.jsx', constante: 'MOCK_CLASSES', valeur: CLASSES },
+      { fichier: 'lancement.jsx', retrait: true },
     ],
   },
   'emploi-du-temps': {
@@ -72,11 +69,10 @@ export const VUES = {
       { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
       { fichier: 'prof.jsx', constante: 'MOCK_CLASSES', valeur: CLASSES },
       { fichier: 'screen-supports.jsx', remplacements: [
-        { avant: "const [supportName, setSupportName] = React.useState(\"Fiche d'exercices — les fractions\");", apres: "const [supportName, setSupportName] = React.useState('Fiche de mesure — version d’origine');" },
+        { avant: "const [supportName, setSupportName] = React.useState(\"Fiche d'exercices — les fractions\");", apres: "const [supportName, setSupportName] = React.useState('Mesurer des segments (CE1)');" },
         { avant: "{ id: 1, name: 'fiche-fractions.pdf' },\n    { id: 2, name: 'annexe-schemas.png' },", apres: "{ id: 1, name: 'mesurer-des-segments.pdf' }," },
-        { avant: 'subtitle="Déposez un support : il sera adapté aux besoins déclarés de la classe."', apres: 'subtitle="Déposez un support : il sera adapté selon les critères pédagogiques de vos élèves."' },
-        { avant: '<span>Accueil</span> › <span>Supports</span> › <b>Adapter un support</b>', apres: '<span>Accueil</span> › <b>Adaptation</b>' },
-        { avant: 'Formats acceptés : PDF, images (PNG, JPG…), Word (DOC, DOCX)', apres: 'Formats acceptés : PDF ou image (PNG, JPG, WEBP), jusqu’à 8 pages' },
+        { avant: 'subtitle="Déposez un support : il sera adapté aux besoins déclarés de la classe."', apres: 'subtitle="Dépose un support : il sera adapté aux critères pédagogiques de tes élèves."' },
+        { avant: 'Formats acceptés : PDF, images (PNG, JPG…), Word (DOC, DOCX)', apres: 'Formats acceptés : PDF, images (PNG, JPG…), Word (DOC, DOCX)' },
       ] },
       { fichier: 'lancement.jsx', retrait: true },
     ],
@@ -103,15 +99,15 @@ export const VUES = {
     ],
   },
   'import-eleves-photo': {
-    type: 'tel', url: '/mobile/index.html', pret: '.sp', root: '.ocr-screen', taille: { width: 390, height: 900 }, attente: 1650,
-    etatInitial: "try { localStorage.setItem('sp_mob_onboarding_seen', '1'); } catch (_) {}",
-    sequence: [{ evenement: 'sp:import-ocr' }],
-    css: '.sp{width:390px!important;min-width:390px!important;max-width:390px!important;margin:0!important;overflow:hidden!important}.ocr-screen{width:390px!important;max-width:390px!important;box-sizing:border-box!important;transform:none!important}.ocr-check-static{width:20px;height:20px;box-sizing:border-box;border:1.5px solid var(--coral-500);border-radius:6px;background:var(--coral-500);display:inline-flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700}.ocr-field-static{height:40px!important;min-height:40px!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;padding:0 10px!important}',
+    type: 'bureau', url: '/index.html#accueil', root: '.app', taille: { width: 1440, height: 900 }, attente: 1650,
+    sequence: [{ evenement: 'superprof:add-pupils', detail: { classId: 'c1' } }, { texte: "Importer une liste d'élèves", selecteur: 'div,span,button' }],
     patches: [
-      { fichier: 'mobile/sp-import-ocr.jsx', constante: 'OCR_ROWS', valeur: OCR_ROWS },
-      { fichier: 'mobile/sp-core.jsx', constante: 'CLASSES', valeur: MOBILE_CLASSES },
-      { fichier: 'mobile/sp-import-ocr.jsx', remplacements: [{ avant: 'reset(); setOpen(true);', apres: "reset(); setOpen(true); setStep('analyse');" }] },
-      { fichier: 'mobile/sp-lancement.jsx', retrait: true },
+      { fichier: 'class-create.jsx', constante: 'MOCK_OCR_ELEVES', valeur: IMPORT_ROWS },
+      { fichier: 'class-create.jsx', constante: 'MOCK_A_VERIFIER', valeur: [4] },
+      { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
+      { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
+      { fichier: 'prof.jsx', constante: 'MOCK_CLASSES', valeur: CLASSES },
+      { fichier: 'lancement.jsx', retrait: true },
     ],
   },
 };
