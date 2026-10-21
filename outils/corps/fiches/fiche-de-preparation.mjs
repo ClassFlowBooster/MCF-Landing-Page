@@ -5,8 +5,6 @@
 // Trame, exemple et questions écrits pour ne ressembler à aucun concurrent
 // (contrôles de ressemblance du 18/10/2026, rapport feat-53-fiches-fonctionnalites).
 
-export const MODELE_PDF = "/assets/docs/modele-fiche-de-preparation.pdf";
-
 // Exemple : mesurer des longueurs avec la règle graduée, en CE1.
 const PHASES = [
   ["Le défi", "5 min", "Toute la classe", "Deux rubans de longueurs proches sont scotchés aux deux bouts du tableau. « Lequel est le plus long ? On n'a pas le droit de les décoller. » Les élèves proposent : comparer à l'œil, reporter avec une ficelle, utiliser la règle."],
@@ -56,11 +54,6 @@ const exemple = `<p>Chacun a sa façon de préparer. La trame que nous proposons
       <p><b>Les aides prévues :</b> une règle aux graduations agrandies avec le zéro surligné en couleur ; une fiche où chaque segment commence sur un trait repère, avec un texte agrandi et la consigne découpée en étapes. Pour ceux qui ont fini : mesurer les trois côtés d'une ligne brisée et additionner.</p>
       <p><b>Le signe que c'est acquis :</b> l'élève mesure au moins trois segments sur quatre au centimètre près et trace le segment de 7 cm en partant du zéro.</p>
       <p><b>Après coup :</b> par exemple, « le défi des rubans a accroché la classe ; six élèves partent encore du bord de la règle : une mesure en rituel demain matin ».</p>
-    </div>
-
-    <div class="modele">
-      <div><b>La trame vierge, à imprimer</b><p>Les sept rubriques sur une page A4, à remplir à la main.</p></div>
-      <a class="btn ghost" href="${MODELE_PDF}" download>Télécharger le modèle (PDF)</a>
     </div>`;
 
 // Illustration : écran de fiche de l'app reconstitué en HTML, données fictives.
@@ -91,12 +84,12 @@ export default {
   accroche: "Une séance de CE1 sur la mesure, pensée moment par moment, puis copiée dans le cahier journal.",
   k: "free",
   titre: "Fiche de préparation : trame et exemple en CE1 — MyClassFlow",
-  description: "Une trame de fiche de préparation en sept rubriques, une séance de CE1 sur la mesure des longueurs, le modèle à imprimer, et le lien avec le cahier journal de MyClassFlow.",
+  description: "Une trame de fiche de préparation en sept rubriques, une séance de CE1 sur la mesure des longueurs, et le lien avec le cahier journal de MyClassFlow.",
   h1: "Une fiche de préparation pour chaque séance, sur une page",
-  intro: "Une fiche de préparation, c'est une séance pensée avant d'être vécue : son but, son déroulé minute par minute, les difficultés que vous voyez venir. Voici notre trame d'une page, une séance de CE1 rédigée avec elle et le modèle à imprimer.",
+  intro: "Une fiche de préparation, c'est une séance pensée avant d'être vécue : son but, son déroulé minute par minute, les difficultés que vous voyez venir. Voici une trame en sept rubriques et une séance de CE1 rédigée avec elle.",
   retenir: [
     "Une fiche de préparation porte sur une seule séance : son but, ses moments minutés et l'erreur que vous voyez venir.",
-    "Notre trame tient sur une page A4, en sept rubriques, et le modèle vierge se télécharge gratuitement.",
+    "Notre trame tient sur une page A4, en sept rubriques.",
     "Dans MyClassFlow, vos fiches sont gratuites, rangées dans votre banque, et leur contenu se copie dans la séance du cahier journal.",
   ],
   titreBenefices: "Pourquoi l'écrire avant d'entrer en classe ?",
@@ -123,7 +116,7 @@ export default {
     ["Jusqu'où détailler une fiche de préparation ?", "Écrivez mot pour mot ce qui doit être dit exactement : la consigne, la question qui lance la séance. Le reste tient en notes courtes. Une fiche qu'on ne peut pas relire d'un coup d'œil pendant la classe est trop longue."],
     ["Comment laisser une fiche de préparation lisible pour un remplaçant ?", "Ajoutez ce que vous êtes seul à savoir : où est rangé le matériel, ce que la classe a fait à la séance d'avant, les mots que les élèves connaissent déjà. Dans MyClassFlow, la fiche rattachée à une séance se retrouve au bon jour du cahier journal."],
     ["Comment relier une fiche de préparation au cahier journal ?", "Dans MyClassFlow, choisissez « Rattacher à une séance » depuis la fiche, ou « Insérer une fiche de ma banque » depuis la séance : le contenu est copié dans la séance. Vous l'ajustez pour ce jour-là sans toucher à la fiche d'origine."],
-    ["Comment prévoir des aides dans une fiche de préparation ?", "Gardez le même but pour toute la classe et changez le chemin : un support plus lisible (texte agrandi, lignes espacées, consigne en étapes), un outil en plus, une tâche de plus pour ceux qui ont fini. Avec l'abonnement, MyClassFlow adapte vos supports en quelques secondes selon les critères pédagogiques que vous cochez."],
+    ["Comment prévoir des aides dans une fiche de préparation ?", "Gardez le même but pour toute la classe et changez le chemin : un support plus lisible (texte agrandi, lignes espacées, consigne en étapes), un outil en plus, une tâche de plus pour ceux qui ont fini. Avec l'abonnement, MyClassFlow adapte vos supports selon les critères pédagogiques que vous cochez."],
     ["Comment retrouver une fiche de préparation l'année suivante ?", "Rangez vos fiches en dossiers dès la première année, par matière ou par séquence. Dans MyClassFlow, « Dupliquer » crée une copie que vous corrigez avec ce que vos notes d'après séance vous ont appris, sans perdre la version d'origine."],
     ["Les fiches de préparation sont-elles gratuites dans MyClassFlow ?", "Oui, comme le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire."],
   ],

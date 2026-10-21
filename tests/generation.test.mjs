@@ -4,7 +4,8 @@ import { readFileSync, existsSync } from "node:fs";
 import { PAGES, PAGE_404 } from "../outils/pages.mjs";
 import { page, ESPACES } from "../outils/gabarits.mjs";
 import { CASTOR_DE } from "../outils/corps/castors.mjs";
-import { THEMES, lienFiche } from "../outils/corps/catalogue.mjs";
+import { THEMES, lienFiche, nomLie } from "../outils/corps/catalogue.mjs";
+import { fonctionnalites } from "../outils/corps/fonctionnalites.mjs";
 import { megaMenu } from "../outils/corps/mega-menu.mjs";
 import { FICHES } from "../outils/corps/fiches/index.mjs";
 import { adresseFiche, arianeFiche } from "../outils/corps/fiche.mjs";
@@ -243,7 +244,7 @@ test("vocabulaire : les pages décrivent des adaptations, sans catégorie d'él�
     const m = page(p).match(INTERDITS);
     assert.ok(!m, `${p.chemin} : « ${m?.[0]} »`);
   }
-  for (const fichier of ["presentation/content.html", "assets/js/formulaire.js", "assets/css/base.css", "outils/modeles/fiche-de-preparation.html"]) {
+  for (const fichier of ["presentation/content.html", "assets/js/formulaire.js", "assets/css/base.css"]) {
     const m = sansImages(readFileSync(fichier, "utf8")).match(INTERDITS);
     assert.ok(!m, `${fichier} : « ${m?.[0]} »`);
   }
@@ -279,7 +280,10 @@ test("fiches explicatives : fil d'Ariane et questions balisés, identiques à la
     assert.deepEqual(ariane.map((e) => e.name), arianeFiche(f).map(([nom]) => nom), chemin);
     assert.equal(ariane.at(-1).item, `https://myclassflow.fr${chemin}`, chemin);
     const visibles = [...html.matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
-    assert.deepEqual(graphe.find((o) => o["@type"] === "FAQPage").mainEntity.map((q) => q.name), visibles, chemin);
+    const balisees = graphe.find((o) => o["@type"] === "FAQPage").mainEntity;
+    assert.deepEqual(balisees.map((q) => q.name), visibles, chemin);
+    const reponses = [...html.matchAll(/<\/summary><p>(.*?)<\/p><\/details>/g)].map((m) => m[1]);
+    assert.deepEqual(balisees.map((q) => q.acceptedAnswer.text), reponses, `${chemin} : réponses`);
     assert.ok(visibles.length >= 4 && visibles.length <= 6, `${chemin} : ${visibles.length} questions`);
     for (const [, href] of html.matchAll(/href="(\/assets\/[^"]+)"/g)) assert.ok(existsSync(`.${href}`), `${chemin} → ${href} absent`);
   }
@@ -334,8 +338,9 @@ test("fiches explicatives : chaque outil relié a sa page, les tarifs Enseignant
   const html = (chemin) => page(PAGES.find((p) => p.chemin === chemin));
   for (const o of relies) {
     assert.ok(html("/enseignants/tarifs/").includes(`<a class="lien-fiche" href="${lienFiche(o)}">`), `tarifs → ${o.nom}`);
-    assert.ok(html("/enseignants/fonctionnalites/").includes(`href="${lienFiche(o)}"`), `fonctionnalités → ${o.nom}`);
-    assert.ok(html("/enseignants/").includes(`<a class="lien-fiche" href="${lienFiche(o)}">${o.nom}</a>`), `accueil → ${o.nom}`);
+    // Contenu propre de la page Fonctionnalités (hors méga-menu) ; un outil `page: false` n'y a pas de carte.
+    if (o.page !== false) assert.ok(fonctionnalites("enseignants").includes(`href="${lienFiche(o)}"`), `fonctionnalités → ${o.nom}`);
+    assert.ok(html("/enseignants/").includes(nomLie(o)), `accueil → ${o.nom}`);
     assert.ok(megaMenu("enseignants").includes(`<a class="mi" href="${lienFiche(o)}">`), `méga-menu → ${o.nom}`);
   }
   // Q7 (MCF-Pilotage#53) : l'espace Écoles ne renvoie pas encore vers les fiches.

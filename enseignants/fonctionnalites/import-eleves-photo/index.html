@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Importer sa liste d'élèves en une photo — MyClassFlow</title>
+<meta name="description" content="À la rentrée, photographiez la liste de classe avec votre téléphone : MyClassFlow lit les prénoms et les noms, signale ce qui est à vérifier et les doublons, puis ajoute les élèves après votre relecture." />
+<link rel="canonical" href="https://myclassflow.fr/enseignants/fonctionnalites/import-eleves-photo/" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+<meta property="og:title" content="Importer sa liste d'élèves en une photo — MyClassFlow" />
+<meta property="og:description" content="À la rentrée, photographiez la liste de classe avec votre téléphone : MyClassFlow lit les prénoms et les noms, signale ce qui est à vérifier et les doublons, puis ajoute les élèves après votre relecture." />
+<meta property="og:url" content="https://myclassflow.fr/enseignants/fonctionnalites/import-eleves-photo/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="MyClassFlow" />
+<meta property="og:image" content="https://myclassflow.fr/assets/img/og-enseignants.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="MyClassFlow, espace Enseignants : le castor professeur et l'accroche « Adaptez chaque support aux besoins de chaque élève »." />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Enseignants","item":"https://myclassflow.fr/enseignants/"},{"@type":"ListItem","position":2,"name":"Fonctionnalités","item":"https://myclassflow.fr/enseignants/fonctionnalites/"},{"@type":"ListItem","position":3,"name":"Import des élèves par photo","item":"https://myclassflow.fr/enseignants/fonctionnalites/import-eleves-photo/"}]},{"@type":"SoftwareApplication","name":"MyClassFlow","url":"https://app.myclassflow.fr","applicationCategory":"EducationalApplication","operatingSystem":"Web, Windows, macOS, Android, iOS","inLanguage":"fr","publisher":{"@id":"https://myclassflow.fr/#organisation"},"offers":[{"@type":"Offer","name":"Gratuit","price":"0.00","priceCurrency":"EUR","description":"Gestion de classe et 3 adaptations offertes."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quelle liste de classe peut-on photographier ?","acceptedAnswer":{"@type":"Answer","text":"Une page à plat, bien éclairée, avec un élève par ligne : la liste imprimée de l'école convient. Plus l'écriture est difficile à lire, plus il y a de lignes « À vérifier » à corriger."}},{"@type":"Question","name":"Que se passe-t-il si un prénom est mal lu ?","acceptedAnswer":{"@type":"Answer","text":"La ligne est marquée « À vérifier » quand la lecture est incertaine. Vous corrigez le prénom ou le nom dans la relecture ; rien n'est ajouté tant que vous n'avez pas validé."}},{"@type":"Question","name":"Peut-on importer la liste depuis un ordinateur ?","acceptedAnswer":{"@type":"Answer","text":"Oui, sans photo : sur ordinateur, « Ajouter des élèves » accepte un PDF, un fichier Excel ou CSV, ou la saisie à la main. La photo se prend avec le téléphone."}},{"@type":"Question","name":"Un élève déjà inscrit sera-t-il ajouté deux fois ?","acceptedAnswer":{"@type":"Answer","text":"Non. La relecture signale « Déjà dans la classe » pour un élève présent, et « En double dans la liste » pour un nom écrit deux fois sur la feuille."}},{"@type":"Question","name":"L'import crée-t-il la classe ?","acceptedAnswer":{"@type":"Answer","text":"Il remplit une classe que vous avez déjà créée dans MyClassFlow. Créez d'abord la classe, puis ajoutez-y les élèves à partir de la photo."}},{"@type":"Question","name":"L'import des élèves par photo est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Oui, comme les fiches élèves, le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire."}}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
+<link rel="stylesheet" href="/assets/css/base.css" />
+</head>
+<body data-espace="enseignants">
+<header class="header"><nav class="nav" aria-label="Navigation principale">
+  <a class="brand" href="/enseignants/"><img class="castor castor-logo" src="/assets/img/castors/professeur.svg" alt="" width="32" height="32" decoding="async">MyClassFlow</a>
+  <div class="espace-choix">
+    <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" decoding="async">Espace Enseignants ▾</button>
+    <div class="espace-menu" role="menu" hidden><a role="menuitem" href="/enseignants/" data-espace="enseignants"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Enseignants</a><a role="menuitem" href="/ecoles/" data-espace="ecoles"><img class="castor castor-menu" src="/assets/img/castors/direction.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Écoles</a><a role="menuitem" href="/parents-enfants/" data-espace="parents-enfants"><img class="castor castor-menu" src="/assets/img/castors/eleve.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Parents / Enfants</a></div>
+  </div>
+  <div class="nav-links">
+    <div class="navrel"><button class="nav-link mega-bouton cur" type="button" aria-expanded="false" aria-controls="mega">Fonctionnalités</button><div class="mega" id="mega" hidden>
+    <div>
+      <h6>Adapter pour chaque élève</h6>
+      <a class="mi" href="/enseignants/fonctionnalites/adaptation-des-supports/"><span class="ico" aria-hidden="true">✨</span><div><b>Adaptation des supports <span class="tg pay">Abonnement</span></b><span class="t">Vos fiches adaptées automatiquement, selon vos critères</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/lia/"><span class="ico" aria-hidden="true">💬</span><div><b>Lia, votre assistante <span class="tg pay">Abonnement</span></b><span class="t">Posez vos questions sur vos élèves et vos tâches</span></div></a>
+    </div>
+    <div>
+      <h6>Préparer la classe</h6>
+      <a class="mi" href="/enseignants/fonctionnalites/cahier-journal/"><span class="ico" aria-hidden="true">📓</span><div><b>Cahier journal <span class="tg free">Gratuit</span></b><span class="t">Chaque séance du jour, sa fiche à côté</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/emploi-du-temps/"><span class="ico" aria-hidden="true">🗓️</span><div><b>Emploi du temps <span class="tg free">Gratuit</span></b><span class="t">Le total d'heures de chaque matière, sans calcul</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/fiche-de-preparation/"><span class="ico" aria-hidden="true">📝</span><div><b>Fiches de préparation <span class="tg free">Gratuit</span></b><span class="t">Séances et séquences, simplement</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/taches/"><span class="ico" aria-hidden="true">✅</span><div><b>Tâches <span class="tg free">Gratuit</span></b><span class="t">Les choses à faire, par classe et par échéance</span></div></a>
+    </div>
+    <div>
+      <h6>Suivre ses élèves</h6>
+      <a class="mi" href="/enseignants/fonctionnalites/fiches-eleves/"><span class="ico" aria-hidden="true">👤</span><div><b>Fiche élève <span class="tg free">Gratuit</span></b><span class="t">Critères pédagogiques, observations, tâches</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/import-eleves-photo/"><span class="ico" aria-hidden="true">📸</span><div><b>Import des élèves par photo <span class="tg free">Gratuit</span></b><span class="t">Une photo de la liste, vos élèves sont ajoutés</span></div></a>
+    </div>
+    <div class="megafoot"><span>La gestion de classe est gratuite, avec 3 adaptations offertes. L'IA en illimité est dans l'abonnement.</span><a href="/enseignants/fonctionnalites/">Voir toutes les fonctionnalités →</a></div>
+  </div></div>
+    <a class="nav-link" href="/enseignants/tarifs/">Tarifs</a>
+    <a class="nav-link" href="/enseignants/telecharger/">Télécharger</a>
+  </div>
+  <span class="sp"></span>
+  <a class="btn" href="https://app.myclassflow.fr">Essayer gratuitement</a>
+  <button class="nav-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuMobile"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-menu" id="menuMobile" hidden aria-label="Navigation mobile">
+  <a href="/enseignants/fonctionnalites/">Fonctionnalités</a><a href="/enseignants/tarifs/">Tarifs</a><a href="/enseignants/telecharger/">Télécharger</a><a role="menuitem" href="/enseignants/" data-espace="enseignants"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Enseignants</a><a role="menuitem" href="/ecoles/" data-espace="ecoles"><img class="castor castor-menu" src="/assets/img/castors/direction.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Écoles</a><a role="menuitem" href="/parents-enfants/" data-espace="parents-enfants"><img class="castor castor-menu" src="/assets/img/castors/eleve.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Parents / Enfants</a>
+</nav></header>
+<main>
+<article class="page fiche">
+  <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/enseignants/">Enseignants</a></li><li><a href="/enseignants/fonctionnalites/">Fonctionnalités</a></li><li aria-current="page">Import des élèves par photo</li></ol></nav>
+  <header class="fiche-tete">
+    <span class="tg free">Gratuit</span>
+    <h1 class="t">Votre classe remplie à partir d'une photo de la liste</h1>
+    <p class="fiche-intro">À la rentrée, au lieu de recopier vingt-cinq prénoms, vous photographiez la liste de classe avec votre téléphone. MyClassFlow lit les prénoms et les noms, vous relisez, puis vous ajoutez les élèves en une fois.</p>
+  </header>
+
+  <section class="a-retenir" aria-labelledby="a-retenir">
+    <h2 id="a-retenir">À retenir</h2>
+    <ul>
+      <li>Vous photographiez la liste de classe avec votre téléphone.</li>
+      <li>Vous corrigez les prénoms et les noms avant l'ajout.</li>
+      <li>Les lignes à vérifier et les doublons sont signalés.</li>
+    </ul>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Que vous épargne la photo de la liste ?</h2>
+    <div class="benefices">
+      <div class="benefice"><b>La saisie de la rentrée</b><p>Une photo au lieu de vingt-cinq fiches remplies une à une, la semaine où le temps manque le plus.</p></div>
+      <div class="benefice"><b>Un élève créé par erreur</b><p>Rien n'est ajouté avant votre relecture, et une ligne mal lue ressort marquée « À vérifier ».</p></div>
+      <div class="benefice"><b>Les doublons</b><p>Un élève déjà dans la classe, ou présent deux fois sur la feuille, est repéré avant l'ajout.</p></div>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Comment ajouter votre classe à partir d'une photo ?</h2>
+    <div class="fiche-comment">
+      <ol class="fiche-etapes">
+        <li><b>Photographiez la liste</b><p>Sur votre téléphone, dans « Classe », « Photographier la liste » : prenez la photo ou choisissez-la dans la photothèque.</p></li>
+        <li><b>Relisez</b><p>Corrigez un prénom ou un nom, et choisissez les élèves à ajouter.</p></li>
+        <li><b>Ajoutez-les</b><p>« Ajouter N élèves » remplit la classe : chaque élève apparaît dans « Classe », et sa fiche s'ouvre d'un toucher.</p></li>
+      </ol>
+      <figure class="maquette-fiche" aria-label="Illustration : la relecture d'une liste de classe dans MyClassFlow">
+        <div class="mf-ecran" aria-hidden="true">
+          <div class="mf-chemin">Classe › Ajouter des élèves</div>
+          <div class="mf-titre">Relecture</div>
+          <ul class="mf-seances">
+            <li><b>Adam Brunet</b></li>
+            <li><b>Chloé Duval</b></li>
+            <li><b>Maël R?naud</b><i>À vérifier</i></li>
+            <li><b>Lucas Petit</b><i>En double dans la liste</i></li>
+          </ul>
+          <div class="mf-bouton">Ajouter 6 élèves</div>
+        </div>
+        <figcaption>Illustration avec des données fictives.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Une liste de huit élèves, de la photo à la classe</h2>
+    <p>Une liste de rentrée fictive, photographiée sur le bureau : huit lignes, dont une mal imprimée, un élève déjà inscrit et un nom recopié deux fois.</p>
+
+    <div class="exemple-fiche">
+      <h3>De la feuille à la relecture</h3>
+      <div class="ad-duo">
+        <figure class="ad-feuille ip-liste">
+          <figcaption>La liste photographiée</figcaption>
+          <ol><li>BRUNET Adam</li><li>DUVAL Chloé</li><li>MARTIN Inès</li><li>PETIT Lucas</li><li>R?NAUD Maël</li><li>SAÏDI Nour</li><li>PETIT Lucas</li><li>VIDAL Théo</li></ol>
+        </figure>
+        <figure class="ad-feuille ip-relecture">
+          <figcaption>Ce que vous relisez</figcaption>
+          <table><thead><tr><th scope="col">Prénom</th><th scope="col">Nom</th><th scope="col">État</th></tr></thead><tbody>
+            <tr><td>Adam</td><td>Brunet</td><td></td></tr>
+            <tr><td>Chloé</td><td>Duval</td><td></td></tr>
+            <tr class="ip-signale"><td>Inès</td><td>Martin</td><td>Déjà dans la classe</td></tr>
+            <tr><td>Lucas</td><td>Petit</td><td></td></tr>
+            <tr class="ip-signale"><td>Maël</td><td>R?naud</td><td>À vérifier</td></tr>
+            <tr><td>Nour</td><td>Saïdi</td><td></td></tr>
+            <tr class="ip-signale"><td>Lucas</td><td>Petit</td><td>En double dans la liste</td></tr>
+            <tr><td>Théo</td><td>Vidal</td><td></td></tr>
+          </tbody></table>
+        </figure>
+      </div>
+      <p>Vous corrigez « R?naud » en « Renaud », vous laissez de côté Inès, déjà dans la classe, et le second Lucas. Il reste six élèves à ajouter : le bouton devient « Ajouter 6 élèves ».</p>
+      <p class="ad-note">Liste et noms inventés pour la page.</p>
+    </div>
+  </section>
+
+  <div class="ribbon fiche-offre">
+    <div><span class="tg free">Gratuit</span><b>L'import par photo, gratuit dans MyClassFlow</b><p>Avec les fiches élèves, le cahier journal et l'emploi du temps, sans carte bancaire. L'abonnement ajoute l'adaptation des supports par l'IA.</p></div>
+    <div class="fiche-offre-actions"><a class="btn" href="https://app.myclassflow.fr">Créer mon compte gratuit</a><a class="fiche-tarifs" href="/enseignants/tarifs/">Voir les tarifs</a></div>
+  </div>
+
+  <section class="fiche-partie">
+    <h2>Questions fréquentes</h2>
+    <div class="faq">
+      <details><summary>Quelle liste de classe peut-on photographier ?</summary><p>Une page à plat, bien éclairée, avec un élève par ligne : la liste imprimée de l'école convient. Plus l'écriture est difficile à lire, plus il y a de lignes « À vérifier » à corriger.</p></details>
+      <details><summary>Que se passe-t-il si un prénom est mal lu ?</summary><p>La ligne est marquée « À vérifier » quand la lecture est incertaine. Vous corrigez le prénom ou le nom dans la relecture ; rien n'est ajouté tant que vous n'avez pas validé.</p></details>
+      <details><summary>Peut-on importer la liste depuis un ordinateur ?</summary><p>Oui, sans photo : sur ordinateur, « Ajouter des élèves » accepte un PDF, un fichier Excel ou CSV, ou la saisie à la main. La photo se prend avec le téléphone.</p></details>
+      <details><summary>Un élève déjà inscrit sera-t-il ajouté deux fois ?</summary><p>Non. La relecture signale « Déjà dans la classe » pour un élève présent, et « En double dans la liste » pour un nom écrit deux fois sur la feuille.</p></details>
+      <details><summary>L'import crée-t-il la classe ?</summary><p>Il remplit une classe que vous avez déjà créée dans MyClassFlow. Créez d'abord la classe, puis ajoutez-y les élèves à partir de la photo.</p></details>
+      <details><summary>L'import des élèves par photo est-il gratuit ?</summary><p>Oui, comme les fiches élèves, le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire.</p></details>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Pour qui</h2>
+    <div class="publics">
+      <div class="public"><b>Pour la rentrée</b><p>Vous ajoutez toute la classe en une fois au lieu de remplir les fiches une à une.</p></div>
+      <div class="public"><b>Pour relire la liste</b><p>Vous corrigez chaque prénom ou nom avant d'ajouter les élèves.</p></div>
+      <div class="public"><b>Pour éviter les doublons</b><p>MyClassFlow repère un élève déjà dans la classe ou présent deux fois sur la feuille.</p></div>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Fonctionnalités liées</h2>
+    <div class="soeurs">
+      <a class="soeur" href="/enseignants/fonctionnalites/fiches-eleves/"><span class="ico" aria-hidden="true">👤</span><span><b>Fiche élève</b> <span class="tg free">Gratuit</span><span class="t">Critères pédagogiques, observations, tâches</span></span></a>
+      <a class="soeur" href="/enseignants/fonctionnalites/adaptation-des-supports/"><span class="ico" aria-hidden="true">✨</span><span><b>Adaptation des supports</b> <span class="tg pay">Abonnement</span><span class="t">Vos fiches adaptées automatiquement, selon vos critères</span></span></a>
+      <a class="soeur" href="/enseignants/fonctionnalites/cahier-journal/"><span class="ico" aria-hidden="true">📓</span><span><b>Cahier journal</b> <span class="tg free">Gratuit</span><span class="t">Chaque séance du jour, sa fiche à côté</span></span></a>
+    </div>
+  </section>
+</article>
+</main>
+<footer class="footer"><div class="footer-inner">
+  <span>© MyClassFlow</span>
+  <a href="/enseignants/">Enseignants</a><a href="/ecoles/">Écoles</a><a href="/parents-enfants/">Parents / Enfants</a>
+  <a href="/presentation/">Présentation</a>
+</div></footer>
+<script type="module" src="/assets/js/navigation.js"></script>
+
+</body>
+</html>

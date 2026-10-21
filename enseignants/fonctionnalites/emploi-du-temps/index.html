@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emploi du temps de classe : votre semaine type — MyClassFlow</title>
+<meta name="description" content="Construire l'emploi du temps de sa classe créneau par créneau et lire le volume horaire de chaque matière pendant la saisie. Exemple : une semaine de CM2 sur quatre jours et demi, ramenée aux horaires annuels du cycle 3." />
+<link rel="canonical" href="https://myclassflow.fr/enseignants/fonctionnalites/emploi-du-temps/" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+<meta property="og:title" content="Emploi du temps de classe : votre semaine type — MyClassFlow" />
+<meta property="og:description" content="Construire l'emploi du temps de sa classe créneau par créneau et lire le volume horaire de chaque matière pendant la saisie. Exemple : une semaine de CM2 sur quatre jours et demi, ramenée aux horaires annuels du cycle 3." />
+<meta property="og:url" content="https://myclassflow.fr/enseignants/fonctionnalites/emploi-du-temps/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="MyClassFlow" />
+<meta property="og:image" content="https://myclassflow.fr/assets/img/og-enseignants.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="MyClassFlow, espace Enseignants : le castor professeur et l'accroche « Adaptez chaque support aux besoins de chaque élève »." />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Enseignants","item":"https://myclassflow.fr/enseignants/"},{"@type":"ListItem","position":2,"name":"Fonctionnalités","item":"https://myclassflow.fr/enseignants/fonctionnalites/"},{"@type":"ListItem","position":3,"name":"Emploi du temps","item":"https://myclassflow.fr/enseignants/fonctionnalites/emploi-du-temps/"}]},{"@type":"SoftwareApplication","name":"MyClassFlow","url":"https://app.myclassflow.fr","applicationCategory":"EducationalApplication","operatingSystem":"Web, Windows, macOS, Android, iOS","inLanguage":"fr","publisher":{"@id":"https://myclassflow.fr/#organisation"},"offers":[{"@type":"Offer","name":"Gratuit","price":"0.00","priceCurrency":"EUR","description":"Gestion de classe et 3 adaptations offertes."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mon rituel de calcul mental compte-t-il dans les heures de mathématiques ?","acceptedAnswer":{"@type":"Answer","text":"Seulement si vous le posez comme un cours de mathématiques. Dans MyClassFlow, un créneau de type « Rituel », comme une récréation ou une pause, reste en dehors des totaux par matière : gardez ce type pour l'appel, la date ou la météo."}},{"@type":"Question","name":"Une semaine de quatre jours et demi change-t-elle quelque chose ?","acceptedAnswer":{"@type":"Answer","text":"Non : la grille va du lundi au vendredi, le mercredi matin se remplit comme les autres jours. Seule la plage horaire, commune à toute la semaine, se règle sur la journée la plus longue."}},{"@type":"Question","name":"L'emploi du temps sert-il au cahier journal ?","acceptedAnswer":{"@type":"Answer","text":"Il lui donne son cadre : sur téléphone, les récréations de l'emploi du temps s'affichent dans la vue Journal, et les heures proposées pour une séance restent dans la plage horaire de la classe. Les séances du jour, elles, s'ajoutent dans le cahier journal."}},{"@type":"Question","name":"Sur l'année, quel horaire chaque matière doit-elle atteindre en CM1 et en CM2 ?","acceptedAnswer":{"@type":"Answer","text":"288 heures de français, 180 de mathématiques, 54 de langues vivantes, 108 d'EPS, 72 de sciences et technologie, 72 d'enseignements artistiques et 90 d'histoire, de géographie et d'enseignement moral et civique : 864 heures (arrêté du 9 novembre 2015). La répartition d'une semaine à l'autre peut varier, du moment que le total de l'année est tenu."}},{"@type":"Question","name":"Où passent les récréations dans ce calcul ?","acceptedAnswer":{"@type":"Answer","text":"L'arrêté les impute sur l'ensemble des matières, de façon équilibrée dans la semaine. C'est pourquoi un total de cours tiré de MyClassFlow est toujours un peu inférieur à l'horaire officiel : l'écart doit correspondre à vos récréations."}},{"@type":"Question","name":"L'emploi du temps est-il gratuit dans MyClassFlow ?","acceptedAnswer":{"@type":"Answer","text":"Oui, comme le cahier journal et les fiches de préparation. Le compte gratuit ne demande pas de carte bancaire."}}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
+<link rel="stylesheet" href="/assets/css/base.css" />
+</head>
+<body data-espace="enseignants">
+<header class="header"><nav class="nav" aria-label="Navigation principale">
+  <a class="brand" href="/enseignants/"><img class="castor castor-logo" src="/assets/img/castors/professeur.svg" alt="" width="32" height="32" decoding="async">MyClassFlow</a>
+  <div class="espace-choix">
+    <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" decoding="async">Espace Enseignants ▾</button>
+    <div class="espace-menu" role="menu" hidden><a role="menuitem" href="/enseignants/" data-espace="enseignants"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Enseignants</a><a role="menuitem" href="/ecoles/" data-espace="ecoles"><img class="castor castor-menu" src="/assets/img/castors/direction.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Écoles</a><a role="menuitem" href="/parents-enfants/" data-espace="parents-enfants"><img class="castor castor-menu" src="/assets/img/castors/eleve.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Parents / Enfants</a></div>
+  </div>
+  <div class="nav-links">
+    <div class="navrel"><button class="nav-link mega-bouton cur" type="button" aria-expanded="false" aria-controls="mega">Fonctionnalités</button><div class="mega" id="mega" hidden>
+    <div>
+      <h6>Adapter pour chaque élève</h6>
+      <a class="mi" href="/enseignants/fonctionnalites/adaptation-des-supports/"><span class="ico" aria-hidden="true">✨</span><div><b>Adaptation des supports <span class="tg pay">Abonnement</span></b><span class="t">Vos fiches adaptées automatiquement, selon vos critères</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/lia/"><span class="ico" aria-hidden="true">💬</span><div><b>Lia, votre assistante <span class="tg pay">Abonnement</span></b><span class="t">Posez vos questions sur vos élèves et vos tâches</span></div></a>
+    </div>
+    <div>
+      <h6>Préparer la classe</h6>
+      <a class="mi" href="/enseignants/fonctionnalites/cahier-journal/"><span class="ico" aria-hidden="true">📓</span><div><b>Cahier journal <span class="tg free">Gratuit</span></b><span class="t">Chaque séance du jour, sa fiche à côté</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/emploi-du-temps/"><span class="ico" aria-hidden="true">🗓️</span><div><b>Emploi du temps <span class="tg free">Gratuit</span></b><span class="t">Le total d'heures de chaque matière, sans calcul</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/fiche-de-preparation/"><span class="ico" aria-hidden="true">📝</span><div><b>Fiches de préparation <span class="tg free">Gratuit</span></b><span class="t">Séances et séquences, simplement</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/taches/"><span class="ico" aria-hidden="true">✅</span><div><b>Tâches <span class="tg free">Gratuit</span></b><span class="t">Les choses à faire, par classe et par échéance</span></div></a>
+    </div>
+    <div>
+      <h6>Suivre ses élèves</h6>
+      <a class="mi" href="/enseignants/fonctionnalites/fiches-eleves/"><span class="ico" aria-hidden="true">👤</span><div><b>Fiche élève <span class="tg free">Gratuit</span></b><span class="t">Critères pédagogiques, observations, tâches</span></div></a>
+      <a class="mi" href="/enseignants/fonctionnalites/import-eleves-photo/"><span class="ico" aria-hidden="true">📸</span><div><b>Import des élèves par photo <span class="tg free">Gratuit</span></b><span class="t">Une photo de la liste, vos élèves sont ajoutés</span></div></a>
+    </div>
+    <div class="megafoot"><span>La gestion de classe est gratuite, avec 3 adaptations offertes. L'IA en illimité est dans l'abonnement.</span><a href="/enseignants/fonctionnalites/">Voir toutes les fonctionnalités →</a></div>
+  </div></div>
+    <a class="nav-link" href="/enseignants/tarifs/">Tarifs</a>
+    <a class="nav-link" href="/enseignants/telecharger/">Télécharger</a>
+  </div>
+  <span class="sp"></span>
+  <a class="btn" href="https://app.myclassflow.fr">Essayer gratuitement</a>
+  <button class="nav-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuMobile"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-menu" id="menuMobile" hidden aria-label="Navigation mobile">
+  <a href="/enseignants/fonctionnalites/">Fonctionnalités</a><a href="/enseignants/tarifs/">Tarifs</a><a href="/enseignants/telecharger/">Télécharger</a><a role="menuitem" href="/enseignants/" data-espace="enseignants"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Enseignants</a><a role="menuitem" href="/ecoles/" data-espace="ecoles"><img class="castor castor-menu" src="/assets/img/castors/direction.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Écoles</a><a role="menuitem" href="/parents-enfants/" data-espace="parents-enfants"><img class="castor castor-menu" src="/assets/img/castors/eleve.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Parents / Enfants</a>
+</nav></header>
+<main>
+<article class="page fiche">
+  <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/enseignants/">Enseignants</a></li><li><a href="/enseignants/fonctionnalites/">Fonctionnalités</a></li><li aria-current="page">Emploi du temps</li></ol></nav>
+  <header class="fiche-tete">
+    <span class="tg free">Gratuit</span>
+    <h1 class="t">L'emploi du temps de votre classe, et ses heures par matière</h1>
+    <p class="fiche-intro">L'emploi du temps pose la semaine type de la classe : les cours, les récréations, les rituels. Sa vraie question est souvent : chaque matière a-t-elle son compte d'heures ? MyClassFlow fait l'addition pour vous, au fil des créneaux.</p>
+  </header>
+
+  <section class="a-retenir" aria-labelledby="a-retenir">
+    <h2 id="a-retenir">À retenir</h2>
+    <ul>
+      <li>Le volume de chaque matière se calcule au fil des créneaux.</li>
+      <li>Vous modifiez un créneau ou l'archivez sans le détruire.</li>
+      <li>L'emploi du temps s'imprime en PDF.</li>
+    </ul>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Pourquoi poser son emploi du temps dans MyClassFlow ?</h2>
+    <div class="benefices">
+      <div class="benefice"><b>La répartition sous les yeux</b><p>Le total de chaque matière change à chaque cours que vous posez : vous voyez la semaine se répartir, et un manque se repère avant la rentrée, pas en février.</p></div>
+      <div class="benefice"><b>Une base hebdomadaire que vous corrigez</b><p>L'anglais passe du mardi au jeudi en janvier ? Vous modifiez le jour du créneau ; un créneau qui ne sert plus s'archive sans être détruit.</p></div>
+      <div class="benefice"><b>Une copie papier dans la classe</b><p>« Imprimer l'emploi du temps » donne la semaine type en PDF, à consulter sans écran.</p></div>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Comment construire votre emploi du temps ?</h2>
+    <div class="fiche-comment">
+      <ol class="fiche-etapes">
+        <li><b>Réglez la plage horaire</b><p>L'heure de début et de fin de la journée, dans les réglages de la plage horaire.</p></li>
+        <li><b>Posez vos créneaux</b><p>Touchez une case vide : un cours avec sa matière, une récréation ou une pause, ou un rituel, avec son jour, son début et sa fin. Un clic sur un créneau le modifie.</p></li>
+        <li><b>Lisez les totaux, puis imprimez</b><p>Le volume de chaque matière s'affiche à côté de la grille, du plus grand au plus petit. « Imprimer l'emploi du temps » en fait un PDF ; le téléphone le télécharge.</p></li>
+      </ol>
+      <figure class="maquette-fiche" aria-label="Illustration : une semaine type et son volume horaire dans MyClassFlow">
+        <div class="mf-ecran" aria-hidden="true">
+          <div class="mf-chemin">Planning › Emploi du temps</div>
+          <div class="mf-titre">Semaine type</div>
+          <div class="mf-grille">
+            <span class="j">Lun</span><span class="j">Mar</span><span class="j">Mer</span><span class="j">Jeu</span><span class="j">Ven</span>
+            <span class="c fr">Français</span><span class="c fr">Français</span><span class="c ma">Maths</span><span class="c ma">Maths</span><span class="c fr">Français</span>
+            <span class="c p">Récré</span><span class="c p">Récré</span><span class="c p">Récré</span><span class="c p">Récré</span><span class="c p">Récré</span>
+            <span class="c ma">Maths</span><span class="c ma">Maths</span><span class="c fr">Français</span><span class="c fr">Français</span><span class="c ma">Maths</span>
+            <span class="c eps">EPS</span><span class="c hg">Histoire</span><span class="c v"></span><span class="c eps">EPS</span><span class="c ar">Arts</span>
+          </div>
+          <div class="mf-etiquette">Volume par matière</div>
+          <ul class="mf-volumes">
+            <li><span>Français</span><i style="width:100%"></i><b>7 h 15</b></li>
+            <li><span>Mathématiques</span><i style="width:62%"></i><b>4 h 30</b></li>
+            <li><span>EPS</span><i style="width:38%"></i><b>2 h 45</b></li>
+          </ul>
+          <div class="mf-total">21 h 45 d'enseignement / semaine</div>
+        </div>
+        <figcaption>Illustration avec des données fictives.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Une semaine de CM2 sur quatre jours et demi, totalisée par MyClassFlow</h2>
+    <p>Une classe de CM2 qui a cours le mercredi matin : quatre jours de 8 h 30 à 11 h 45 et de 13 h 30 à 15 h 45, plus le mercredi de 8 h 30 à 10 h 30. Neuf récréations de 15 minutes. Une fois les créneaux posés, MyClassFlow affiche les heures de cours de chaque matière ; multipliées par les 36 semaines de l'année, elles se lisent à côté de l'horaire annuel fixé par les programmes.</p>
+
+    <div class="exemple-fiche">
+      <h3>Du total de la semaine au total de l'année</h3>
+      <div class="tableau-defile" tabindex="0" role="region" aria-label="Heures de cours du CM2, tableau défilant">
+        <table class="edt-volumes">
+          <caption>CM2, semaine de quatre jours et demi</caption>
+          <thead><tr><th scope="col">Matière</th><th scope="col">Par semaine dans MyClassFlow</th><th scope="col">Sur 36 semaines</th><th scope="col">Horaire annuel des programmes</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Français</th><td>7 h 15</td><td>261 h</td><td>288 h</td></tr>
+            <tr><th scope="row">Mathématiques</th><td>4 h 30</td><td>162 h</td><td>180 h</td></tr>
+            <tr><th scope="row">Langues vivantes</th><td>1 h 15</td><td>45 h</td><td>54 h</td></tr>
+            <tr><th scope="row">Éducation physique et sportive</th><td>2 h 45</td><td>99 h</td><td>108 h</td></tr>
+            <tr><th scope="row">Sciences et technologie</th><td>1 h 45</td><td>63 h</td><td>72 h</td></tr>
+            <tr><th scope="row">Enseignements artistiques</th><td>1 h 45</td><td>63 h</td><td>72 h</td></tr>
+            <tr><th scope="row">Histoire, géographie et EMC</th><td>2 h 30</td><td>90 h</td><td>90 h</td></tr>
+            <tr class="edt-total"><th scope="row">Total</th><td>21 h 45</td><td>783 h</td><td>864 h</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="defile-indice" aria-hidden="true">Faites défiler le tableau →</p>
+      <p><b>Les 81 heures qui manquent sont les récréations</b> : 2 h 15 par semaine, sur 36 semaines. L'horaire annuel les inclut et les répartit sur toutes les matières ; MyClassFlow, lui, ne compte que les cours. La perte suit à peu près le poids de chaque matière : 27 heures en français, 18 en mathématiques, 9 dans chacune des autres, et aucune en histoire-géographie, servie un peu plus généreusement cette année.</p>
+      <p class="edt-source">Horaires annuels : <a href="https://www.education.gouv.fr/bo/15/Hebdo44/MENE1526553A.htm" rel="noopener">arrêté du 9 novembre 2015</a> fixant les horaires des écoles élémentaires, cycle de consolidation (CM1 et CM2), 864 heures par an.</p>
+    </div>
+  </section>
+
+  <div class="ribbon fiche-offre">
+    <div><span class="tg free">Gratuit</span><b>Votre emploi du temps, gratuit dans MyClassFlow</b><p>Avec le cahier journal et les fiches de préparation, sans carte bancaire. L'abonnement ajoute l'adaptation des supports par l'IA.</p></div>
+    <div class="fiche-offre-actions"><a class="btn" href="https://app.myclassflow.fr">Créer mon compte gratuit</a><a class="fiche-tarifs" href="/enseignants/tarifs/">Voir les tarifs</a></div>
+  </div>
+
+  <section class="fiche-partie">
+    <h2>Questions fréquentes</h2>
+    <div class="faq">
+      <details><summary>Mon rituel de calcul mental compte-t-il dans les heures de mathématiques ?</summary><p>Seulement si vous le posez comme un cours de mathématiques. Dans MyClassFlow, un créneau de type « Rituel », comme une récréation ou une pause, reste en dehors des totaux par matière : gardez ce type pour l'appel, la date ou la météo.</p></details>
+      <details><summary>Une semaine de quatre jours et demi change-t-elle quelque chose ?</summary><p>Non : la grille va du lundi au vendredi, le mercredi matin se remplit comme les autres jours. Seule la plage horaire, commune à toute la semaine, se règle sur la journée la plus longue.</p></details>
+      <details><summary>L'emploi du temps sert-il au cahier journal ?</summary><p>Il lui donne son cadre : sur téléphone, les récréations de l'emploi du temps s'affichent dans la vue Journal, et les heures proposées pour une séance restent dans la plage horaire de la classe. Les séances du jour, elles, s'ajoutent dans le cahier journal.</p></details>
+      <details><summary>Sur l'année, quel horaire chaque matière doit-elle atteindre en CM1 et en CM2 ?</summary><p>288 heures de français, 180 de mathématiques, 54 de langues vivantes, 108 d'EPS, 72 de sciences et technologie, 72 d'enseignements artistiques et 90 d'histoire, de géographie et d'enseignement moral et civique : 864 heures (arrêté du 9 novembre 2015). La répartition d'une semaine à l'autre peut varier, du moment que le total de l'année est tenu.</p></details>
+      <details><summary>Où passent les récréations dans ce calcul ?</summary><p>L'arrêté les impute sur l'ensemble des matières, de façon équilibrée dans la semaine. C'est pourquoi un total de cours tiré de MyClassFlow est toujours un peu inférieur à l'horaire officiel : l'écart doit correspondre à vos récréations.</p></details>
+      <details><summary>L'emploi du temps est-il gratuit dans MyClassFlow ?</summary><p>Oui, comme le cahier journal et les fiches de préparation. Le compte gratuit ne demande pas de carte bancaire.</p></details>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Pour qui</h2>
+    <div class="publics">
+      <div class="public"><b>Pour répartir la semaine</b><p>Vous posez les cours, les récréations, les pauses et les rituels créneau par créneau.</p></div>
+      <div class="public"><b>Pour compter les heures</b><p>Vous lisez le volume de chaque matière à côté de la grille.</p></div>
+      <div class="public"><b>Pour afficher la semaine</b><p>Vous imprimez l'emploi du temps en PDF pour le consulter sans écran.</p></div>
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Fonctionnalités liées</h2>
+    <div class="soeurs">
+      <a class="soeur" href="/enseignants/fonctionnalites/cahier-journal/"><span class="ico" aria-hidden="true">📓</span><span><b>Cahier journal</b> <span class="tg free">Gratuit</span><span class="t">Chaque séance du jour, sa fiche à côté</span></span></a>
+      <a class="soeur" href="/enseignants/fonctionnalites/fiche-de-preparation/"><span class="ico" aria-hidden="true">📝</span><span><b>Fiches de préparation</b> <span class="tg free">Gratuit</span><span class="t">Séances et séquences, simplement</span></span></a>
+      <a class="soeur" href="/enseignants/fonctionnalites/adaptation-des-supports/"><span class="ico" aria-hidden="true">✨</span><span><b>Adaptation des supports</b> <span class="tg pay">Abonnement</span><span class="t">Vos fiches adaptées automatiquement, selon vos critères</span></span></a>
+    </div>
+  </section>
+</article>
+</main>
+<footer class="footer"><div class="footer-inner">
+  <span>© MyClassFlow</span>
+  <a href="/enseignants/">Enseignants</a><a href="/ecoles/">Écoles</a><a href="/parents-enfants/">Parents / Enfants</a>
+  <a href="/presentation/">Présentation</a>
+</div></footer>
+<script type="module" src="/assets/js/navigation.js"></script>
+
+</body>
+</html>

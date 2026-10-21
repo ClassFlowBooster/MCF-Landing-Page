@@ -21,7 +21,7 @@ export default `<section class="page" data-tarifs="enseignants">
       <div class="old"></div>
       <div class="price">0 €</div>
       <span class="quota"><i>3</i> adaptations offertes</span>
-      <ul class="feat grow"><li>Cahier journal, emploi du temps, ${nomLie(outil("Fiches de préparation"), "fiches de prep")}</li><li>Agenda et tâches</li><li>Fiches élèves et évaluations</li><li>Import des élèves par photo</li></ul>
+      <ul class="feat grow"><li>${nomLie(outil("Cahier journal"))}, ${nomLie(outil("Emploi du temps"), "emploi du temps")}, ${nomLie(outil("Fiches de préparation"), "fiches de prep")}</li><li>${nomLie(outil("Tâches"))}</li><li>${nomLie(outil("Fiche élève"), "Fiches élèves")}</li><li>${nomLie(outil("Import des élèves par photo"))}</li></ul>
       <a class="btn ghost" href="https://app.myclassflow.fr">Créer mon compte gratuit</a>
     </div>
     <div class="card hl avec-castor">
@@ -33,7 +33,7 @@ export default `<section class="page" data-tarifs="enseignants">
       <div class="price" id="pPrice">${prixHtml(t)}</div>
       <div class="fine" id="pFine">${renvoiHtml(t)}</div>
       <a class="btn" href="https://app.myclassflow.fr">Je commence</a>
-      <ul class="feat"><li>Tout le gratuit, plus :</li><li>Adaptations des supports illimitées</li><li>Lia, votre assistante</li></ul>
+      <ul class="feat"><li>Tout le gratuit, plus :</li><li>${nomLie(outil("Adaptation des supports"), "Adaptations des supports")} illimitées</li><li>${nomLie(outil("Lia, votre assistante"))}</li></ul>
     </div>
     <div class="card">
       <span class="badge vert">Pour toute l'équipe</span>

@@ -16,7 +16,7 @@ import { FICHES } from "./corps/fiches/index.mjs";
 export const PAGES = [
   { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "entree.js", "formulaire.js"],
     titre: "Adaptez chaque support à chaque élève — MyClassFlow",
-    description: "MyClassFlow adapte vos supports en quelques secondes : texte agrandi, mise en page aérée, consignes en étapes. Pour les enseignants, les écoles et les familles.",
+    description: "MyClassFlow adapte vos supports selon vos critères : texte agrandi, mise en page aérée, consignes en étapes. Pour les enseignants, les écoles et les familles.",
     surcouche: entree, corps: accueilEnseignants(TITRE_ENTREE) },
   { chemin: "/enseignants/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "formulaire.js"],
     titre: "Exercices et leçons adaptés à chaque élève — MyClassFlow",
@@ -44,7 +44,7 @@ export const PAGES = [
     corps: tarifsParents },
   { chemin: "/enseignants/fonctionnalites/", espace: "enseignants", rubrique: "fonctionnalites",
     titre: "Outils de classe gratuits et supports adaptés — MyClassFlow",
-    description: "Adaptation des supports et Lia dans l'abonnement ; fiches de préparation, cahier journal, emploi du temps, fiches élèves et évaluations gratuits.",
+    description: "Adaptation des supports et Lia dans l'abonnement ; fiches de préparation, cahier journal, emploi du temps, fiches élèves et tâches gratuits.",
     corps: fonctionnalites("enseignants") },
   { chemin: "/ecoles/fonctionnalites/", espace: "ecoles", rubrique: "fonctionnalites",
     titre: "Fonctionnalités de MyClassFlow pour les écoles",
