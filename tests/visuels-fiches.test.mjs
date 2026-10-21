@@ -4,9 +4,9 @@ import { readFileSync } from 'node:fs';
 import { illustrations } from '../outils/corps/fiches/illustrations.mjs';
 
 const racine = new URL('../outils/corps/fiches/visuels-proto/', import.meta.url);
-const slugs = ['fiche-de-preparation', 'cahier-journal', 'emploi-du-temps', 'adaptation-des-supports', 'fiches-eleves', 'import-eleves-photo', 'taches', 'lia'];
+const slugs = ['fiche-de-preparation', 'cahier-journal', 'emploi-du-temps', 'adaptation-des-supports', 'fiches-eleves', 'lia'];
 
-test('les huit fiches utilisent chacune son fragment extrait du proto', () => {
+test('les six fiches illustrées utilisent chacune son fragment extrait du proto', () => {
   assert.deepEqual(Object.keys(illustrations), slugs);
   for (const slug of slugs) {
     const source = readFileSync(new URL(`${slug}.html`, racine), 'utf8');
@@ -39,7 +39,7 @@ test('le CSS du proto reste entièrement scopé sous .appv-proto', () => {
   }
 });
 
-test('le cadre met les huit extraits bureau à l\'échelle sans JavaScript, avec une découpe', () => {
+test('le cadre met les six extraits bureau à l\'échelle sans JavaScript, avec une découpe', () => {
   const css = readFileSync(new URL('../assets/css/visuels-fiches.css', import.meta.url), 'utf8');
   assert.match(css, /container-type:\s*inline-size/);
   assert.match(css, /overflow:\s*hidden/);

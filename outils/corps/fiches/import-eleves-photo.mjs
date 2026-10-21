@@ -1,4 +1,3 @@
-import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Import des élèves par photo » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // photo sur téléphone seulement (« Photographier la liste », « Prendre une photo », « Choisir dans
@@ -35,7 +34,6 @@ const exemple = `<p>Une liste de rentrée fictive, photographiée sur le bureau 
     </div>`;
 
 // Illustration : écran de relecture du téléphone reconstitué en HTML, données fictives.
-const illustration = illustrations["import-eleves-photo"];
 
 export default {
   slug: "import-eleves-photo",
@@ -62,7 +60,6 @@ export default {
     ["Ajoutez-les", "« Ajouter N élèves » remplit la classe : chaque élève apparaît dans « Classe », et sa fiche s'ouvre d'un toucher."],
   ],
   titreEtapes: "Comment ajouter votre classe à partir d'une photo ?",
-  illustration,
   blocs: [{ titre: "Une liste de huit élèves, de la photo à la classe", html: exemple }],
   offre: {
     titre: "L'import par photo, gratuit dans MyClassFlow",

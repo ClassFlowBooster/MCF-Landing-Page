@@ -49,3 +49,6 @@
 [data-proto="adaptation-des-supports"] .appv-proto div[style*="gap:8px"] > .btn { flex: 0 0 auto; width: auto; }
 [data-proto="adaptation-des-supports"] .appv-proto div[style*="gap:8px"] > .btn-primary { background: var(--coral-50); color: var(--coral-700); border: 1px solid var(--coral-300); box-shadow: none; }
 [data-proto="adaptation-des-supports"] .appv-proto div[style*="gap:8px"] > .btn-ghost { border: 1px solid var(--line-2); }
+
+/* Décision de Joseph (21/10) : pas de vue de l'app sur téléphone ; le texte de la fiche suffit. */
+@media (max-width: 600px) { .maquette-fiche.appv-figure { display: none; } }

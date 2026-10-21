@@ -8,8 +8,6 @@ const fiches = {
   'emploi-du-temps': ['emploi-du-temps.html', "l’emploi du temps"],
   'adaptation-des-supports': ['adaptation-des-supports.html', "l’adaptation d’un support"],
   'fiches-eleves': ['fiches-eleves.html', "la fiche d’élève"],
-  'import-eleves-photo': ['import-eleves-photo.html', "l’import d’élèves depuis une photo"],
-  taches: ['taches.html', 'la liste des tâches'],
   lia: ['lia.html', 'la conversation avec Lia'],
 };
 

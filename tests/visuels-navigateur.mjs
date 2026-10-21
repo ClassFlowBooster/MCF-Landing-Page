@@ -27,9 +27,9 @@ try {
   }
   ws.onmessage = (e) => { const m = JSON.parse(e.data); if (m.id) { const p = pending.get(m.id); pending.delete(m.id); m.error ? p.rej(m.error) : p.res(m.result); } else if (m.method === 'Runtime.exceptionThrown') errors.push(m.params); };
   await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable'); await send('Network.setCacheDisabled', { cacheDisabled: true });
-  for (const width of [1440, 390, 320]) {
+  for (const width of [1440]) {
     await send('Emulation.setDeviceMetricsOverride', { width, height: 1000, deviceScaleFactor: 1, mobile: false });
-    for (const slug of ['fiche-de-preparation', 'cahier-journal', 'emploi-du-temps', 'adaptation-des-supports', 'fiches-eleves', 'import-eleves-photo', 'taches', 'lia']) {
+    for (const slug of ['fiche-de-preparation', 'cahier-journal', 'emploi-du-temps', 'adaptation-des-supports', 'fiches-eleves', 'lia']) {
       await send('Page.navigate', { url: `${base}/enseignants/fonctionnalites/${slug}/` });
       for (let n = 0; n < 60; n++) { if (await ev('document.readyState==="complete" && !!document.querySelector(".appv-proto")')) break; await sleep(100); }
       await ev('Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,8000))])');

@@ -39,11 +39,11 @@ export function fiche(f) {
 
   <section class="fiche-partie">
     <h2>Comment ça marche dans MyClassFlow</h2>
-    <div class="fiche-comment">
+    <div class="fiche-comment${f.illustration ? "" : " fiche-comment--seul"}">
       <ol class="fiche-etapes">
         ${f.etapes.map(([titre, texte]) => `<li><b>${titre}</b><p>${texte}</p></li>`).join("\n        ")}
       </ol>
-      ${f.illustration}
+      ${f.illustration || ""}
     </div>
   </section>
 

@@ -595,7 +595,7 @@ html{scroll-padding-top:72px}
 .benefice{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
 .benefice b{display:block;margin-bottom:4px}
 .benefice p{margin:0;font-size:14px;color:var(--ink-2)}
-.fiche-comment{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start}
+.fiche-comment{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start}.fiche-comment--seul{grid-template-columns:1fr}
 .fiche-etapes{list-style:none;margin:0;padding:0;counter-reset:etape;display:flex;flex-direction:column;gap:14px}
 .fiche-etapes li{counter-increment:etape;position:relative;padding-left:46px}
 .fiche-etapes li:before{content:counter(etape);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:99px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700}

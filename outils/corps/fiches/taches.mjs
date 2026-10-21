@@ -1,4 +1,3 @@
-import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Tâches » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // titre, détail, échéance sans heure (« Aujourd'hui », « Demain » ou « Date… »), matière, élèves
@@ -29,7 +28,6 @@ const exemple = `<p>Rangées comme dans l'app : la plus proche en haut, celle sa
     </div>`;
 
 // Illustration : écran « Tâches » du téléphone reconstitué en HTML, données fictives.
-const illustration = illustrations["taches"];
 
 export default {
   slug: "taches",
@@ -56,7 +54,6 @@ export default {
     ["Cochez-la", "Elle passe dans « Terminées ». Vous pouvez toujours la modifier ou la supprimer."],
   ],
   titreEtapes: "Comment garder vos tâches à portée de main ?",
-  illustration,
   blocs: [{ titre: "La semaine d'une classe de CE1, en tâches", html: exemple }],
   offre: {
     titre: "Vos tâches, gratuites dans MyClassFlow",

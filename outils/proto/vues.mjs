@@ -19,16 +19,6 @@ export const VUES = {
       { fichier: 'lancement.jsx', retrait: true },
     ],
   },
-  taches: {
-    type: 'bureau', url: '/index.html#accueil', root: '.app', taille: { width: 1440, height: 900 }, attente: 1400,
-    patches: [
-      { fichier: 'todo-store.jsx', constante: 'TODO_SEED', valeur: DESKTOP_TASK_SEED },
-      { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
-      { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
-      { fichier: 'prof.jsx', constante: 'MOCK_CLASSES', valeur: CLASSES },
-      { fichier: 'lancement.jsx', retrait: true },
-    ],
-  },
   'emploi-du-temps': {
     type: 'bureau', url: '/index.html#planning&v=edt', root: '.app', taille: { width: 1440, height: 900 }, attente: 1400,
     patches: [
@@ -92,18 +82,6 @@ export const VUES = {
     patches: [
       { fichier: 'lia.jsx', constante: 'LIA_SEED_CONVERSATIONS', valeur: LIA_CONVERSATIONS },
       { fichier: 'lia.jsx', remplacements: [{ avant: "'Contexte : CE2 · Mme Durand'", apres: "'Contexte : CE1 · Mme Moreau'" }] },
-      { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
-      { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
-      { fichier: 'prof.jsx', constante: 'MOCK_CLASSES', valeur: CLASSES },
-      { fichier: 'lancement.jsx', retrait: true },
-    ],
-  },
-  'import-eleves-photo': {
-    type: 'bureau', url: '/index.html#accueil', root: '.app', taille: { width: 1440, height: 900 }, attente: 1650,
-    sequence: [{ evenement: 'superprof:add-pupils', detail: { classId: 'c1' } }, { texte: "Importer une liste d'élèves", selecteur: 'div,span,button' }],
-    patches: [
-      { fichier: 'class-create.jsx', constante: 'MOCK_OCR_ELEVES', valeur: IMPORT_ROWS },
-      { fichier: 'class-create.jsx', constante: 'MOCK_A_VERIFIER', valeur: [4] },
       { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
       { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
       { fichier: 'prof.jsx', constante: 'MOCK_CLASSES', valeur: CLASSES },
