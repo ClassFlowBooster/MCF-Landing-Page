@@ -44,7 +44,12 @@ export default {
   description: "La fiche élève de MyClassFlow : les critères pédagogiques qui aident chaque élève, son fil de suivi et ses tâches, réunis au même endroit et repris quand vous adaptez un support. Un exemple de fiche de CE1.",
   h1: "Une fiche par élève, pour adapter sans tout retenir",
   intro: "La fiche élève réunit, pour chaque enfant de la classe, les critères pédagogiques qui l'aident, ce que vous observez au fil de l'année et ce qu'il reste à faire pour lui. Ses critères servent ensuite quand vous adaptez un support.",
-  titreBenefices: "Ce que la fiche garde pour vous",
+  retenir: [
+    "Les critères pédagogiques restent réunis sur la fiche de chaque élève.",
+    "Les commentaires forment son fil de suivi.",
+    "Ses critères sont repris quand vous adaptez un support pour lui.",
+  ],
+  titreBenefices: "Que garde la fiche pour vous ?",
   benefices: [
     ["Les aides de chaque élève, cochées une fois", "Texte agrandi, interligne augmenté, consignes courtes : vous les choisissez sur sa fiche, et vous n'avez plus à vous en souvenir à chaque photocopie."],
     ["Le fil de suivi, au même endroit", "Un commentaire écrit après la classe s'ajoute au fil de suivi de l'élève ; il se corrige ou se supprime quand il n'est plus vrai."],
@@ -55,6 +60,7 @@ export default {
     ["Ouvrez sa fiche et cochez ses critères", "Depuis « Classe » sur le téléphone, ou « Mes élèves » sur ordinateur, où la liste se cherche, se trie et se filtre. Puis « Critères pédagogiques »."],
     ["Complétez au fil de l'année", "Ajoutez un commentaire au fil de suivi, modifiez-le ou supprimez-le, et suivez les tâches liées à l'élève."],
   ],
+  titreEtapes: "Comment remplir une fiche élève ?",
   illustration,
   blocs: [{ titre: "Une fiche d'élève de CE1, bloc par bloc", html: exemple }],
   offre: {
@@ -70,6 +76,11 @@ export default {
     ["Lia peut-elle écrire dans une fiche élève ?", "Elle peut vous proposer un commentaire à ajouter au fil de suivi, à modifier ou à retirer, mais rien n'est écrit sans votre validation. Lia fait partie de l'abonnement Enseignant."],
     ["Les fiches élèves fonctionnent-elles sur téléphone et sur ordinateur ?", "Oui. Sur téléphone, la fiche s'ouvre en plein écran depuis « Classe ». Sur ordinateur, « Mes élèves » liste la classe avec la recherche, le tri et les filtres, et ouvre chaque fiche dans une fenêtre."],
     ["Les fiches élèves sont-elles gratuites dans MyClassFlow ?", "Oui, comme le cahier journal, l'emploi du temps et les fiches de préparation. Le compte gratuit ne demande pas de carte bancaire."],
+  ],
+  publics: [
+    ["Pour créer la classe", "Vous créez les élèves un par un ou à partir d'une photo de la liste."],
+    ["Pour suivre chaque élève", "Vous ajoutez des commentaires et retrouvez les tâches qui lui sont liées."],
+    ["Pour adapter un support", "Vous retrouvez les critères pédagogiques de l'élève au moment de l'adaptation."],
   ],
   soeurs: ["Adaptation des supports", "Import des élèves par photo", "Lia, votre assistante"],
 };
