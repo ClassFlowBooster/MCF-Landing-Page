@@ -44,7 +44,7 @@ function barre(espace, rubrique, megaMenu) {
   const autres = Object.values(ESPACES)
     .map((x) => `<a role="menuitem" href="/${x.cle}/" data-espace="${x.cle}">${castorDe(x.cle, "castor-menu", 26, { differe: true })}${x.libelle}</a>`).join("");
   return `<header class="header"><nav class="nav" aria-label="Navigation principale">
-  <a class="brand" href="/${espace}/">${LOGO}MyClassFlow</a>
+  <a class="brand" href="/">${LOGO}MyClassFlow</a>
   <div class="espace-choix">
     <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false">${castorDe(espace, "castor-menu", 26)}${e.libelle} ▾</button>
     <div class="espace-menu" role="menu" hidden>${autres}</div>
@@ -96,8 +96,8 @@ ${indexable ? `<meta property="og:url" content="${SITE}${chemin}" />\n` : ""}<me
 <meta name="twitter:card" content="summary_large_image" />
 ${donneesStructurees(chemin)}<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
-<link rel="stylesheet" href="/assets/css/base.css" />${corps.includes('class="maquette-fiche appv-figure') ? '\n<link rel="stylesheet" href="/assets/css/visuels-proto.css" />\n<link rel="stylesheet" href="/assets/css/visuels-fiches.css" />' : ""}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap" />
+<link rel="stylesheet" href="/assets/css/base.css" />${corps.includes('class="maquette-fiche appv-figure') ? '\n<link rel="stylesheet" href="/assets/css/visuels-fiches.css" />' : ""}
 </head>
 <body${classeBody ? ` class="${classeBody}"` : ""} data-espace="${espace ?? ""}">
 ${surcouche}${espace ? barre(espace, rubrique, megaMenu ?? megaMenuDe(espace)) : ""}

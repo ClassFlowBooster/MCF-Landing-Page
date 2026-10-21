@@ -216,9 +216,11 @@ test("favicon et icône iPhone : castor professeur, PNG aux bonnes dimensions, m
   for (const p of PAGES) for (const [balise] of ICONES) assert.ok(page(p).includes(balise), `${p.chemin} : ${balise}`);
 });
 
-test("logo de l'en-tête : le castor professeur devant « MyClassFlow », sur chaque page", () => {
+test("logo de l'en-tête : le castor professeur devant « MyClassFlow », vers l'accueil, sur chaque page", () => {
   for (const p of PAGES.filter((x) => x.espace)) {
-    const marque = page(p).match(/<a class="brand"[^>]*>(.*?)<\/a>/)[1];
+    const lien = page(p).match(/<a class="brand"([^>]*)>(.*?)<\/a>/);
+    assert.match(lien[1], /href="\/"/, p.chemin);
+    const marque = lien[2];
     assert.match(marque, /^<img class="castor castor-logo" src="\/assets\/img\/castors\/professeur\.svg" alt="" width="32" height="32" decoding="async">MyClassFlow$/, p.chemin);
   }
 });
@@ -258,7 +260,7 @@ test("données structurées : JSON valide, prix affichés sur la page même, que
     assert.ok(blocs.length <= 1, chemin);
     if (blocs.length) graphes[chemin] = JSON.parse(blocs[0][1])["@graph"];
   }
-  for (const chemin of ["/", "/enseignants/", "/enseignants/tarifs/", "/ecoles/tarifs/", "/parents-enfants/", "/parents-enfants/tarifs/"])
+  for (const chemin of ["/enseignants/", "/enseignants/tarifs/", "/ecoles/tarifs/", "/parents-enfants/", "/parents-enfants/tarifs/"])
     assert.ok(graphes[chemin]?.some((o) => o["@type"] === "SoftwareApplication"), `${chemin} : application absente`);
   assert.ok(graphes["/"].some((o) => o["@type"] === "Organization"), "organisation absente de /");
   for (const [chemin, objets] of Object.entries(graphes))
@@ -343,9 +345,11 @@ test("fiches explicatives : chaque outil relié a sa page, les tarifs Enseignant
     assert.ok(html("/enseignants/").includes(nomLie(o)), `accueil → ${o.nom}`);
     assert.ok(megaMenu("enseignants").includes(`<a class="mi" href="${lienFiche(o)}">`), `méga-menu → ${o.nom}`);
   }
-  // Q7 (MCF-Pilotage#53) : l'espace Écoles ne renvoie pas encore vers les fiches.
-  for (const p of PAGES.filter((x) => x.espace === "ecoles"))
-    assert.ok(!/href="\/enseignants\/fonctionnalites\/[^"]+\/"/.test(page(p)), `${p.chemin} renvoie vers une fiche`);
+  const ecoles = html("/ecoles/");
+  for (const slug of ["adaptation-des-supports", "fiches-eleves"])
+    assert.ok(ecoles.includes(`/enseignants/fonctionnalites/${slug}/`), `écoles → ${slug}`);
+  assert.ok(ecoles.includes('href="/enseignants/fonctionnalites/"'), "écoles → fonctionnalités");
+  assert.ok(html("/parents-enfants/").includes('/enseignants/fonctionnalites/adaptation-des-supports/'), "familles → adaptation");
 });
 
 test("page 404 : fichier à jour, non indexée, hors du plan du site, liens absolus vers des pages existantes", () => {
@@ -358,5 +362,46 @@ test("page 404 : fichier à jour, non indexée, hors du plan du site, liens abso
   for (const [, href] of html.matchAll(/href="([^"#?]*)"/g)) {
     if (href.startsWith("http") || href.startsWith("/assets/") || href.startsWith("/presentation/")) continue;
     assert.ok(chemins.has(href), `404 → ${href} introuvable ou relatif`);
+  }
+});
+
+test("fiches explicatives : signature et Article avec deux auteurs et des dates cohérentes", () => {
+  for (const f of FICHES) {
+    const chemin = adresseFiche(f);
+    const html = page(PAGES.find((p) => p.chemin === chemin));
+    assert.match(html, /Par <a href="\/enseignants\/#equipe">Joseph Solier<\/a> et <a href="\/enseignants\/#equipe">Benoist de Montgrand<\/a>, fondateurs de MyClassFlow · Mis à jour le \d{1,2} \p{L}+ \d{4}/u, chemin);
+    const graphe = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])["@graph"];
+    const article = graphe.find((o) => o["@type"] === "Article");
+    assert.ok(article, `${chemin} : Article absent`);
+    assert.equal(article.author.length, 2, chemin);
+    for (const auteur of article.author) {
+      assert.equal(auteur["@type"], "Person", chemin);
+      assert.equal(auteur.url, "https://myclassflow.fr/enseignants/#equipe", chemin);
+      assert.ok(auteur.jobTitle, chemin);
+    }
+    assert.match(article.datePublished, /^\d{4}-\d{2}-\d{2}$/);
+    assert.match(article.dateModified, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok(article.dateModified >= article.datePublished, chemin);
+  }
+});
+
+test("accueil : contenu d'orientation propre, fenêtre de choix cachée dans le HTML", () => {
+  const accueil = PAGES.find((p) => p.chemin === "/");
+  const html = page(accueil);
+  assert.match(html, /L'app qui adapte les supports aux critères pédagogiques de chaque élève et organise la classe\./);
+  for (const [titre, href] of [["Enseignants", "/enseignants/"], ["Écoles", "/ecoles/"], ["Familles", "/parents-enfants/"]])
+    assert.match(html, new RegExp(`>${titre}<\\/h3>[\\s\\S]*?href="${href}"`));
+  // La fenêtre est dans le HTML, cachée (hidden) : seul entree.js l'ouvre, côté navigateur.
+  assert.match(html, /<div class="entree" id="entree"[^>]* hidden>/);
+  assert.ok(html.includes('/assets/js/entree.js'));
+  for (const autre of PAGES.filter((p) => p.chemin !== "/")) assert.ok(!page(autre).includes('id="entree"'), autre.chemin);
+  assert.ok(accueil.titre.length <= 60 && accueil.description.length <= 155);
+});
+
+test("Google Fonts : quatre familles utilisées, graisses limitées, display=swap", () => {
+  // Lexend : version adaptée du comparateur (.ba-adap) ; JetBrains Mono : surtitres, badges, rôles (var(--mono)).
+  for (const p of PAGES) {
+    const fonts = page(p).match(/https:\/\/fonts\.googleapis\.com\/css2\?[^\"]+/)?.[0] ?? "";
+    assert.equal(fonts, "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap", p.chemin);
   }
 });

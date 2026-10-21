@@ -108,8 +108,8 @@ export const RGPD = carteConfiance("cadenas", "Conforme RGPD",
 // Repasser à true pour la réafficher : les appels et les textes sont gardés.
 export const AFFICHER_CONFIANCE = false;
 
-export function confiance(cartes, { titre = "Des données d'élèves traitées avec sérieux", texte, note } = {}) {
-  if (!AFFICHER_CONFIANCE) return "";
+export function confiance(cartes, { titre = "Des données d'élèves traitées avec sérieux", texte, note, afficher = AFFICHER_CONFIANCE } = {}) {
+  if (!afficher) return "";
   return `<section class="section trust" id="confiance">
     <div class="wrap">
       <div class="sec-head center">
@@ -146,7 +146,7 @@ export function etapes({ titre, texte, liste, id = "etapes" }) {
 }
 
 // Fondateurs : bios reprises de la présentation école Saint-Joseph (#3).
-const FONDATEURS = [
+export const FONDATEURS = [
   { photo: "benoist-de-montgrand", nom: "Benoist de Montgrand", role: "Expert en intelligence artificielle",
     bio: "Depuis un an, il met son expertise au service des entreprises : intégration de l'IA dans les processus de travail, formation des équipes qui veulent monter en compétence." },
   { photo: "joseph-solier", nom: "Joseph Solier", role: "Ingénieur en cybersécurité",
