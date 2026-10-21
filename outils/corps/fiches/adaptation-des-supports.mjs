@@ -50,8 +50,9 @@ export default {
   slug: "adaptation-des-supports",
   ariane: "Adaptation des supports",
   k: "pay",
-  titre: "Adapter un exercice selon des critères pédagogiques — MyClassFlow",
+  titre: "Adapter un exercice selon des critères — MyClassFlow",
   description: "Adapter un exercice ou une leçon selon des critères pédagogiques cochés : texte agrandi, interligne, consignes courtes. Les critères de l'app, une mesure en CE1 du document importé au résultat, les versions par élève ou par groupe.",
+  carte: { fichier: "og-adaptation-des-supports.png", alt: "MyClassFlow, abonnement pour les enseignants : le castor professeur et l'accroche « Un même support, adapté selon les critères de vos élèves »." },
   h1: "Du support de la classe aux versions à imprimer",
   intro: "Vous prenez en photo ou importez l'exercice prévu pour la classe, vous cochez les critères pédagogiques qui aident tel élève ou tel groupe, et MyClassFlow en tire une version adaptée, à relire puis à imprimer à côté de l'originale. Pour la différenciation pédagogique, c'est un support par élève ou par groupe, tiré de l'exercice de toute la classe.",
   retenir: [
@@ -72,7 +73,7 @@ export default {
   ],
   titreEtapes: "Comment adapter un support pour vos élèves ?",
   illustration,
-  blocs: [{ titre: "Les critères de l'app, puis une mesure en CE1", html: exemple }],
+  blocs: [{ titre: "Que donnent les critères de l'app sur une mesure en CE1 ?", html: exemple }],
   offre: {
     titre: "L'adaptation des supports, dans l'abonnement Enseignant",
     texte: "3 adaptations offertes pour l'essayer avec le compte gratuit. L'abonnement Enseignant rend les adaptations illimitées et ajoute Lia, votre assistante.",

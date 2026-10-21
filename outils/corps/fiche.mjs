@@ -1,16 +1,19 @@
 // Gabarit commun des fiches explicatives (/enseignants/fonctionnalites/<fiche>/).
 // Chaque fiche est une donnée de outils/corps/fiches/ : le gabarit fixe l'ordre
 // des parties, les questions affichées sont aussi celles des données structurées.
+// Les grands intertitres sont des questions, sauf « À retenir », la FAQ et les
+// deux blocs de liens de fin.
 import { THEMES, libelleBadge, lienFiche } from "./catalogue.mjs";
 
 const RUBRIQUE = "/enseignants/fonctionnalites/";
 
 export const adresseFiche = (f) => `${RUBRIQUE}${f.slug}/`;
 
-/** Fil d'Ariane affiché : [libellé, adresse], le dernier sans adresse. */
+/** Fils d'Ariane affichés : [libellé, adresse], le dernier sans adresse. */
+export const ARIANE_FONCTIONNALITES = [["Enseignants", "/enseignants/"], ["Fonctionnalités", null]];
 export const arianeFiche = (f) => [["Enseignants", "/enseignants/"], ["Fonctionnalités", RUBRIQUE], [f.ariane, null]];
 
-const ariane = (f) => `<nav class="ariane" aria-label="Fil d'Ariane"><ol>${arianeFiche(f)
+export const filAriane = (elements) => `<nav class="ariane" aria-label="Fil d'Ariane"><ol>${elements
   .map(([texte, href]) => (href ? `<li><a href="${href}">${texte}</a></li>` : `<li aria-current="page">${texte}</li>`)).join("")}</ol></nav>`;
 
 const question = ([q, r]) => `<details><summary>${q}</summary><p>${r}</p></details>`;
@@ -23,12 +26,19 @@ const soeur = (nom) => {
 
 export function fiche(f) {
   return `<article class="page fiche">
-  ${ariane(f)}
+  ${filAriane(arianeFiche(f))}
   <header class="fiche-tete">
     <span class="tg ${f.k}">${f.k === "free" ? "Gratuit" : "Abonnement"}</span>
     <h1 class="t">${f.h1}</h1>
     <p class="fiche-intro">${f.intro}</p>
   </header>
+
+  <section class="a-retenir" aria-labelledby="a-retenir">
+    <h2 id="a-retenir">À retenir</h2>
+    <ul>
+      ${f.retenir.map((t) => `<li>${t}</li>`).join("\n      ")}
+    </ul>
+  </section>
 
   <section class="fiche-partie">
     <h2>${f.titreBenefices}</h2>
@@ -38,7 +48,7 @@ export function fiche(f) {
   </section>
 
   <section class="fiche-partie">
-    <h2>Comment ça marche dans MyClassFlow</h2>
+    <h2>${f.titreEtapes}</h2>
     <div class="fiche-comment${f.illustration ? "" : " fiche-comment--seul"}">
       <ol class="fiche-etapes">
         ${f.etapes.map(([titre, texte]) => `<li><b>${titre}</b><p>${texte}</p></li>`).join("\n        ")}
@@ -65,7 +75,14 @@ export function fiche(f) {
   </section>
 
   <section class="fiche-partie">
-    <h2>Les outils qui vont avec</h2>
+    <h2>Pour qui</h2>
+    <div class="publics">
+      ${f.publics.map(([titre, texte]) => `<div class="public"><b>${titre}</b><p>${texte}</p></div>`).join("\n      ")}
+    </div>
+  </section>
+
+  <section class="fiche-partie">
+    <h2>Fonctionnalités liées</h2>
     <div class="soeurs">
       ${f.soeurs.map(soeur).join("\n      ")}
     </div>

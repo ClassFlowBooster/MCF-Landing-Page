@@ -136,7 +136,7 @@ const serialise = `(root, kind, vue) => {
   // Les contrôles deviennent des span : on fige d'abord leur style calculé, pour garder le rendu du proto.
   const PROPRIETES = ['display', 'box-sizing', 'width', 'height', 'min-width', 'min-height', 'padding', 'margin', 'border', 'border-radius', 'background', 'color', 'font', 'line-height', 'letter-spacing', 'text-align', 'align-items', 'justify-content', 'gap', 'flex', 'flex-direction', 'white-space', 'box-shadow', 'opacity', 'vertical-align'];
   const styles = new Map();
-  root.querySelectorAll('button,input,select,textarea,a').forEach((e, i) => { e.setAttribute('data-appvp-i', i); const c = getComputedStyle(e); styles.set(String(i), PROPRIETES.map((p) => p + ':' + c.getPropertyValue(p)).join(';')); });
+  root.querySelectorAll('button,input,select,textarea,a,h1,h2,h3,h4,h5,h6').forEach((e, i) => { e.setAttribute('data-appvp-i', i); const c = getComputedStyle(e); styles.set(String(i), PROPRIETES.map((p) => p + ':' + c.getPropertyValue(p)).join(';')); });
   const clone = root.cloneNode(true);
   const texte = (avant, apres) => {
     const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
@@ -215,8 +215,9 @@ const serialise = `(root, kind, vue) => {
     if (visuel) { visuel.className = 'ocr-check-static'; visuel.textContent = old.checked ? '✓' : ''; }
     old.remove();
   });
-  clone.querySelectorAll('button,input,select,textarea,a').forEach((old) => {
-    const tag = old.tagName === 'TEXTAREA' ? 'div' : 'span'; const replacement = document.createElement(tag);
+  clone.querySelectorAll('button,input,select,textarea,a,h1,h2,h3,h4,h5,h6').forEach((old) => {
+    // Les titres du proto ne doivent pas entrer dans le plan de la fiche : div au style figé.
+    const tag = /^(TEXTAREA|H[1-6])$/.test(old.tagName) ? 'div' : 'span'; const replacement = document.createElement(tag);
     [...old.attributes].forEach((a) => { if (!/^(href|target|type|name|value|checked|selected|autofocus|tabindex|on)/i.test(a.name)) replacement.setAttribute(a.name, a.value); });
     const fige = styles.get(old.getAttribute('data-appvp-i'));
     if (fige) replacement.setAttribute('style', fige + ';' + (old.getAttribute('style') || ''));
