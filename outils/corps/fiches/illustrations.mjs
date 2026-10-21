@@ -26,7 +26,7 @@ function rendreInerte(html) {
 
 function figure(slug, fichier, description) {
   const fragment = rendreInerte(readFileSync(new URL(fichier, ici), 'utf8').trim());
-  return `<figure class="maquette-fiche appv-figure appv-figure--bureau" aria-label="Illustration : ${description} dans MyClassFlow"><div class="appv-proto-viewport"><div class="appv-proto-stage" aria-hidden="true" data-proto="${slug}">${fragment}</div></div><figcaption>Écran de MyClassFlow, données fictives.</figcaption></figure>`;
+  return `<figure id="visuel" class="maquette-fiche appv-figure appv-figure--bureau" aria-label="Illustration : ${description} dans MyClassFlow"><div class="appv-proto-viewport"><div class="appv-proto-stage" aria-hidden="true" data-proto="${slug}">${fragment}</div></div><figcaption>Écran de MyClassFlow, données fictives.</figcaption></figure>`;
 }
 
 export const illustrations = Object.fromEntries(
