@@ -55,15 +55,21 @@ export function analyser(texte = "", sources = []) {
 /** Exécute un programme et retourne ses sorties standard et d'erreur. */
 export function executer(commande, argumentsCommande, options = {}) {
   return new Promise((resoudre, rejeter) => {
-    execFile(commande, argumentsCommande, { encoding: "utf8", maxBuffer: 10485760, ...options }, (erreur, sortieStandard, sortieErreur) => {
-      if (erreur) {
-        erreur.stdout = sortieStandard;
-        erreur.stderr = sortieErreur;
-        rejeter(erreur);
+    const debut = Date.now();
+    const enfant = execFile(commande, argumentsCommande, { encoding: "utf8", maxBuffer: 10485760, ...options }, (erreur, sortieStandard, sortieErreur) => {
+      // Codex peut sortir sans erreur quand il est interrompu : le délai se vérifie aussi à la durée.
+      const delaiDepasse = options.timeout && Date.now() - debut >= options.timeout;
+      if (erreur || delaiDepasse) {
+        const echec = delaiDepasse ? new Error(`délai de ${Math.round(options.timeout / 1000)} s dépassé`) : erreur;
+        echec.stdout = sortieStandard;
+        echec.stderr = sortieErreur;
+        rejeter(echec);
       } else {
         resoudre({ stdout: sortieStandard, stderr: sortieErreur });
       }
     });
+    // Entrée standard fermée : sinon `codex exec` attend une suite de consigne et n'écrit rien jusqu'au délai.
+    enfant.stdin?.end();
   });
 }
 

@@ -193,3 +193,16 @@ test("relever réécrit les fichiers après chaque question", async () => {
     rmSync(dossier, { recursive: true, force: true });
   }
 });
+
+test("executer ferme l'entrée standard : une commande qui lit stdin ne bloque pas", async () => {
+  const { executer } = await import("../outils/suivi-ia/releve.mjs");
+  const debut = Date.now();
+  const resultat = await executer(process.execPath, ["-e", "process.stdin.resume(); process.stdin.on('end', () => console.log('fin'));"], { timeout: 5000 });
+  assert.equal(resultat.stdout.trim(), "fin");
+  assert.ok(Date.now() - debut < 4000);
+});
+
+test("executer signale un délai dépassé même si la commande sort sans erreur", async () => {
+  const { executer } = await import("../outils/suivi-ia/releve.mjs");
+  await assert.rejects(executer(process.execPath, ["-e", "process.on('SIGTERM', () => process.exit(0)); setTimeout(() => {}, 10000);"], { timeout: 300 }), /délai de 0 s dépassé|délai/);
+});
