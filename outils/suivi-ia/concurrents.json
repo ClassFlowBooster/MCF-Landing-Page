@@ -1,0 +1,20 @@
+[
+  { "nom": "Edumoov", "motifs": ["\\bedumoov\\b"] },
+  { "nom": "Teetsh", "motifs": ["\\bteetsh\\b"] },
+  { "nom": "Prepli", "motifs": ["\\bprepli\\b"] },
+  { "nom": "Prof Planner", "motifs": ["\\bprof[ -]?planner\\b"] },
+  { "nom": "PrimSchool", "motifs": ["\\bprimschool\\b"] },
+  { "nom": "Lalilo", "motifs": ["\\blalilo\\b"] },
+  { "nom": "Iniprof", "motifs": ["\\biniprof\\b"] },
+  { "nom": "Préparemescours", "motifs": ["\\bpr[ée]paremescours\\b"] },
+  { "nom": "FicheSequence", "motifs": ["\\bfiche[ -]?sequence\\b"] },
+  { "nom": "Pass Education", "motifs": ["\\bpass[ -]?education\\b"] },
+  { "nom": "Mon cahier journal", "motifs": ["\\bmon cahier journal\\b"] },
+  { "nom": "Tablette de prof", "motifs": ["\\btablette de prof\\b"] },
+  { "nom": "ClassDojo", "motifs": ["\\bclassdojo\\b"] },
+  { "nom": "Pronote", "motifs": ["\\bpronote\\b"] },
+  { "nom": "Beneylu", "motifs": ["\\bbeneylu\\b"] },
+  { "nom": "Klassroom", "motifs": ["\\bklassroom\\b"] },
+  { "nom": "Educartable", "motifs": ["\\beducartable\\b"] },
+  { "nom": "Lumni", "motifs": ["\\blumni\\b"] }
+]
