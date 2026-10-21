@@ -52,6 +52,14 @@ export function analyser(texte = "", sources = []) {
   };
 }
 
+const lireJsonl = (sortie) => String(sortie).split(/\r?\n/).filter(Boolean).flatMap((ligne) => {
+  try {
+    return [JSON.parse(ligne)];
+  } catch {
+    return [];
+  }
+});
+
 /** Exécute un programme et retourne ses sorties standard et d'erreur. */
 export function executer(commande, argumentsCommande, options = {}) {
   return new Promise((resoudre, rejeter) => {
@@ -61,7 +69,9 @@ export function executer(commande, argumentsCommande, options = {}) {
       const delaiDepasse = options.timeout && Date.now() - debut >= options.timeout;
       if (erreur || delaiDepasse) {
         // Message court et lisible : la commande et ses arguments ne sont pas repris, seulement la cause.
-        const cause = String(sortieErreur ?? "").split("\n").map((ligne) => ligne.trim()).filter((ligne) => ligne && !/^Reading additional input/.test(ligne)).at(-1);
+        // Codex écrit sa cause dans le flux JSON (événement « error ») plutôt que sur la sortie d'erreur.
+        const causeJson = lireJsonl(sortieStandard ?? "").filter((evenement) => evenement.type === "error" && evenement.message).at(-1)?.message;
+        const cause = causeJson ?? String(sortieErreur ?? "").split("\n").map((ligne) => ligne.trim()).filter((ligne) => ligne && !/^Reading additional input/.test(ligne)).at(-1);
         const echec = delaiDepasse
           ? new Error(`délai de ${Math.round(options.timeout / 1000)} s dépassé`)
           : new Error(`${commande.split("/").at(-1)} a échoué (code ${erreur.code ?? "?"})${cause ? ` : ${cause}` : ""}`);
@@ -76,14 +86,6 @@ export function executer(commande, argumentsCommande, options = {}) {
     enfant.stdin?.end();
   });
 }
-
-const lireJsonl = (sortie) => String(sortie).split(/\r?\n/).filter(Boolean).flatMap((ligne) => {
-  try {
-    return [JSON.parse(ligne)];
-  } catch {
-    return [];
-  }
-});
 
 /** Extrait la réponse, les sources et les garde-fous de la sortie JSONL de Claude. */
 export function extraireClaude(sortie) {
@@ -162,7 +164,20 @@ export async function lancerClaude(question, dependances = {}) {
 }
 
 /** Lance Codex en lecture seule dans un dossier temporaire isolé et analyse sa réponse. */
+const attendre = (ms) => new Promise((resoudre) => setTimeout(resoudre, ms));
+
+/** Pose une question à Codex ; sur une limite d'usage (429), attend puis réessaie une fois. */
 export async function lancerCodex(question, dependances = {}) {
+  try {
+    return await poserACodex(question, dependances);
+  } catch (erreur) {
+    if (!/\b429\b|Too Many Requests/i.test(String(erreur?.message))) throw erreur;
+    await (dependances.attendre ?? attendre)(Number(process.env.SUIVI_IA_ATTENTE_429 ?? 180000));
+    return poserACodex(question, dependances);
+  }
+}
+
+async function poserACodex(question, dependances) {
   const dossierTravail = mkdtempSync(join(tmpdir(), "suivi-ia-"));
   const fichierReponse = join(dossierTravail, "reponse.txt");
   try {
@@ -230,6 +245,8 @@ export async function relever(options = {}, dependances = {}) {
     for (const { n: numero, question } of QUESTIONS) {
       let reponse;
       let erreur = "";
+      // Entre deux questions à Codex, une pause : le compte ChatGPT limite les requêtes rapprochées (429).
+      if (!options.essai && ia === "chatgpt" && numero > 1) await (dependances.attendre ?? attendre)(Number(process.env.SUIVI_IA_PAUSE ?? 45000));
       try {
         reponse = options.essai ? (dependances.reponseEssai ?? reponseEssai)(question, ia, numero) : await (ia === "claude" ? (dependances.lancerClaude ?? lancerClaude)(question, dependances) : (dependances.lancerCodex ?? lancerCodex)(question, dependances));
       } catch (exception) {

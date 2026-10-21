@@ -214,3 +214,38 @@ test("executer donne la cause d'un échec, sans la ligne de commande", async () 
     (erreur) => /a échoué \(code 3\) : limite d'usage atteinte$/.test(erreur.message) && !erreur.message.includes("-e"),
   );
 });
+
+test("Codex : cause lue dans le flux JSON, nouvel essai après une limite d'usage (429)", async () => {
+  const { executer, lancerCodex } = await import("../outils/suivi-ia/releve.mjs");
+  await assert.rejects(
+    executer(process.execPath, ["-e", "console.log(JSON.stringify({ type: 'error', message: 'exceeded retry limit, last status: 429 Too Many Requests' })); process.exit(1);"], { timeout: 5000 }),
+    /a échoué \(code 1\) : exceeded retry limit, last status: 429 Too Many Requests$/,
+  );
+  let appels = 0;
+  const attentes = [];
+  const reponse = await lancerCodex("Q", {
+    attendre: async (ms) => { attentes.push(ms); },
+    executer: async () => {
+      appels += 1;
+      if (appels === 1) throw new Error("codex a échoué (code 1) : 429 Too Many Requests");
+      return { stdout: [{ type: "item.completed", item: { type: "web_search" } }, { type: "item.completed", item: { type: "agent_message", text: "Réponse https://teetsh.com/" } }, { type: "turn.completed" }].map((e) => JSON.stringify(e)).join("\n") };
+    },
+  });
+  assert.equal(appels, 2);
+  assert.equal(attentes.length, 1);
+  assert.equal(reponse.recherche, true);
+});
+
+test("relever espace les questions posées à Codex", async () => {
+  const dossier = mkdtempSync(join(tmpdir(), "suivi-ia-pause-"));
+  const attentes = [];
+  try {
+    await relever({ ia: ["chatgpt"], sortie: dossier, date: "2026-10-26" }, {
+      attendre: async (ms) => { attentes.push(ms); },
+      lancerCodex: async () => ({ texte: "Edumoov", sources: [], recherche: true, erreur: "", modele: "codex exec" }),
+    });
+    assert.equal(attentes.length, 9);
+  } finally {
+    rmSync(dossier, { recursive: true, force: true });
+  }
+});
