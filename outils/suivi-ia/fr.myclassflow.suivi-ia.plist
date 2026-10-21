@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>Label</key><string>fr.myclassflow.suivi-ia</string>
-  <key>ProgramArguments</key><array><string>/usr/bin/env</string><string>node</string><string>outils/suivi-ia/releve.mjs</string></array>
-  <key>WorkingDirectory</key><string>__DEPOT__</string>
-  <key>StartCalendarInterval</key><dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
-  <key>StandardOutPath</key><string>__HOME__/Library/Logs/mcf-suivi-ia.log</string>
-  <key>StandardErrorPath</key><string>__HOME__/Library/Logs/mcf-suivi-ia.log</string>
+<key>Label</key><string>fr.myclassflow.suivi-ia</string>
+<key>ProgramArguments</key><array><string>__HOME__/.claude/mods/prototype-web/lourd.sh</string><string>/opt/homebrew/bin/node</string><string>outils/suivi-ia/releve.mjs</string></array>
+<key>WorkingDirectory</key><string>__DEPOT__</string>
+<key>EnvironmentVariables</key><dict><key>PATH</key><string>__HOME__/.local/bin:/opt/homebrew/bin:/usr/bin:/bin</string></dict>
+<key>StartCalendarInterval</key><dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
+<key>StandardOutPath</key><string>__HOME__/Library/Logs/mcf-suivi-ia.log</string><key>StandardErrorPath</key><string>__HOME__/Library/Logs/mcf-suivi-ia.log</string>
 </dict></plist>

@@ -1,30 +1,29 @@
-# Relevé « les IA citent-elles MyClassFlow ? »
+# Relevé IA
 
-`outils/suivi-ia/releve.mjs` pose chaque semaine dix questions usuelles à Claude et ChatGPT, avec leur recherche Web, puis relève si MyClassFlow est cité. Les réponses brutes sont conservées dans un JSON de vérification manuelle ; le CSV ne contient que leur analyse. Par défaut, les fichiers vont dans `../MCF-Pilotage/docs/suivi-ia/`, dossier frère de ce dépôt. Le script ne fait jamais de commit ni de push des résultats.
+Le relevé pose les dix questions à Claude et ChatGPT via les abonnements existants. Il écrit un CSV UTF-8 avec BOM et séparateur `;`, un résumé Markdown et `reponses-AAAA-MM-JJ.json`, par défaut dans `../MCF-Pilotage/docs/suivi-ia/`. Il ne commite ni ne pousse rien dans MCF-Pilotage.
 
-Le CSV, encodé en UTF-8 avec BOM et séparé par des points-virgules, contient : `date`, `ia`, `modele`, `n`, `question`, `cite`, `rang`, `concurrents`, `lien`, `sources` et `erreur`. Le rang est celui de MyClassFlow parmi les outils reconnus dans l'ordre de leur première apparition. Le résumé Markdown compte les citations, le meilleur rang, les liens, les concurrents et les erreurs.
+Chaque question est une session neuve dans un dossier temporaire vide hors dépôt, supprimé à la fin : ni dépôt, ni `CLAUDE.md`, ni mémoire. Claude est en mode sûr, sans persistance ni configuration/MCP, et ses outils sont limités à `WebSearch,WebFetch`. Codex est éphémère, en lecture seule dans ce dossier vide, sans configuration ni règles utilisateur; shell, applications, plugins, navigateur et ordinateur sont désactivés. Seule la recherche web `live` reste permise. La consigne impose une recherche et une ligne de sources. Les flux JSON vérifient recherche et absence d'outil local.
 
-Les clés sont lues uniquement dans le trousseau macOS. Ces commandes demandent la clé de manière interactive : ne la mettez jamais dans la ligne de commande.
+Colonnes : `date`, `ia`, `modele`, `n`, `question`, `cite`, `rang`, `concurrents`, `lien`, `sources`, `erreur`. Une réponse sans recherche reste analysée mais porte l'erreur. Les modèles sont `claude -p` et `codex exec`.
 
-```sh
-security add-generic-password -a "$USER" -s mcf-suivi-ia-anthropic -w
-security add-generic-password -a "$USER" -s mcf-suivi-ia-openai -w
-```
+Essai, sans processus ni réseau :
 
-Pour tester le circuit sans clé ni accès réseau :
+    node outils/suivi-ia/releve.mjs --essai --sortie /tmp/x
 
-```sh
-node outils/suivi-ia/releve.mjs --essai --sortie /tmp/x
-```
+Lancement réel :
 
-Le relevé normal représente environ 20 requêtes par semaine (10 questions pour chacune des deux IA) ; son coût dépend des tarifs et du volume de réponses des fournisseurs.
+    ~/.claude/mods/prototype-web/lourd.sh node outils/suivi-ia/releve.mjs
+
+Consommation : 20 questions par semaine sur les abonnements existants.
 
 ## Planification macOS
 
-À faire seulement sur go de Joseph : copiez `outils/suivi-ia/fr.myclassflow.suivi-ia.plist` dans `~/Library/LaunchAgents/`, remplacez `__DEPOT__` par le chemin absolu de ce dépôt et `__HOME__` par votre dossier personnel, puis chargez-le :
+Seulement sur go de Joseph : copier le plist dans `~/Library/LaunchAgents/`, remplacer `__DEPOT__` et `__HOME__`, puis :
 
-```sh
-launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/fr.myclassflow.suivi-ia.plist
-```
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/fr.myclassflow.suivi-ia.plist
 
-Le modèle lance le relevé chaque lundi à 8 h et écrit son journal dans `~/Library/Logs/mcf-suivi-ia.log`. Il ne contient aucune clé.
+Il planifie le lundi à 8 h, passe par la file `lourd.sh` et écrit dans `~/Library/Logs/mcf-suivi-ia.log`.
+
+## Limite honnête
+
+C'est un indicateur proche de ChatGPT et de Claude, pas l'app grand public exacte : autre interface, modèle et réglages par défaut de Claude Code et de Codex, consigne de recherche web ajoutée, pas d'historique ni de personnalisation. On suit une tendance d'une semaine à l'autre, pas une mesure exacte.
