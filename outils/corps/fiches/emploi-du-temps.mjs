@@ -72,7 +72,12 @@ export default {
   description: "Construire l'emploi du temps de sa classe créneau par créneau et lire le volume horaire de chaque matière pendant la saisie. Exemple : une semaine de CM2 sur quatre jours et demi, ramenée aux horaires annuels du cycle 3.",
   h1: "L'emploi du temps de votre classe, et ses heures par matière",
   intro: "L'emploi du temps pose la semaine type de la classe : les cours, les récréations, les rituels. Sa vraie question est souvent : chaque matière a-t-elle son compte d'heures ? MyClassFlow fait l'addition pour vous, au fil des créneaux.",
-  titreBenefices: "Pourquoi le poser dans MyClassFlow",
+  retenir: [
+    "Le volume de chaque matière se calcule au fil des créneaux.",
+    "Vous modifiez un créneau ou l'archivez sans le détruire.",
+    "L'emploi du temps s'imprime en PDF.",
+  ],
+  titreBenefices: "Pourquoi poser son emploi du temps dans MyClassFlow ?",
   benefices: [
     ["La répartition sous les yeux", "Le total de chaque matière change à chaque cours que vous posez : vous voyez la semaine se répartir, et un manque se repère avant la rentrée, pas en février."],
     ["Une base hebdomadaire que vous corrigez", "L'anglais passe du mardi au jeudi en janvier ? Vous modifiez le jour du créneau ; un créneau qui ne sert plus s'archive sans être détruit."],
@@ -83,6 +88,7 @@ export default {
     ["Posez vos créneaux", "Touchez une case vide : un cours avec sa matière, une récréation ou une pause, ou un rituel, avec son jour, son début et sa fin. Un clic sur un créneau le modifie."],
     ["Lisez les totaux, puis imprimez", "Le volume de chaque matière s'affiche à côté de la grille, du plus grand au plus petit. « Imprimer l'emploi du temps » en fait un PDF ; le téléphone le télécharge."],
   ],
+  titreEtapes: "Comment construire votre emploi du temps ?",
   illustration,
   blocs: [{ titre: "Une semaine de CM2 sur quatre jours et demi, totalisée par MyClassFlow", html: exemple }],
   offre: {
@@ -98,6 +104,11 @@ export default {
     ["Sur l'année, quel horaire chaque matière doit-elle atteindre en CM1 et en CM2 ?", "288 heures de français, 180 de mathématiques, 54 de langues vivantes, 108 d'EPS, 72 de sciences et technologie, 72 d'enseignements artistiques et 90 d'histoire, de géographie et d'enseignement moral et civique : 864 heures (arrêté du 9 novembre 2015). La répartition d'une semaine à l'autre peut varier, du moment que le total de l'année est tenu."],
     ["Où passent les récréations dans ce calcul ?", "L'arrêté les impute sur l'ensemble des matières, de façon équilibrée dans la semaine. C'est pourquoi un total de cours tiré de MyClassFlow est toujours un peu inférieur à l'horaire officiel : l'écart doit correspondre à vos récréations."],
     ["L'emploi du temps est-il gratuit dans MyClassFlow ?", "Oui, comme le cahier journal et les fiches de préparation. Le compte gratuit ne demande pas de carte bancaire."],
+  ],
+  publics: [
+    ["Pour répartir la semaine", "Vous posez les cours, les récréations, les pauses et les rituels créneau par créneau."],
+    ["Pour compter les heures", "Vous lisez le volume de chaque matière à côté de la grille."],
+    ["Pour afficher la semaine", "Vous imprimez l'emploi du temps en PDF pour le consulter sans écran."],
   ],
   soeurs: ["Cahier journal", "Fiches de préparation", "Adaptation des supports"],
 };
