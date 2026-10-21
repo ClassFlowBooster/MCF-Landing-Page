@@ -385,14 +385,16 @@ test("fiches explicatives : signature et Article avec deux auteurs et des dates 
   }
 });
 
-test("accueil : orientation propre, sans surcouche ni script d'entrée", () => {
+test("accueil : contenu d'orientation propre, fenêtre de choix cachée dans le HTML", () => {
   const accueil = PAGES.find((p) => p.chemin === "/");
   const html = page(accueil);
   assert.match(html, /L'app qui adapte les supports aux critères pédagogiques de chaque élève et organise la classe\./);
   for (const [titre, href] of [["Enseignants", "/enseignants/"], ["Écoles", "/ecoles/"], ["Familles", "/parents-enfants/"]])
     assert.match(html, new RegExp(`>${titre}<\\/h3>[\\s\\S]*?href="${href}"`));
-  assert.ok(!html.includes('id="entree"'));
-  assert.ok(!html.includes('/assets/js/entree.js'));
+  // La fenêtre est dans le HTML, cachée (hidden) : seul entree.js l'ouvre, côté navigateur.
+  assert.match(html, /<div class="entree" id="entree"[^>]* hidden>/);
+  assert.ok(html.includes('/assets/js/entree.js'));
+  for (const autre of PAGES.filter((p) => p.chemin !== "/")) assert.ok(!page(autre).includes('id="entree"'), autre.chemin);
   assert.ok(accueil.titre.length <= 60 && accueil.description.length <= 155);
 });
 

@@ -5,6 +5,7 @@ import tarifsEcoles from "./corps/tarifs-ecoles.mjs";
 import tarifsParents from "./corps/tarifs-parents.mjs";
 import { fonctionnalites } from "./corps/fonctionnalites.mjs";
 import { telecharger } from "./corps/telecharger.mjs";
+import entree from "./corps/entree.mjs";
 import accueil from "./corps/accueil.mjs";
 import accueilEnseignants, { TITRE_ENSEIGNANTS } from "./corps/accueil-enseignants.mjs";
 import accueilEcoles from "./corps/accueil-ecoles.mjs";
@@ -14,10 +15,10 @@ import { fiche, adresseFiche } from "./corps/fiche.mjs";
 import { FICHES } from "./corps/fiches/index.mjs";
 
 export const PAGES = [
-  { chemin: "/", espace: "enseignants", rubrique: "", scripts: [],
+  { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["entree.js"],
     titre: "MyClassFlow — adapter les supports et organiser la classe",
     description: "MyClassFlow accompagne les enseignants, les écoles et les familles avec des supports adaptés et une classe organisée.",
-    corps: accueil },
+    surcouche: entree, corps: accueil },
   { chemin: "/enseignants/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "formulaire.js"],
     titre: "Exercices et leçons adaptés à chaque élève — MyClassFlow",
     description: "MyClassFlow adapte vos exercices et vos leçons selon les critères pédagogiques que vous cochez. Fiches de préparation et cahier journal gratuits, 3 adaptations offertes.",
