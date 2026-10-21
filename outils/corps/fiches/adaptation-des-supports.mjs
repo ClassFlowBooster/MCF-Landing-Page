@@ -1,11 +1,11 @@
 import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Adaptation des supports » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
-// « Adapter un support » ; sources « Photo », « Photothèque » ou « Fichier » (PDF ou image ; un
-// document Word est refusé au lancement), 8 pages au plus ; critères par familles (libellés exacts ci-dessous) ; versions par élève ou
+// « Adapter un support » ; sources « Photo », « Photothèque » ou « Fichier » (PDF, image ou Word :
+// Word accepté, décision de Joseph, correctif app MCF-App#384), 8 pages au plus ; critères par familles (libellés exacts ci-dessous) ; versions par élève ou
 // par groupe, « Lancer l'adaptation » ; « Imprimer », « Télécharger », « Tout télécharger (.zip) »,
 // suppression d'une version ; « Renommer » vise le support.
-// Aucun décompte d'adaptations dans l'app (MCF-App#124) : on garde la formule des tarifs.
+// « 3 adaptations offertes » : modèle commercial au 11 janvier 2027 (MCF-App#124), comme les tarifs.
 // Vocabulaire : des critères pédagogiques, jamais une catégorie d'élèves.
 
 // Quelques critères de l'app, avec leurs libellés exacts, par famille.
