@@ -4,7 +4,7 @@ Le relevé pose les dix questions à Claude et ChatGPT via les abonnements exist
 
 Chaque question est une session neuve dans un dossier temporaire vide hors dépôt, supprimé à la fin : ni dépôt, ni `CLAUDE.md`, ni mémoire. Claude est en mode sûr, sans persistance ni configuration/MCP, et ses outils sont limités à `WebSearch,WebFetch`. Codex est éphémère, en lecture seule dans ce dossier vide, sans configuration ni règles utilisateur; shell, applications, plugins, navigateur et ordinateur sont désactivés. Seule la recherche web `live` reste permise. La consigne impose une recherche et une ligne de sources. Les flux JSON vérifient recherche et absence d'outil local.
 
-Colonnes : `date`, `ia`, `modele`, `n`, `question`, `cite`, `rang`, `concurrents`, `lien`, `sources`, `erreur`. Une réponse sans recherche reste analysée mais porte l'erreur. Les modèles sont `claude -p` et `codex exec`.
+Colonnes : `date`, `ia`, `modele`, `n`, `question`, `cite`, `rang`, `concurrents`, `lien`, `sources`, `erreur`. Une réponse sans recherche reste analysée mais porte l'erreur. `rang` est la place de première mention de MyClassFlow parmi les outils reconnus. Les modèles sont `claude -p` et `codex exec`.
 
 Essai, sans processus ni réseau :
 
@@ -26,4 +26,4 @@ Il planifie le lundi à 8 h, passe par la file `lourd.sh` et écrit dans `~/Libr
 
 ## Limite honnête
 
-C'est un indicateur proche de ChatGPT et de Claude, pas l'app grand public exacte : autre interface, modèle et réglages par défaut de Claude Code et de Codex, consigne de recherche web ajoutée, pas d'historique ni de personnalisation. On suit une tendance d'une semaine à l'autre, pas une mesure exacte.
+C'est un indicateur proche de ChatGPT et de Claude, pas l'app grand public exacte : autre interface, modèle et réglages par défaut de Claude Code et de Codex, consigne de recherche web ajoutée, pas d'historique ni de personnalisation. « ChatGPT » désigne ici Codex connecté au compte ChatGPT, pas l'application ChatGPT. Le repérage est textuel : une mention négative ou dans une comparaison compte aussi. Les assistants reçoivent un environnement minimal. Le plist exige que `node`, `claude` et `codex` soient disponibles dans son `PATH`. On suit une tendance d'une semaine à l'autre, pas une mesure exacte.

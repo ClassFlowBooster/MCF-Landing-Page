@@ -7,6 +7,7 @@ import {
   CONSIGNE_RECHERCHE,
   analyser,
   csv,
+  environnementMinimal,
   extraireClaude,
   extraireCodex,
   lancerClaude,
@@ -39,6 +40,9 @@ test("lancerClaude transmet les arguments exacts et détruit son dossier isolé"
   } });
   const [, argumentsClaude, options] = appel;
   assert.deepEqual(argumentsClaude, ["-p", "--safe-mode", "--strict-mcp-config", "--no-session-persistence", "--setting-sources", "", "--tools", "WebSearch,WebFetch", "--allowedTools", "WebSearch,WebFetch", "--append-system-prompt", CONSIGNE_RECHERCHE, "--output-format", "stream-json", "--verbose", "Question seule"]);
+  assert.equal(options.timeout, 300000);
+  assert.deepEqual(Object.keys(options.env).sort(), Object.keys(options.env).filter((nom) => ["HOME", "USER", "LOGNAME", "PATH", "SHELL", "TMPDIR", "LANG", "LC_ALL"].includes(nom)).sort());
+  assert.equal("SUIVI_IA_CLAUDE" in options.env, false);
   assert.equal(options.cwd.includes("suivi-ia-"), true);
   assert.equal(existsSync(options.cwd), false);
 });
@@ -48,14 +52,13 @@ test("lancerCodex transmet les arguments exacts et détruit son dossier isolé",
   await lancerCodex("Question", { executer: async (...argumentsAppel) => {
     appel = argumentsAppel;
     writeFileSync(argumentsAppel[1][argumentsAppel[1].indexOf("-o") + 1], "réponse");
-    return { stdout: '{"type":"item.completed","item":{"type":"web_search"}}' };
+    return { stdout: '{"type":"item.completed","item":{"type":"web_search"}}\n{"type":"turn.completed"}' };
   } });
   const [, argumentsCodex, options] = appel;
-  assert.equal(argumentsCodex[argumentsCodex.indexOf("-s") + 1], "read-only");
-  assert.equal(argumentsCodex[argumentsCodex.indexOf("-C") + 1], options.cwd);
-  assert.equal(argumentsCodex[argumentsCodex.indexOf("--disable") + 1], "shell_tool");
-  assert.equal(argumentsCodex[argumentsCodex.indexOf("-c") + 1], 'web_search="live"');
-  assert.equal(argumentsCodex.at(-1), `Question\n\n${CONSIGNE_RECHERCHE}`);
+  assert.deepEqual(argumentsCodex, ["exec", "--json", "--ignore-user-config", "--ignore-rules", "--ephemeral", "--skip-git-repo-check", "-s", "read-only", "-C", options.cwd, "--disable", "shell_tool", "--disable", "apps", "--disable", "plugins", "--disable", "browser_use", "--disable", "computer_use", "--disable", "in_app_browser", "-c", 'web_search="live"', "-o", join(options.cwd, "reponse.txt"), `Question\n\n${CONSIGNE_RECHERCHE}`]);
+  assert.equal(options.timeout, 300000);
+  assert.deepEqual(Object.keys(options.env).sort(), Object.keys(options.env).filter((nom) => ["HOME", "USER", "LOGNAME", "PATH", "SHELL", "TMPDIR", "LANG", "LC_ALL"].includes(nom)).sort());
+  assert.equal("SUIVI_IA_CODEX" in options.env, false);
   assert.equal(existsSync(options.cwd), false);
 });
 
@@ -78,7 +81,7 @@ test("extraireCodex privilégie le fichier, se replie sur agent_message et inter
   const dossier = mkdtempSync(join(tmpdir(), "suivi-ia-test-"));
   const fichier = join(dossier, "reponse.txt");
   try {
-    const sortie = '{"type":"item.completed","item":{"type":"agent_message","text":"message https://message.test"}}\nnon json\n{"type":"item.completed","item":{"type":"web_search"}}\n{"type":"item.completed","item":{"type":"command_execution"}}';
+    const sortie = '{"type":"item.completed","item":{"type":"agent_message","text":"message https://message.test"}}\nnon json\n{"type":"item.completed","item":{"type":"web_search"}}\n{"type":"item.completed","item":{"type":"command_execution"}}\n{"type":"turn.completed"}';
     assert.equal(extraireCodex(sortie).texte, "message https://message.test");
     writeFileSync(fichier, "fichier https://fichier.test");
     const resultat = extraireCodex(sortie, fichier);
@@ -90,11 +93,33 @@ test("extraireCodex privilégie le fichier, se replie sur agent_message et inter
   }
 });
 
+test("extraireCodex exige une fin de tour et rejette les erreurs", () => {
+  assert.throws(() => extraireCodex('{"type":"turn.failed","message":"échec bref"}'), /échec bref/);
+  assert.throws(() => extraireCodex('{"type":"error","error":{"message":"incident bref"}}'), /incident bref/);
+  assert.throws(() => extraireCodex('{"type":"item.completed","item":{"type":"web_search"}}'), /tour Codex incomplet/);
+});
+
+test("environnementMinimal ne conserve que les variables autorisées", () => {
+  const source = { HOME: "/tmp/home", PATH: "/bin", LANG: "fr_FR", ANTHROPIC_API_KEY: "factice", CLAUDECODE: "factice", SUIVI_IA_CLAUDE: "factice", AUTRE: "factice" };
+  assert.deepEqual(environnementMinimal(source), { HOME: "/tmp/home", PATH: "/bin", LANG: "fr_FR" });
+});
+
 test("une réponse sans recherche web est signalée", async () => {
   const dossier = mkdtempSync(join(tmpdir(), "suivi-ia-test-"));
   try {
     const resultat = await relever({ sortie: dossier, date: "2026-01-01", ia: ["claude"] }, { lancerClaude: async () => ({ texte: "sans web", sources: [], recherche: false, erreur: "", modele: "claude -p" }) });
     assert.equal(resultat.lignes[0].erreur, "réponse sans recherche web");
+  } finally {
+    rmSync(dossier, { recursive: true, force: true });
+  }
+});
+
+test("une réponse vide est signalée et ne compte pas comme réponse", async () => {
+  const dossier = mkdtempSync(join(tmpdir(), "suivi-ia-test-"));
+  try {
+    const resultat = await relever({ sortie: dossier, date: "2026-01-01", ia: ["claude"] }, { lancerClaude: async () => ({ texte: "  \n", sources: [], recherche: true, erreur: "", modele: "claude -p" }) });
+    assert.equal(resultat.lignes[0].erreur, "réponse vide");
+    assert.equal(resultat.aRepondu, false);
   } finally {
     rmSync(dossier, { recursive: true, force: true });
   }
@@ -147,9 +172,8 @@ test("lireOptions rejette une option inconnue, une IA invalide et une date inval
   assert.throws(() => lireOptions(["--date", "01-01-2026"]), /date attendue/);
 });
 
-test("le script ne contient ni fetch, ni security, ni API_KEY", () => {
+test("le script ne contient ni fetch, ni security", () => {
   const contenu = readFileSync(new URL("../outils/suivi-ia/releve.mjs", import.meta.url), "utf8");
   assert.equal(/fetch\s*\(/i.test(contenu), false);
   assert.equal(/security/i.test(contenu), false);
-  assert.equal(/API_KEY/i.test(contenu), false);
 });

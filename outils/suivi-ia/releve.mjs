@@ -21,6 +21,13 @@ const extraireUrls = (valeur) => String(valeur ?? "").match(/https?:\/\/[^\s<>"'
 const modeleDe = (ia) => (ia === "claude" ? "claude -p" : "codex exec");
 const messageCourt = (erreur) => String(erreur?.message ?? erreur).replace(/[\r\n]+/g, " ").slice(0, 240);
 
+/** Retourne l'environnement minimal autorisé pour les assistants. */
+export function environnementMinimal(source = process.env) {
+  return Object.fromEntries(["HOME", "USER", "LOGNAME", "PATH", "SHELL", "TMPDIR", "LANG", "LC_ALL"]
+    .filter((nom) => source[nom] !== undefined)
+    .map((nom) => [nom, source[nom]]));
+}
+
 /** Analyse la présence, le rang, les concurrents et les liens dans une réponse. */
 export function analyser(texte = "", sources = []) {
   const mentions = [];
@@ -107,7 +114,12 @@ export function extraireCodex(sortie, fichierReponse) {
   let rechercheWeb = false;
   let outilLocal = false;
   let dernierMessage = "";
+  let tourTermine = false;
   for (const evenement of lireJsonl(sortie)) {
+    if (["turn.failed", "error"].includes(evenement.type)) {
+      throw new Error(messageCourt(evenement.error ?? evenement.message ?? evenement));
+    }
+    if (evenement.type === "turn.completed") tourTermine = true;
     if (evenement.type !== "item.completed") {
       continue;
     }
@@ -122,6 +134,7 @@ export function extraireCodex(sortie, fichierReponse) {
       dernierMessage = element.text;
     }
   }
+  if (!tourTermine) throw new Error("tour Codex incomplet");
   const texte = fichierReponse && existsSync(fichierReponse) ? readFileSync(fichierReponse, "utf8") : dernierMessage;
   return { texte, sources: valeursUniques(extraireUrls(texte)), recherche: rechercheWeb, erreur: outilLocal ? "outil local utilisé" : "" };
 }
@@ -131,7 +144,7 @@ export async function lancerClaude(question, dependances = {}) {
   const dossierTravail = mkdtempSync(join(tmpdir(), "suivi-ia-"));
   try {
     const argumentsClaude = ["-p", "--safe-mode", "--strict-mcp-config", "--no-session-persistence", "--setting-sources", "", "--tools", "WebSearch,WebFetch", "--allowedTools", "WebSearch,WebFetch", "--append-system-prompt", CONSIGNE_RECHERCHE, "--output-format", "stream-json", "--verbose", question];
-    const resultat = await (dependances.executer ?? executer)(process.env.SUIVI_IA_CLAUDE || "claude", argumentsClaude, { cwd: dossierTravail, timeout: 300000 });
+    const resultat = await (dependances.executer ?? executer)(process.env.SUIVI_IA_CLAUDE || "claude", argumentsClaude, { cwd: dossierTravail, timeout: 300000, env: environnementMinimal() });
     return { ...extraireClaude(resultat.stdout), modele: "claude -p" };
   } finally {
     rmSync(dossierTravail, { recursive: true, force: true });
@@ -144,7 +157,7 @@ export async function lancerCodex(question, dependances = {}) {
   const fichierReponse = join(dossierTravail, "reponse.txt");
   try {
     const argumentsCodex = ["exec", "--json", "--ignore-user-config", "--ignore-rules", "--ephemeral", "--skip-git-repo-check", "-s", "read-only", "-C", dossierTravail, "--disable", "shell_tool", "--disable", "apps", "--disable", "plugins", "--disable", "browser_use", "--disable", "computer_use", "--disable", "in_app_browser", "-c", "web_search=\"live\"", "-o", fichierReponse, `${question}\n\n${CONSIGNE_RECHERCHE}`];
-    const resultat = await (dependances.executer ?? executer)(process.env.SUIVI_IA_CODEX || "codex", argumentsCodex, { cwd: dossierTravail, timeout: 300000 });
+    const resultat = await (dependances.executer ?? executer)(process.env.SUIVI_IA_CODEX || "codex", argumentsCodex, { cwd: dossierTravail, timeout: 300000, env: environnementMinimal() });
     return { ...extraireCodex(resultat.stdout, fichierReponse), modele: "codex exec" };
   } finally {
     rmSync(dossierTravail, { recursive: true, force: true });
@@ -207,7 +220,7 @@ export async function relever(options = {}, dependances = {}) {
         erreur = messageCourt(exception);
         reponse = { texte: "", sources: [], recherche: false, modele: modeleDe(ia) };
       }
-      if (!erreur) erreur = reponse.erreur || (!reponse.recherche ? "réponse sans recherche web" : "");
+      if (!erreur) erreur = reponse.erreur || (!String(reponse.texte ?? "").trim() ? "réponse vide" : !reponse.recherche ? "réponse sans recherche web" : "");
       lignes.push({ date, ia, modele: reponse.modele, n: numero, question, ...analyser(reponse.texte, reponse.sources), erreur });
       reponses.push({ question, ia, texte: reponse.texte, sources: reponse.sources });
     }
