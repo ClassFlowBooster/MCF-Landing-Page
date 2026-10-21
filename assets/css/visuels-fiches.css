@@ -1,0 +1,51 @@
+/* Cadre des extraits du proto : cette feuille ne stylise pas le proto lui-même. */
+.maquette-fiche.appv-figure {
+  container-type: inline-size;
+  margin: 2rem 0;
+  max-width: 100%;
+}
+
+/* L'extrait occupe toute la largeur de la partie, sous les étapes. */
+.fiche-comment:has(> .appv-figure) { grid-template-columns: 1fr; }
+
+.appv-proto-viewport {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #e6dfcf;
+  border-radius: 14px;
+  background: #fbf8f3;
+  box-shadow: 0 1px 3px rgb(31 26 20 / 6%), 0 8px 24px rgb(31 26 20 / 5%);
+}
+
+/* Échelle proportionnelle sans JavaScript : tan(atan2(a, b)) vaut a / b, sans unité.
+   zoom réduit aussi la hauteur occupée, la vue garde donc sa hauteur réelle. */
+.appv-proto-stage {
+  width: 1440px;
+  max-height: 900px;
+  overflow: hidden;
+  zoom: min(1, tan(atan2(100cqw, 1440px)));
+  transform: translateZ(0); /* bloc conteneur des éléments « fixed » du proto (rail, tabbar) */
+  position: relative;
+}
+
+.appv-figure--tel .appv-proto-viewport { max-width: 390px; margin-inline: auto; }
+.appv-figure--tel .appv-proto-stage { width: 390px; max-height: none; zoom: min(1, tan(atan2(100cqw, 390px))); }
+
+/* La racine reprend les règles « body » du proto (centrage, défilement) : on les neutralise. */
+.appv-proto-stage > .appv-proto {
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.appv-figure figcaption { margin-top: .65rem; color: var(--ink-2, #4a4238); font-size: .9rem; }
+
+@container (max-width: 389px) {
+  .appv-figure--tel .appv-proto-viewport { border-radius: 10px; }
+}
+
+/* Tabbar du proto téléphone : dans l'extrait, elle suit le contenu au lieu de flotter sur l'écran. */
+.appv-figure--tel .appv-proto .tabbar { transform: none !important; margin: 12px auto 16px !important; }

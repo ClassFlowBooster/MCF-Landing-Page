@@ -7,6 +7,7 @@ export const VUES = {
   'cahier-journal': {
     type: 'bureau', url: '/index.html#planning&v=journal', root: '.app', taille: { width: 1440, height: 900 }, attente: 1400,
     patches: [
+      { fichier: 'screen-planning.jsx', constante: 'DATES', valeur: ['02', '03', '04', '05', '06'] },
       { fichier: 'screen-planning.jsx', constante: 'SEED_SEANCES', valeur: SEED_SEANCES },
       { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
       { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
