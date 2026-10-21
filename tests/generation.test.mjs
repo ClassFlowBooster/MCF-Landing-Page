@@ -407,7 +407,7 @@ test("Google Fonts : quatre familles utilisées, graisses limitées, display=swa
 });
 
 test("llms-full.txt : Markdown strict, référencé par llms.txt, critères de l'app, pas à pas des fiches", async () => {
-  const { llmsFull, llms } = await import("../outils/racine.mjs");
+  const { llmsFull, llms, critere } = await import("../outils/racine.mjs");
   const { CRITERES_APP } = await import("../outils/corps/criteres-app.mjs");
   const txt = readFileSync("llms-full.txt", "utf8");
   assert.equal(txt, llmsFull(PAGES), "llms-full.txt n'est pas à jour");
@@ -420,9 +420,12 @@ test("llms-full.txt : Markdown strict, référencé par llms.txt, critères de l
   assert.doesNotMatch(txt, /supabase|\bapi\b|app\.myclassflow|localhost|127\.0\.0\.1/i);
   // Critères : tous ceux du catalogue actif, aucun critère inactif.
   assert.equal(CRITERES_APP.flatMap(([, l]) => l).length, 49);
+  // Un réglage dont le libellé contient une virgule reste un seul réglage.
+  assert.ok(txt.includes("« Un peu moins » ; « Beaucoup moins, trois items au moins » ; « Beaucoup moins »"));
+  assert.ok(txt.includes("**Changer de police** : Le support est écrit dans une autre police de caractères. Réglage : plusieurs polices au choix."));
   for (const [famille, liste] of CRITERES_APP) {
     assert.ok(txt.includes(`### ${famille}`), famille);
-    for (const [libelle] of liste) assert.ok(txt.includes(`**${libelle}**`), libelle);
+    for (const c of liste) assert.ok(txt.includes(`${critere(c)}\n`), c[0]);
   }
   assert.doesNotMatch(txt, /Agrandir le texte|Luciole/); // critère inactif, police non confirmée en prod
   // Chaque fiche : sa section, ses étapes numérotées et son lien.

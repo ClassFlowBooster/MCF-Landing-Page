@@ -18,10 +18,10 @@ Pour chaque élève, l'enseignant coche sur sa fiche les critères pédagogiques
 
 ### Lisibilité
 
-- **Changer de police** : Le support est écrit dans une autre police de caractères.
-- **Augmenter l'interligne** : Les lignes sont plus écartées les unes des autres. Réglages : 1,5, 2.
-- **Espacer les lettres** : Les lettres d'un même mot sont un peu plus écartées. Réglages : Léger, Moyen, Fort.
-- **Raccourcir les lignes** : Le texte tient sur des lignes plus courtes. Réglages : 15 cm, 12 cm.
+- **Changer de police** : Le support est écrit dans une autre police de caractères. Réglage : plusieurs polices au choix.
+- **Augmenter l'interligne** : Les lignes sont plus écartées les unes des autres. Réglages : « 1,5 » ; « 2 ».
+- **Espacer les lettres** : Les lettres d'un même mot sont un peu plus écartées. Réglages : « Léger » ; « Moyen » ; « Fort ».
+- **Raccourcir les lignes** : Le texte tient sur des lignes plus courtes. Réglages : « 15 cm » ; « 12 cm ».
 - **Fond crème** : La page a un fond crème au lieu d'un fond blanc.
 - **Surligner une ligne sur deux** : Dans les textes, une ligne sur deux a un fond légèrement coloré.
 - **Syllabes en couleurs dans les textes à lire** : Dans les textes à lire, les syllabes alternent entre deux couleurs.
@@ -33,9 +33,9 @@ Pour chaque élève, l'enseignant coche sur sa fiche les critères pédagogiques
 ### Consignes
 
 - **Consignes courtes et directes** : Les consignes sont écrites en phrases courtes.
-- **Vocabulaire simple** : Les mots difficiles des consignes sont remplacés par des mots courants. Réglages : Définitions entre parenthèses, Mots courants, Les deux.
-- **Remplacer ou expliquer les expressions imagées** : Les expressions imagées sont remplacées ou expliquées. Réglages : Dans les consignes, Dans les consignes et les textes.
-- **Formulations positives et directes** : Les consignes disent ce qu'il faut faire plutôt que ce qu'il ne faut pas faire. Réglages : Dans les questions, Dans toutes les consignes.
+- **Vocabulaire simple** : Les mots difficiles des consignes sont remplacés par des mots courants. Réglages : « Définitions entre parenthèses » ; « Mots courants » ; « Les deux ».
+- **Remplacer ou expliquer les expressions imagées** : Les expressions imagées sont remplacées ou expliquées. Réglages : « Dans les consignes » ; « Dans les consignes et les textes ».
+- **Formulations positives et directes** : Les consignes disent ce qu'il faut faire plutôt que ce qu'il ne faut pas faire. Réglages : « Dans les questions » ; « Dans toutes les consignes ».
 - **Préciser quoi faire, où, combien** : Chaque consigne dit quoi faire, à quel endroit et combien de fois.
 - **Rappel court de la consigne** : Un rappel de la consigne en quelques mots est ajouté à l'exercice.
 - **Lexique des mots difficiles** : Un petit lexique explique les mots difficiles du support.
@@ -47,7 +47,7 @@ Pour chaque élève, l'enseignant coche sur sa fiche les critères pédagogiques
 ### Structure
 
 - **Fond de couleur sous chaque consigne** : Chaque consigne est posée sur un fond de couleur pâle.
-- **Textes en paragraphes courts** : Les textes longs sont découpés en paragraphes courts. Réglages : Sans sous-titres, Avec sous-titres.
+- **Textes en paragraphes courts** : Les textes longs sont découpés en paragraphes courts. Réglages : « Sans sous-titres » ; « Avec sous-titres ».
 - **Séparations dans les textes longs** : Des séparations visibles découpent les textes longs.
 - **Rappels au fil d'un texte long** : De courts rappels sont ajoutés au fil des textes longs.
 - **Repères de couleur par partie** : Chaque partie du support a sa couleur et son étiquette.
@@ -55,16 +55,16 @@ Pour chaque élève, l'enseignant coche sur sa fiche les critères pédagogiques
 - **Repère « Commence ici »** : Un repère « Commence ici » montre où démarrer.
 - **« Lis toute la fiche avant de commencer »** : Le support commence par la mention « Lis toute la fiche avant de commencer ».
 - **Case de vérification à la fin de chaque exercice** : Une case à cocher « J'ai vérifié » termine chaque exercice.
-- **Encadré d'annonce** : Un encadré en tête de support annonce la durée, le matériel et le barème. Réglages : Encadré seul, Avec la case « J'ai terminé et relu ».
+- **Encadré d'annonce** : Un encadré en tête de support annonce la durée, le matériel et le barème. Réglages : « Encadré seul » ; « Avec la case « J'ai terminé et relu » ».
 
 ### Exercices
 
-- **Exemple résolu** : Un exemple déjà fait montre ce qui est attendu. Réglages : Quand le format est ambigu, À chaque exercice.
-- **Aide-mémoire** : Un aide-mémoire rappelle la règle ou la méthode utile à l'exercice. Réglages : Repères utiles à l'exercice, Règles d'orthographe, Les deux.
-- **Banque de mots** : Les mots à utiliser sont donnés dans une banque de mots. Réglages : Sans intrus, Avec un ou deux intrus.
-- **Moins d'écriture : textes à trous, cases, QCM** : Les réponses à rédiger deviennent des textes à trous, des cases à cocher ou des QCM. Réglages : Textes à trous, Cases à cocher, Textes à trous et cases, Textes à trous, QCM et cases.
-- **Moins d'items par exercice** : Chaque exercice garde moins d'items ; ce qui est vérifié reste le même. Réglages : Un peu moins, Beaucoup moins, trois items au moins, Beaucoup moins.
-- **Lignes d'écriture** : Les lignes pour écrire changent de réglure. Réglages : Lignes simples, Seyès, Double ligne, Double ligne haute.
+- **Exemple résolu** : Un exemple déjà fait montre ce qui est attendu. Réglages : « Quand le format est ambigu » ; « À chaque exercice ».
+- **Aide-mémoire** : Un aide-mémoire rappelle la règle ou la méthode utile à l'exercice. Réglages : « Repères utiles à l'exercice » ; « Règles d'orthographe » ; « Les deux ».
+- **Banque de mots** : Les mots à utiliser sont donnés dans une banque de mots. Réglages : « Sans intrus » ; « Avec un ou deux intrus ».
+- **Moins d'écriture : textes à trous, cases, QCM** : Les réponses à rédiger deviennent des textes à trous, des cases à cocher ou des QCM. Réglages : « Textes à trous » ; « Cases à cocher » ; « Textes à trous et cases » ; « Textes à trous, QCM et cases ».
+- **Moins d'items par exercice** : Chaque exercice garde moins d'items ; ce qui est vérifié reste le même. Réglages : « Un peu moins » ; « Beaucoup moins, trois items au moins » ; « Beaucoup moins ».
+- **Lignes d'écriture** : Les lignes pour écrire changent de réglure. Réglages : « Lignes simples » ; « Seyès » ; « Double ligne » ; « Double ligne haute ».
 - **Point de départ sur chaque ligne** : Un point marque le début de chaque ligne d'écriture.
 - **Tableaux agrandis** : Les cases des tableaux sont plus grandes.
 - **Fournir le texte à recopier** : Le texte à recopier est déjà écrit dans l'exercice.

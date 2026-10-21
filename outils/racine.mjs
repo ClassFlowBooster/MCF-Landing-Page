@@ -83,7 +83,9 @@ const enMarkdown = (html) => html
   .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#39;|&rsquo;/g, "’")
   .replace(/\s+/g, " ").trim();
 
-const critere = ([libelle, effet, reglages]) => `- **${libelle}** : ${effet}${reglages ? ` Réglages : ${reglages.join(", ")}.` : ""}`;
+// Réglages entre guillemets : certains libellés contiennent eux-mêmes une virgule.
+export const critere = ([libelle, effet, reglages]) => `- **${libelle}** : ${effet}${
+  reglages === "polices" ? " Réglage : plusieurs polices au choix." : reglages ? ` Réglages : ${reglages.map((r) => `« ${r} »`).join(" ; ")}.` : ""}`;
 
 // Guide complet pour les assistants IA (llms-full.txt) : présentation, critères de l'app
 // (catalogue de MCF-App, voir criteres-app.mjs) et pas à pas repris des fiches, déjà vérifiés

@@ -4,10 +4,11 @@
 // « Agrandir le texte » (lis.taille_texte) est inactif dans l'app : il n'y figure pas.
 // « Changer de police » : les polices proposées ne sont pas listées (le choix a changé depuis
 // la migration 079 et la prod peut différer du dépôt).
-// Chaque critère : [libellé, ce que fait l'adaptation, réglages proposés ou null].
+// Chaque critère : [libellé, ce que fait l'adaptation, réglages proposés, null (case seule) ou
+// "polices" (liste de polices non publiée)].
 export const CRITERES_APP = [
   ["Lisibilité", [
-    ["Changer de police", "Le support est écrit dans une autre police de caractères.", null],
+    ["Changer de police", "Le support est écrit dans une autre police de caractères.", "polices"],
     ["Augmenter l'interligne", "Les lignes sont plus écartées les unes des autres.", ["1,5", "2"]],
     ["Espacer les lettres", "Les lettres d'un même mot sont un peu plus écartées.", ["Léger", "Moyen", "Fort"]],
     ["Raccourcir les lignes", "Le texte tient sur des lignes plus courtes.", ["15 cm", "12 cm"]],
