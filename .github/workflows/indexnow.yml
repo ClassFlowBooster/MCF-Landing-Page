@@ -1,0 +1,31 @@
+# Après chaque push sur main : signale à IndexNow les pages modifiées, une fois le site en
+# ligne à jour (outils/indexnow.mjs). Aucun secret : la clé IndexNow est publique par conception.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  signaler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Signaler les pages modifiées
+        env:
+          AVANT: ${{ github.event.before }}
+          APRES: ${{ github.sha }}
+        run: node outils/indexnow.mjs "$AVANT" "$APRES" --attendre --envoyer
