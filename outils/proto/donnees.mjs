@@ -83,13 +83,18 @@ export const OCR_ROWS = IMPORT.map(([first, last, note]) => ({
 
 export const IMPORT_ROWS = IMPORT.map(([first, last]) => [first, last === 'R?naud' ? 'Renaud' : last]);
 
+// Même conversation que l'exemple de la fiche Lia ; Lia tutoie, comme dans l'app (invite de lia-chat).
 export const LIA_CONVERSATIONS = [{
-  id: 1, title: 'Tâche de mesure', date: "Aujourd’hui",
-  preview: 'Tâche proposée pour jeudi.',
+  id: 1, title: 'Point de la semaine', date: "Aujourd’hui",
+  preview: 'Une tâche, un commentaire, un conseil.',
   messages: [
-    { role: 'user', text: 'Ajoute une tâche : photocopier la fiche de mesure pour jeudi.' },
-    { role: 'lia', text: 'Bien sûr. Voici la tâche que je te propose. Rien n’est enregistré tant que tu ne l’as pas validée.' },
-    { propose: { kind: 'tache', title: 'Photocopier la fiche de mesure', detail: 'Jeudi 5 nov. · CE1 · Inès Martin', status: 'pending' } },
+    { role: 'user', text: 'Qu’est-ce qui me reste à faire cette semaine ?' },
+    { role: 'lia', text: 'Trois tâches : rendre les cahiers de lecture demain, photocopier la fiche de mesure pour jeudi, récupérer les autorisations de sortie de Maël et Nour pour vendredi.' },
+    { role: 'user', text: 'Note qu’Inès a mesuré correctement ses quatre segments aujourd’hui.' },
+    { role: 'lia', text: 'Je te propose d’ajouter ce commentaire au fil de suivi d’Inès. Rien n’est enregistré tant que tu ne l’as pas validé.' },
+    { propose: { kind: 'obs', title: 'Inès a mesuré correctement ses quatre segments.', detail: 'Commentaire · fil de suivi d’Inès Martin', status: 'pending' } },
+    { role: 'user', text: 'Comment aider les élèves qui partent du bord de la règle ?' },
+    { role: 'lia', text: 'Fais poser le doigt sur le zéro avant chaque mesure, et compare deux mesures du même segment faites de deux façons : l’écart rend l’erreur visible.' },
   ],
 }];
 

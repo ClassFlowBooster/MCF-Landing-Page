@@ -52,7 +52,7 @@ export const VUES = {
     ],
   },
   'adaptation-des-supports': {
-    type: 'bureau', url: '/index.html#supports', root: '.app', taille: { width: 1440, height: 900 }, attente: 1400,
+    type: 'bureau', url: '/index.html#supports', root: '.app', taille: { width: 1280, height: 800 }, attente: 1400,
     css: '.support-targets{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}.support-target{border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;background:var(--paper);font-size:13px}.support-target.active{border-color:var(--coral-300);background:var(--coral-50)}.support-target b{display:block;margin-bottom:6px}.criteria-family{margin-top:10px;font-size:12px;color:var(--ink-3)}.criteria-family .chip{margin:5px 4px 0 0}',
     patches: [
       { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
@@ -68,7 +68,7 @@ export const VUES = {
     ],
   },
   'fiches-eleves': {
-    type: 'bureau', url: '/index.html#pupil', root: '.app', taille: { width: 1440, height: 900 }, attente: 1400,
+    type: 'bureau', url: '/index.html#pupil', root: '.app', taille: { width: 820, height: 700 }, attente: 1400,
     patches: [
       { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
       { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
@@ -78,10 +78,13 @@ export const VUES = {
     ],
   },
   lia: {
-    type: 'bureau', url: '/index.html#dashboard&lia=expanded&conv=1', root: '.app', taille: { width: 1440, height: 900 }, attente: 1400,
+    type: 'bureau', url: '/index.html#dashboard&lia=expanded&conv=1', root: '.app', taille: { width: 1000, height: 780 }, attente: 1400,
     patches: [
       { fichier: 'lia.jsx', constante: 'LIA_SEED_CONVERSATIONS', valeur: LIA_CONVERSATIONS },
-      { fichier: 'lia.jsx', remplacements: [{ avant: "'Contexte : CE2 · Mme Durand'", apres: "'Contexte : CE1 · Mme Moreau'" }] },
+      { fichier: 'lia.jsx', remplacements: [
+        { avant: "'Contexte : CE2 · Mme Durand'", apres: "'Contexte : CE1 · Mme Moreau'" },
+        { avant: "'Observation à ajouter'", apres: "'Commentaire à ajouter'" },
+      ] },
       { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
       { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
       { fichier: 'prof.jsx', constante: 'MOCK_CLASSES', valeur: CLASSES },

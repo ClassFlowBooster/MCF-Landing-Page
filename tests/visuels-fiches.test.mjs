@@ -43,9 +43,20 @@ test('le cadre met les six extraits bureau à l\'échelle sans JavaScript, avec 
   const css = readFileSync(new URL('../assets/css/visuels-fiches.css', import.meta.url), 'utf8');
   assert.match(css, /container-type:\s*inline-size/);
   assert.match(css, /overflow:\s*hidden/);
-  // tan(atan2(a, b)) donne a / b sans unité ; calc(100cqw / 1440) serait une longueur, invalide dans zoom ou scale().
-  assert.match(css, /zoom:\s*min\(1,\s*tan\(atan2\(100cqw,\s*1440px\)\)\)/);
-  assert.doesNotMatch(css, /calc\(100cqw\s*\/\s*\d/);
-  assert.match(css, /1440px/);
+  // Safari ignore un zoom calculé : l'échelle passe par transform, avec tan(atan2()) puis la division
+  // de deux longueurs là où elle est comprise (Safari calcule mal atan2 avec cqw).
+  assert.doesNotMatch(css, /zoom:/);
+  assert.match(css, /transform:\s*scale\(tan\(atan2\(100cqw,\s*calc\(var\(--appv-w\) \* 1px\)\)\)\)/);
+  assert.match(css, /@supports \(scale: calc\(1px \/ 1px\)\)[\s\S]*scale\(calc\(100cqw \/ \(var\(--appv-w\) \* 1px\)\)\)/);
+  assert.match(css, /aspect-ratio:\s*var\(--appv-w\) \/ var\(--appv-ht\)/);
   assert.doesNotMatch(css, /appv-figure--tel|390px|--tel/);
+});
+
+test('chaque figure porte sa taille de rendu et son cadrage, sans unité de fenêtre dans les extraits', () => {
+  for (const [slug, html] of Object.entries(illustrations)) {
+    const style = html.match(/<figure[^>]*style="([^"]*)"/)?.[1] || '';
+    for (const v of ['--appv-l', '--appv-h', '--appv-x', '--appv-y', '--appv-w', '--appv-ht']) assert.match(style, new RegExp(`${v}:\\d+`), `${slug} : ${v}`);
+    assert.doesNotMatch(html.replace(/<figure[^>]*>/, ''), /style="[^"]*\d(?:vw|vh)\b/, `${slug} : vw/vh en ligne`);
+  }
+  for (const slug of ['adaptation-des-supports', 'fiches-eleves', 'lia']) assert.match(illustrations[slug], /--appv-max:680px/, slug);
 });

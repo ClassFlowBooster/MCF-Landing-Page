@@ -267,7 +267,9 @@ async function rendUneVue(nom, vue, origine, navigateur) {
   const html = await navigateur.evaluer(`(${serialise})(document.querySelector(${json(vue.root)}), ${json(vue.type)}, ${json(nom)})`);
   const css = await navigateur.evaluer(`(${extraitCss})('', ${json(vue.type)})`);
   mkdirSync(sortieHtml, { recursive: true });
-  writeFileSync(join(sortieHtml, `${nom}.html`), `${html}\n`);
+  // Les styles en ligne en vw/vh suivraient la fenêtre du visiteur : on les fige à la taille de rendu.
+  const fige = html.replace(/style="[^"]*"/g, (attr) => attr.replace(/(\d+(?:\.\d+)?)v([wh])\b/g, (_, n, axe) => `${Math.round(n * (axe === 'w' ? vue.taille.width : vue.taille.height)) / 100}px`));
+  writeFileSync(join(sortieHtml, `${nom}.html`), `${fige}\n`);
   return css;
 }
 

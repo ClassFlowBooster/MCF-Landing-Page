@@ -10,8 +10,8 @@ import { illustrations } from "./illustrations.mjs";
 // Exemple : trois échanges reconstitués avec la classe de CE1 des autres fiches.
 const ECHANGES = [
   ["Qu'est-ce qui me reste à faire cette semaine ?", "Trois tâches : rendre les cahiers de lecture demain, photocopier la fiche de mesure pour jeudi, récupérer les autorisations de sortie de Maël et Nour pour vendredi.", ""],
-  ["Note qu'Inès a mesuré correctement ses quatre segments aujourd'hui.", "Je propose d'ajouter ce commentaire au fil de suivi d'Inès.", "Ajouter le commentaire ?"],
-  ["Comment aider les élèves qui partent du bord de la règle ?", "Faites poser le doigt sur le zéro avant chaque mesure, et comparez deux mesures du même segment faites de deux façons : l'écart rend l'erreur visible.", ""],
+  ["Note qu'Inès a mesuré correctement ses quatre segments aujourd'hui.", "Je te propose d'ajouter ce commentaire au fil de suivi d'Inès.", "Ajouter le commentaire ?"],
+  ["Comment aider les élèves qui partent du bord de la règle ?", "Fais poser le doigt sur le zéro avant chaque mesure, et compare deux mesures du même segment faites de deux façons : l'écart rend l'erreur visible.", ""],
 ];
 
 const exemple = `<p>L'enseignant de la classe de CE1 des autres fiches, un soir de semaine : il fait le point sur ce qui lui reste, note ce qu'il a vu en mesure, puis cherche une idée pour le lendemain.</p>
