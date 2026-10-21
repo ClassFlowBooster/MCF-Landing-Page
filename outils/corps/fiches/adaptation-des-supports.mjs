@@ -79,7 +79,7 @@ export default {
     ["Trier les copies au photocopieur", "L'impression prépare ensemble la version d'origine et chaque version adaptée ; « Tout télécharger (.zip) » les garde dans un seul fichier."],
   ],
   etapes: [
-    ["Ajoutez le support", "« Adapter un support », un titre, puis une photo, une image de la photothèque ou un fichier PDF ou image, jusqu'à 8 pages. Les photos et fichiers ajoutés se réordonnent ou se retirent."],
+    ["Ajoutez le support", "« Adapter un support », un titre, puis une photo, une image de la photothèque, ou un fichier PDF, image ou Word, jusqu'à 8 pages. Les photos et fichiers ajoutés se réordonnent ou se retirent."],
     ["Dites pour qui", "Partez des critères de vos élèves ou de vos groupes, ou choisissez les critères pour l'occasion. Puis « Lancer l'adaptation »."],
     ["Imprimez ou téléchargez", "Chaque version s'imprime ou se télécharge, et une version inutile se supprime. Le support, lui, peut être renommé."],
   ],
@@ -94,7 +94,7 @@ export default {
   },
   questions: [
     ["Quels critères pédagogiques peut-on cocher pour adapter un exercice ?", "Ils sont rangés par familles. Lisibilité : agrandir le texte, changer de police, augmenter l'interligne, espacer les lettres, raccourcir les lignes, fond crème. Consignes : consignes courtes et directes, vocabulaire simple, lexique des mots difficiles. Structure : textes en paragraphes courts, afficher la progression. D'autres critères complètent ces familles dans l'app."],
-    ["Quels documents peut-on adapter ?", "Une photo prise sur le moment, une image de votre photothèque, ou un fichier PDF ou image (PNG, JPG, WEBP), jusqu'à 8 pages par support. Un document Word s'exporte d'abord en PDF."],
+    ["Quels documents peut-on adapter ?", "Une photo prise sur le moment, une image de votre photothèque, ou un fichier PDF, image (PNG, JPG, WEBP) ou Word (DOC, DOCX), jusqu'à 8 pages par support."],
     ["Faut-il relier l'adaptation à un élève ?", "Non. Vous pouvez partir des critères enregistrés sur la fiche d'un élève, adapter pour un groupe, ou cocher des critères pour l'occasion. Un même support peut sortir en plusieurs versions."],
     ["L'adaptation peut-elle modifier l'exercice ?", "L'adaptation conserve le but de l'exercice et porte principalement sur sa présentation. La mise en forme suit des règles définies : les mêmes critères appliquent les mêmes réglages d'un document à l'autre, pour un rendu cohérent et aussi reproductible que possible. L'IA reformule les consignes uniquement si vous cochez un critère qui le demande. Vous gardez la main sur les critères choisis et relisez le résultat avant de l'utiliser."],
     ["L'adaptation remplace-t-elle la différenciation pédagogique ?", "Non, elle en est un outil. Différencier, c'est aussi changer le matériel, l'accompagnement ou la tâche ; l'adaptation s'occupe du support, pour que chaque élève puisse travailler sur le même exercice que la classe."],
