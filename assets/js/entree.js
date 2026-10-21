@@ -22,7 +22,7 @@ if (typeof document !== "undefined") {
   const fenetre = document.getElementById("entree");
   if (d.redirection) {
     location.replace(d.redirection);
-  } else if (fenetre) {
+  } else if (fenetre && d.afficherFenetre) {
     // Le reste de la page devient inaccessible (souris et clavier) tant que la fenêtre est ouverte.
     const derriere = document.querySelectorAll("body > header, body > main, body > footer");
     document.body.classList.add("avec-entree");
