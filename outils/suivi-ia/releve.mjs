@@ -60,7 +60,11 @@ export function executer(commande, argumentsCommande, options = {}) {
       // Codex peut sortir sans erreur quand il est interrompu : le délai se vérifie aussi à la durée.
       const delaiDepasse = options.timeout && Date.now() - debut >= options.timeout;
       if (erreur || delaiDepasse) {
-        const echec = delaiDepasse ? new Error(`délai de ${Math.round(options.timeout / 1000)} s dépassé`) : erreur;
+        // Message court et lisible : la commande et ses arguments ne sont pas repris, seulement la cause.
+        const cause = String(sortieErreur ?? "").split("\n").map((ligne) => ligne.trim()).filter((ligne) => ligne && !/^Reading additional input/.test(ligne)).at(-1);
+        const echec = delaiDepasse
+          ? new Error(`délai de ${Math.round(options.timeout / 1000)} s dépassé`)
+          : new Error(`${commande.split("/").at(-1)} a échoué (code ${erreur.code ?? "?"})${cause ? ` : ${cause}` : ""}`);
         echec.stdout = sortieStandard;
         echec.stderr = sortieErreur;
         rejeter(echec);

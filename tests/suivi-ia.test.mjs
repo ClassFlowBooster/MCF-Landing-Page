@@ -206,3 +206,11 @@ test("executer signale un délai dépassé même si la commande sort sans erreur
   const { executer } = await import("../outils/suivi-ia/releve.mjs");
   await assert.rejects(executer(process.execPath, ["-e", "process.on('SIGTERM', () => process.exit(0)); setTimeout(() => {}, 10000);"], { timeout: 300 }), /délai de 0 s dépassé|délai/);
 });
+
+test("executer donne la cause d'un échec, sans la ligne de commande", async () => {
+  const { executer } = await import("../outils/suivi-ia/releve.mjs");
+  await assert.rejects(
+    executer(process.execPath, ["-e", "console.error('Reading additional input from stdin...'); console.error('limite d\\'usage atteinte'); process.exit(3);"], { timeout: 5000 }),
+    (erreur) => /a échoué \(code 3\) : limite d'usage atteinte$/.test(erreur.message) && !erreur.message.includes("-e"),
+  );
+});
