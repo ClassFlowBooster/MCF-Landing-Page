@@ -28,21 +28,6 @@ const exemple = `<p>Rangées comme dans l'app : la plus proche en haut, celle sa
     </div>`;
 
 // Illustration : écran « Tâches » du téléphone reconstitué en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : la liste des tâches dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Tâches</div>
-          <div class="mf-titre">À faire</div>
-          <ul class="mf-seances">
-            <li><span>Demain</span><b>Rendre les cahiers</b></li>
-            <li><span>Jeudi</span><b>Photocopies mesure</b></li>
-            <li><span>Vendredi</span><b>Autorisations</b><i>2 élèves</i></li>
-          </ul>
-          <div class="mf-etiquette">Terminées</div>
-          <ul class="mf-seances"><li class="pause"><s>Planning des services</s></li></ul>
-          <div class="mf-bouton">Nouvelle tâche</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
 
 export default {
   slug: "taches",
@@ -70,7 +55,6 @@ export default {
     ["Cochez-la", "Elle passe dans « Terminées ». Vous pouvez toujours la modifier ou la supprimer."],
   ],
   titreEtapes: "Comment garder vos tâches à portée de main ?",
-  illustration,
   blocs: [{ titre: "Quelles tâches pour la semaine d'une classe de CE1 ?", html: exemple }],
   offre: {
     titre: "Vos tâches, gratuites dans MyClassFlow",

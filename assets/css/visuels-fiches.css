@@ -1,0 +1,76 @@
+/* Cadre des extraits du proto : cette feuille ne stylise pas le proto lui-même. */
+.maquette-fiche.appv-figure {
+  width: 100%;
+  margin: 2rem auto;
+  max-width: min(100%, var(--appv-max, 100%));
+}
+
+/* L'extrait occupe toute la largeur de la partie, sous les étapes. */
+.fiche-comment:has(> .appv-figure) { grid-template-columns: 1fr; }
+
+.appv-proto-viewport {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--appv-w) / var(--appv-ht);
+  overflow: hidden;
+  border: 1px solid #e6dfcf;
+  border-radius: 14px;
+  background: #fbf8f3;
+  box-shadow: 0 1px 3px rgb(31 26 20 / 6%), 0 8px 24px rgb(31 26 20 / 5%);
+}
+
+/* Échelle proportionnelle sans JavaScript : tan(atan2(a, b)) vaut a / b, sans unité.
+   transform plutôt que zoom : Safari ignore un zoom calculé et affichait la vue à 100 %, coupée à droite.
+   La figure porte la taille de rendu de la vue (--appv-l × --appv-h) et son cadrage
+   (--appv-x, --appv-y, --appv-w × --appv-ht) ; le cadre garde ce rapport. transform sert aussi
+   de bloc conteneur aux éléments « fixed » du proto (rail, tabbar). */
+.appv-proto-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--appv-l) * 1px);
+  height: calc(var(--appv-h) * 1px);
+  overflow: hidden;
+  transform-origin: 0 0;
+  transform: scale(tan(atan2(100cqw, calc(var(--appv-w) * 1px)))) translate(calc(var(--appv-x) * -1px), calc(var(--appv-y) * -1px));
+}
+
+/* Safari calcule mal tan(atan2()) avec cqw (échelle 0,16 au lieu de 0,87) mais sait diviser
+   deux longueurs : on prend la division partout où elle est comprise. */
+@supports (scale: calc(1px / 1px)) {
+  .appv-proto-stage {
+    transform: scale(calc(100cqw / (var(--appv-w) * 1px))) translate(calc(var(--appv-x) * -1px), calc(var(--appv-y) * -1px));
+  }
+}
+
+/* Le proto dimensionne l'app et la barre latérale sur la fenêtre (100vh) : ici, sur la taille de rendu. */
+.appv-proto-stage .appv-proto .app { min-height: calc(var(--appv-h) * 1px); }
+.appv-proto-stage .appv-proto .side { height: calc(var(--appv-h) * 1px); }
+
+/* La racine reprend les règles « body » du proto (centrage, défilement) : on les neutralise. */
+.appv-proto-stage > .appv-proto {
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.appv-figure figcaption { margin-top: .65rem; color: var(--ink-2, #4a4238); font-size: .9rem; }
+
+/* Fiche élève : dans l'app, la fenêtre agrandie couvre tout l'écran, rail compris. */
+[data-proto="fiches-eleves"] .appv-proto .rail { visibility: hidden; }
+[data-proto="fiches-eleves"] .appv-proto div[style*="margin-bottom:26px"][style*="display:flex"] { flex-direction: row; text-align: left; }
+[data-proto="fiches-eleves"] .appv-proto div[style*="display:flex"] > .inp { width: auto; flex: 0 0 auto; }
+
+/* Adaptation : « Pour qui adapter ? » en boutons segmentés, le choix courant en orange clair, comme dans l'app. */
+/* Le sélecteur de classe, devenu span, garde la largeur de la carte comme le select d'origine. */
+[data-proto="adaptation-des-supports"] .appv-proto span.inp { box-sizing: border-box; }
+[data-proto="adaptation-des-supports"] .appv-proto div[style*="gap:8px"] > .btn { flex: 0 0 auto; width: auto; }
+[data-proto="adaptation-des-supports"] .appv-proto div[style*="gap:8px"] > .btn-primary { background: var(--coral-50); color: var(--coral-700); border: 1px solid var(--coral-300); box-shadow: none; }
+[data-proto="adaptation-des-supports"] .appv-proto div[style*="gap:8px"] > .btn-ghost { border: 1px solid var(--line-2); }
+
+/* Décision de Joseph (21/10) : pas de vue de l'app sur téléphone ; le texte de la fiche suffit. */
+@media (max-width: 600px) { .maquette-fiche.appv-figure { display: none; } }

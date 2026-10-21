@@ -34,20 +34,6 @@ const exemple = `<p>Une liste de rentrée fictive, photographiée sur le bureau 
     </div>`;
 
 // Illustration : écran de relecture du téléphone reconstitué en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : la relecture d'une liste de classe dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Classe › Ajouter des élèves</div>
-          <div class="mf-titre">Relecture</div>
-          <ul class="mf-seances">
-            <li><b>Adam Brunet</b></li>
-            <li><b>Chloé Duval</b></li>
-            <li><b>Maël R?naud</b><i>À vérifier</i></li>
-            <li><b>Lucas Petit</b><i>En double dans la liste</i></li>
-          </ul>
-          <div class="mf-bouton">Ajouter 6 élèves</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
 
 export default {
   slug: "import-eleves-photo",
@@ -75,7 +61,6 @@ export default {
     ["Ajoutez-les", "« Ajouter N élèves » remplit la classe : chaque élève apparaît dans « Classe », et sa fiche s'ouvre d'un toucher."],
   ],
   titreEtapes: "Comment ajouter votre classe à partir d'une photo ?",
-  illustration,
   blocs: [{ titre: "Comment une liste de huit élèves passe-t-elle de la photo à la classe ?", html: exemple }],
   offre: {
     titre: "L'import par photo, gratuit dans MyClassFlow",

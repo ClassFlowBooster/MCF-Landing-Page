@@ -1,3 +1,4 @@
+import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Cahier journal » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // Planning › Cahier journal en vue jour ou semaine ; champs titre, matière, horaires, domaine,
@@ -46,22 +47,7 @@ const exemple = `<p>Une journée réelle ne suit jamais tout à fait ce qui éta
     </div>`;
 
 // Illustration : vue Jour du cahier journal reconstituée en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : une journée du cahier journal dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Planning › Cahier journal</div>
-          <div class="mf-titre">Mardi</div>
-          <div class="mf-onglets"><span class="on">Jour</span><span>Semaine</span></div>
-          <ol class="mf-seances">
-            <li><span>8 h 30</span><b>Rituel : les doubles</b></li>
-            <li><span>8 h 45</span><b>Lecture : le hérisson</b></li>
-            <li><span>9 h 45</span><b>Mesurer avec la règle</b><i>Fiche rattachée</i></li>
-            <li class="pause"><span>10 h 25</span>Récréation</li>
-            <li><span>10 h 40</span><b>Copie : la phrase du jour</b></li>
-          </ol>
-          <div class="mf-bouton">Ajouter une séance</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
+const illustration = illustrations["cahier-journal"];
 
 export default {
   slug: "cahier-journal",

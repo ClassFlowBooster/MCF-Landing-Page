@@ -1,3 +1,4 @@
+import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Lia, votre assistante » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // bouton rond sur ordinateur, « Demander à Lia » au centre du dock du téléphone ; champ écrit ou
@@ -6,35 +7,8 @@
 // et rien n'est écrit sans validation. Elle ne crée ni ne modifie séances, fiches ni supports,
 // et ne lit ni le cahier journal ni l'emploi du temps. Le modèle d'IA n'est pas nommé.
 
-// Exemple : trois échanges reconstitués avec la classe de CE1 des autres fiches.
-const ECHANGES = [
-  ["Qu'est-ce qui me reste à faire cette semaine ?", "Trois tâches : rendre les cahiers de lecture demain, photocopier la fiche de mesure pour jeudi, récupérer les autorisations de sortie de Maël et Nour pour vendredi.", ""],
-  ["Note qu'Inès a mesuré correctement ses quatre segments aujourd'hui.", "Je propose d'ajouter ce commentaire au fil de suivi d'Inès.", "Ajouter le commentaire ?"],
-  ["Comment aider les élèves qui partent du bord de la règle ?", "Faites poser le doigt sur le zéro avant chaque mesure, et comparez deux mesures du même segment faites de deux façons : l'écart rend l'erreur visible.", ""],
-];
-
-const exemple = `<p>L'enseignant de la classe de CE1 des autres fiches, un soir de semaine : il fait le point sur ce qui lui reste, note ce qu'il a vu en mesure, puis cherche une idée pour le lendemain.</p>
-
-    <div class="exemple-fiche">
-      <h3>Une tâche, un commentaire, un conseil de métier</h3>
-      <div class="li-fil">
-        ${ECHANGES.map(([q, r, action]) => `<p class="li-q">${q}</p>
-        <div class="li-r"><p>${r}</p>${action ? `<p class="li-action"><span>${action}</span><b>Valider</b><i>Refuser</i></p>` : ""}</div>`).join("\n        ")}
-      </div>
-      <p class="ad-note">Échanges reconstitués pour la page, avec des élèves inventés.</p>
-    </div>`;
-
-// Illustration : un échange avec Lia reconstitué en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : une proposition de Lia à valider">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Lia</div>
-          <div class="mf-titre">Demander à Lia</div>
-          <p class="li-q">Note qu'Inès a mesuré correctement ses quatre segments.</p>
-          <div class="li-r"><p>Je propose d'ajouter ce commentaire à son fil de suivi.</p><p class="li-action"><span>Ajouter le commentaire ?</span><b>Valider</b></p></div>
-          <div class="mf-bouton">Dicter</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
+// Illustration : le panneau Lia du proto, avec la conversation de la semaine (données fictives).
+const illustration = illustrations["lia"];
 
 export default {
   slug: "lia",
@@ -63,7 +37,7 @@ export default {
   ],
   titreEtapes: "Comment demander de l'aide à Lia ?",
   illustration,
-  blocs: [{ titre: "À quoi ressemble un soir de semaine avec Lia ?", html: exemple }],
+  blocs: [], // l'exemple écrit doublait la conversation du visuel (retiré à la demande de Joseph, 21/10)
   offre: {
     titre: "Lia, dans l'abonnement Enseignant",
     texte: "Avec les adaptations des supports illimitées. La gestion de classe reste gratuite, sans carte bancaire.",

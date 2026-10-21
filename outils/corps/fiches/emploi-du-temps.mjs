@@ -1,3 +1,4 @@
+import { illustrations } from "./illustrations.mjs";
 // Fiche explicative « Emploi du temps » (MCF-Pilotage#53).
 // Ce qui est dit de l'app est vérifié dans MCF-App (plan de fiche, origin/main d91a67df) :
 // semaine type récurrente du lundi au vendredi ; créneaux « Cours », « Récré/pause » ou « Rituel »
@@ -42,27 +43,7 @@ const exemple = `<p>Une classe de CM2 qui a cours le mercredi matin : quatre jou
     </div>`;
 
 // Illustration : semaine type et volume par matière reconstitués en HTML, données fictives.
-const illustration = `<figure class="maquette-fiche" aria-label="Illustration : une semaine type et son volume horaire dans MyClassFlow">
-        <div class="mf-ecran" aria-hidden="true">
-          <div class="mf-chemin">Planning › Emploi du temps</div>
-          <div class="mf-titre">Semaine type</div>
-          <div class="mf-grille">
-            <span class="j">Lun</span><span class="j">Mar</span><span class="j">Mer</span><span class="j">Jeu</span><span class="j">Ven</span>
-            <span class="c fr">Français</span><span class="c fr">Français</span><span class="c ma">Maths</span><span class="c ma">Maths</span><span class="c fr">Français</span>
-            <span class="c p">Récré</span><span class="c p">Récré</span><span class="c p">Récré</span><span class="c p">Récré</span><span class="c p">Récré</span>
-            <span class="c ma">Maths</span><span class="c ma">Maths</span><span class="c fr">Français</span><span class="c fr">Français</span><span class="c ma">Maths</span>
-            <span class="c eps">EPS</span><span class="c hg">Histoire</span><span class="c v"></span><span class="c eps">EPS</span><span class="c ar">Arts</span>
-          </div>
-          <div class="mf-etiquette">Volume par matière</div>
-          <ul class="mf-volumes">
-            <li><span>Français</span><i style="width:100%"></i><b>7 h 15</b></li>
-            <li><span>Mathématiques</span><i style="width:62%"></i><b>4 h 30</b></li>
-            <li><span>EPS</span><i style="width:38%"></i><b>2 h 45</b></li>
-          </ul>
-          <div class="mf-total">21 h 45 d'enseignement / semaine</div>
-        </div>
-        <figcaption>Illustration avec des données fictives.</figcaption>
-      </figure>`;
+const illustration = illustrations["emploi-du-temps"];
 
 export default {
   slug: "emploi-du-temps",
