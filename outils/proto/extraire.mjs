@@ -26,6 +26,8 @@ function finInitialiseur(source, debut) {
   for (let index = debut; index < source.length; index++) {
     const char = source[index];
     if (quote) { if (escape) escape = false; else if (char === '\\') escape = true; else if (char === quote) quote = ''; continue; }
+    if (char === '/' && source[index + 1] === '/') { index = source.indexOf('\n', index); if (index < 0) break; continue; }
+    if (char === '/' && source[index + 1] === '*') { index = source.indexOf('*/', index + 2) + 1; if (index <= 0) break; continue; }
     if (char === '"' || char === "'" || char === '`') { quote = char; continue; }
     if ('{[('.includes(char)) profondeur++;
     else if ('}])'.includes(char)) profondeur--;
@@ -51,6 +53,13 @@ function appliquePatch(racine, patch) {
     const index = source.indexOf(patch.apres);
     if (index < 0) throw new Error(`${patch.fichier} : ancre introuvable (${patch.apres})`);
     source = source.slice(0, index) + patch.texte + source.slice(index);
+  }
+  if (patch.remplacements) for (const remplacement of patch.remplacements) {
+    const occurrences = source.split(remplacement.avant).length - 1;
+    if (!occurrences) throw new Error(`${patch.fichier} : texte à remplacer introuvable (${remplacement.avant})`);
+    source = remplacement.toutes
+      ? source.split(remplacement.avant).join(remplacement.apres)
+      : source.replace(remplacement.avant, remplacement.apres);
   }
   // Un fichier vide est plus sûr qu'un composant de lancement : les appels sont
   // optionnels dans les shells des deux proto-types.
@@ -85,10 +94,11 @@ async function cdp(port) {
   }
   if (!ws) throw new Error('Chrome CDP indisponible');
   let id = 0; const attente = new Map();
-  ws.onmessage = ({ data }) => { const message = JSON.parse(data); if (!message.id) return; const demande = attente.get(message.id); attente.delete(message.id); message.error ? demande.reject(new Error(message.error.message)) : demande.resolve(message.result); };
+  const erreurs = [];
+  ws.onmessage = ({ data }) => { const message = JSON.parse(data); if (message.method === 'Runtime.exceptionThrown') erreurs.push(message.params.exceptionDetails.exception?.description || message.params.exceptionDetails.text); if (message.method === 'Runtime.consoleAPICalled' && message.params.type === 'error') erreurs.push(message.params.args.map((a) => a.value ?? a.description).join(' ')); if (!message.id) return; const demande = attente.get(message.id); attente.delete(message.id); message.error ? demande.reject(new Error(message.error.message)) : demande.resolve(message.result); };
   const envoie = (method, params = {}) => new Promise((resolve, reject) => { const numero = ++id; attente.set(numero, { resolve, reject }); ws.send(JSON.stringify({ id: numero, method, params })); });
   const evaluer = async (expression) => { const resultat = await envoie('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }); if (resultat.exceptionDetails) throw new Error(resultat.exceptionDetails.exception?.description || resultat.exceptionDetails.text); return resultat.result.value; };
-  return { ws, envoie, evaluer };
+  return { ws, envoie, evaluer, erreurs };
 }
 
 function splitTopLevel(css) {
@@ -127,7 +137,12 @@ const serialise = `(root, kind) => {
   clone.querySelectorAll('.lc-banner,.lc-m,[data-lancement],.feedback-fab,.lia-fab,script').forEach((e) => e.remove());
   clone.querySelectorAll('*').forEach((e) => {
     [...e.attributes].filter((a) => /^on/i.test(a.name)).forEach((a) => e.removeAttribute(a.name));
-    if (/^(Base commune|Éditeur)$/.test(e.textContent.trim()) && !e.children.length) e.remove();
+    // Le libellé de rail porte une icône enfant : retirer le nœud de navigation,
+    // pas seulement son texte, afin de ne laisser ni icône ni zone cliquable vide.
+    if (/^(Base commune|Éditeur)$/.test(e.textContent.trim())) {
+      const nav = e.closest('.rail-item,.nav-item,.side-link,[role="navigation"] > *');
+      if (nav) nav.remove(); else if (!e.children.length) e.remove();
+    }
   });
   clone.querySelectorAll('.rail-wordmark').forEach((e) => { e.textContent = 'MyClassFlow'; });
   const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
@@ -153,8 +168,12 @@ async function rendUneVue(nom, vue, origine, navigateur) {
   await navigateur.envoie('Emulation.setDeviceMetricsOverride', { width: vue.taille.width, height: vue.taille.height, deviceScaleFactor: 1, mobile: false });
   await navigateur.envoie('Page.navigate', { url: origine + vue.url });
   for (let essai = 0; essai < 100; essai++) { if (await navigateur.evaluer(`document.readyState === 'complete' && !!document.querySelector(${json(vue.root)})`)) break; await pause(100); }
-  if (!await navigateur.evaluer(`!!document.querySelector(${json(vue.root)})`)) throw new Error(`${nom} : racine ${vue.root} absente après 10 s`);
+  if (!await navigateur.evaluer(`!!document.querySelector(${json(vue.root)})`)) throw new Error(`${nom} : racine ${vue.root} absente après 10 s\n${navigateur.erreurs.slice(-5).join('\n').slice(0, 1500)}`);
   for (const etape of vue.sequence || []) {
+    if (etape.evenement) {
+      await navigateur.evaluer(`window.dispatchEvent(new CustomEvent(${json(etape.evenement)}))`);
+      continue;
+    }
     const clique = await navigateur.evaluer(`(() => { const wanted = ${json(etape.texte)}; const candidates = [...document.querySelectorAll(${json(etape.selecteur || '*')})]; const e = candidates.find((x) => x.textContent.trim() === wanted || x.getAttribute('aria-label') === wanted); if (e) { e.click(); return true; } return false; })()`);
     if (!clique) throw new Error(`${nom} : contrôle « ${etape.texte} » introuvable`);
     await pause(250);
@@ -177,8 +196,13 @@ async function main() {
   const profil = mkdtempSync(join(tmpdir(), 'mcf-proto-chrome-'));
   let chrome; let navigateur; let serveur;
   try {
-    cpSync(source, temporaire, { recursive: true });
-    for (const nom of noms) for (const patch of VUES[nom].patches) appliquePatch(temporaire, patch);
+    // Chaque vue a sa propre copie : deux vues peuvent légitimement remplacer la même
+    // constante (par exemple la classe CE1 puis la classe CM2) sans se contaminer.
+    for (const nom of noms) {
+      const racineVue = join(temporaire, 'vues', nom);
+      cpSync(source, racineVue, { recursive: true });
+      for (const patch of VUES[nom].patches) appliquePatch(racineVue, patch);
+    }
     serveur = await sert(temporaire); const port = serveur.address().port;
     const cdpPort = 9358;
     chrome = spawn(chromePath, ['--headless=new', '--disable-gpu', '--hide-scrollbars', `--remote-debugging-port=${cdpPort}`, `--user-data-dir=${profil}`, 'about:blank'], { stdio: 'ignore' });
@@ -187,8 +211,9 @@ async function main() {
     if (etats) await navigateur.envoie('Page.addScriptToEvaluateOnNewDocument', { source: etats });
     const css = [];
     for (const nom of noms) {
-      const brut = await rendUneVue(nom, VUES[nom], `http://127.0.0.1:${port}`, navigateur);
+      const brut = await rendUneVue(nom, VUES[nom], `http://127.0.0.1:${port}/vues/${nom}`, navigateur);
       css.push(scopeCss(brut, `.appv-proto.appv-proto--${VUES[nom].type}`, nomsKeyframes(brut)));
+      if (VUES[nom].css) css.push(scopeCss(VUES[nom].css, `.appv-proto.appv-proto--${VUES[nom].type}`, {}));
     }
     writeFileSync(sortieCss, `/* Généré depuis le proto MCF-Design — ne pas éditer à la main. */\n${css.join('\n\n')}`);
     console.log(`Extrait : ${noms.join(', ')}`);

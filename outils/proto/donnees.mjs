@@ -1,5 +1,5 @@
 // Données éditoriales fictives converties vers les graines du proto MCF-Design.
-import { CLASSE_CE1, JOURNAL, MATIERES, TACHES } from '../corps/fiches/visuels-donnees.mjs';
+import { CLASSE_CE1, CRITERES_INES, EDT, IMPORT, JOURNAL, MATIERES, PHASES_MESURE, TACHES } from '../corps/fiches/visuels-donnees.mjs';
 
 const couleurs = {
   francais: 'var(--s-fr)', mathematiques: 'var(--s-math)', questionner_monde: 'var(--s-quest)',
@@ -37,3 +37,39 @@ export const TASK_SEED = TACHES.map((tache, index) => ({
 }));
 
 export const CLASSE = CLASSE_CE1;
+
+// Données spécifiques aux autres écrans du proto. Elles restent dans ce module afin que
+// vues.mjs ne contienne que les routes, interactions et patchs de rendu.
+export const PROF = { prenom: 'Camille', nom: 'Moreau', displayName: 'Camille Moreau', initiales: 'C', etablissement: 'Les Tilleuls' };
+export const CLASSES = [{ id: 'c1', niveau: 'CE1', ecole: 'Les Tilleuls', nbEleves: 4, deco: false }];
+export const MOBILE_CLASSES = [{ id: 'c-ce1', niveau: 'CE1', nom: 'CE1', ecole: 'Les Tilleuls', n: 4 }];
+
+export const EDT_SLOTS_OFFSETS = EDT.flatMap((jour, d) => jour.map((slot) => ({
+  d, s: heures(slot.debut), h: heures(slot.fin) - heures(slot.debut),
+  kind: slot.code ? 'cours' : 'pause', subj: slot.code ? protoSujet[slot.code] : undefined,
+  t: slot.titre,
+})));
+
+export const FICHES_PREP = [{
+  id: 'mesure-ce1', title: 'Mesurer des longueurs', subj: 'math', duree: '40 min',
+  phases: PHASES_MESURE.map(([t, min, organisation, desc]) => ({ t, d: `${min} min`, organisation, desc })),
+  objectifs: ['Mesurer un segment au centimètre près en partant du zéro.'],
+  materiel: ['Règles graduées', 'Bandes de papier', 'Fiche d’exercices'],
+  seq: 'Les longueurs · séance 2',
+}];
+
+export const OCR_ROWS = IMPORT.map(([first, last, note]) => ({ first, last, verify: note === 'À vérifier', checked: note !== 'Déjà dans la classe' }));
+
+export const LIA_CONVERSATIONS = [{
+  id: 1, title: 'Mesures et suivi d’Inès', date: "Aujourd’hui",
+  preview: 'Commentaire proposé pour Inès Martin.',
+  messages: [
+    { role: 'user', text: 'Qu’est-ce qui me reste à faire cette semaine ?' },
+    { role: 'lia', text: 'Trois tâches : rendre les cahiers de lecture demain, photocopier la fiche de mesure pour jeudi, récupérer les autorisations de Maël et Nour pour vendredi.' },
+    { role: 'user', text: 'Note qu’Inès a mesuré correctement ses quatre segments aujourd’hui.' },
+    { role: 'lia', text: 'Je propose d’ajouter ce commentaire au fil de suivi d’Inès Martin. Rien n’est enregistré sans votre validation.' },
+    { propose: { kind: 'obs', title: 'Inès a mesuré correctement ses quatre segments.', detail: 'Commentaire · Inès Martin', status: 'pending' } },
+  ],
+}];
+
+export const SUPPORT_CRITERES = CRITERES_INES;
