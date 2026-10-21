@@ -1,17 +1,22 @@
 // Accueil de l'espace Enseignants (aussi affiché, flouté, derrière l'écran d'entrée de « / »).
 import { texteProf, prixHtml, renvoiHtml, insecables, badgeEnseignant } from "../../assets/js/tarifs-ui.js";
-import { THEMES, libelleBadge } from "./catalogue.mjs";
+import { THEMES, libelleBadge, nomLie } from "./catalogue.mjs";
 import { COCHE, FLECHE, comparateur, FAMILLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto, EQUIPE } from "./sections.mjs";
 import { castorDe } from "./castors.mjs";
 
 const prof = texteProf(true, false);
 
-export default `<div class="acc">
+// Grand titre : celui de « / » et celui de /enseignants/ diffèrent, pour que les
+// moteurs de recherche ne voient pas deux pages au même titre.
+export const TITRE_ENTREE = 'Adaptez chaque support <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.';
+export const TITRE_ENSEIGNANTS = 'Vos exercices adaptés <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.';
+
+export default (titre) => `<div class="acc">
   <section class="section hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <div class="hero-badge"><span class="pill">Nouveau</span><span>L'inclusion scolaire, <b>sans la charge de travail</b></span></div>
-        <h1 class="h-display">Adaptez chaque support <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.</h1>
+        <h1 class="h-display">${titre}</h1>
         <p class="llede">MyClassFlow régénère vos exercices et vos leçons selon les critères pédagogiques que vous cochez&nbsp;: texte agrandi, mise en page aérée, consignes en étapes… Vous gagnez des heures&nbsp;; chaque élève reçoit un support personnalisé.</p>
         <div class="hero-actions">
           <a class="lbtn lbtn-primary lbtn-lg" href="https://app.myclassflow.fr">Créer mon compte gratuit ${FLECHE}</a>
@@ -52,13 +57,13 @@ export default `<div class="acc">
         <p class="llede">La gestion de classe est gratuite, avec 3 adaptations offertes. L'IA qui adapte vos supports est dans l'abonnement.</p>
       </div>
       <div class="themes">
-        ${THEMES.map((t) => `<div class="theme-carte"><h3>${t.titre}</h3><p>${t.sous}</p><ul>${t.outils.map((o) => `<li>${o.nom} <span class="tg ${o.k}">${libelleBadge(o)}</span></li>`).join("")}</ul></div>`).join("\n        ")}
+        ${THEMES.map((t) => `<div class="theme-carte"><h3>${t.titre}</h3><p>${t.sous}</p><ul>${t.outils.map((o) => `<li>${nomLie(o)} <span class="tg ${o.k}">${libelleBadge(o)}</span></li>`).join("")}</ul></div>`).join("\n        ")}
       </div>
       <p class="centre"><a class="lien-suite" href="/enseignants/fonctionnalites/">Voir toutes les fonctionnalités →</a></p>
     </div>
   </section>
 
-  ${etapes({ titre: "Trois étapes, quelques secondes", texte: "De votre support habituel à un document adapté, sans rien réapprendre.", liste: [
+  ${etapes({ titre: "Trois étapes, et le support est prêt", texte: "De votre support habituel à un document adapté, sans rien réapprendre.", liste: [
     ["1", "Choisir", "Les critères pédagogiques", "Cochez les critères utiles&nbsp;: texte agrandi, lignes espacées, consignes en étapes… Enregistrez-les pour un élève, ou adaptez un support sans le relier à un élève. Importez ou collez le support."],
     ["2", "Adapter", "L'IA fait le travail", "Police lisible, mise en page aérée, consignes reformulées pas à pas&nbsp;: le document est régénéré selon les critères cochés. Un même support adapté sert à tous les élèves qui ont les mêmes critères."],
     ["3", "Imprimer", "Ou télécharger", "Récupérez le support adapté et la version d'origine. Choisissez le nombre de copies à l'impression, ou téléchargez le PDF."],

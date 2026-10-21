@@ -1,11 +1,23 @@
 // Pages « Fonctionnalités » des trois espaces.
-import { THEMES, ADAPTER, libelleBadge } from "./catalogue.mjs";
+import { THEMES, ADAPTER, libelleBadge, nomLie } from "./catalogue.mjs";
+import { FICHES } from "./fiches/index.mjs";
+import { adresseFiche, filAriane, ARIANE_FONCTIONNALITES } from "./fiche.mjs";
 
-const carte = (o) =>
-  `<div class="fc" data-k="${o.k}"><div class="top"><span class="ico" aria-hidden="true">${o.ico}</span><span class="tg ${o.k}">${libelleBadge(o)}</span></div><b>${o.nom}</b><span class="t">${o.long}</span></div>`;
+// `lie` : nom relié à la fiche de l'outil (espace Enseignants seulement, cf. mega-menu.mjs).
+const carte = (o, lie = false) =>
+  `<div class="fc" data-k="${o.k}"><div class="top"><span class="ico" aria-hidden="true">${o.ico}</span><span class="tg ${o.k}">${libelleBadge(o)}</span></div><b>${lie ? nomLie(o) : o.nom}</b><span class="t">${o.long}</span></div>`;
 
 const ruban = (titre, texte, bouton, href) =>
   `<div class="ribbon"><div><b>${titre}</b><p>${texte}</p></div><a class="btn" href="${href}">${bouton}</a></div>`;
+
+// Espace Enseignants : la page sert d'accueil aux fiches explicatives, une carte
+// par fiche existante (aucune carte vers une fiche à venir).
+const guides = () => `<section class="guides" aria-labelledby="guides">
+    <h2 id="guides">Comprendre chaque outil</h2>
+    <div class="guides-liste">
+      ${FICHES.map((f) => `<a class="guide" href="${adresseFiche(f)}"><span class="tg ${f.k}">${f.k === "free" ? "Gratuit" : "Abonnement"}</span><b>${f.ariane}</b><span class="t">${f.accroche}</span></a>`).join("\n      ")}
+    </div>
+  </section>`;
 
 export function fonctionnalites(espace) {
   if (espace === "parents-enfants") {
@@ -14,20 +26,20 @@ export function fonctionnalites(espace) {
   <p class="lead">MyClassFlow Famille transforme les leçons et les exercices selon les critères pédagogiques que vous cochez.</p>
   <div class="theme"><h3>MyClassFlow Famille</h3><p class="s">Une photo suffit : vous gardez la main sur les critères choisis.</p>
     <div class="grid deux">
-      ${ADAPTER.map(carte).join("\n      ")}
+      ${ADAPTER.map((o) => carte(o)).join("\n      ")}
     </div></div>
   ${ruban("Essayez gratuitement : 3 adaptations offertes", "Sans carte bancaire. Un abonnement couvre ensuite tous les enfants du foyer.", "Essayer gratuitement", "https://adapter.myclassflow.fr")}
 </section>`;
   }
   const ecoles = espace === "ecoles";
   return `<section class="page">
-  <h1 class="t">${ecoles ? "Tout ce qu'il faut pour votre équipe" : "Tout ce qu'il faut pour votre classe"}</h1>
+  ${ecoles ? "" : `${filAriane(ARIANE_FONCTIONNALITES)}\n  `}<h1 class="t">${ecoles ? "Tout ce qu'il faut pour votre équipe" : "Tout ce qu'il faut pour votre classe"}</h1>
   <p class="lead">La gestion de classe est gratuite. L'IA qui adapte vos supports est dans l'abonnement.</p>
-  <div class="filters" id="flt" role="group" aria-label="Filtrer les fonctionnalités"><button type="button" class="on" aria-pressed="true" data-f="all">Tout</button><button type="button" aria-pressed="false" data-f="free">Gratuit</button><button type="button" aria-pressed="false" data-f="pay">Abonnement</button></div>
+${ecoles ? "" : `  ${guides()}\n\n  <h2 class="theme-titre">Par besoin : adapter, préparer, suivre</h2>\n`}  <div class="filters" id="flt" role="group" aria-label="Filtrer les fonctionnalités"><button type="button" class="on" aria-pressed="true" data-f="all">Tout</button><button type="button" aria-pressed="false" data-f="free">Gratuit</button><button type="button" aria-pressed="false" data-f="pay">Abonnement</button></div>
 
   ${THEMES.map((t) => `<div class="theme"><h3>${t.titre}</h3><p class="s">${t.sous}</p>
     <div class="grid">
-      ${t.outils.filter((o) => o.page !== false).map(carte).join("\n      ")}
+      ${t.outils.filter((o) => o.page !== false).map((o) => carte(o, !ecoles)).join("\n      ")}
     </div></div>`).join("\n\n  ")}
 
   ${ecoles

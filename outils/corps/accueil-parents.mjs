@@ -9,6 +9,15 @@ const i = texteAdapter("illimite", true, false);
 
 const question = (q, r) => `<details><summary>${q}</summary><p>${r}</p></details>`;
 
+// Questions fréquentes : affichées en bas de page et reprises dans les données
+// structurées (outils/donnees-structurees.mjs).
+export const QUESTIONS_PARENTS = [
+  ["Dois-je indiquer pourquoi mon enfant a besoin d'un support adapté ?", "Non. Vous cochez simplement les critères pédagogiques qui l'aident&nbsp;: texte agrandi, lignes espacées, consignes en étapes… Vous pouvez les modifier à tout moment."],
+  ["Sur quels appareils ?", "Téléphone, tablette et ordinateur : voir la page <a href=\"/parents-enfants/telecharger/\">Télécharger</a>."],
+  ["Combien d'enfants ?", "Un abonnement couvre tous les enfants du foyer."],
+  ["Puis-je résilier ?", "Sans engagement, à tout moment. Avec engagement, à la fin des 6 mois."],
+];
+
 export default `<div class="acc">
   <section class="section hero">
     <div class="wrap hero-grid">
@@ -31,10 +40,10 @@ export default `<div class="acc">
 
   ${FAMILLES}
 
-  ${etapes({ titre: "Une photo, quelques secondes", texte: "Pas besoin de tout retaper : MyClassFlow Famille part de la page que votre enfant a sous les yeux.", liste: [
+  ${etapes({ titre: "Une photo, trois étapes", texte: "Pas besoin de tout retaper : MyClassFlow Famille part de la page que votre enfant a sous les yeux.", liste: [
     ["1", "Photographiez", "La leçon ou l'exercice", "La leçon, l'exercice ou la page du cahier."],
     ["2", "Cochez", "Les critères utiles", "Texte agrandi, lignes espacées, consignes en étapes… Vous cochez ce qui aide votre enfant."],
-    ["3", "Imprimez", "Ou lisez à l'écran", "Une version claire et aérée, prête en quelques secondes."],
+    ["3", "Imprimez", "Ou lisez à l'écran", "Une version claire et aérée, prête à imprimer ou à lire."],
   ] })}
 
   <section class="section exemple" id="exemple">
@@ -106,10 +115,7 @@ export default `<div class="acc">
         <h2 class="h-section">Vos questions</h2>
       </div>
       <div class="faq">
-        ${question("Dois-je indiquer pourquoi mon enfant a besoin d'un support adapté ?", "Non. Vous cochez simplement les critères pédagogiques qui l'aident&nbsp;: texte agrandi, lignes espacées, consignes en étapes… Vous pouvez les modifier à tout moment.")}
-        ${question("Sur quels appareils ?", "Téléphone, tablette et ordinateur : voir la page <a href=\"/parents-enfants/telecharger/\">Télécharger</a>.")}
-        ${question("Combien d'enfants ?", "Un abonnement couvre tous les enfants du foyer.")}
-        ${question("Puis-je résilier ?", "Sans engagement, à tout moment. Avec engagement, à la fin des 6 mois.")}
+        ${QUESTIONS_PARENTS.map(([q, r]) => question(q, r)).join("\n        ")}
       </div>
     </div>
   </section>
