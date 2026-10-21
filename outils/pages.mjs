@@ -10,14 +10,16 @@ import accueilEnseignants, { TITRE_ENTREE, TITRE_ENSEIGNANTS } from "./corps/acc
 import accueilEcoles from "./corps/accueil-ecoles.mjs";
 import accueilParents from "./corps/accueil-parents.mjs";
 import introuvable from "./corps/introuvable.mjs";
+import { fiche, adresseFiche } from "./corps/fiche.mjs";
+import { FICHES } from "./corps/fiches/index.mjs";
 
 export const PAGES = [
   { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "entree.js", "formulaire.js"],
-    titre: "MyClassFlow — Adaptez chaque support aux besoins de chaque élève",
-    description: "MyClassFlow adapte vos supports en quelques secondes : texte agrandi, mise en page aérée, consignes en étapes. Pour les enseignants, les écoles et les familles.",
+    titre: "Adaptez chaque support à chaque élève — MyClassFlow",
+    description: "MyClassFlow adapte vos supports selon vos critères : texte agrandi, mise en page aérée, consignes en étapes. Pour les enseignants, les écoles et les familles.",
     surcouche: entree, corps: accueilEnseignants(TITRE_ENTREE) },
   { chemin: "/enseignants/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "formulaire.js"],
-    titre: "MyClassFlow enseignants — vos exercices et leçons adaptés à chaque élève",
+    titre: "Exercices et leçons adaptés à chaque élève — MyClassFlow",
     description: "MyClassFlow adapte vos exercices et vos leçons selon les critères pédagogiques que vous cochez. Fiches de préparation et cahier journal gratuits, 3 adaptations offertes.",
     corps: accueilEnseignants(TITRE_ENSEIGNANTS) },
   { chemin: "/ecoles/", espace: "ecoles", rubrique: "", scripts: ["comparateur.js", "formulaire.js"],
@@ -29,7 +31,7 @@ export const PAGES = [
     description: "Photographiez la leçon ou l'exercice : MyClassFlow Famille le transforme selon les critères pédagogiques que vous cochez. Essai gratuit, sans carte bancaire.",
     corps: accueilParents },
   { chemin: "/enseignants/tarifs/", espace: "enseignants", rubrique: "tarifs", scripts: ["tarifs-ui.js", "formulaire.js"],
-    titre: "Tarifs MyClassFlow pour les enseignants — gratuit ou 9,99 €/mois",
+    titre: "Tarifs enseignants : gratuit ou 9,99 €/mois — MyClassFlow",
     description: "La gestion de classe est gratuite avec 3 adaptations offertes. L’abonnement enseignant adapte tous vos supports à partir de 9,99 € par mois.",
     corps: tarifsEnseignants },
   { chemin: "/ecoles/tarifs/", espace: "ecoles", rubrique: "tarifs", scripts: ["tarifs-ui.js", "formulaire.js"],
@@ -41,8 +43,8 @@ export const PAGES = [
     description: "Adaptez les devoirs de votre enfant en une photo. Essai gratuit de 3 adaptations, puis dès 2,49 € par mois pour tous les enfants du foyer.",
     corps: tarifsParents },
   { chemin: "/enseignants/fonctionnalites/", espace: "enseignants", rubrique: "fonctionnalites",
-    titre: "Fiches de préparation, cahier journal, supports adaptés — MyClassFlow",
-    description: "Adaptation des supports et Lia dans l'abonnement ; fiches de préparation, cahier journal, emploi du temps, fiches élèves et évaluations gratuits.",
+    titre: "Outils de classe gratuits et supports adaptés — MyClassFlow",
+    description: "Adaptation des supports et Lia dans l'abonnement ; fiches de préparation, cahier journal, emploi du temps, fiches élèves et tâches gratuits.",
     corps: fonctionnalites("enseignants") },
   { chemin: "/ecoles/fonctionnalites/", espace: "ecoles", rubrique: "fonctionnalites",
     titre: "Fonctionnalités de MyClassFlow pour les écoles",
@@ -53,7 +55,7 @@ export const PAGES = [
     description: "Une photo de la leçon, quelques critères pédagogiques à cocher, un support personnalisé à imprimer ou à lire à l'écran, pour tous les enfants du foyer.",
     corps: fonctionnalites("parents-enfants") },
   { chemin: "/enseignants/telecharger/", espace: "enseignants", rubrique: "telecharger", scripts: ["telecharger.js"],
-    titre: "Télécharger MyClassFlow enseignants — Mac, Windows, Android, iPhone",
+    titre: "Télécharger MyClassFlow : Mac, Windows, Android, iPhone",
     description: "Installez MyClassFlow en quelques secondes sur Mac, Windows, Android, iPhone ou iPad : l'app s'ouvre depuis votre écran d'accueil ou votre Dock.",
     corps: telecharger("enseignants") },
   { chemin: "/ecoles/telecharger/", espace: "ecoles", rubrique: "telecharger", scripts: ["telecharger.js"],
@@ -64,6 +66,9 @@ export const PAGES = [
     titre: "Télécharger MyClassFlow Famille — Mac, Windows, Android, iPhone",
     description: "Installez MyClassFlow Famille sur votre téléphone, votre tablette ou votre ordinateur : Mac, Windows, Android, iPhone ou iPad, en quelques secondes.",
     corps: telecharger("parents-enfants") },
+  // Fiches explicatives : rubrique Fonctionnalités de l'espace Enseignants.
+  ...FICHES.map((f) => ({ chemin: adresseFiche(f), espace: "enseignants", rubrique: "fonctionnalites",
+    titre: f.titre, description: f.description, corps: fiche(f), carte: f.carte })),
 ];
 
 // Page 404 : écrite dans 404.html, hors du plan du site et non indexée.

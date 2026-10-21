@@ -4,6 +4,12 @@ import { readFileSync, existsSync } from "node:fs";
 import { PAGES, PAGE_404 } from "../outils/pages.mjs";
 import { page, ESPACES } from "../outils/gabarits.mjs";
 import { CASTOR_DE } from "../outils/corps/castors.mjs";
+import { THEMES, lienFiche, nomLie } from "../outils/corps/catalogue.mjs";
+import { fonctionnalites } from "../outils/corps/fonctionnalites.mjs";
+import { megaMenu } from "../outils/corps/mega-menu.mjs";
+import { FICHES } from "../outils/corps/fiches/index.mjs";
+import { adresseFiche, arianeFiche } from "../outils/corps/fiche.mjs";
+import { sitemap, robots, llms, dateModification, aujourdhui, ROBOTS_IA } from "../outils/racine.mjs";
 
 test("chaque page a un titre, une description, un canonical et la barre de son espace", () => {
   for (const p of PAGES) {
@@ -26,6 +32,13 @@ test("référencement : titre, description et grand titre distincts sur chaque p
       assert.ok(!vus[cle].has(v), `${cle} identique : ${vus[cle].get(v)} et ${p.chemin}`);
       vus[cle].set(v, p.chemin);
     }
+  }
+});
+
+test("titres de l'entrée et de l'espace Enseignants : 50 à 60 caractères, la marque une seule fois", () => {
+  for (const p of PAGES.filter((x) => x.espace === "enseignants")) {
+    assert.ok(p.titre.length >= 50 && p.titre.length <= 60, `${p.chemin} : ${p.titre.length} caractères`);
+    assert.equal(p.titre.match(/MyClassFlow/g).length, 1, p.chemin);
   }
 });
 
@@ -52,15 +65,52 @@ test("tous les liens internes pointent vers une page existante", () => {
   }
 });
 
-test("sitemap.xml et robots.txt à jour", () => {
-  const sitemap = readFileSync("sitemap.xml", "utf8");
-  for (const p of PAGES) assert.ok(sitemap.includes(`<loc>https://myclassflow.fr${p.chemin}</loc>`), p.chemin);
-  assert.match(readFileSync("robots.txt", "utf8"), /Sitemap: https:\/\/myclassflow\.fr\/sitemap\.xml/);
+test("sitemap.xml, robots.txt et llms.txt à jour", () => {
+  const plan = readFileSync("sitemap.xml", "utf8");
+  for (const p of PAGES) assert.ok(plan.includes(`<loc>https://myclassflow.fr${p.chemin}</loc>`), p.chemin);
+  assert.equal(plan, sitemap(PAGES.map((p) => ({ chemin: p.chemin, lastmod: dateModification(`.${p.chemin}index.html`) }))), "sitemap.xml n'est pas à jour");
+  assert.equal(readFileSync("robots.txt", "utf8"), robots(), "robots.txt n'est pas à jour");
+  assert.equal(readFileSync("llms.txt", "utf8"), llms(PAGES), "llms.txt n'est pas à jour");
 });
 
-test("13 pages : l'entrée et quatre pages par espace", () => {
-  assert.equal(PAGES.length, 13);
-  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 13);
+test("sitemap : une date de modification réelle par page, jamais dans le futur", () => {
+  const dates = [...readFileSync("sitemap.xml", "utf8").matchAll(/<url><loc>[^<]+<\/loc><lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod><\/url>/g)].map((m) => m[1]);
+  assert.equal(dates.length, PAGES.length);
+  for (const d of dates) assert.ok(d >= "2026-01-01" && d <= aujourdhui(), d);
+});
+
+test("robots.txt : tout le site ouvert, robots des IA autorisés nommément, plan du site déclaré", () => {
+  const txt = robots();
+  const groupes = txt.split("\n\n").filter((g) => g.startsWith("User-agent:"));
+  for (const agent of ["*", ...ROBOTS_IA]) {
+    const g = groupes.find((x) => x.startsWith(`User-agent: ${agent}\n`));
+    assert.ok(g, `${agent} absent`);
+    assert.equal(g, `User-agent: ${agent}\nAllow: /`, agent);
+  }
+  for (const agent of ["GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot", "Google-Extended"]) assert.ok(ROBOTS_IA.includes(agent), agent);
+  assert.ok(!/Disallow/.test(txt));
+  assert.match(txt, /^Sitemap: https:\/\/myclassflow\.fr\/sitemap\.xml$/m);
+});
+
+test("llms.txt : titre, résumé, liens absolus vers des pages existantes, chaque fiche citée, prix de tarifs.js", async () => {
+  const { offreEnseignant, PLANCHER_ECOLE } = await import("../assets/js/tarifs.js");
+  const txt = llms(PAGES);
+  assert.match(txt, /^# MyClassFlow\n\n> .{80,}\n/);
+  const chemins = new Set(PAGES.map((p) => p.chemin));
+  const liens = [...txt.matchAll(/\]\((https:\/\/myclassflow\.fr)?([^)]*)\)/g)];
+  assert.ok(liens.length >= 8);
+  for (const [, absolu, chemin] of liens) {
+    assert.ok(absolu, `${chemin} : lien relatif`);
+    assert.ok(chemins.has(chemin), `${chemin} introuvable`);
+  }
+  for (const f of FICHES) assert.ok(txt.includes(`(https://myclassflow.fr${adresseFiche(f)})`), f.slug);
+  for (const v of [offreEnseignant(false).prix, offreEnseignant(true).prix, PLANCHER_ECOLE]) assert.ok(txt.includes(v.toFixed(2).replace(".", ",")), String(v));
+  assert.ok(!/\b(?:note|avis|étoiles?)\b/i.test(txt), "aucune note ni avis");
+});
+
+test("13 pages plus les fiches : l'entrée, quatre pages par espace, une page par fiche", () => {
+  assert.equal(PAGES.length, 13 + FICHES.length);
+  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 13 + FICHES.length);
 });
 
 test("prix des écoles en TTC : aucun « HT » sur les pages tarifs, hors la ligne « Montant HT »", () => {
@@ -213,12 +263,89 @@ test("données structurées : JSON valide, prix affichés sur la page même, que
   assert.ok(graphes["/"].some((o) => o["@type"] === "Organization"), "organisation absente de /");
   for (const [chemin, objets] of Object.entries(graphes))
     for (const app of objets.filter((o) => o["@type"] === "SoftwareApplication"))
-      for (const o of app.offers)
+      for (const o of app.offers ?? [])
         for (const v of [o.price, o.lowPrice, o.highPrice].filter((x) => x && x !== "0.00"))
           assert.ok(html[chemin].replace(/<script type="application\/ld\+json">.*?<\/script>/s, "").includes(v.replace(".", ",")), `${chemin} : ${app.name} à ${v} € n'est pas affiché sur la page`);
   const faq = graphes["/parents-enfants/"].find((o) => o["@type"] === "FAQPage");
   const visibles = [...html["/parents-enfants/"].matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
   assert.deepEqual(faq.mainEntity.map((q) => q.name), visibles);
+});
+
+test("fiches explicatives : fil d'Ariane et questions balisés, identiques à la page", () => {
+  for (const f of FICHES) {
+    const chemin = adresseFiche(f);
+    const html = page(PAGES.find((p) => p.chemin === chemin));
+    const graphe = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])["@graph"];
+    const ariane = graphe.find((o) => o["@type"] === "BreadcrumbList").itemListElement;
+    assert.deepEqual(ariane.map((e) => e.name), arianeFiche(f).map(([nom]) => nom), chemin);
+    assert.equal(ariane.at(-1).item, `https://myclassflow.fr${chemin}`, chemin);
+    const visibles = [...html.matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
+    const balisees = graphe.find((o) => o["@type"] === "FAQPage").mainEntity;
+    assert.deepEqual(balisees.map((q) => q.name), visibles, chemin);
+    const reponses = [...html.matchAll(/<\/summary><p>(.*?)<\/p><\/details>/g)].map((m) => m[1]);
+    assert.deepEqual(balisees.map((q) => q.acceptedAnswer.text), reponses, `${chemin} : réponses`);
+    assert.ok(visibles.length >= 4 && visibles.length <= 6, `${chemin} : ${visibles.length} questions`);
+    for (const [, href] of html.matchAll(/href="(\/assets\/[^"]+)"/g)) assert.ok(existsSync(`.${href}`), `${chemin} → ${href} absent`);
+  }
+});
+
+test("fiches explicatives : « À retenir » en tête, intertitres en questions, blocs « Pour qui » et « Fonctionnalités liées » à la fin", () => {
+  const FIXES = ["À retenir", "Questions fréquentes", "Pour qui", "Fonctionnalités liées"];
+  for (const f of FICHES) {
+    const chemin = adresseFiche(f);
+    const html = page(PAGES.find((p) => p.chemin === chemin));
+    const retenir = html.match(/<section class="a-retenir"[^>]*>\s*<h2[^>]*>À retenir<\/h2>\s*<ul>(.*?)<\/ul>/s);
+    assert.ok(retenir, `${chemin} : « À retenir » absent`);
+    assert.equal([...retenir[1].matchAll(/<li>/g)].length, 3, `${chemin} : 3 puces attendues`);
+    assert.ok(html.indexOf('class="a-retenir"') < html.indexOf('class="fiche-partie"'), `${chemin} : « À retenir » doit venir en tête`);
+    const h2 = [...html.matchAll(/<h2[^>]*>(.*?)<\/h2>/g)].map((m) => m[1]);
+    for (const t of h2.filter((x) => !FIXES.includes(x))) assert.ok(t.endsWith(" ?"), `${chemin} : « ${t} » n'est pas une question`);
+    assert.deepEqual(h2.slice(-3), ["Questions fréquentes", "Pour qui", "Fonctionnalités liées"], chemin);
+    assert.equal(f.publics.length, 3, chemin);
+    assert.ok(html.includes(`<meta property="og:image" content="https://myclassflow.fr/assets/img/${f.carte.fichier}" />`), `${chemin} : carte de partage propre à la fiche`);
+  }
+});
+
+test("données structurées : application sur chaque fiche, une seule organisation, aucune note ni aucun avis", () => {
+  const graphes = PAGES.map((p) => [p.chemin, JSON.parse(page(p).match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1] ?? '{"@graph":[]}')["@graph"]]);
+  for (const f of FICHES) {
+    const app = graphes.find(([c]) => c === adresseFiche(f))[1].find((o) => o["@type"] === "SoftwareApplication");
+    assert.ok(app, `${f.slug} : application absente`);
+    assert.equal(app.applicationCategory, "EducationalApplication");
+    assert.ok(app.operatingSystem);
+    if (f.k === "free") assert.deepEqual(app.offers.map((o) => o.price), ["0.00"], f.slug);
+  }
+  const organisations = graphes.flatMap(([, g]) => g.filter((o) => o["@type"] === "Organization"));
+  assert.equal(organisations.length, 1);
+  for (const p of [...PAGES, PAGE_404]) assert.ok(!/aggregateRating|"Review"|"Rating"|ratingValue/i.test(page(p)), `${p.chemin} : note ou avis balisé`);
+});
+
+test("page Fonctionnalités Enseignants : accueil des fiches, fil d'Ariane affiché et balisé, aucune fiche à venir", () => {
+  const html = page(PAGES.find((p) => p.chemin === "/enseignants/fonctionnalites/"));
+  const guides = html.match(/<section class="guides"[^>]*>(.*?)<\/section>/s)[1];
+  assert.deepEqual([...guides.matchAll(/<a class="guide" href="([^"]+)"/g)].map((m) => m[1]), FICHES.map(adresseFiche));
+  assert.ok(html.includes('<nav class="ariane" aria-label="Fil d\'Ariane"><ol><li><a href="/enseignants/">Enseignants</a></li><li aria-current="page">Fonctionnalités</li></ol></nav>'));
+  const ariane = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])["@graph"].find((o) => o["@type"] === "BreadcrumbList");
+  assert.deepEqual(ariane.itemListElement.map((e) => [e.name, e.item]), [["Enseignants", "https://myclassflow.fr/enseignants/"], ["Fonctionnalités", "https://myclassflow.fr/enseignants/fonctionnalites/"]]);
+  assert.ok(!page(PAGES.find((p) => p.chemin === "/ecoles/fonctionnalites/")).includes('class="guides"'));
+});
+
+test("fiches explicatives : chaque outil relié a sa page, les tarifs Enseignants y renvoient, pas l'espace Écoles", () => {
+  const chemins = new Set(PAGES.map((p) => p.chemin));
+  const relies = THEMES.flatMap((t) => t.outils).filter((o) => o.fiche);
+  assert.ok(relies.length > 0);
+  for (const o of relies) assert.ok(chemins.has(lienFiche(o)), `${o.nom} → ${lienFiche(o)} sans page`);
+  const html = (chemin) => page(PAGES.find((p) => p.chemin === chemin));
+  for (const o of relies) {
+    assert.ok(html("/enseignants/tarifs/").includes(`<a class="lien-fiche" href="${lienFiche(o)}">`), `tarifs → ${o.nom}`);
+    // Contenu propre de la page Fonctionnalités (hors méga-menu) ; un outil `page: false` n'y a pas de carte.
+    if (o.page !== false) assert.ok(fonctionnalites("enseignants").includes(`href="${lienFiche(o)}"`), `fonctionnalités → ${o.nom}`);
+    assert.ok(html("/enseignants/").includes(nomLie(o)), `accueil → ${o.nom}`);
+    assert.ok(megaMenu("enseignants").includes(`<a class="mi" href="${lienFiche(o)}">`), `méga-menu → ${o.nom}`);
+  }
+  // Q7 (MCF-Pilotage#53) : l'espace Écoles ne renvoie pas encore vers les fiches.
+  for (const p of PAGES.filter((x) => x.espace === "ecoles"))
+    assert.ok(!/href="\/enseignants\/fonctionnalites\/[^"]+\/"/.test(page(p)), `${p.chemin} renvoie vers une fiche`);
 });
 
 test("page 404 : fichier à jour, non indexée, hors du plan du site, liens absolus vers des pages existantes", () => {

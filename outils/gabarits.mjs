@@ -27,7 +27,8 @@ const LOGO = castor("professeur", "castor-logo", 32);
 
 const echap = (t) => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
-// Cartes de partage (1200 × 630) : une par espace, et une commune pour l'écran d'entrée.
+// Cartes de partage (1200 × 630) : une par espace, une commune pour l'écran
+// d'entrée ; une page peut fournir la sienne (`carte`, les fiches).
 const CARTES = {
   "": { fichier: "og-classflow.png", alt: "MyClassFlow : les castors professeur, direction et élève, avec l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
   enseignants: { fichier: "og-enseignants.png", alt: "MyClassFlow, espace Enseignants : le castor professeur et l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
@@ -71,8 +72,7 @@ function pied() {
 }
 
 // indexable: false (page 404) : ni adresse canonique ni og:url, et « noindex ».
-export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "", indexable = true }) {
-  const carte = CARTES[chemin === "/" ? "" : espace ?? ""];
+export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "", indexable = true, carte = CARTES[chemin === "/" ? "" : espace ?? ""] }) {
   const js = scripts.map((s) => `<script type="module" src="/assets/js/${s}"></script>`).join("\n");
   return `<!DOCTYPE html>
 <html lang="fr">
@@ -97,7 +97,7 @@ ${indexable ? `<meta property="og:url" content="${SITE}${chemin}" />\n` : ""}<me
 ${donneesStructurees(chemin)}<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
-<link rel="stylesheet" href="/assets/css/base.css" />
+<link rel="stylesheet" href="/assets/css/base.css" />${corps.includes('class="maquette-fiche appv-figure') ? '\n<link rel="stylesheet" href="/assets/css/visuels-proto.css" />\n<link rel="stylesheet" href="/assets/css/visuels-fiches.css" />' : ""}
 </head>
 <body${classeBody ? ` class="${classeBody}"` : ""} data-espace="${espace ?? ""}">
 ${surcouche}${espace ? barre(espace, rubrique, megaMenu ?? megaMenuDe(espace)) : ""}

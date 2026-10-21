@@ -1,11 +1,14 @@
 // Méga-menu « Fonctionnalités » de la barre du haut.
-import { THEMES, ADAPTER, libelleBadge } from "./catalogue.mjs";
+import { THEMES, ADAPTER, libelleBadge, lienFiche } from "./catalogue.mjs";
 
 const item = (o, href) =>
   `<a class="mi" href="${href}"><span class="ico" aria-hidden="true">${o.ico}</span><div><b>${o.nom} <span class="tg ${o.k}">${libelleBadge(o)}</span></b><span class="t">${o.court}</span></div></a>`;
 
 export function megaMenu(espace) {
   const href = `/${espace}/fonctionnalites/`;
+  // Les fiches ne sont reliées que dans l'espace Enseignants : l'espace Écoles
+  // garde sa page Fonctionnalités en attendant la décision Q7 (MCF-Pilotage#53).
+  const ficheDe = (o) => (espace === "enseignants" ? lienFiche(o) : null);
   const pied = (texte) => `<div class="megafoot"><span>${texte}</span><a href="${href}">Voir toutes les fonctionnalités →</a></div>`;
   if (espace === "parents-enfants") {
     return `<div class="mega court" id="mega" hidden>
@@ -19,7 +22,7 @@ export function megaMenu(espace) {
   return `<div class="mega" id="mega" hidden>
     ${THEMES.map((t) => `<div>
       <h6>${t.titre}</h6>
-      ${t.outils.map((o) => item(o, href)).join("\n      ")}
+      ${t.outils.map((o) => item(o, ficheDe(o) ?? href)).join("\n      ")}
     </div>`).join("\n    ")}
     ${pied("La gestion de classe est gratuite, avec 3 adaptations offertes. L'IA en illimité est dans l'abonnement.")}
   </div>`;

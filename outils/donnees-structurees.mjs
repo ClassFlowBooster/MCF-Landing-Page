@@ -2,6 +2,8 @@
 // Les prix viennent de assets/js/tarifs.js : seulement ceux affichés sur la page.
 import { offreEnseignant, offreAdapter, PLANCHER_ECOLE } from "../assets/js/tarifs.js";
 import { QUESTIONS_PARENTS } from "./corps/accueil-parents.mjs";
+import { FICHES } from "./corps/fiches/index.mjs";
+import { adresseFiche, arianeFiche, ARIANE_FONCTIONNALITES } from "./corps/fiche.mjs";
 
 export const SITE = "https://myclassflow.fr";
 
@@ -26,7 +28,7 @@ const application = (name, url, offers) => ({
   operatingSystem: "Web, Windows, macOS, Android, iOS",
   inLanguage: "fr",
   publisher: { "@id": ORGANISATION["@id"] },
-  offers,
+  ...(offers.length ? { offers } : {}),
 });
 
 const OFFRES_ENSEIGNANT = [
@@ -57,15 +59,24 @@ const OFFRES_FAMILLE = [
 ];
 
 const APP = (offers) => application("MyClassFlow", "https://app.myclassflow.fr", offers);
+// Fiche d'un outil gratuit : seule l'offre gratuite y est affichée. Une fiche
+// d'outil de l'abonnement ne montre aucun prix (lien vers les tarifs) : pas d'offre.
+const appFiche = (f) => APP(f.k === "free" ? [OFFRES_ENSEIGNANT[0]] : []);
 const FAMILLE = application("MyClassFlow Famille", "https://adapter.myclassflow.fr", OFFRES_FAMILLE);
 
 // Texte brut d'une réponse : sans balises ni entités.
 const brut = (html) => html.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 
-const FAQ = {
+const faq = (questions) => ({
   "@type": "FAQPage",
-  mainEntity: QUESTIONS_PARENTS.map(([q, r]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: brut(r) } })),
-};
+  mainEntity: questions.map(([q, r]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: brut(r) } })),
+});
+
+// Fil d'Ariane : le dernier élément est la page même (sans lien à l'écran).
+const ariane = (elements, chemin) => ({
+  "@type": "BreadcrumbList",
+  itemListElement: elements.map(([name, href], i) => ({ "@type": "ListItem", position: i + 1, name, item: `${SITE}${href ?? chemin}` })),
+});
 
 const PAR_PAGE = {
   "/": [ORGANISATION, SITE_WEB, APP(OFFRES_ENSEIGNANT)],
@@ -73,8 +84,10 @@ const PAR_PAGE = {
   "/enseignants/tarifs/": [APP(OFFRES_ENSEIGNANT)],
   "/ecoles/": [APP([OFFRE_ECOLE])],
   "/ecoles/tarifs/": [APP([OFFRE_ECOLE])],
-  "/parents-enfants/": [FAMILLE, FAQ],
+  "/parents-enfants/": [FAMILLE, faq(QUESTIONS_PARENTS)],
   "/parents-enfants/tarifs/": [FAMILLE],
+  "/enseignants/fonctionnalites/": [ariane(ARIANE_FONCTIONNALITES, "/enseignants/fonctionnalites/")],
+  ...Object.fromEntries(FICHES.map((f) => [adresseFiche(f), [ariane(arianeFiche(f), adresseFiche(f)), appFiche(f), faq(f.questions)]])),
 };
 
 /** Balise <script type="application/ld+json"> de la page, ou "" si elle n'en a pas. */
