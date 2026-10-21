@@ -48,8 +48,9 @@ export default {
   slug: "taches",
   ariane: "Tâches",
   k: "free",
-  titre: "To do list enseignant : les tâches de chaque classe — MyClassFlow",
+  titre: "To do list enseignant : vos tâches de classe — MyClassFlow",
   description: "La liste des tâches de MyClassFlow : chaque chose à faire, avec ou sans échéance, rangée par classe, reliée aux élèves concernés et cochée d'un geste sur téléphone. Une semaine de CE1 en exemple.",
+  carte: { fichier: "og-taches.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Les choses à faire, par classe, par échéance et par élève »." },
   h1: "Vos choses à faire, rangées par classe",
   intro: "Photocopies, autorisations de sortie, cahiers à rendre : MyClassFlow garde la liste de ce que vous avez à faire pour chaque classe, avec une échéance si vous en donnez une, et la relie aux élèves concernés quand il y en a.",
   retenir: [
@@ -70,7 +71,7 @@ export default {
   ],
   titreEtapes: "Comment garder vos tâches à portée de main ?",
   illustration,
-  blocs: [{ titre: "La semaine d'une classe de CE1, en tâches", html: exemple }],
+  blocs: [{ titre: "Quelles tâches pour la semaine d'une classe de CE1 ?", html: exemple }],
   offre: {
     titre: "Vos tâches, gratuites dans MyClassFlow",
     texte: "Avec le cahier journal, l'emploi du temps et les fiches élèves, sans carte bancaire. L'abonnement ajoute l'adaptation des supports par l'IA.",

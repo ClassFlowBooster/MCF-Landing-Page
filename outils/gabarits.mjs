@@ -27,7 +27,8 @@ const LOGO = castor("professeur", "castor-logo", 32);
 
 const echap = (t) => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
-// Cartes de partage (1200 × 630) : une par espace, et une commune pour l'écran d'entrée.
+// Cartes de partage (1200 × 630) : une par espace, une commune pour l'écran
+// d'entrée ; une page peut fournir la sienne (`carte`, les fiches).
 const CARTES = {
   "": { fichier: "og-classflow.png", alt: "MyClassFlow : les castors professeur, direction et élève, avec l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
   enseignants: { fichier: "og-enseignants.png", alt: "MyClassFlow, espace Enseignants : le castor professeur et l'accroche « Adaptez chaque support aux besoins de chaque élève »." },
@@ -71,8 +72,7 @@ function pied() {
 }
 
 // indexable: false (page 404) : ni adresse canonique ni og:url, et « noindex ».
-export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "", indexable = true }) {
-  const carte = CARTES[chemin === "/" ? "" : espace ?? ""];
+export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "", indexable = true, carte = CARTES[chemin === "/" ? "" : espace ?? ""] }) {
   const js = scripts.map((s) => `<script type="module" src="/assets/js/${s}"></script>`).join("\n");
   return `<!DOCTYPE html>
 <html lang="fr">

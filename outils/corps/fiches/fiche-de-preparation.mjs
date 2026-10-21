@@ -79,12 +79,20 @@ const illustration = `<figure class="maquette-fiche" aria-label="Illustration : 
 export default {
   slug: "fiche-de-preparation",
   ariane: "Fiche de préparation",
+  // Carte de partage : outils/partage/gabarit.html?page=fiche-de-preparation.
+  carte: { fichier: "og-fiche-de-preparation.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Chaque séance préparée, puis retrouvée dans votre cahier journal »." },
+  accroche: "Une séance de CE1 sur la mesure, pensée moment par moment, puis copiée dans le cahier journal.",
   k: "free",
-  titre: "Fiche de préparation : trame d'une page et exemple en CE1 — MyClassFlow",
+  titre: "Fiche de préparation : trame et exemple en CE1 — MyClassFlow",
   description: "Une trame de fiche de préparation en sept rubriques, une séance de CE1 sur la mesure des longueurs, et le lien avec le cahier journal de MyClassFlow.",
   h1: "Une fiche de préparation pour chaque séance, sur une page",
   intro: "Une fiche de préparation, c'est une séance pensée avant d'être vécue : son but, son déroulé minute par minute, les difficultés que vous voyez venir. Voici une trame en sept rubriques et une séance de CE1 rédigée avec elle.",
-  titreBenefices: "Pourquoi l'écrire avant d'entrer en classe",
+  retenir: [
+    "Une fiche de préparation porte sur une seule séance : son but, ses moments minutés et l'erreur que vous voyez venir.",
+    "Notre trame tient sur une page A4, en sept rubriques.",
+    "Dans MyClassFlow, vos fiches sont gratuites, rangées dans votre banque, et leur contenu se copie dans la séance du cahier journal.",
+  ],
+  titreBenefices: "Pourquoi l'écrire avant d'entrer en classe ?",
   benefices: [
     ["Voir venir les difficultés", "En écrivant la séance, on repère l'endroit où les élèves vont buter, et on prépare sa réponse avant d'être devant eux."],
     ["Préparer la journée du même geste", "Rattachée à une séance du cahier journal, la fiche y apporte son déroulé : la journée et la séance se préparent ensemble."],
@@ -95,8 +103,9 @@ export default {
     ["Rangez-la dans votre banque", "Classez vos fiches en dossiers, par matière ou par séquence. « Dupliquer » en fait une variante sans repartir de zéro."],
     ["Rattachez-la à une séance", "Son contenu est copié dans la séance de votre cahier journal : le jour venu, tout est prêt."],
   ],
+  titreEtapes: "Comment la préparer dans MyClassFlow ?",
   illustration,
-  blocs: [{ titre: "Notre trame, puis une séance de CE1", html: exemple }],
+  blocs: [{ titre: "À quoi ressemble une séance de CE1 avec notre trame ?", html: exemple }],
   offre: {
     titre: "Vos fiches de préparation, gratuites dans MyClassFlow",
     texte: "Avec le cahier journal et l'emploi du temps, sans carte bancaire. L'abonnement ajoute l'adaptation des supports par l'IA.",
@@ -110,6 +119,11 @@ export default {
     ["Comment prévoir des aides dans une fiche de préparation ?", "Gardez le même but pour toute la classe et changez le chemin : un support plus lisible (texte agrandi, lignes espacées, consigne en étapes), un outil en plus, une tâche de plus pour ceux qui ont fini. Avec l'abonnement, MyClassFlow adapte vos supports selon les critères pédagogiques que vous cochez."],
     ["Comment retrouver une fiche de préparation l'année suivante ?", "Rangez vos fiches en dossiers dès la première année, par matière ou par séquence. Dans MyClassFlow, « Dupliquer » crée une copie que vous corrigez avec ce que vos notes d'après séance vous ont appris, sans perdre la version d'origine."],
     ["Les fiches de préparation sont-elles gratuites dans MyClassFlow ?", "Oui, comme le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire."],
+  ],
+  publics: [
+    ["Vous avez votre classe à l'année", "Chaque séance préparée reste dans votre banque : vous la dupliquez pour un autre niveau ou vous la reprenez à la rentrée suivante."],
+    ["Vous remplacez", "Une page suffit pour savoir quoi faire : le but, le matériel, le fil de la séance et ce que la classe a vu la veille."],
+    ["Vous débutez", "Écrire chaque moment avec sa durée aide à anticiper la séance, et vos préparations sont prêtes le jour d'une visite."],
   ],
   soeurs: ["Cahier journal", "Emploi du temps", "Adaptation des supports"],
 };

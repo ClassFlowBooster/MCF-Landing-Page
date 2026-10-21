@@ -577,6 +577,16 @@ html{scroll-padding-top:72px}
   .lien-fiche{display:inline-block;min-height:24px;line-height:24px}
 }
 
+/* ---------- Page Fonctionnalités Enseignants : accueil des fiches ---------- */
+.guides{margin:8px 0 34px}
+.guides h2,.theme-titre{font-family:Fraunces,serif;font-size:25px;font-weight:600;margin:0 0 12px}
+.theme-titre{text-align:center}
+.guides-liste{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.guide{display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.guide:hover{border-color:var(--coral-100)}
+.guide b{font-size:15px}
+.guide span.t{font-size:13px;color:var(--ink-2);line-height:1.45}
+
 /* ---------- Fiche explicative (/enseignants/fonctionnalites/<fiche>/) ---------- */
 .fiche{max-width:880px;line-height:1.55;color:var(--ink);box-sizing:border-box}
 .fiche *{box-sizing:border-box}
@@ -591,6 +601,13 @@ html{scroll-padding-top:72px}
 .fiche-partie h2{font-family:Fraunces,serif;font-size:25px;font-weight:600;margin:0 0 14px}
 .fiche-partie h3{font-family:Fraunces,serif;font-size:20px;font-weight:600;margin:0 0 10px}
 .fiche-partie p{margin:0 0 10px}
+.a-retenir{margin:28px auto 0;max-width:720px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:16px;padding:16px 20px}
+.a-retenir h2{font-family:Fraunces,serif;font-size:19px;font-weight:600;margin:0 0 8px}
+.a-retenir ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.publics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.public{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.public b{display:block;margin-bottom:4px}
+.public p{margin:0;font-size:14px;color:var(--ink-2)}
 .benefices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .benefice{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
 .benefice b{display:block;margin-bottom:4px}
@@ -710,7 +727,7 @@ html{scroll-padding-top:72px}
 .soeur b{font-size:14.5px}
 .soeur span.t{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
 @media (max-width: 760px){
-  .benefices,.soeurs,.rubriques,.ad-criteres,.ad-duo,.fe-blocs{grid-template-columns:1fr}
+.benefices,.publics,.soeurs,.rubriques,.ad-criteres,.ad-duo,.fe-blocs{grid-template-columns:1fr}
   .fiche-comment{grid-template-columns:1fr}
   .maquette-fiche{max-width:320px;margin:0 auto}
   .modele,.fiche-offre{flex-direction:column;align-items:flex-start}

@@ -55,6 +55,7 @@ export default {
   k: "free",
   titre: "Importer sa liste d'élèves en une photo — MyClassFlow",
   description: "À la rentrée, photographiez la liste de classe avec votre téléphone : MyClassFlow lit les prénoms et les noms, signale ce qui est à vérifier et les doublons, puis ajoute les élèves après votre relecture.",
+  carte: { fichier: "og-import-eleves-photo.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Une photo de la liste, et votre classe est créée »." },
   h1: "Votre classe remplie à partir d'une photo de la liste",
   intro: "À la rentrée, au lieu de recopier vingt-cinq prénoms, vous photographiez la liste de classe avec votre téléphone. MyClassFlow lit les prénoms et les noms, vous relisez, puis vous ajoutez les élèves en une fois.",
   retenir: [
@@ -75,7 +76,7 @@ export default {
   ],
   titreEtapes: "Comment ajouter votre classe à partir d'une photo ?",
   illustration,
-  blocs: [{ titre: "Une liste de huit élèves, de la photo à la classe", html: exemple }],
+  blocs: [{ titre: "Comment une liste de huit élèves passe-t-elle de la photo à la classe ?", html: exemple }],
   offre: {
     titre: "L'import par photo, gratuit dans MyClassFlow",
     texte: "Avec les fiches élèves, le cahier journal et l'emploi du temps, sans carte bancaire. L'abonnement ajoute l'adaptation des supports par l'IA.",
