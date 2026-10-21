@@ -26,7 +26,7 @@ const exemple = `<p>Les critères se rangent en familles. En voici une partie, a
 
     <div class="exemple-fiche">
       <h3>Une mesure en CE1, du document importé au résultat</h3>
-      <p>La même fiche que dans notre <a href="/enseignants/fonctionnalites/fiche-de-preparation/">exemple de fiche de préparation</a>. Trois critères cochés : « Agrandir le texte », « Augmenter l'interligne » et « Consignes courtes et directes ».</p>
+      <p>La même fiche que dans notre <a href="/enseignants/fonctionnalites/fiche-de-preparation/">exemple de fiche de préparation</a>. Trois critères cochés, ceux d'Inès : « Espacer les lettres », « Augmenter l'interligne » et « Consignes courtes et directes ».</p>
       <div class="ad-duo">
         <figure class="ad-feuille">
           <figcaption>Support importé</figcaption>
@@ -51,7 +51,7 @@ export default {
   ariane: "Adaptation des supports",
   k: "pay",
   titre: "Adapter un exercice selon des critères — MyClassFlow",
-  description: "Adapter un exercice ou une leçon selon des critères pédagogiques cochés : texte agrandi, interligne, consignes courtes. Les critères de l'app, une mesure en CE1 du document importé au résultat, les versions par élève ou par groupe.",
+  description: "Adapter un exercice ou une leçon selon des critères pédagogiques cochés : interligne, lettres espacées, consignes courtes. Les critères de l'app, une mesure en CE1 du document importé au résultat, les versions par élève ou par groupe.",
   carte: { fichier: "og-adaptation-des-supports.png", alt: "MyClassFlow, abonnement pour les enseignants : le castor professeur et l'accroche « Un même support, adapté selon les critères de vos élèves »." },
   h1: "Du support de la classe aux versions à imprimer",
   intro: "Vous prenez en photo ou importez l'exercice prévu pour la classe, vous cochez les critères pédagogiques qui aident tel élève ou tel groupe, et MyClassFlow en tire une version adaptée, à relire puis à imprimer à côté de l'originale. Pour la différenciation pédagogique, c'est un support par élève ou par groupe, tiré de l'exercice de toute la classe.",
