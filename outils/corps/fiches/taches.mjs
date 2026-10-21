@@ -74,7 +74,6 @@ export default {
   questions: [
     ["Une tâche peut-elle ne concerner que quelques élèves ?", "Oui : choisissez les élèves dans le champ « Élèves ». La tâche apparaît alors sur leur fiche, et depuis la tâche, un lien mène à la fiche de chaque élève."],
     ["Tâche ou séance du cahier journal : où noter quoi ?", "Ce qui se passe en classe, à une heure donnée, va dans le cahier journal. Ce que vous avez à faire, en classe ou en dehors, avant une date, est une tâche : photocopier, récupérer, commander, préparer."],
-    ["MyClassFlow envoie-t-il un rappel avant l'échéance ?", "Pas avant l'échéance : la liste se range du plus proche au plus lointain, et c'est en l'ouvrant que vous voyez ce qui arrive. Une fois la date passée, sur ordinateur, une notification dans l'app signale la tâche en retard."],
     ["Les tâches fonctionnent-elles sur téléphone et sur ordinateur ?", "Oui. Le téléphone a un écran « Tâches » avec « À faire » et « Terminées ». Sur ordinateur, les tâches s'affichent dans les cartes « À faire » de l'accueil, où vous les créez, les modifiez et les marquez faites."],
     ["Lia peut-elle créer une tâche pour moi ?", "Elle peut vous proposer d'en créer, d'en modifier ou d'en clore une ; rien n'est enregistré sans votre validation. Lia fait partie de l'abonnement Enseignant."],
     ["Les tâches sont-elles gratuites dans MyClassFlow ?", "Oui, comme le cahier journal, l'emploi du temps et les fiches élèves. Le compte gratuit ne demande pas de carte bancaire."],
