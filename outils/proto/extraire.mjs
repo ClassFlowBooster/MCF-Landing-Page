@@ -132,8 +132,62 @@ function nomsKeyframes(css) {
   return Object.fromEntries([...css.matchAll(/@(?:-webkit-)?keyframes\s+([\w-]+)/g)].map(([, nom]) => [nom, `appvp-${nom}`]));
 }
 
-const serialise = `(root, kind) => {
+const serialise = `(root, kind, vue) => {
   const clone = root.cloneNode(true);
+  const texte = (avant, apres) => {
+    const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (node.nodeValue.includes(avant)) node.nodeValue = node.nodeValue.split(avant).join(apres);
+    }
+  };
+  const exact = (value) => [...clone.querySelectorAll('*')].find((e) => e.children.length === 0 && e.textContent.trim() === value);
+  const carte = (titre) => exact(titre)?.closest('.card');
+  const retireAction = (libelle) => {
+    [...clone.querySelectorAll('button,span,a')].filter((e) => e.textContent.trim() === libelle).forEach((e) => e.remove());
+  };
+  // Correctifs éditoriaux : ils ne visent que le fragment statique exporté, après le
+  // rendu des vrais composants du proto. Ainsi ni le proto source ni son CSS ne sont modifiés.
+  if (vue === 'adaptation-des-supports') {
+    const classe = carte('1 · Classe concernée');
+    if (classe) classe.innerHTML = '<div class="card-h"><h3>1 · Classe concernée</h3></div><span class="inp" style="display:inline-flex;min-width:220px">CE1 — Les Tilleuls</span>';
+    const resultat = carte('3 · Ce que vous allez obtenir');
+    if (resultat) resultat.innerHTML = '<div class="card-h"><h3>3 · Pour qui adapter ?</h3></div><div class="support-targets"><div class="support-target active"><b>Selon mes élèves</b><span class="chip chip-coral">Inès Martin</span><div class="criteria-family">Lisibilité<br><span class="chip">Espacer les lettres</span><span class="chip">Augmenter l’interligne</span></div><div class="criteria-family">Consignes<br><span class="chip">Consignes courtes et directes</span></div></div><div class="support-target"><b>Pour toute la classe</b><span style="color:var(--ink-3)">Mêmes critères pour tous les élèves</span></div><div class="support-target"><b>Pour des groupes</b><span style="color:var(--ink-3)">Choisir les groupes à adapter</span></div></div>';
+    [...clone.querySelectorAll('.side-section')].filter((e) => e.textContent.trim() === "Dispositif d'accompagnement").forEach((e) => { let n = e; while ((n = n.nextElementSibling) && !n.matches('hr,.side-section')) n.remove(); e.remove(); });
+  }
+  if (vue === 'fiches-eleves') {
+    texte('PPRE en cours', '');
+    clone.querySelectorAll('.lia-banner').forEach((e) => e.remove());
+    ['Documents', 'Notes', 'Présence'].forEach((label) => {
+      [...clone.querySelectorAll('.side-link')].filter((e) => e.textContent.trim() === label).forEach((e) => e.remove());
+    });
+    [...clone.querySelectorAll('.side-link')].filter((e) => e.textContent.includes('Camille D.')).forEach((e) => e.remove());
+    const actifs = carte('Dispositifs actifs'); if (actifs) actifs.remove();
+    const notes = carte('Mes notes');
+    if (notes) notes.innerHTML = '<div class="card-h"><h3>Fil de suivi</h3><span class="btn btn-sm btn-ghost">+ Ajouter</span></div><div style="padding:10px 0;border-bottom:1px solid var(--line)"><span class="chip" style="font-size:10px">Progression</span> <span style="font-size:11px;color:var(--ink-3)">6 novembre</span><div style="font-size:13px;color:var(--ink-2);margin-top:5px">Inès mesure correctement quatre segments en partant du zéro.</div></div><div style="padding:10px 0"><span class="chip chip-amber" style="font-size:10px">Académique</span> <span style="font-size:11px;color:var(--ink-3)">4 novembre</span><div style="font-size:13px;color:var(--ink-2);margin-top:5px">La règle est mieux positionnée ; poursuivre le repérage du zéro.</div></div>';
+    ['Documents', 'Présence'].forEach((titre) => { const c = carte(titre); if (c) c.remove(); });
+    const grille = [...clone.querySelectorAll('div')].find((e) => (e.getAttribute('style') || '').includes('grid-template-columns: 1.5fr 1fr'));
+    if (grille) {
+      const suivi = notes?.outerHTML || '';
+      grille.innerHTML = '<div style="display:flex;flex-direction:column;gap:16px"><div class="card card-pad"><div class="card-h"><h3>Critères pédagogiques</h3></div><div class="criteria-family">Lisibilité<br><span class="chip">Espacer les lettres</span><span class="chip">Augmenter l’interligne</span></div><div class="criteria-family">Consignes<br><span class="chip">Consignes courtes et directes</span></div></div><div class="card card-pad"><div class="card-h"><h3>Tâches liées</h3><span class="chip">1</span></div><div style="font-size:13px;color:var(--ink-2)">Photocopier la fiche de mesure, version adaptée</div><div style="font-size:11px;color:var(--ink-3);margin-top:4px">Pour Inès · 5 novembre</div></div></div><div style="display:flex;flex-direction:column;gap:16px">' + suivi + '</div>';
+    }
+  }
+  if (vue === 'lia') {
+    texte('24 élèves', '4 élèves'); texte('8 à besoins', '1 élève avec critères'); texte('3 dispositifs en cours', '5 tâches à faire');
+  }
+  if (vue === 'fiche-de-preparation') {
+    retireAction('Partager dans la base');
+  }
+  // Notions absentes de l'app actuelle (arrière-plans des surimpressions compris) : on retire le bloc entier.
+  const absent = /PPRE|\bPAI\b|GEVA|dispositif|besoins? déclarés|à besoins|évaluations?\b|base commune|Bonjour Anne|Durand|Lilas/i;
+  const bloc = '.card,.dash-card,.task-line,.side-link,.nav-item,li,tr,[class*="row"],[class*="item"]';
+  const textes = []; const parcours = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
+  for (let n = parcours.nextNode(); n; n = parcours.nextNode()) if (absent.test(n.nodeValue)) textes.push(n);
+  textes.forEach((n) => { const e = n.parentElement; if (!e || !clone.contains(e)) return; (e.closest(bloc) || e).remove(); });
+  if (vue === 'adaptation-des-supports') { const h = [...clone.querySelectorAll('*')].filter((e) => e.children.length <= 1 && e.textContent.trim() === 'Historique'); h.slice(1).forEach((e) => (e.closest('.side-link,.nav-item,[class*="item"]') || e).remove()); }
+  if (vue === 'fiches-eleves') {
+    clone.querySelectorAll('span,div').forEach((e) => { if (!e.textContent.trim() && !e.children.length && /pill|chip|badge|tag/.test(e.className)) e.remove(); });
+    [...clone.querySelectorAll('button,a,span')].filter((e) => e.textContent.trim() === 'Documents').forEach((e) => e.remove());
+  }
   clone.querySelectorAll('.lc-banner,.lc-m,[data-lancement],.feedback-fab,.lia-fab,script').forEach((e) => e.remove());
   clone.querySelectorAll('*').forEach((e) => {
     [...e.attributes].filter((a) => /^on/i.test(a.name)).forEach((a) => e.removeAttribute(a.name));
@@ -145,8 +199,14 @@ const serialise = `(root, kind) => {
     }
   });
   clone.querySelectorAll('.rail-wordmark').forEach((e) => { e.textContent = 'MyClassFlow'; });
+  clone.querySelectorAll('.rail-logo').forEach((e) => { e.textContent = 'M'; });
   const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
   for (let node = walker.nextNode(); node; node = walker.nextNode()) node.nodeValue = node.nodeValue.replace(/ClassFlow|SuperProf/g, 'MyClassFlow');
+  clone.querySelectorAll('.ocr-check input[type="checkbox"]').forEach((old) => {
+    const visuel = old.nextElementSibling;
+    if (visuel) { visuel.className = 'ocr-check-static'; visuel.textContent = old.checked ? '✓' : ''; }
+    old.remove();
+  });
   clone.querySelectorAll('button,input,select,textarea,a').forEach((old) => {
     const tag = old.tagName === 'TEXTAREA' ? 'div' : 'span'; const replacement = document.createElement(tag);
     [...old.attributes].forEach((a) => { if (!/^(href|target|type|name|value|checked|selected|autofocus|tabindex|on)/i.test(a.name)) replacement.setAttribute(a.name, a.value); });
@@ -156,6 +216,10 @@ const serialise = `(root, kind) => {
     else replacement.innerHTML = old.innerHTML;
     old.replaceWith(replacement);
   });
+  if (vue === 'import-eleves-photo') {
+    clone.querySelectorAll('.ocr-field span').forEach((e) => e.classList.add('ocr-field-static'));
+    [...clone.querySelectorAll('*')].filter((e) => e.textContent.trim() === 'Corriger les évaluations').forEach((e) => e.closest('.card,.todo-row,[class*="task"]')?.remove());
+  }
   return '<div class="appv-proto appv-proto--' + kind + '">' + clone.outerHTML + '</div>';
 }`;
 
@@ -167,8 +231,9 @@ const extraitCss = `(fichier, kind) => {
 async function rendUneVue(nom, vue, origine, navigateur) {
   await navigateur.envoie('Emulation.setDeviceMetricsOverride', { width: vue.taille.width, height: vue.taille.height, deviceScaleFactor: 1, mobile: false });
   await navigateur.envoie('Page.navigate', { url: origine + vue.url });
-  for (let essai = 0; essai < 100; essai++) { if (await navigateur.evaluer(`document.readyState === 'complete' && !!document.querySelector(${json(vue.root)})`)) break; await pause(100); }
-  if (!await navigateur.evaluer(`!!document.querySelector(${json(vue.root)})`)) throw new Error(`${nom} : racine ${vue.root} absente après 10 s\n${navigateur.erreurs.slice(-5).join('\n').slice(0, 1500)}`);
+  const pret = vue.pret || vue.root;
+  for (let essai = 0; essai < 100; essai++) { if (await navigateur.evaluer(`document.readyState === 'complete' && !!document.querySelector(${json(pret)})`)) break; await pause(100); }
+  if (!await navigateur.evaluer(`!!document.querySelector(${json(pret)})`)) throw new Error(`${nom} : ${pret} absent après 10 s\n${navigateur.erreurs.slice(-5).join('\n').slice(0, 1500)}`);
   for (const etape of vue.sequence || []) {
     if (etape.evenement) {
       await navigateur.evaluer(`window.dispatchEvent(new CustomEvent(${json(etape.evenement)}))`);
@@ -179,7 +244,9 @@ async function rendUneVue(nom, vue, origine, navigateur) {
     await pause(250);
   }
   await pause(vue.attente);
-  const html = await navigateur.evaluer(`(${serialise})(document.querySelector(${json(vue.root)}), ${json(vue.type)})`);
+  for (let essai = 0; essai < 50 && !await navigateur.evaluer(`!!document.querySelector(${json(vue.root)})`); essai++) await pause(100);
+  if (!await navigateur.evaluer(`!!document.querySelector(${json(vue.root)})`)) throw new Error(`${nom} : racine ${vue.root} absente après la séquence`);
+  const html = await navigateur.evaluer(`(${serialise})(document.querySelector(${json(vue.root)}), ${json(vue.type)}, ${json(nom)})`);
   const css = await navigateur.evaluer(`(${extraitCss})('', ${json(vue.type)})`);
   mkdirSync(sortieHtml, { recursive: true });
   writeFileSync(join(sortieHtml, `${nom}.html`), `${html}\n`);

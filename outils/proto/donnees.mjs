@@ -54,11 +54,19 @@ export const FICHES_PREP = [{
   id: 'mesure-ce1', title: 'Mesurer des longueurs', subj: 'math', duree: '40 min',
   phases: PHASES_MESURE.map(([t, min, organisation, desc]) => ({ t, d: `${min} min`, organisation, desc })),
   objectifs: ['Mesurer un segment au centimètre près en partant du zéro.'],
+  domaines: ['Grandeurs et mesures'],
+  competences: ['Mesurer des grandeurs'],
   materiel: ['Règles graduées', 'Bandes de papier', 'Fiche d’exercices'],
   seq: 'Les longueurs · séance 2',
 }];
 
-export const OCR_ROWS = IMPORT.map(([first, last, note]) => ({ first, last, verify: note === 'À vérifier', checked: note !== 'Déjà dans la classe' }));
+export const OCR_ROWS = IMPORT.map(([first, last, note]) => ({
+  first,
+  // L'OCR incertain est corrigé dans l'export, mais conserve son état « À vérifier ».
+  last: last === 'R?naud' ? 'Renaud' : last,
+  verify: note === 'À vérifier',
+  checked: note !== 'Déjà dans la classe',
+}));
 
 export const LIA_CONVERSATIONS = [{
   id: 1, title: 'Mesures et suivi d’Inès', date: "Aujourd’hui",

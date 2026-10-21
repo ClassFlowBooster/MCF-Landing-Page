@@ -14,7 +14,7 @@ export const MATIERES = {
   emc: { nom: 'EMC', token: 'subj-other' },
 };
 export const CLASSE_CE1 = 'CE1 · Les Tilleuls';
-export const CRITERES_INES = ['Agrandir le texte', 'Augmenter l’interligne', 'Consignes courtes et directes'];
+export const CRITERES_INES = ['Espacer les lettres', 'Augmenter l’interligne', 'Consignes courtes et directes'];
 export const PHASES_MESURE = [
   ['Le défi', 5, 'Collectif', 'Comparer deux rubans fixés au tableau. Comment savoir lequel est le plus long ?'],
   ['Essais', 10, 'Binômes', 'Mesurer trois bandes de papier. Noter les longueurs et comparer les résultats.'],

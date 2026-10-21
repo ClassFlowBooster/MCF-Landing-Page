@@ -2163,7 +2163,12 @@
 .appv-proto.appv-proto--bureau #__loading{ position: fixed; inset: 0px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; background: rgb(251, 248, 243); z-index: 9999; font-family: Inter, -apple-system, system-ui, sans-serif; color: rgb(138, 130, 120); font-size: 13px; }
 .appv-proto.appv-proto--bureau #__loading .logo{ width: 56px; height: 56px; border-radius: 14px; background: rgb(240, 85, 43); display: flex; align-items: center; justify-content: center; color: white; font-family: Georgia, serif; font-weight: 700; font-size: 28px; }
 
-.appv-proto.appv-proto--bureau .card.card-pad:first-of-type [style*="border-radius: 100"]{display:none!important}
+.appv-proto.appv-proto--bureau .support-targets{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}
+.appv-proto.appv-proto--bureau .support-target{border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;background:var(--paper);font-size:13px}
+.appv-proto.appv-proto--bureau .support-target.active{border-color:var(--coral-300);background:var(--coral-50)}
+.appv-proto.appv-proto--bureau .support-target b{display:block;margin-bottom:6px}
+.appv-proto.appv-proto--bureau .criteria-family{margin-top:10px;font-size:12px;color:var(--ink-3)}
+.appv-proto.appv-proto--bureau .criteria-family .chip{margin:5px 4px 0 0}
 
 .appv-proto.appv-proto--bureau{ --coral-50: #FFF5F0; --coral-100: #FFE4D6; --coral-200: #FFC7AA; --coral-300: #FFA17A; --coral-400: #FF7A4D; --coral-500: #F0552B; --coral-600: #D43F18; --coral-700: #A82E0F; --amber-50: #FFF8EA; --amber-100: #FCEAC4; --amber-300: #F4C77A; --amber-500: #E89A2C; --amber-700: #A8650F; --paper: #FBF8F3; --paper-2: #F4EFE6; --paper-3: #E9E2D3; --ink: #1F1A14; --ink-2: #4A4238; --ink-3: #8A8278; --line: #E6DFCF; --line-2: #D6CCB6; --s-fr: #6366F1; --s-math: #06B6D4; --s-quest: #10B981; --s-art: #EC4899; --s-eps: #F59E0B; --s-ang: #8B5CF6; --good: #10B981; --warn: #F59E0B; --info: #3B82F6; --danger: #EF4444; --danger-bg: #FEE2E2; --danger-line: #FECACA; --danger-fg: #991B1B; --serif: 'Fraunces', Georgia, serif; --sans: 'Inter', -apple-system, system-ui, sans-serif; --mono: 'JetBrains Mono', monospace; --r-sm: 6px; --r-md: 10px; --r-lg: 14px; --r-xl: 20px; --sh-soft: 0 1px 2px rgba(31,26,20,0.04), 0 4px 12px rgba(31,26,20,0.04); --sh-card: 0 1px 3px rgba(31,26,20,0.06), 0 8px 24px rgba(31,26,20,0.05); --sh-pop: 0 12px 32px rgba(31,26,20,0.12), 0 4px 12px rgba(31,26,20,0.06); }
 .appv-proto.appv-proto--bureau{ box-sizing: border-box; }
@@ -3507,3 +3512,8 @@
 .appv-proto.appv-proto--tel{ background: radial-gradient(1100px 700px at 50% -10%, rgb(255, 233, 221), transparent 60%), radial-gradient(900px 600px at 90% 100%, rgb(252, 234, 196), transparent 55%), rgb(243, 236, 225); font-family: Inter, -apple-system, system-ui, sans-serif; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .appv-proto.appv-proto--tel #stage{ transform-origin: center center; }
 .appv-proto.appv-proto--tel #cap{ position: fixed; left: 0px; right: 0px; bottom: 10px; text-align: center; font-size: 11px; color: rgb(168, 156, 138); letter-spacing: 0.02em; }
+
+.appv-proto.appv-proto--tel .sp{width:390px!important;min-width:390px!important;max-width:390px!important;margin:0!important;overflow:hidden!important}
+.appv-proto.appv-proto--tel .ocr-screen{width:390px!important;max-width:390px!important;box-sizing:border-box!important;transform:none!important}
+.appv-proto.appv-proto--tel .ocr-check-static{width:20px;height:20px;box-sizing:border-box;border:1.5px solid var(--coral-500);border-radius:6px;background:var(--coral-500);display:inline-flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700}
+.appv-proto.appv-proto--tel .ocr-field-static{height:40px!important;min-height:40px!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;padding:0 10px!important}

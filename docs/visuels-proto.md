@@ -25,10 +25,10 @@ Les correctifs de données, d'état et de retrait du lancement sont déclarés d
 | `cahier-journal` | état initial | `.app` | semaine du 2 au 6 novembre 2026, sans évaluations |
 | `taches` | « Voir toutes les tâches » | `.sp` | largeur 390 px et tabbar dans le flux |
 | `emploi-du-temps` | état initial | `.app` | CM2, 4 jours et demi, 21 h 45 |
-| `fiche-de-preparation` | ouvre « Mesurer des longueurs » | `.app` | détail `.fiche-doc` |
-| `adaptation-des-supports` | état initial | `.app` | support choisi ; critères pédagogiques à confirmer dans le proto |
-| `fiches-eleves` | état initial | `.app` | Inès Martin ; pas de diagnostics ni d’évaluations |
+| `fiche-de-preparation` | ouvre « Mesurer des longueurs » | `.app` | objectif et référentiel de mesure ; sans partage dans la base |
+| `adaptation-des-supports` | état initial | `.app` | support unique et cibles selon les critères pédagogiques |
+| `fiches-eleves` | état initial | `.app` | Inès Martin ; critères, fil de suivi et tâches liées |
 | `lia` | hash `lia=expanded&conv=1` | `.app` | Lia ne propose que commentaire ou tâche |
 | `import-eleves-photo` | événement `sp:import-ocr`, attente 1,65 s | `.sp` | étape `.ocr-correction`, huit lignes |
 
-Les patchs par vue restent déclaratifs dans `vues.mjs` : journal (graines, identité, horloge et retrait des évaluations), tâches (graines et correctif de gabarit), EDT (créneaux CM2), fiche (graines puis ouverture), supports (support choisi et retrait visuel des anciens profils), fiche élève (identité), Lia (conversation) et OCR (lignes et événement). Le point incertain est limité aux supports : le proto bureau ne propose pas de composant pour présenter `CRITERES_INES` comme critères pédagogiques. Les critères sont bien portés par `donnees.mjs`, mais l’ancienne ligne de troubles est masquée jusqu’à ce que ce composant existe.
+Les patchs par vue restent déclaratifs dans `vues.mjs` : journal (graines, identité, horloge et retrait des évaluations), tâches (graines et correctif de gabarit), EDT (créneaux CM2), fiche (graines de mesure puis ouverture), supports (support unique et cibles par critères), fiche élève (identité et suivi), Lia (conversation et contexte) et OCR (lignes et événement). Le post-traitement de `extraire.mjs` ne modifie que le DOM exporté : il enlève les éléments de prototype non présents dans l’app et convertit les contrôles interactifs en rendu statique.
