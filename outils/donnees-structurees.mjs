@@ -17,6 +17,20 @@ const ORGANISATION = {
 
 const SITE_WEB = { "@type": "WebSite", name: "MyClassFlow", url: `${SITE}/`, publisher: { "@id": ORGANISATION["@id"] } };
 
+const AUTEURS_FICHES = [
+  { "@type": "Person", name: "Joseph Solier", url: `${SITE}/enseignants/#equipe`, jobTitle: "Ingénieur en cybersécurité" },
+  { "@type": "Person", name: "Benoist de Montgrand", url: `${SITE}/enseignants/#equipe`, jobTitle: "Expert en intelligence artificielle" },
+];
+
+const articleFiche = (f) => ({
+  "@type": "Article",
+  headline: f.h1,
+  author: AUTEURS_FICHES,
+  publisher: { "@id": ORGANISATION["@id"] },
+  datePublished: f.datePublication,
+  dateModified: f.dateModification,
+});
+
 const prix = (v) => v.toFixed(2);
 const offre = (name, price, description) => ({ "@type": "Offer", name, price: prix(price), priceCurrency: "EUR", ...(description ? { description } : {}) });
 
@@ -79,7 +93,7 @@ const ariane = (elements, chemin) => ({
 });
 
 const PAR_PAGE = {
-  "/": [ORGANISATION, SITE_WEB, APP(OFFRES_ENSEIGNANT)],
+  "/": [ORGANISATION, SITE_WEB],
   "/enseignants/": [APP(OFFRES_ENSEIGNANT)],
   "/enseignants/tarifs/": [APP(OFFRES_ENSEIGNANT)],
   "/ecoles/": [APP([OFFRE_ECOLE])],
@@ -87,7 +101,7 @@ const PAR_PAGE = {
   "/parents-enfants/": [FAMILLE, faq(QUESTIONS_PARENTS)],
   "/parents-enfants/tarifs/": [FAMILLE],
   "/enseignants/fonctionnalites/": [ariane(ARIANE_FONCTIONNALITES, "/enseignants/fonctionnalites/")],
-  ...Object.fromEntries(FICHES.map((f) => [adresseFiche(f), [ariane(arianeFiche(f), adresseFiche(f)), appFiche(f), faq(f.questions)]])),
+  ...Object.fromEntries(FICHES.map((f) => [adresseFiche(f), [ariane(arianeFiche(f), adresseFiche(f)), articleFiche(f), appFiche(f), faq(f.questions)]])),
 };
 
 /** Balise <script type="application/ld+json"> de la page, ou "" si elle n'en a pas. */

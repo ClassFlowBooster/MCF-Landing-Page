@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Adaptez chaque support à chaque élève — MyClassFlow</title>
-<meta name="description" content="MyClassFlow adapte vos supports selon vos critères : texte agrandi, mise en page aérée, consignes en étapes. Pour les enseignants, les écoles et les familles." />
+<title>MyClassFlow — adapter les supports et organiser la classe</title>
+<meta name="description" content="MyClassFlow accompagne les enseignants, les écoles et les familles avec des supports adaptés et une classe organisée." />
 <link rel="canonical" href="https://myclassflow.fr/" />
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
-<meta property="og:title" content="Adaptez chaque support à chaque élève — MyClassFlow" />
-<meta property="og:description" content="MyClassFlow adapte vos supports selon vos critères : texte agrandi, mise en page aérée, consignes en étapes. Pour les enseignants, les écoles et les familles." />
+<meta property="og:title" content="MyClassFlow — adapter les supports et organiser la classe" />
+<meta property="og:description" content="MyClassFlow accompagne les enseignants, les écoles et les familles avec des supports adaptés et une classe organisée." />
 <meta property="og:url" content="https://myclassflow.fr/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="MyClassFlow" />
@@ -19,27 +19,15 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="MyClassFlow : les castors professeur, direction et élève, avec l'accroche « Adaptez chaque support aux besoins de chaque élève »." />
 <meta name="twitter:card" content="summary_large_image" />
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myclassflow.fr/#organisation","name":"MyClassFlow","url":"https://myclassflow.fr/","logo":"https://myclassflow.fr/assets/img/apple-touch-icon.png"},{"@type":"WebSite","name":"MyClassFlow","url":"https://myclassflow.fr/","publisher":{"@id":"https://myclassflow.fr/#organisation"}},{"@type":"SoftwareApplication","name":"MyClassFlow","url":"https://app.myclassflow.fr","applicationCategory":"EducationalApplication","operatingSystem":"Web, Windows, macOS, Android, iOS","inLanguage":"fr","publisher":{"@id":"https://myclassflow.fr/#organisation"},"offers":[{"@type":"Offer","name":"Gratuit","price":"0.00","priceCurrency":"EUR","description":"Gestion de classe et 3 adaptations offertes."},{"@type":"Offer","name":"Abonnement enseignant","price":"14.99","priceCurrency":"EUR","description":"Par mois, TTC, sans engagement."},{"@type":"Offer","name":"Abonnement enseignant avec engagement d'un an","price":"9.99","priceCurrency":"EUR","description":"Pendant 6 mois avec un engagement d’un an, puis 14,99 €/mois TTC."}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myclassflow.fr/#organisation","name":"MyClassFlow","url":"https://myclassflow.fr/","logo":"https://myclassflow.fr/assets/img/apple-touch-icon.png"},{"@type":"WebSite","name":"MyClassFlow","url":"https://myclassflow.fr/","publisher":{"@id":"https://myclassflow.fr/#organisation"}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap" />
 <link rel="stylesheet" href="/assets/css/base.css" />
 </head>
 <body data-espace="enseignants">
-<div class="entree" id="entree" role="dialog" aria-modal="true" aria-labelledby="entreeTitre" hidden>
-  <div class="veil"></div>
-  <div class="modal">
-    <h2 id="entreeTitre">Bienvenue sur MyClassFlow</h2>
-    <p class="sub">Pour vous montrer ce qui vous concerne, dites-nous qui vous êtes :</p>
-    <div class="choices">
-      <a class="ch" data-espace="enseignants" href="/enseignants/"><img class="castor ic" src="/assets/img/castors/professeur.svg" alt="" width="120" height="120" decoding="async"><b>Enseignant·e</b><span>J'adapte mes supports et je prépare ma classe</span></a>
-      <a class="ch" data-espace="ecoles" href="/ecoles/"><img class="castor ic" src="/assets/img/castors/direction.svg" alt="" width="120" height="120" decoding="async"><b>École</b><span>Je dirige un établissement et j'équipe mon équipe</span></a>
-      <a class="ch" data-espace="parents-enfants" href="/parents-enfants/"><img class="castor ic" src="/assets/img/castors/eleve.svg" alt="" width="120" height="120" decoding="async"><b>Parent / Enfant</b><span>J'adapte les devoirs et les leçons à la maison</span></a>
-    </div>
-    <div class="foot"><label><input type="checkbox" id="seSouvenir" checked> Se souvenir de mon choix</label><span>Vous pourrez changer à tout moment en haut de page</span></div>
-  </div>
-</div><header class="header"><nav class="nav" aria-label="Navigation principale">
-  <a class="brand" href="/enseignants/"><img class="castor castor-logo" src="/assets/img/castors/professeur.svg" alt="" width="32" height="32" decoding="async">MyClassFlow</a>
+<header class="header"><nav class="nav" aria-label="Navigation principale">
+  <a class="brand" href="/"><img class="castor castor-logo" src="/assets/img/castors/professeur.svg" alt="" width="32" height="32" decoding="async">MyClassFlow</a>
   <div class="espace-choix">
     <button class="pill" type="button" aria-haspopup="menu" aria-expanded="false"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" decoding="async">Espace Enseignants ▾</button>
     <div class="espace-menu" role="menu" hidden><a role="menuitem" href="/enseignants/" data-espace="enseignants"><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Enseignants</a><a role="menuitem" href="/ecoles/" data-espace="ecoles"><img class="castor castor-menu" src="/assets/img/castors/direction.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Écoles</a><a role="menuitem" href="/parents-enfants/" data-espace="parents-enfants"><img class="castor castor-menu" src="/assets/img/castors/eleve.svg" alt="" width="26" height="26" loading="lazy" decoding="async">Espace Parents / Enfants</a></div>
@@ -77,157 +65,49 @@
 </nav></header>
 <main>
 <div class="acc">
-  <section class="section hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <div class="hero-badge"><span class="pill">Nouveau</span><span>L'inclusion scolaire, <b>sans la charge de travail</b></span></div>
-        <h1 class="h-display">Adaptez chaque support <br class="br-md" />aux besoins de <em>chaque élève.</em> <br class="br-md" />En un clic.</h1>
-        <p class="llede">MyClassFlow régénère vos exercices et vos leçons selon les critères pédagogiques que vous cochez&nbsp;: texte agrandi, mise en page aérée, consignes en étapes… Vous gagnez des heures&nbsp;; chaque élève reçoit un support personnalisé.</p>
-        <div class="hero-actions">
-          <a class="lbtn lbtn-primary lbtn-lg" href="https://app.myclassflow.fr">Créer mon compte gratuit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="lbtn lbtn-ghost lbtn-lg" href="#etapes">Voir comment ça marche</a>
-        </div>
-        <div class="hero-reassure"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg> Hébergé en France</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg> Conforme RGPD</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg> Conçu avec des enseignants</span></div>
-      </div>
-      <div class="hero-demo">
-        <div class="ba" data-comparateur>
-          <div class="ba-feuille">
-            <div class="ba-couche ba-orig" aria-hidden="true">
-              <div class="ba-meta"><span>Prénom : ..............</span><span>CM1 · Mathématiques</span></div>
-              <h6>Les fractions — exercice 3</h6>
-              <p class="ba-ex">Colorie les trois quarts de chaque figure puis compare les deux résultats obtenus en expliquant ta réponse par une phrase complète, puis range les fractions suivantes dans l'ordre croissant : 3/4 ; 1/2 ; 2/8 ; 5/4.</p>
-              <div class="ba-figs">
-                <svg viewBox="0 0 52 52"><rect x="2" y="2" width="48" height="48" fill="none" stroke="#333"/><path d="M26 2v48M2 26h48" stroke="#333"/></svg>
-                <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="none" stroke="#333"/><path d="M26 2v48M2 26h48" stroke="#333"/></svg>
-              </div>
-              <p>Rappel : une fraction représente une partie d'un tout partagé en parts égales ; le dénominateur indique en combien de parts on a partagé, le numérateur combien de parts on prend.</p>
-              <div class="ba-lignes"><i></i><i></i><i></i></div>
-            </div>
-            <div class="ba-couche ba-adap" aria-hidden="true">
-              <div class="ba-meta"><span>Prénom : Léa</span><span>CM1 · Maths</span></div>
-              <h6>Les fractions</h6>
-              <div class="ba-etape"><b>1</b><p>Colorie <strong>trois quarts</strong> du carré.</p></div>
-              <div class="ba-figs">
-                <svg viewBox="0 0 58 58"><rect x="2" y="2" width="54" height="54" rx="4" fill="#fff" stroke="#1F1A14" stroke-width="2.5"/><path d="M29 2v54M2 29h54" stroke="#1F1A14" stroke-width="2.5"/></svg>
-              </div>
-              <div class="ba-etape"><b>2</b><p>Fais pareil avec le rond.</p></div>
-              <p class="ba-astuce">Une consigne à la fois. Coche quand c'est fait.</p>
-            </div>
-            <span class="ba-etiq ba-etiq-o" aria-hidden="true">Original</span><span class="ba-etiq ba-etiq-a" aria-hidden="true">Adapté</span>
-            <div class="ba-poignee" aria-hidden="true"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
-            <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparer l'exercice d'origine et sa version adaptée">
-          </div>
-          <div class="ba-aide" aria-hidden="true">glissez pour voir la personnalisation</div>
-        </div>
-        <img class="castor castor-hero" src="/assets/img/castors/professeur.svg" alt="" width="230" height="230" decoding="async">
-      </div>
-    </div>
-  </section>
+  <section class="section hero"><div class="wrap hero-grid"><div class="hero-copy">
+    <span class="eyebrow">MyClassFlow</span>
+    <h1 class="h-display">Des supports adaptés, <em>une classe organisée</em></h1>
+    <p class="llede">L'app qui adapte les supports aux critères pédagogiques de chaque élève et organise la classe.</p>
+  </div><div class="accueil-castor"><img class="castor " src="/assets/img/castors/professeur.svg" alt="" width="230" height="230" decoding="async"></div></div></section>
 
-  <section class="familles" aria-label="Familles de critères pédagogiques">
-    <div class="wrap familles-row">
-      <span class="familles-lead">Des critères pédagogiques à cocher —</span>
-      <span class="fchip">Lisibilité</span>
-      <span class="fchip">Consignes</span>
-      <span class="fchip">Structure du document</span>
-      <span class="fchip">Exercices</span>
-      <span class="fchip">Supports visuels</span>
+  <section class="section who" aria-labelledby="choisir-espace"><div class="wrap">
+    <div class="sec-head center"><span class="eyebrow center">Choisir votre espace</span><h2 class="h-section" id="choisir-espace">MyClassFlow selon votre quotidien</h2></div>
+    <div class="who-grid trois">
+      <article class="persona"><div><img class="castor castor-menu" src="/assets/img/castors/professeur.svg" alt="" width="80" height="80" decoding="async"></div><h3>Enseignants</h3><p>J'adapte mes supports et je prépare ma classe.</p><a class="lien-suite" href="/enseignants/">Découvrir l'espace Enseignants →</a></article>
+      <article class="persona"><div><img class="castor castor-menu" src="/assets/img/castors/direction.svg" alt="" width="80" height="80" decoding="async"></div><h3>Écoles</h3><p>Je dirige un établissement et j'équipe mon équipe.</p><a class="lien-suite" href="/ecoles/">Découvrir l'espace Écoles →</a></article>
+      <article class="persona"><div><img class="castor castor-menu" src="/assets/img/castors/eleve.svg" alt="" width="80" height="80" decoding="async"></div><h3>Familles</h3><p>J'adapte les devoirs et les leçons à la maison.</p><a class="lien-suite" href="/parents-enfants/">Découvrir l'espace Familles →</a></article>
     </div>
-  </section>
+  </div></section>
 
-  <section class="section problem">
-    <div class="wrap problem-grid">
-      <div>
-        <span class="eyebrow">Le constat</span>
-        <h2 class="h-section" style="margin:16px 0 18px;">Différencier est essentiel.<br /><span class="serif-em text-coral">Mais ça vous prend vos soirées.</span></h2>
-        <p class="llede" style="margin-bottom:14px;">Agrandir le texte pour un élève, découper les consignes pour un autre, refaire la mise en page, suivre chaque progrès… L'école inclusive est une mission que vous portez tous les jours.</p>
-        <p style="color:var(--ink-2); font-size:16px;">Mais aujourd'hui, elle repose sur des heures de remise en forme manuelle, des documents refaits un par un, et une charge mentale qui s'accumule. Le temps passé sur la mise en page, c'est du temps en moins pour vos élèves.</p>
-      </div>
-      <div class="pain-list">
-        <div class="pain"><span class="pain-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h4>Chronophage</h4><p>Refaire un même support pour trois élèves différents, à la main, chaque semaine.</p></div></div>
-        <div class="pain"><span class="pain-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span><div><h4>Complexe</h4><p>Trouver la bonne présentation pour chaque élève, puis la refaire à la main dans chaque document, demande un temps que personne n'a.</p></div></div>
-        <div class="pain"><span class="pain-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/></svg></span><div><h4>Éparpillé</h4><p>Cahier journal, suivi des élèves, évaluations, agenda : autant d'outils séparés, aucune vue d'ensemble.</p></div></div>
-      </div>
+  <section class="section" aria-labelledby="fonctions"><div class="wrap"><div class="guides">
+    <div class="sec-head center"><span class="eyebrow center">Pour la classe</span><h2 class="h-section" id="fonctions">Ce que fait MyClassFlow</h2></div>
+    <div class="guides-liste">
+      <a class="guide" href="/enseignants/fonctionnalites/fiche-de-preparation/"><span class="tg free">Gratuit</span><b>Fiche de préparation</b><span class="t">Séances et séquences, simplement</span></a>
+      <a class="guide" href="/enseignants/fonctionnalites/cahier-journal/"><span class="tg free">Gratuit</span><b>Cahier journal</b><span class="t">Chaque séance du jour, sa fiche à côté</span></a>
+      <a class="guide" href="/enseignants/fonctionnalites/emploi-du-temps/"><span class="tg free">Gratuit</span><b>Emploi du temps</b><span class="t">Le total d'heures de chaque matière, sans calcul</span></a>
+      <a class="guide" href="/enseignants/fonctionnalites/adaptation-des-supports/"><span class="tg pay">Abonnement</span><b>Adaptation des supports</b><span class="t">Vos fiches adaptées automatiquement, selon vos critères</span></a>
+      <a class="guide" href="/enseignants/fonctionnalites/fiches-eleves/"><span class="tg free">Gratuit</span><b>Fiche élève</b><span class="t">Critères pédagogiques, observations, tâches</span></a>
+      <a class="guide" href="/enseignants/fonctionnalites/import-eleves-photo/"><span class="tg free">Gratuit</span><b>Import des élèves par photo</b><span class="t">Une photo de la liste, vos élèves sont ajoutés</span></a>
+      <a class="guide" href="/enseignants/fonctionnalites/taches/"><span class="tg free">Gratuit</span><b>Tâches</b><span class="t">Les choses à faire, par classe et par échéance</span></a>
+      <a class="guide" href="/enseignants/fonctionnalites/lia/"><span class="tg pay">Abonnement</span><b>Lia, votre assistante</b><span class="t">Posez vos questions sur vos élèves et vos tâches</span></a>
     </div>
-  </section>
+    <p class="centre"><a class="lien-suite" href="/enseignants/fonctionnalites/">Voir toutes les fonctionnalités →</a></p>
+  </div></div></section>
 
-  <section class="section" id="solution" style="background:linear-gradient(180deg,var(--paper),var(--paper-2))">
+  <section class="section trust" id="confiance">
     <div class="wrap">
       <div class="sec-head center">
-        <span class="eyebrow center">La solution</span>
-        <h2 class="h-section">Tout ce qu'il faut pour votre classe</h2>
-        <p class="llede">La gestion de classe est gratuite, avec 3 adaptations offertes. L'IA qui adapte vos supports est dans l'abonnement.</p>
+        <span class="eyebrow center">La confiance avant tout</span>
+        <h2 class="h-section">Des données d'élèves traitées avec sérieux</h2>
+        <p class="llede">MyClassFlow traite les informations utiles à la classe avec une attention particulière à leur protection.</p>
       </div>
-      <div class="themes">
-        <div class="theme-carte"><h3>Adapter pour chaque élève</h3><p>L'IA fait le travail d'adaptation, vous validez.</p><ul><li><a class="lien-fiche" href="/enseignants/fonctionnalites/adaptation-des-supports/">Adaptation des supports</a> <span class="tg pay">Abonnement</span></li><li><a class="lien-fiche" href="/enseignants/fonctionnalites/lia/">Lia, votre assistante</a> <span class="tg pay">Abonnement</span></li></ul></div>
-        <div class="theme-carte"><h3>Préparer la classe</h3><p>Tout est relié : vos fiches de préparation passent dans le cahier journal, et bientôt l'emploi du temps aussi.</p><ul><li><a class="lien-fiche" href="/enseignants/fonctionnalites/cahier-journal/">Cahier journal</a> <span class="tg free">Gratuit</span></li><li><a class="lien-fiche" href="/enseignants/fonctionnalites/emploi-du-temps/">Emploi du temps</a> <span class="tg free">Gratuit</span></li><li><a class="lien-fiche" href="/enseignants/fonctionnalites/fiche-de-preparation/">Fiches de préparation</a> <span class="tg free">Gratuit</span></li><li><a class="lien-fiche" href="/enseignants/fonctionnalites/taches/">Tâches</a> <span class="tg free">Gratuit</span></li></ul></div>
-        <div class="theme-carte"><h3>Suivre ses élèves</h3><p>Repérez d'un coup d'œil qui a besoin de quoi.</p><ul><li><a class="lien-fiche" href="/enseignants/fonctionnalites/fiches-eleves/">Fiche élève</a> <span class="tg free">Gratuit</span></li><li><a class="lien-fiche" href="/enseignants/fonctionnalites/import-eleves-photo/">Import des élèves par photo</a> <span class="tg free">Gratuit</span></li></ul></div>
-      </div>
-      <p class="centre"><a class="lien-suite" href="/enseignants/fonctionnalites/">Voir toutes les fonctionnalités →</a></p>
-    </div>
-  </section>
-
-  <section class="section how" id="etapes">
-    <div class="wrap">
-      <div class="sec-head center">
-        <span class="eyebrow center">Comment ça marche</span>
-        <h2 class="h-section">Trois étapes, et le support est prêt</h2>
-        <p class="llede">De votre support habituel à un document adapté, sans rien réapprendre.</p>
-      </div>
-      <div class="how-steps">
-        <div class="step">
-          <div class="step-n"><b>1</b> Choisir</div>
-          <h3>Les critères pédagogiques</h3>
-          <p>Cochez les critères utiles&nbsp;: texte agrandi, lignes espacées, consignes en étapes… Enregistrez-les pour un élève, ou adaptez un support sans le relier à un élève. Importez ou collez le support.</p>
-          <svg class="step-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-        <div class="step">
-          <div class="step-n"><b>2</b> Adapter</div>
-          <h3>L'IA fait le travail</h3>
-          <p>Police lisible, mise en page aérée, consignes reformulées pas à pas&nbsp;: le document est régénéré selon les critères cochés. Un même support adapté sert à tous les élèves qui ont les mêmes critères.</p>
-          <svg class="step-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-        <div class="step">
-          <div class="step-n"><b>3</b> Imprimer</div>
-          <h3>Ou télécharger</h3>
-          <p>Récupérez le support adapté et la version d'origine. Choisissez le nombre de copies à l'impression, ou téléchargez le PDF.</p>
-        </div>
+      <div class="trust-grid">
+        <div class="trust-card"><div class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Hébergé en France</h3><p>Les données sont stockées sur une infrastructure située en France, pour rester au plus près du cadre scolaire et de la réglementation nationale.</p></div>
+        <div class="trust-card"><div class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Conforme RGPD</h3><p>Collecte minimale, finalités claires et maîtrise de vos données : MyClassFlow est pensé dès la conception pour respecter le RGPD.</p></div>
       </div>
     </div>
   </section>
-
-  <section class="section apercu" id="tarifs">
-    <div class="wrap">
-      <h2 class="t">Un prix simple, pour toute votre classe</h2>
-      <p class="lead">Commencez gratuitement, passez à l'abonnement quand vous voulez adapter vos supports.</p>
-      <div class="cards deux">
-        <div class="card">
-          <span class="badge vert">Sans carte bancaire</span>
-          <h3>Gratuit</h3>
-          <p class="d">Toute la gestion de classe, pour toujours</p>
-          <div class="old"></div>
-          <div class="price">0 €</div>
-          <span class="quota"><i>3</i> adaptations offertes</span>
-          <div class="grow"></div>
-          <a class="btn ghost" href="https://app.myclassflow.fr">Créer mon compte gratuit</a>
-        </div>
-        <div class="card hl">
-          <span class="badge">Avec engagement · −33 %</span>
-          <h3>MyClassFlow Enseignant</h3>
-          <p class="d">Pour un·e enseignant·e, toutes classes confondues</p>
-          <div class="old">14,99 €</div>
-          <div class="price">9,99 €<sup class="astre">*</sup><small>/mois TTC</small></div>
-          <div class="fine"><b>*</b> Pendant 6 mois avec un engagement d’un an, puis 14,99 €/mois TTC.</div>
-          <a class="btn" href="https://app.myclassflow.fr">Je commence</a>
-        </div>
-      </div>
-      <div class="band"><img class="castor castor-bande" src="/assets/img/castors/direction.svg" alt="" width="88" height="88" decoding="async"><div style="flex:1"><b>Faites équiper votre école</b><p>Envoyez l'offre école à votre direction en un clic : votre abonnement pourrait être pris en charge, et toute l'équipe en profite.</p></div><a class="btn" data-mailto="direction" href="mailto:?subject=MyClassFlow%20pour%20notre%20%C3%A9cole&body=Bonjour%2C%0A%0AJ'utilise%20MyClassFlow%20pour%20adapter%20mes%20supports%20%C3%A0%20mes%20%C3%A9l%C3%A8ves.%20L'%C3%A9cole%20peut%20%C3%A9quiper%20toute%20l'%C3%A9quipe%2C%20avec%20un%20prix%20qui%20baisse%20d%C3%A8s%205%20enseignants%20%3A%0Ahttps%3A%2F%2Fmyclassflow.fr%2Fecoles%2Ftarifs%2F%0A%0ABonne%20journ%C3%A9e%2C">Envoyer à ma direction</a></div>
-      <p class="centre"><a class="lien-suite" href="/enseignants/tarifs/">Voir les tarifs →</a></p>
-    </div>
-  </section>
-
-  
-
   <section class="section equipe" id="equipe">
     <div class="wrap">
       <div class="sec-head center">
@@ -246,37 +126,6 @@
       </div>
     </div>
   </section>
-
-  <section class="section final" id="contact">
-    <div class="wrap final-grid">
-      <div>
-        <span class="eyebrow center" style="color:var(--coral-300)">Demander une démo</span>
-        <h2 style="margin-top:16px;">Découvrez MyClassFlow avec votre classe</h2>
-        <p class="llede">Présentez-nous votre contexte&nbsp;: nous vous montrons l'adaptation des supports en direct et répondons à vos questions sur les données et le déploiement.</p>
-        <ul class="final-points">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg> Démonstration adaptée à votre cycle (2 ou 3)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg> Échange sur l'hébergement et le RGPD</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg> Conditions « premiers établissements »</li>
-        </ul>
-        <a class="lbtn lbtn-primary lbtn-lg" href="https://app.myclassflow.fr">Créer mon compte gratuit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-      <div>
-        <form class="form" data-contact novalidate>
-          <h3>Parlons de votre classe</h3>
-          <p class="form-sub">Réponse sous 48&nbsp;h ouvrées.</p>
-          <input class="in" name="nom" required maxlength="120" autocomplete="name" placeholder="Votre nom" aria-label="Votre nom">
-          <input class="in" type="email" name="email" required maxlength="254" autocomplete="email" placeholder="Votre e-mail" aria-label="Votre e-mail">
-          <input class="in" name="etablissement" maxlength="200" placeholder="Votre école (facultatif)" aria-label="Votre école">
-          <textarea class="in" name="message" required maxlength="4000" placeholder="Votre contexte, votre cycle, vos besoins…" aria-label="Votre message"></textarea>
-          <input class="piege" name="site_web" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <p class="form-erreur" role="alert" hidden></p>
-          <button class="lbtn lbtn-primary lbtn-lg lbtn-block" type="submit">Envoyer</button>
-          <p class="form-rgpd">Vos coordonnées servent uniquement à vous répondre au sujet de votre message. Elles sont conservées 3 ans après notre dernier échange.</p>
-        </form>
-        <div class="form-merci" hidden role="status"><b>Merci, votre message est bien reçu.</b> Nous vous répondons rapidement.</div>
-      </div>
-    </div>
-  </section>
 </div>
 </main>
 <footer class="footer"><div class="footer-inner">
@@ -285,8 +134,6 @@
   <a href="/presentation/">Présentation</a>
 </div></footer>
 <script type="module" src="/assets/js/navigation.js"></script>
-<script type="module" src="/assets/js/comparateur.js"></script>
-<script type="module" src="/assets/js/entree.js"></script>
-<script type="module" src="/assets/js/formulaire.js"></script>
+
 </body>
 </html>

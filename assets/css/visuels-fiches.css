@@ -58,6 +58,17 @@
   overflow: visible !important;
 }
 
+/* Image du visuel (rendue depuis l'extrait du proto) : même cadre que l'extrait HTML. */
+.appv-figure > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #e6dfcf;
+  border-radius: 14px;
+  background: #fbf8f3;
+  box-shadow: 0 1px 3px rgb(31 26 20 / 6%), 0 8px 24px rgb(31 26 20 / 5%);
+}
+
 .appv-figure figcaption { margin-top: .65rem; color: var(--ink-2, #4a4238); font-size: .9rem; }
 
 /* Fiche élève : dans l'app, la fenêtre agrandie couvre tout l'écran, rail compris. */

@@ -17,6 +17,8 @@ export const filAriane = (elements) => `<nav class="ariane" aria-label="Fil d'Ar
   .map(([texte, href]) => (href ? `<li><a href="${href}">${texte}</a></li>` : `<li aria-current="page">${texte}</li>`)).join("")}</ol></nav>`;
 
 const question = ([q, r]) => `<details><summary>${q}</summary><p>${r}</p></details>`;
+const dateFrancaise = (date) => new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
+  .format(new Date(`${date}T00:00:00Z`));
 
 // Outils voisins : leur fiche si elle existe, la page Fonctionnalités sinon.
 const soeur = (nom) => {
@@ -30,6 +32,7 @@ export function fiche(f) {
   <header class="fiche-tete">
     <span class="tg ${f.k}">${f.k === "free" ? "Gratuit" : "Abonnement"}</span>
     <h1 class="t">${f.h1}</h1>
+    <p class="fiche-signature">Par <a href="/enseignants/#equipe">Joseph Solier</a> et <a href="/enseignants/#equipe">Benoist de Montgrand</a>, fondateurs de MyClassFlow · Mis à jour le ${dateFrancaise(f.dateModification)}</p>
     <p class="fiche-intro">${f.intro}</p>
   </header>
 

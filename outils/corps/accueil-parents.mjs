@@ -99,6 +99,14 @@ export default `<div class="acc">
     </div>
   </section>
 
+  <section class="section who" aria-labelledby="adapter-supports">
+    <div class="wrap"><div class="sec-head center">
+      <span class="eyebrow center">Pour aller plus loin</span>
+      <h2 class="h-section" id="adapter-supports">Comprendre l'adaptation des supports</h2>
+      <p class="llede"><a class="lien-suite" href="/enseignants/fonctionnalites/adaptation-des-supports/">Découvrir l'adaptation des supports →</a></p>
+    </div></div>
+  </section>
+
   ${confiance([
     carteConfiance("photo", "Les photos de votre enfant restent privées", "Elles servent uniquement à produire la version adaptée."),
     HEBERGE, RGPD],

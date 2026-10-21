@@ -1,29 +1,11 @@
 // Fichiers de la racine du site : sitemap.xml, robots.txt et llms.txt.
 // Écrits par outils/generer.mjs, vérifiés par tests/generation.test.mjs.
-import { execFileSync } from "node:child_process";
 import { SITE } from "./donnees-structurees.mjs";
 import { FICHES } from "./corps/fiches/index.mjs";
 import { adresseFiche } from "./corps/fiche.mjs";
 import { offreEnseignant, offreAdapter, PLANCHER_ECOLE, euros } from "../assets/js/tarifs.js";
 
-// Sans Git, la génération échoue : mieux vaut aucune date qu'une date inventée.
-const git = (...args) => execFileSync("git", args, { encoding: "utf8" }).trim();
-
-/**
- * Date de dernière modification d'une page : celle du dernier commit qui a
- * changé son fichier. Si le fichier généré diffère du dernier commit, il sera
- * commité avec ce changement : la date est celle du jour. Une page inchangée
- * garde donc sa date, quelle que soit la date de génération.
- */
-export function dateModification(fichier) {
-  const modifie = git("status", "--porcelain", "--", fichier) !== "";
-  const date = modifie ? "" : git("log", "-1", "--format=%cs", "--", fichier);
-  return date || aujourdhui();
-}
-
-/** Date locale du jour, AAAA-MM-JJ. */
-export const aujourdhui = (j = new Date()) =>
-  `${j.getFullYear()}-${String(j.getMonth() + 1).padStart(2, "0")}-${String(j.getDate()).padStart(2, "0")}`;
+export { aujourdhui, dateModification } from "./dates.mjs";
 
 /** pages : [{ chemin, lastmod }]. */
 export const sitemap = (pages) => `<?xml version="1.0" encoding="UTF-8"?>

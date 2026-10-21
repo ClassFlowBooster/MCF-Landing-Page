@@ -91,6 +91,13 @@ export default `<div class="acc">
     </div>
   </section>
 
+  <section class="section who" aria-labelledby="ressources-enseignants">
+    <div class="wrap">
+      <div class="sec-head center"><span class="eyebrow center">Pour vos enseignants</span><h2 class="h-section" id="ressources-enseignants">Des ressources à découvrir</h2></div>
+      <p class="centre"><a class="lien-suite" href="/enseignants/fonctionnalites/adaptation-des-supports/">Adaptation des supports →</a> · <a class="lien-suite" href="/enseignants/fonctionnalites/fiches-eleves/">Fiches élèves →</a> · <a class="lien-suite" href="/enseignants/fonctionnalites/">Toutes les fonctionnalités →</a></p>
+    </div>
+  </section>
+
   ${confiance([HEBERGE, RGPD, carteConfiance("equipe", "Conçu avec des enseignants",
     "Chaque fonctionnalité est imaginée et testée avec des professeurs des écoles. L'outil suit les pratiques réelles des équipes.")],
   { texte: "Les informations sur les élèves doivent être protégées. MyClassFlow est conçu pour cela, dès le premier jour.",

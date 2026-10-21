@@ -579,6 +579,9 @@ html{scroll-padding-top:72px}
 
 /* ---------- Page Fonctionnalités Enseignants : accueil des fiches ---------- */
 .guides{margin:8px 0 34px}
+/* Accueil d'orientation : le castor seul à côté du titre (sans démo à chevaucher). */
+.accueil-castor{display:flex;justify-content:center}.accueil-castor svg,.accueil-castor img{height:230px;width:auto;filter:drop-shadow(0 10px 14px rgba(31,26,20,.12))}
+@media (max-width:760px){.accueil-castor{display:none}}
 .guides h2,.theme-titre{font-family:Fraunces,serif;font-size:25px;font-weight:600;margin:0 0 12px}
 .theme-titre{text-align:center}
 .guides-liste{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
@@ -597,6 +600,7 @@ html{scroll-padding-top:72px}
 .fiche-tete{text-align:center;margin-bottom:12px}
 .fiche-tete .tg{display:inline-block;margin-bottom:10px}
 .fiche-intro{max-width:680px;margin:6px auto 0;color:var(--ink-2);font-size:16px}
+.fiche-signature{margin:10px auto 0;color:var(--ink-2);font-size:13px}.fiche-signature a{color:var(--coral-700);text-decoration:underline;text-underline-offset:2px}
 .fiche-partie{margin-top:40px}
 .fiche-partie h2{font-family:Fraunces,serif;font-size:25px;font-weight:600;margin:0 0 14px}
 .fiche-partie h3{font-family:Fraunces,serif;font-size:20px;font-weight:600;margin:0 0 10px}
