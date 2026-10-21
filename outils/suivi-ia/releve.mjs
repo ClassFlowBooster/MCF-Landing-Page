@@ -210,6 +210,12 @@ export async function relever(options = {}, dependances = {}) {
   mkdirSync(dossierSortie, { recursive: true });
   const lignes = [];
   const reponses = [];
+  // Les trois fichiers sont réécrits après chaque question : un relevé interrompu garde ce qu'il a déjà obtenu.
+  const ecrire = () => {
+    writeFileSync(join(dossierSortie, `releve-${date}.csv`), csv(lignes), "utf8");
+    writeFileSync(join(dossierSortie, `resume-${date}.md`), resume(date, lignes), "utf8");
+    writeFileSync(join(dossierSortie, `reponses-${date}.json`), `${JSON.stringify(reponses, null, 2)}\n`, "utf8");
+  };
   for (const ia of assistants) {
     for (const { n: numero, question } of QUESTIONS) {
       let reponse;
@@ -223,11 +229,9 @@ export async function relever(options = {}, dependances = {}) {
       if (!erreur) erreur = reponse.erreur || (!String(reponse.texte ?? "").trim() ? "réponse vide" : !reponse.recherche ? "réponse sans recherche web" : "");
       lignes.push({ date, ia, modele: reponse.modele, n: numero, question, ...analyser(reponse.texte, reponse.sources), erreur });
       reponses.push({ question, ia, texte: reponse.texte, sources: reponse.sources });
+      ecrire();
     }
   }
-  writeFileSync(join(dossierSortie, `releve-${date}.csv`), csv(lignes), "utf8");
-  writeFileSync(join(dossierSortie, `resume-${date}.md`), resume(date, lignes), "utf8");
-  writeFileSync(join(dossierSortie, `reponses-${date}.json`), `${JSON.stringify(reponses, null, 2)}\n`, "utf8");
   return { lignes, reponses, sortie: dossierSortie, aRepondu: lignes.some((ligne) => !ligne.erreur) };
 }
 

@@ -177,3 +177,19 @@ test("le script ne contient ni fetch, ni security", () => {
   assert.equal(/fetch\s*\(/i.test(contenu), false);
   assert.equal(/security/i.test(contenu), false);
 });
+
+test("relever réécrit les fichiers après chaque question", async () => {
+  const dossier = mkdtempSync(join(tmpdir(), "suivi-ia-partiel-"));
+  const vus = [];
+  try {
+    await relever({ essai: true, ia: ["claude"], sortie: dossier, date: "2026-10-26" }, {
+      reponseEssai: (question, ia, numero) => {
+        if (numero > 1) vus.push(readFileSync(join(dossier, "releve-2026-10-26.csv"), "utf8").trim().split("\n").length - 1);
+        return { texte: "Edumoov", sources: [], recherche: true, erreur: "", modele: "claude -p" };
+      },
+    });
+    assert.deepEqual(vus, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  } finally {
+    rmSync(dossier, { recursive: true, force: true });
+  }
+});

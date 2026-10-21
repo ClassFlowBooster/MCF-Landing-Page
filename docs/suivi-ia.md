@@ -12,7 +12,9 @@ Essai, sans processus ni réseau :
 
 Lancement réel :
 
-    ~/.claude/mods/prototype-web/lourd.sh node outils/suivi-ia/releve.mjs
+    node outils/suivi-ia/releve.mjs
+
+Les fichiers sont réécrits après chaque question : un relevé interrompu garde ce qu'il a déjà obtenu.
 
 Consommation : 20 questions par semaine sur les abonnements existants.
 
@@ -28,7 +30,7 @@ Seulement sur go de Joseph. Le relevé tourne depuis un worktree dédié sur `ma
     launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/fr.myclassflow.suivi-ia.plist
     launchctl print gui/$(id -u)/fr.myclassflow.suivi-ia | head -20
 
-Chaque lundi à 8 h (au réveil du Mac s'il dormait), par la file `lourd.sh` ; journal : `~/Library/Logs/mcf-suivi-ia.log`. Lancer tout de suite pour essayer : `launchctl kickstart gui/$(id -u)/fr.myclassflow.suivi-ia`. Mettre le relevé à jour après un merge : `git -C "$D" checkout --detach origin/main` après un `fetch`.
+Chaque lundi à 8 h (au réveil du Mac s'il dormait), hors de la file `lourd.sh` : le relevé attend surtout le réseau et ne charge pas le Mac ; journal : `~/Library/Logs/mcf-suivi-ia.log`. Lancer tout de suite pour essayer : `launchctl kickstart gui/$(id -u)/fr.myclassflow.suivi-ia`. Mettre le relevé à jour après un merge : `git -C "$D" checkout --detach origin/main` après un `fetch`.
 
 Retour arrière :
 
