@@ -10,7 +10,7 @@ import { illustrations } from "./illustrations.mjs";
 
 // Quelques critères de l'app, avec leurs libellés exacts, par famille.
 const CRITERES = [
-  ["Lisibilité", ["Agrandir le texte", "Changer de police", "Augmenter l'interligne", "Espacer les lettres", "Raccourcir les lignes", "Fond crème"]],
+  ["Lisibilité", ["Changer de police", "Augmenter l'interligne", "Espacer les lettres", "Raccourcir les lignes", "Fond crème"]],
   ["Consignes", ["Consignes courtes et directes", "Vocabulaire simple", "Lexique des mots difficiles"]],
   ["Structure", ["Textes en paragraphes courts", "Afficher la progression"]],
 ];
@@ -54,7 +54,12 @@ export default {
   description: "Adapter un exercice ou une leçon selon des critères pédagogiques cochés : texte agrandi, interligne, consignes courtes. Les critères de l'app, une mesure en CE1 du document importé au résultat, les versions par élève ou par groupe.",
   h1: "Du support de la classe aux versions à imprimer",
   intro: "Vous prenez en photo ou importez l'exercice prévu pour la classe, vous cochez les critères pédagogiques qui aident tel élève ou tel groupe, et MyClassFlow en tire une version adaptée, à relire puis à imprimer à côté de l'originale. Pour la différenciation pédagogique, c'est un support par élève ou par groupe, tiré de l'exercice de toute la classe.",
-  titreBenefices: "Ce que l'adaptation vous évite",
+  retenir: [
+    "Vous adaptez un exercice ou une leçon à partir du support de la classe.",
+    "Les critères des élèves restent sur leur fiche.",
+    "Vous relisez puis imprimez la version d'origine et les versions adaptées.",
+  ],
+  titreBenefices: "Qu'est-ce que l'adaptation vous évite ?",
   benefices: [
     ["Une mise en page à ne pas refaire", "Les variantes sortent de l'exercice prévu pour la classe : vous relisez et vous imprimez, sans repasser par le traitement de texte."],
     ["Se souvenir de qui a besoin de quoi", "Les critères de chaque élève restent sur sa fiche : vous les retrouvez au moment d'adapter, sans les recocher."],
@@ -65,6 +70,7 @@ export default {
     ["Dites pour qui", "Partez des critères de vos élèves ou de vos groupes, ou choisissez les critères pour l'occasion. Puis « Lancer l'adaptation »."],
     ["Imprimez ou téléchargez", "Chaque version s'imprime ou se télécharge, et une version inutile se supprime. Le support, lui, peut être renommé."],
   ],
+  titreEtapes: "Comment adapter un support pour vos élèves ?",
   illustration,
   blocs: [{ titre: "Les critères de l'app, puis une mesure en CE1", html: exemple }],
   offre: {
@@ -80,6 +86,11 @@ export default {
     ["L'adaptation peut-elle modifier l'exercice ?", "L'adaptation conserve le but de l'exercice et porte principalement sur sa présentation. La mise en forme suit des règles définies : les mêmes critères appliquent les mêmes réglages d'un document à l'autre, pour un rendu cohérent et aussi reproductible que possible. L'IA reformule les consignes uniquement si vous cochez un critère qui le demande. Vous gardez la main sur les critères choisis et relisez le résultat avant de l'utiliser."],
     ["L'adaptation remplace-t-elle la différenciation pédagogique ?", "Non, elle en est un outil. Différencier, c'est aussi changer le matériel, l'accompagnement ou la tâche ; l'adaptation s'occupe du support, pour que chaque élève puisse travailler sur le même exercice que la classe."],
     ["Peut-on adapter des supports avec le compte gratuit ?", "Oui : 3 adaptations sont offertes pour essayer. Les adaptations illimitées font partie de l'abonnement Enseignant."],
+  ],
+  publics: [
+    ["Pour un élève", "Vous partez de ses critères pédagogiques pour obtenir sa version du support."],
+    ["Pour un groupe", "Vous choisissez les critères qui conviennent au groupe et lancez l'adaptation."],
+    ["Pour la classe", "Vous conservez le support d'origine et imprimez les versions adaptées à côté."],
   ],
   soeurs: ["Fiche élève", "Fiches de préparation", "Lia, votre assistante"],
 };

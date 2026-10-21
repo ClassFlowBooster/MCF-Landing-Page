@@ -45,7 +45,12 @@ export default {
   description: "À la rentrée, photographiez la liste de classe avec votre téléphone : MyClassFlow lit les prénoms et les noms, signale ce qui est à vérifier et les doublons, puis ajoute les élèves après votre relecture.",
   h1: "Votre classe remplie à partir d'une photo de la liste",
   intro: "À la rentrée, au lieu de recopier vingt-cinq prénoms, vous photographiez la liste de classe avec votre téléphone. MyClassFlow lit les prénoms et les noms, vous relisez, puis vous ajoutez les élèves en une fois.",
-  titreBenefices: "Ce que la photo vous épargne",
+  retenir: [
+    "Vous photographiez la liste de classe avec votre téléphone.",
+    "Vous corrigez les prénoms et les noms avant l'ajout.",
+    "Les lignes à vérifier et les doublons sont signalés.",
+  ],
+  titreBenefices: "Que vous épargne la photo de la liste ?",
   benefices: [
     ["La saisie de la rentrée", "Une photo au lieu de vingt-cinq fiches remplies une à une, la semaine où le temps manque le plus."],
     ["Un élève créé par erreur", "Rien n'est ajouté avant votre relecture, et une ligne mal lue ressort marquée « À vérifier »."],
@@ -56,6 +61,7 @@ export default {
     ["Relisez", "Corrigez un prénom ou un nom, et choisissez les élèves à ajouter."],
     ["Ajoutez-les", "« Ajouter N élèves » remplit la classe : chaque élève apparaît dans « Classe », et sa fiche s'ouvre d'un toucher."],
   ],
+  titreEtapes: "Comment ajouter votre classe à partir d'une photo ?",
   illustration,
   blocs: [{ titre: "Une liste de huit élèves, de la photo à la classe", html: exemple }],
   offre: {
@@ -71,6 +77,11 @@ export default {
     ["Un élève déjà inscrit sera-t-il ajouté deux fois ?", "Non. La relecture signale « Déjà dans la classe » pour un élève présent, et « En double dans la liste » pour un nom écrit deux fois sur la feuille."],
     ["L'import crée-t-il la classe ?", "Il remplit une classe que vous avez déjà créée dans MyClassFlow. Créez d'abord la classe, puis ajoutez-y les élèves à partir de la photo."],
     ["L'import des élèves par photo est-il gratuit ?", "Oui, comme les fiches élèves, le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire."],
+  ],
+  publics: [
+    ["Pour la rentrée", "Vous ajoutez toute la classe en une fois au lieu de remplir les fiches une à une."],
+    ["Pour relire la liste", "Vous corrigez chaque prénom ou nom avant d'ajouter les élèves."],
+    ["Pour éviter les doublons", "MyClassFlow repère un élève déjà dans la classe ou présent deux fois sur la feuille."],
   ],
   soeurs: ["Fiche élève", "Adaptation des supports", "Cahier journal"],
 };
