@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Comparer les adaptations de supports — MyClassFlow</title>
-<meta name="description" content="Trois documents pédagogiques fictifs et les familles de critères MyClassFlow : examinez l’original et les adaptations disponibles dans la page." />
+<meta name="description" content="Trois documents pédagogiques fictifs et trois groupes MyClassFlow : examinez l’original et leurs adaptations réelles dans la page." />
 <link rel="canonical" href="https://myclassflow.fr/enseignants/outils/comparer-adaptations/" />
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
 <meta property="og:title" content="Comparer les adaptations de supports — MyClassFlow" />
-<meta property="og:description" content="Trois documents pédagogiques fictifs et les familles de critères MyClassFlow : examinez l’original et les adaptations disponibles dans la page." />
+<meta property="og:description" content="Trois documents pédagogiques fictifs et trois groupes MyClassFlow : examinez l’original et leurs adaptations réelles dans la page." />
 <meta property="og:url" content="https://myclassflow.fr/enseignants/outils/comparer-adaptations/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="MyClassFlow" />
@@ -66,13 +66,14 @@
 <section class="page oa">
 <nav aria-label="Fil d’Ariane"><a href="/enseignants/fonctionnalites/">Fonctionnalités</a> / <a href="/enseignants/fonctionnalites/adaptation-des-supports/">Adaptation des supports</a></nav>
 <h1 class="t">Un document, plusieurs critères à comparer</h1>
-<p class="lead">Choisissez un exercice et une famille de critères pédagogiques pour examiner le document d’origine et sa version adaptée.</p>
-<p>Trois exercices fictifs créés pour cette page, sans données d’élèves. Les familles et les critères viennent de MyClassFlow. Le détail des critères appliqués est affiché sous votre choix.</p>
-<div class="oa-commandes"><label for="oa-document">Document<select id="oa-document"><option value="lecture-jardin">CE1 — Le jardin sur le toit</option><option value="mesures-rubans">CE2 — Des rubans pour la maquette</option><option value="sciences-germination">CM1 — Deux pots, une différence</option></select></label><label for="oa-groupe">Famille de critères<select id="oa-groupe"><option value="lisibilite">Lisibilité</option><option value="consignes">Consignes</option><option value="structure">Structure</option><option value="exercices">Exercices</option><option value="visuel">Supports visuels</option></select></label></div>
+<p class="lead">Choisissez un exercice et un groupe pour examiner le document d’origine et sa version adaptée.</p>
+<p>Trois exercices fictifs créés pour cette page, sans données d’élèves. Les groupes et les critères viennent de MyClassFlow. Le détail des critères appliqués est affiché sous votre choix.</p>
+<div class="oa-commandes"><label for="oa-document">Exercice<select id="oa-document"><option value="lecture-jardin">CE1 — Le jardin sur le toit</option><option value="mesures-rubans">CE2 — Des rubans pour la maquette</option><option value="sciences-germination">CM1 — Deux pots, une différence</option></select></label><label for="oa-groupe">Groupe<select id="oa-groupe"><option value="lecture-accompagnee">Lecture accompagnée</option><option value="consignes-simplifiees">Consignes simplifiées</option><option value="attention-courte">Attention courte</option></select></label></div>
 <p id="oa-criteres"></p><p id="oa-etat" role="status" aria-live="polite"></p>
-<div class="oa-comparaison"><section><h2>Document d’origine</h2><iframe id="oa-avant" title="Document d’origine" sandbox="" src="/assets/exemples/adaptation/originaux/lecture-jardin.html"></iframe></section><section><h2>Version adaptée</h2><div id="oa-indisponible">Aucun résultat réel disponible pour ce choix.</div><iframe id="oa-apres" title="Version adaptée" sandbox="" hidden></iframe></section></div>
+<p class="oa-provenance">Résultat produit par MyClassFlow, sans retouche. Seul le groupe Consignes simplifiées fait reformuler les consignes par l'IA ; les autres changent la mise en forme.</p>
+<div class="oa-comparaison"><section><h2>Document d’origine</h2><iframe id="oa-avant" title="Document d’origine" sandbox="" src="/assets/exemples/adaptation/originaux/lecture-jardin.html"></iframe></section><section><h2>Version adaptée</h2><div id="oa-pages" aria-live="polite"></div></section></div>
 <noscript><p>Activez JavaScript pour changer de document et comparer les versions. Le premier document reste lisible ci-dessus.</p></noscript>
-<details><summary>Origine des exemples et critères</summary><p>Les exercices sont des créations originales MyClassFlow. Les documents d’origine ont été composés en HTML, puis convertis en PDF pour préparer leur passage dans le circuit d’adaptation de l’app. Un résultat n’est présenté comme une adaptation de l’app qu’après réception de son rendu réel.</p><p>Les cinq familles reprennent le catalogue de critères pédagogiques de MyClassFlow. Chaque choix applique uniquement les critères affichés, une sélection de cette famille. Seul le choix « Consignes », qui contient « Consignes courtes et directes », demande une reformulation. Les critères de présentation suivent les mêmes réglages sur les trois documents.</p><p>Source vérifiée : MCF-App, version d91a67df, catalogue <code>criteres_pedagogiques_depot.dart</code> et familles <code>critere_pedagogique.dart</code>. Ces exercices demandent une relecture pédagogique avant usage en classe.</p></details>
+<details><summary>Origine des exemples et critères</summary><p>Les exercices sont des créations originales MyClassFlow. Les documents d’origine sont composés en HTML. Chaque résultat affiché est le rendu JPEG réel produit le 21 octobre 2026 par l’app pour le document et le groupe choisis.</p><p>Les trois groupes reprennent les critères cochés dans MyClassFlow. Seul le groupe « Consignes simplifiées », qui contient « Consignes courtes et directes », fait reformuler les consignes par l’IA. Les autres groupes changent la mise en forme.</p><p>Source vérifiée : MCF-App, version d91a67df, catalogue <code>criteres_pedagogiques_depot.dart</code> et familles <code>critere_pedagogique.dart</code>. Ces exercices demandent une relecture pédagogique avant usage en classe.</p></details>
 <p><a href="/enseignants/fonctionnalites/adaptation-des-supports/">Comprendre l’adaptation des supports dans MyClassFlow</a></p>
 </section>
 </main>

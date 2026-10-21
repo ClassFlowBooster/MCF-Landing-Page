@@ -17,7 +17,7 @@ import { FICHES } from "./corps/fiches/index.mjs";
 export const PAGES = [
   { chemin: "/enseignants/outils/comparer-adaptations/", espace: "enseignants", rubrique: "fonctionnalites", scripts: ["comparer-adaptations.js"],
     titre: "Comparer les adaptations de supports — MyClassFlow",
-    description: "Trois documents pédagogiques fictifs et les familles de critères MyClassFlow : examinez l’original et les adaptations disponibles dans la page.", corps: comparerAdaptations },
+    description: "Trois documents pédagogiques fictifs et trois groupes MyClassFlow : examinez l’original et leurs adaptations réelles dans la page.", corps: comparerAdaptations },
   { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "entree.js", "formulaire.js"],
     titre: "MyClassFlow — Adaptez chaque support aux besoins de chaque élève",
     description: "MyClassFlow adapte vos supports selon vos critères : texte agrandi, mise en page aérée, consignes en étapes. Pour les enseignants, les écoles et les familles.",

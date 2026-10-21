@@ -2,6 +2,10 @@
 // Aucune donnée visiteur ne part vers le service d’adaptation.
 const documentSelect = document.querySelector('#oa-document');
 const groupeSelect = document.querySelector('#oa-groupe');
+const criteres = document.querySelector('#oa-criteres');
+const avant = document.querySelector('#oa-avant');
+const pages = document.querySelector('#oa-pages');
+const etat = document.querySelector('#oa-etat');
 try {
   const reponse = await fetch('/assets/exemples/adaptation/manifeste.json');
   if (!reponse.ok) throw new Error('manifeste indisponible');
@@ -10,20 +14,21 @@ try {
     const document = manifeste.documents.find(x => x.slug === documentSelect.value);
     const groupe = manifeste.groupes.find(x => x.id === groupeSelect.value);
     const resultat = manifeste.resultats[`${document.slug}/${groupe.id}`];
-    window.document.querySelector('#oa-criteres').textContent = `Critères appliqués : ${groupe.criteres.map(x => x.libelle).join(' ; ')}.`;
-    window.document.querySelector('#oa-avant').src = `/assets/exemples/adaptation/originaux/${document.slug}.html`;
-    const apres = window.document.querySelector('#oa-apres');
-    apres.hidden = !resultat;
-    window.document.querySelector('#oa-indisponible').hidden = !!resultat;
-    if (resultat) apres.src = resultat.chemin;
-    else apres.removeAttribute('src');
-    window.document.querySelector('#oa-etat').textContent = resultat
-      ? `${document.titre} · ${groupe.nom}. Adaptation réelle préparée le ${resultat.date}. Aucun appel IA pendant la consultation.`
-      : `${document.titre} · ${groupe.nom}. Résultat réel en attente : aucune adaptation n’est présentée pour ce choix.`;
+    criteres.textContent = `Critères appliqués : ${groupe.criteres.map(x => x.libelle).join(' ; ')}.`;
+    avant.src = `/assets/exemples/adaptation/originaux/${document.slug}.html`;
+    pages.replaceChildren(...resultat.pages.map((chemin, index) => {
+      const image = new Image();
+      image.src = chemin;
+      image.loading = 'lazy';
+      image.alt = `Version adaptée « ${groupe.nom} » de « ${document.titre} », page ${index + 1}`;
+      return image;
+    }));
+    const jour = new Date(`${resultat.date}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+    etat.textContent = `${document.titre} · ${groupe.nom}. Adaptation produite dans MyClassFlow le ${jour}.`;
   }
   documentSelect.addEventListener('change', afficher);
   groupeSelect.addEventListener('change', afficher);
   afficher();
 } catch {
-  document.querySelector('#oa-etat').textContent = 'Les exemples ne peuvent pas être chargés. Rechargez la page pour réessayer.';
+  etat.textContent = 'Les exemples ne peuvent pas être chargés. Rechargez la page pour réessayer.';
 }
