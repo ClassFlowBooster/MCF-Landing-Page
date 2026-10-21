@@ -63,9 +63,9 @@ test("sitemap.xml et robots.txt à jour", () => {
   assert.match(readFileSync("robots.txt", "utf8"), /Sitemap: https:\/\/myclassflow\.fr\/sitemap\.xml/);
 });
 
-test("13 pages plus les fiches : l'entrée, quatre pages par espace, une page par fiche", () => {
-  assert.equal(PAGES.length, 13 + FICHES.length);
-  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 13 + FICHES.length);
+test("14 pages plus les fiches : l’entrée, quatre pages par espace, le comparateur et les fiches", () => {
+  assert.equal(PAGES.length, 14 + FICHES.length);
+  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 14 + FICHES.length);
 });
 
 test("prix des écoles en TTC : aucun « HT » sur les pages tarifs, hors la ligne « Montant HT »", () => {

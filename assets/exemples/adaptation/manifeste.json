@@ -1,0 +1,68 @@
+{
+  "sourceApp": "d91a67df8759e30ae138cdaee7a90399841189eb",
+  "documents": [
+    {
+      "slug": "lecture-jardin",
+      "niveau": "CE1",
+      "titre": "Le jardin sur le toit"
+    },
+    {
+      "slug": "mesures-rubans",
+      "niveau": "CE2",
+      "titre": "Des rubans pour la maquette"
+    },
+    {
+      "slug": "sciences-germination",
+      "niveau": "CM1",
+      "titre": "Deux pots, une différence"
+    }
+  ],
+  "groupes": [
+    {
+      "id": "lecture-accompagnee",
+      "nom": "Lecture accompagnée",
+      "criteres": [
+        { "code": "lis.interligne", "valeur": "1_5", "libelle": "Augmenter l'interligne · 1,5" },
+        { "code": "lis.espacement_lettres", "valeur": "moyen", "libelle": "Espacer les lettres · Moyen" },
+        { "code": "lec.syllabes_couleurs", "libelle": "Syllabes en couleurs dans les textes à lire" },
+        { "code": "lec.lettres_muettes_gris", "libelle": "Lettres muettes en gris dans les textes à lire" },
+        { "code": "lis.surligner_ligne_sur_deux", "libelle": "Surligner une ligne sur deux" }
+      ]
+    },
+    {
+      "id": "consignes-simplifiees",
+      "nom": "Consignes simplifiées",
+      "criteres": [
+        { "code": "con.phrases_directes", "libelle": "Consignes courtes et directes" },
+        { "code": "con.vocabulaire_simple", "valeur": "mots_courants", "libelle": "Vocabulaire simple · Mots courants" },
+        { "code": "con.preciser_action_lieu_nombre", "libelle": "Préciser quoi faire, où, combien" },
+        { "code": "con.separer_sous_exercices", "libelle": "Séparer en sous-exercices les consignes à plusieurs actions" },
+        { "code": "con.exemple_resolu", "valeur": "format_ambigu", "libelle": "Exemple résolu · Quand le format est ambigu" },
+        { "code": "vis.pictogramme_consignes", "libelle": "Pictogramme devant les consignes" }
+      ]
+    },
+    {
+      "id": "attention-courte",
+      "nom": "Attention courte",
+      "criteres": [
+        { "code": "str.fond_consigne", "libelle": "Fond de couleur sous chaque consigne" },
+        { "code": "txt.paragraphes_courts", "valeur": "sans_sous_titres", "libelle": "Textes en paragraphes courts · Sans sous-titres" },
+        { "code": "str.progression", "libelle": "Afficher la progression" },
+        { "code": "str.commence_ici", "libelle": "Repère « Commence ici »" },
+        { "code": "str.verification_exercice", "libelle": "Case de vérification à la fin de chaque exercice" },
+        { "code": "exo.moins_items", "libelle": "Moins d'items par exercice" }
+      ]
+    }
+  ],
+  "resultats": {
+    "lecture-jardin/lecture-accompagnee": { "pages": ["/assets/exemples/adaptation/rendus/lecture-jardin/lecture-accompagnee-1.jpg", "/assets/exemples/adaptation/rendus/lecture-jardin/lecture-accompagnee-2.jpg"], "date": "2026-10-21", "provenance": "adaptation-fiche" },
+    "lecture-jardin/consignes-simplifiees": { "pages": ["/assets/exemples/adaptation/rendus/lecture-jardin/consignes-simplifiees-1.jpg", "/assets/exemples/adaptation/rendus/lecture-jardin/consignes-simplifiees-2.jpg"], "date": "2026-10-21", "provenance": "adaptation-fiche" },
+    "lecture-jardin/attention-courte": { "pages": ["/assets/exemples/adaptation/rendus/lecture-jardin/attention-courte-1.jpg", "/assets/exemples/adaptation/rendus/lecture-jardin/attention-courte-2.jpg", "/assets/exemples/adaptation/rendus/lecture-jardin/attention-courte-3.jpg"], "date": "2026-10-21", "provenance": "adaptation-fiche" },
+    "mesures-rubans/lecture-accompagnee": { "pages": ["/assets/exemples/adaptation/rendus/mesures-rubans/lecture-accompagnee-1.jpg", "/assets/exemples/adaptation/rendus/mesures-rubans/lecture-accompagnee-2.jpg"], "date": "2026-10-21", "provenance": "adaptation-fiche" },
+    "mesures-rubans/consignes-simplifiees": { "pages": ["/assets/exemples/adaptation/rendus/mesures-rubans/consignes-simplifiees-1.jpg", "/assets/exemples/adaptation/rendus/mesures-rubans/consignes-simplifiees-2.jpg"], "date": "2026-10-21", "provenance": "adaptation-fiche" },
+    "mesures-rubans/attention-courte": { "pages": ["/assets/exemples/adaptation/rendus/mesures-rubans/attention-courte-1.jpg", "/assets/exemples/adaptation/rendus/mesures-rubans/attention-courte-2.jpg"], "date": "2026-10-21", "provenance": "adaptation-fiche" },
+    "sciences-germination/lecture-accompagnee": { "pages": ["/assets/exemples/adaptation/rendus/sciences-germination/lecture-accompagnee-1.jpg", "/assets/exemples/adaptation/rendus/sciences-germination/lecture-accompagnee-2.jpg"], "date": "2026-10-21", "provenance": "adaptation-fiche" },
+    "sciences-germination/consignes-simplifiees": { "pages": ["/assets/exemples/adaptation/rendus/sciences-germination/consignes-simplifiees-1.jpg", "/assets/exemples/adaptation/rendus/sciences-germination/consignes-simplifiees-2.jpg"], "date": "2026-10-21", "provenance": "adaptation-fiche" },
+    "sciences-germination/attention-courte": { "pages": ["/assets/exemples/adaptation/rendus/sciences-germination/attention-courte-1.jpg", "/assets/exemples/adaptation/rendus/sciences-germination/attention-courte-2.jpg"], "date": "2026-10-21", "provenance": "adaptation-fiche" }
+  }
+}
