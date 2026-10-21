@@ -25,6 +25,7 @@ const AUTEURS_FICHES = [
 const articleFiche = (f) => ({
   "@type": "Article",
   headline: f.h1,
+  image: `${SITE}/assets/img/${f.carte.fichier}`,
   author: AUTEURS_FICHES,
   publisher: { "@id": ORGANISATION["@id"] },
   datePublished: f.datePublication,

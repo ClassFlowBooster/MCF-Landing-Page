@@ -15,10 +15,8 @@ test("les six fiches illustrées rendent une image responsive avec ses dimension
     assert.match(html, new RegExp(`<figure id="visuel" class="maquette-fiche appv-figure"`), visuel.slug);
     assert.match(html, new RegExp(`<img src="${image}-1x\\.webp" srcset="${image}-1x\\.webp 1x, ${image}-2x\\.webp 2x" width="${visuel.largeur}" height="${visuel.hauteur}" alt="[^\"]+" loading="lazy" decoding="async">`), visuel.slug);
     assert.match(html, /Écran de MyClassFlow, données fictives\./, visuel.slug);
-    if (process.env.VISUELS_IMAGES === "1") {
-      for (const densite of ["1x", "2x"])
-        assert.ok(existsSync(`assets/img/visuels/${visuel.slug}-${densite}.webp`), `${visuel.slug}-${densite}`);
-    }
+    for (const densite of ["1x", "2x"])
+      assert.ok(existsSync(`assets/img/visuels/${visuel.slug}-${densite}.webp`), `${visuel.slug}-${densite}`);
   }
 });
 

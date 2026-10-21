@@ -34,10 +34,10 @@ server {
     # Pages : un vrai 404 au lieu de l'accueil.
     location / {
         try_files $uri $uri/ =404;
-        add_header Cache-Control "no-cache";
+        add_header Cache-Control "no-cache" always;
     }
     error_page 404 /404.html;
-    location = /404.html { internal; add_header Cache-Control "no-cache"; }
+    location = /404.html { internal; add_header Cache-Control "no-cache" always; }
 
     # Ressources statiques : 7 jours (les noms ne sont pas versionnés, d'où une durée courte).
     location ~* \.(css|js|webp|png|jpg|jpeg|svg|ico|woff2?)$ {
