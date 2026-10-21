@@ -1,0 +1,302 @@
+# MyClassFlow : guide complet
+
+> MyClassFlow est une application pour les enseignants, les écoles et les familles. Elle adapte les exercices et les leçons selon les critères pédagogiques cochés pour chaque élève, et réunit la gestion de classe de l'enseignant : fiches de préparation, cahier journal, emploi du temps, fiches élèves, tâches et Lia, l'assistante.
+
+Ce guide reprend le contenu des pages de https://myclassflow.fr. Version courte et liens : [llms.txt](https://myclassflow.fr/llms.txt).
+
+## Présentation
+
+- Trois espaces : les enseignants ([accueil](https://myclassflow.fr/enseignants/)), les écoles, avec un abonnement établissement pour toute l'équipe ([accueil](https://myclassflow.fr/ecoles/)), et les familles, avec MyClassFlow Famille, qui adapte les devoirs à partir d'une photo ([accueil](https://myclassflow.fr/parents-enfants/)).
+- L'application s'installe sur Mac, Windows, Android, iPhone et iPad, et fonctionne sur ordinateur comme sur téléphone.
+- Enseignant : la gestion de classe est gratuite, avec 3 adaptations offertes ; l'abonnement Enseignant rend les adaptations illimitées et ajoute Lia, à 14,99 € TTC par mois sans engagement, ou 9,99 € par mois pendant 6 mois avec un engagement d’un an, puis 14,99 €/mois TTC.
+- École : à partir de 9,99 € TTC par enseignant et par mois ; le prix par enseignant baisse dès 5 enseignants.
+- Famille : essai gratuit de 3 adaptations sans carte bancaire, puis un abonnement pour tous les enfants du foyer ; formule Essentiel à 4,99 € TTC par mois sans engagement, ou 2,49 € par mois pendant 3 mois avec un engagement de 6 mois, puis 4,99 €/mois TTC.
+
+## Pédagogie : les critères de l'app
+
+Pour chaque élève, l'enseignant coche sur sa fiche les critères pédagogiques qui l'aident. Quand il adapte un support, MyClassFlow en tire une version qui applique ces critères, à relire avant d'imprimer. L'app parle de critères pédagogiques, jamais d'une catégorie d'élèves, et ne demande ni diagnostic ni justification. Voici les critères proposés, famille par famille, avec leurs libellés exacts.
+
+### Lisibilité
+
+- **Changer de police** : Le support est écrit dans une autre police de caractères. Réglage : plusieurs polices au choix.
+- **Augmenter l'interligne** : Les lignes sont plus écartées les unes des autres. Réglages : « 1,5 » ; « 2 ».
+- **Espacer les lettres** : Les lettres d'un même mot sont un peu plus écartées. Réglages : « Léger » ; « Moyen » ; « Fort ».
+- **Raccourcir les lignes** : Le texte tient sur des lignes plus courtes. Réglages : « 15 cm » ; « 12 cm ».
+- **Fond crème** : La page a un fond crème au lieu d'un fond blanc.
+- **Surligner une ligne sur deux** : Dans les textes, une ligne sur deux a un fond légèrement coloré.
+- **Syllabes en couleurs dans les textes à lire** : Dans les textes à lire, les syllabes alternent entre deux couleurs.
+- **Sons complexes en évidence dans les textes à lire** : Dans les textes à lire, les sons écrits avec plusieurs lettres sont mis en évidence.
+- **Lettres muettes en gris dans les textes à lire** : Dans les textes à lire, les lettres qui ne se prononcent pas sont écrites en gris.
+- **Limiter les couleurs** : Le support utilise très peu de couleurs.
+- **Surligner les informations utiles** : Les informations nécessaires pour répondre sont surlignées.
+
+### Consignes
+
+- **Consignes courtes et directes** : Les consignes sont écrites en phrases courtes.
+- **Vocabulaire simple** : Les mots difficiles des consignes sont remplacés par des mots courants. Réglages : « Définitions entre parenthèses » ; « Mots courants » ; « Les deux ».
+- **Remplacer ou expliquer les expressions imagées** : Les expressions imagées sont remplacées ou expliquées. Réglages : « Dans les consignes » ; « Dans les consignes et les textes ».
+- **Formulations positives et directes** : Les consignes disent ce qu'il faut faire plutôt que ce qu'il ne faut pas faire. Réglages : « Dans les questions » ; « Dans toutes les consignes ».
+- **Préciser quoi faire, où, combien** : Chaque consigne dit quoi faire, à quel endroit et combien de fois.
+- **Rappel court de la consigne** : Un rappel de la consigne en quelques mots est ajouté à l'exercice.
+- **Lexique des mots difficiles** : Un petit lexique explique les mots difficiles du support.
+- **Glossaire des verbes de consigne** : Un encadré explique les verbes de consigne du support (huit au plus).
+- **Résumé d'une ligne par exercice** : Chaque exercice commence par une ligne qui résume ce qu'il faut faire.
+- **Séparer en sous-exercices les consignes à plusieurs actions** : Un exercice qui demande plusieurs actions est séparé en sous-exercices.
+- **Consignes en étapes numérotées** : Chaque consigne est présentée en étapes numérotées, même si elle paraît simple.
+
+### Structure
+
+- **Fond de couleur sous chaque consigne** : Chaque consigne est posée sur un fond de couleur pâle.
+- **Textes en paragraphes courts** : Les textes longs sont découpés en paragraphes courts. Réglages : « Sans sous-titres » ; « Avec sous-titres ».
+- **Séparations dans les textes longs** : Des séparations visibles découpent les textes longs.
+- **Rappels au fil d'un texte long** : De courts rappels sont ajoutés au fil des textes longs.
+- **Repères de couleur par partie** : Chaque partie du support a sa couleur et son étiquette.
+- **Afficher la progression** : Un repère montre où l'on en est dans le support.
+- **Repère « Commence ici »** : Un repère « Commence ici » montre où démarrer.
+- **« Lis toute la fiche avant de commencer »** : Le support commence par la mention « Lis toute la fiche avant de commencer ».
+- **Case de vérification à la fin de chaque exercice** : Une case à cocher « J'ai vérifié » termine chaque exercice.
+- **Encadré d'annonce** : Un encadré en tête de support annonce la durée, le matériel et le barème. Réglages : « Encadré seul » ; « Avec la case « J'ai terminé et relu » ».
+
+### Exercices
+
+- **Exemple résolu** : Un exemple déjà fait montre ce qui est attendu. Réglages : « Quand le format est ambigu » ; « À chaque exercice ».
+- **Aide-mémoire** : Un aide-mémoire rappelle la règle ou la méthode utile à l'exercice. Réglages : « Repères utiles à l'exercice » ; « Règles d'orthographe » ; « Les deux ».
+- **Banque de mots** : Les mots à utiliser sont donnés dans une banque de mots. Réglages : « Sans intrus » ; « Avec un ou deux intrus ».
+- **Moins d'écriture : textes à trous, cases, QCM** : Les réponses à rédiger deviennent des textes à trous, des cases à cocher ou des QCM. Réglages : « Textes à trous » ; « Cases à cocher » ; « Textes à trous et cases » ; « Textes à trous, QCM et cases ».
+- **Moins d'items par exercice** : Chaque exercice garde moins d'items ; ce qui est vérifié reste le même. Réglages : « Un peu moins » ; « Beaucoup moins, trois items au moins » ; « Beaucoup moins ».
+- **Lignes d'écriture** : Les lignes pour écrire changent de réglure. Réglages : « Lignes simples » ; « Seyès » ; « Double ligne » ; « Double ligne haute ».
+- **Point de départ sur chaque ligne** : Un point marque le début de chaque ligne d'écriture.
+- **Tableaux agrandis** : Les cases des tableaux sont plus grandes.
+- **Fournir le texte à recopier** : Le texte à recopier est déjà écrit dans l'exercice.
+- **Relier par numéros plutôt qu'au trait** : Pour relier, l'élève écrit un numéro au lieu de tracer un trait.
+- **Dictée à trous** : La dictée devient un texte à compléter.
+- **Marche à suivre pour les consignes longues** : Une marche à suivre accompagne les consignes longues.
+- **Mention « le soin de l'écriture n'est pas noté »** : Sur une évaluation, une mention précise que le soin de l'écriture n'est pas noté.
+- **Amorces de réponse** : Le début de chaque réponse à rédiger est déjà écrit.
+
+### Supports visuels
+
+- **Pictogramme devant les consignes** : Un pictogramme précède les consignes dont le verbe est reconnu.
+- **Émoji devant les mots concrets des banques de mots** : Dans les banques de mots, un émoji précède les mots concrets.
+- **Flèche de sens de lecture** : Une flèche indique le sens de lecture.
+
+## Comment faire
+
+### Créer une classe et ajouter des élèves
+
+1. **Créer la classe** : « Créer une classe », puis renseigner « Niveau » et « Nom de la classe », et valider avec « Créer la classe ». Une classe peut être créée vide.
+2. **Ajouter les élèves** : depuis la classe, « Ajouter un élève » (ou « Ajouter des élèves » quand la classe est vide), ou importer la liste par photo (voir plus bas).
+
+### Fiche de préparation
+
+Une fiche de préparation, c'est une séance pensée avant d'être vécue : son but, son déroulé minute par minute, les difficultés que vous voyez venir. Voici une trame en sept rubriques et une séance de CE1 rédigée avec elle.
+
+#### Comment la préparer dans MyClassFlow ?
+
+1. **Créez la fiche** : Titre, matière, domaine, compétences, objectifs et matériel, puis le déroulé de la séance, écrit librement, sur ordinateur ou sur téléphone.
+2. **Rangez-la dans votre banque** : Classez vos fiches en dossiers, par matière ou par séquence. « Dupliquer » en fait une variante sans repartir de zéro.
+3. **Rattachez-la à une séance** : Son contenu est copié dans la séance de votre cahier journal : le jour venu, tout est prêt.
+
+#### À retenir
+
+- Une fiche de préparation porte sur une seule séance : son but, ses moments minutés et l'erreur que vous voyez venir.
+- Notre trame tient sur une page A4, en sept rubriques.
+- Dans MyClassFlow, vos fiches sont gratuites, rangées dans votre banque, et leur contenu se copie dans la séance du cahier journal.
+
+#### Questions fréquentes
+
+- **Jusqu'où détailler une fiche de préparation ?** Écrivez mot pour mot ce qui doit être dit exactement : la consigne, la question qui lance la séance. Le reste tient en notes courtes. Une fiche qu'on ne peut pas relire d'un coup d'œil pendant la classe est trop longue.
+- **Comment laisser une fiche de préparation lisible pour un remplaçant ?** Ajoutez ce que vous êtes seul à savoir : où est rangé le matériel, ce que la classe a fait à la séance d'avant, les mots que les élèves connaissent déjà. Dans MyClassFlow, la fiche rattachée à une séance se retrouve au bon jour du cahier journal.
+- **Comment relier une fiche de préparation au cahier journal ?** Dans MyClassFlow, choisissez « Rattacher à une séance » depuis la fiche, ou « Insérer une fiche de ma banque » depuis la séance : le contenu est copié dans la séance. Vous l'ajustez pour ce jour-là sans toucher à la fiche d'origine.
+- **Comment prévoir des aides dans une fiche de préparation ?** Gardez le même but pour toute la classe et changez le chemin : un support plus lisible (texte agrandi, lignes espacées, consigne en étapes), un outil en plus, une tâche de plus pour ceux qui ont fini. Avec l'abonnement, MyClassFlow adapte vos supports selon les critères pédagogiques que vous cochez.
+- **Comment retrouver une fiche de préparation l'année suivante ?** Rangez vos fiches en dossiers dès la première année, par matière ou par séquence. Dans MyClassFlow, « Dupliquer » crée une copie que vous corrigez avec ce que vos notes d'après séance vous ont appris, sans perdre la version d'origine.
+- **Les fiches de préparation sont-elles gratuites dans MyClassFlow ?** Oui, comme le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire.
+
+Page complète : [Fiche de préparation](https://myclassflow.fr/enseignants/fonctionnalites/fiche-de-preparation/).
+
+### Cahier journal
+
+Le cahier journal relie chaque créneau de la journée à ce que la classe doit y apprendre. Vous l'ouvrez le matin pour savoir où vous allez ; imprimé, il guide celui qui vous remplace. MyClassFlow le tient avec vous, sur ordinateur et sur téléphone.
+
+#### Comment préparer et garder votre cahier journal ?
+
+1. **Remplissez le jour** : Sur ordinateur comme sur téléphone, préparez votre cahier journal dans le Planning. « Ajouter une séance » permet de renseigner le titre, la matière, les horaires, le domaine, les compétences, la séquence et les objectifs. « Insérer une fiche de ma banque » y copie une fiche de préparation.
+2. **Reportez ce qui a sauté** : Une séance n'a pas eu lieu ? « Reporter » ajoute son contenu à une séance déjà prévue, sans effacer ce que celle-ci contenait.
+3. **Gardez-en la trace** : Téléchargez le cahier journal en PDF, pour un jour ou pour la semaine, en choisissant les jours. Sur ordinateur, vous pouvez aussi l'imprimer directement.
+
+#### À retenir
+
+- Chaque créneau garde son objectif et son déroulé.
+- Une séance reportée conserve son contenu.
+- Le cahier journal s'exporte en PDF pour un jour ou une semaine.
+
+#### Questions fréquentes
+
+- **Qu'est-ce qu'un remplaçant doit trouver dans votre cahier journal pour prendre la classe ?** Pour chaque séance : l'heure, la matière, ce que les élèves doivent savoir faire à la fin et ce qui a été fait juste avant. Ajoutez où trouver le matériel. Dans MyClassFlow, une fiche de préparation rattachée apporte en plus le déroulé complet de la séance ; laissez-lui le PDF du jour ou de la semaine.
+- **Emploi du temps, cahier journal, fiche de préparation : trois échelles de temps ?** Oui. L'emploi du temps est la semaine type, posée une fois pour l'année. La fiche de préparation détaille une séance. Le cahier journal dit ce qui se passe tel jour, à telle heure. Dans MyClassFlow, la fiche se rattache à la séance du cahier journal, qui reste dans les horaires de votre classe.
+- **Que faire d'une séance prévue qui n'a pas eu lieu ?** Reportez-la plutôt que de la supprimer. Dans MyClassFlow, « Reporter » ajoute son contenu pédagogique (objectifs, compétences, matériel, déroulé) à une séance déjà prévue un autre jour, sans effacer ce que celle-ci contenait.
+- **Peut-on imprimer son cahier journal ?** Oui. Depuis un ordinateur, MyClassFlow l'imprime ou le télécharge en PDF, au format jour ou semaine. Depuis un téléphone, vous le téléchargez en PDF.
+- **Peut-on garder une page papier à côté d'un cahier journal numérique ?** Oui, c'est même une bonne façon de faire : on prépare dans MyClassFlow, on imprime la page du jour, et on y note au crayon ce qui s'est passé pendant la classe. Le soir, le contenu d'une séance qui a sauté se reporte sur une séance déjà prévue. Le document imprimé est le PDF exporté depuis votre cahier journal dans l'app.
+- **Le cahier journal est-il gratuit dans MyClassFlow ?** Oui, comme les fiches de préparation et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire.
+
+Page complète : [Cahier journal](https://myclassflow.fr/enseignants/fonctionnalites/cahier-journal/).
+
+### Emploi du temps
+
+L'emploi du temps pose la semaine type de la classe : les cours, les récréations, les rituels. Sa vraie question est souvent : chaque matière a-t-elle son compte d'heures ? MyClassFlow fait l'addition pour vous, au fil des créneaux.
+
+#### Comment construire votre emploi du temps ?
+
+1. **Réglez la plage horaire** : L'heure de début et de fin de la journée, dans les réglages de la plage horaire.
+2. **Posez vos créneaux** : Touchez une case vide : un cours avec sa matière, une récréation ou une pause, ou un rituel, avec son jour, son début et sa fin. Un clic sur un créneau le modifie.
+3. **Lisez les totaux, puis imprimez** : Le volume de chaque matière s'affiche à côté de la grille, du plus grand au plus petit. « Imprimer l'emploi du temps » en fait un PDF ; le téléphone le télécharge.
+
+#### À retenir
+
+- Le volume de chaque matière se calcule au fil des créneaux.
+- Vous modifiez un créneau ou l'archivez sans le détruire.
+- L'emploi du temps s'imprime en PDF.
+
+#### Questions fréquentes
+
+- **Mon rituel de calcul mental compte-t-il dans les heures de mathématiques ?** Seulement si vous le posez comme un cours de mathématiques. Dans MyClassFlow, un créneau de type « Rituel », comme une récréation ou une pause, reste en dehors des totaux par matière : gardez ce type pour l'appel, la date ou la météo.
+- **Une semaine de quatre jours et demi change-t-elle quelque chose ?** Non : la grille va du lundi au vendredi, le mercredi matin se remplit comme les autres jours. Seule la plage horaire, commune à toute la semaine, se règle sur la journée la plus longue.
+- **L'emploi du temps sert-il au cahier journal ?** Il lui donne son cadre : sur téléphone, les récréations de l'emploi du temps s'affichent dans la vue Journal, et les heures proposées pour une séance restent dans la plage horaire de la classe. Les séances du jour, elles, s'ajoutent dans le cahier journal.
+- **Sur l'année, quel horaire chaque matière doit-elle atteindre en CM1 et en CM2 ?** 288 heures de français, 180 de mathématiques, 54 de langues vivantes, 108 d'EPS, 72 de sciences et technologie, 72 d'enseignements artistiques et 90 d'histoire, de géographie et d'enseignement moral et civique : 864 heures (arrêté du 9 novembre 2015). La répartition d'une semaine à l'autre peut varier, du moment que le total de l'année est tenu.
+- **Où passent les récréations dans ce calcul ?** L'arrêté les impute sur l'ensemble des matières, de façon équilibrée dans la semaine. C'est pourquoi un total de cours tiré de MyClassFlow est toujours un peu inférieur à l'horaire officiel : l'écart doit correspondre à vos récréations.
+- **L'emploi du temps est-il gratuit dans MyClassFlow ?** Oui, comme le cahier journal et les fiches de préparation. Le compte gratuit ne demande pas de carte bancaire.
+
+Page complète : [Emploi du temps](https://myclassflow.fr/enseignants/fonctionnalites/emploi-du-temps/).
+
+### Adaptation des supports
+
+Vous prenez en photo ou importez l'exercice prévu pour la classe, vous cochez les critères pédagogiques qui aident tel élève ou tel groupe, et MyClassFlow en tire une version adaptée, à relire puis à imprimer à côté de l'originale. Pour la différenciation pédagogique, c'est un support par élève ou par groupe, tiré de l'exercice de toute la classe.
+
+#### Comment adapter un support pour vos élèves ?
+
+1. **Ajoutez le support** : « Adapter un support », un titre, puis une photo, une image de la photothèque, ou un fichier PDF, image ou Word, jusqu'à 8 pages. Les photos et fichiers ajoutés se réordonnent ou se retirent.
+2. **Dites pour qui** : Partez des critères de vos élèves ou de vos groupes, ou choisissez les critères pour l'occasion. Puis « Lancer l'adaptation ».
+3. **Imprimez ou téléchargez** : Chaque version s'imprime ou se télécharge, et une version inutile se supprime. Le support, lui, peut être renommé.
+
+#### À retenir
+
+- Vous adaptez un exercice ou une leçon à partir du support de la classe.
+- Les critères des élèves restent sur leur fiche.
+- Vous relisez puis imprimez la version d'origine et les versions adaptées.
+
+#### Questions fréquentes
+
+- **Quels critères pédagogiques peut-on cocher pour adapter un exercice ?** Ils sont rangés par familles. Lisibilité : agrandir le texte, changer de police, augmenter l'interligne, espacer les lettres, raccourcir les lignes, fond crème. Consignes : consignes courtes et directes, vocabulaire simple, lexique des mots difficiles. Structure : textes en paragraphes courts, afficher la progression. D'autres critères complètent ces familles dans l'app.
+- **Quels documents peut-on adapter ?** Une photo prise sur le moment, une image de votre photothèque, ou un fichier PDF, image (PNG, JPG, WEBP) ou Word (DOC, DOCX), jusqu'à 8 pages par support.
+- **Faut-il relier l'adaptation à un élève ?** Non. Vous pouvez partir des critères enregistrés sur la fiche d'un élève, adapter pour un groupe, ou cocher des critères pour l'occasion. Un même support peut sortir en plusieurs versions.
+- **L'adaptation peut-elle modifier l'exercice ?** L'adaptation conserve le but de l'exercice et porte principalement sur sa présentation. La mise en forme suit des règles définies : les mêmes critères appliquent les mêmes réglages d'un document à l'autre, pour un rendu cohérent et aussi reproductible que possible. L'IA reformule les consignes uniquement si vous cochez un critère qui le demande. Vous gardez la main sur les critères choisis et relisez le résultat avant de l'utiliser.
+- **L'adaptation remplace-t-elle la différenciation pédagogique ?** Non, elle en est un outil. Différencier, c'est aussi changer le matériel, l'accompagnement ou la tâche ; l'adaptation s'occupe du support, pour que chaque élève puisse travailler sur le même exercice que la classe.
+- **Peut-on adapter des supports avec le compte gratuit ?** Oui : 3 adaptations sont offertes pour essayer. Les adaptations illimitées font partie de l'abonnement Enseignant.
+
+Page complète : [Adaptation des supports](https://myclassflow.fr/enseignants/fonctionnalites/adaptation-des-supports/).
+
+### Fiche élève
+
+La fiche élève réunit, pour chaque enfant de la classe, les critères pédagogiques qui l'aident, ce que vous observez au fil de l'année et ce qu'il reste à faire pour lui. Ses critères servent ensuite quand vous adaptez un support.
+
+#### Comment remplir une fiche élève ?
+
+1. **Créez vos élèves** : Un par un, ou toute la classe d'un coup à partir d'une photo de la liste, prise avec le téléphone.
+2. **Ouvrez sa fiche et cochez ses critères** : Depuis « Classe » sur le téléphone, ou « Mes élèves » sur ordinateur, où la liste se cherche, se trie et se filtre. Puis « Critères pédagogiques ».
+3. **Complétez au fil de l'année** : Ajoutez un commentaire au fil de suivi, modifiez-le ou supprimez-le, et suivez les tâches liées à l'élève.
+
+#### À retenir
+
+- Les critères pédagogiques restent réunis sur la fiche de chaque élève.
+- Les commentaires forment son fil de suivi.
+- Ses critères sont repris quand vous adaptez un support pour lui.
+
+#### Questions fréquentes
+
+- **Que garder dans une fiche élève ?** Un repère utile pour la prochaine séance : une aide qui a marché, un point à reprendre, en une phrase. Le reste n'a pas sa place dans la fiche : ni donnée médicale, ni appréciation sur la personne.
+- **Que sont les critères pédagogiques d'une fiche élève ?** Des aides de mise en page ou de consigne, choisies dans une liste : agrandir le texte, changer de police, augmenter l'interligne, espacer les lettres, fond crème, consignes courtes… Certains ont un réglage, comme la taille du texte. Ils servent à adapter les supports pour cet élève.
+- **Peut-on créer toute la classe d'un coup ?** Oui : depuis le téléphone, une photo de votre liste de classe suffit à créer tous les élèves. Vous pouvez aussi les ajouter un par un.
+- **Lia peut-elle écrire dans une fiche élève ?** Elle peut vous proposer un commentaire à ajouter au fil de suivi, à modifier ou à retirer, mais rien n'est écrit sans votre validation. Lia fait partie de l'abonnement Enseignant.
+- **Les fiches élèves fonctionnent-elles sur téléphone et sur ordinateur ?** Oui. Sur téléphone, la fiche s'ouvre en plein écran depuis « Classe ». Sur ordinateur, « Mes élèves » liste la classe avec la recherche, le tri et les filtres, et ouvre chaque fiche dans une fenêtre.
+- **Les fiches élèves sont-elles gratuites dans MyClassFlow ?** Oui, comme le cahier journal, l'emploi du temps et les fiches de préparation. Le compte gratuit ne demande pas de carte bancaire.
+
+Page complète : [Fiche élève](https://myclassflow.fr/enseignants/fonctionnalites/fiches-eleves/).
+
+### Import des élèves par photo
+
+À la rentrée, au lieu de recopier vingt-cinq prénoms, vous photographiez la liste de classe avec votre téléphone. MyClassFlow lit les prénoms et les noms, vous relisez, puis vous ajoutez les élèves en une fois.
+
+#### Comment ajouter votre classe à partir d'une photo ?
+
+1. **Photographiez la liste** : Sur votre téléphone, dans « Classe », « Photographier la liste » : prenez la photo ou choisissez-la dans la photothèque.
+2. **Relisez** : Corrigez un prénom ou un nom, et choisissez les élèves à ajouter.
+3. **Ajoutez-les** : « Ajouter N élèves » remplit la classe : chaque élève apparaît dans « Classe », et sa fiche s'ouvre d'un toucher.
+
+#### À retenir
+
+- Vous photographiez la liste de classe avec votre téléphone.
+- Vous corrigez les prénoms et les noms avant l'ajout.
+- Les lignes à vérifier et les doublons sont signalés.
+
+#### Questions fréquentes
+
+- **Quelle liste de classe peut-on photographier ?** Une page à plat, bien éclairée, avec un élève par ligne : la liste imprimée de l'école convient. Plus l'écriture est difficile à lire, plus il y a de lignes « À vérifier » à corriger.
+- **Que se passe-t-il si un prénom est mal lu ?** La ligne est marquée « À vérifier » quand la lecture est incertaine. Vous corrigez le prénom ou le nom dans la relecture ; rien n'est ajouté tant que vous n'avez pas validé.
+- **Peut-on importer la liste depuis un ordinateur ?** Oui, sans photo : sur ordinateur, « Ajouter des élèves » accepte un PDF, un fichier Excel ou CSV, ou la saisie à la main. La photo se prend avec le téléphone.
+- **Un élève déjà inscrit sera-t-il ajouté deux fois ?** Non. La relecture signale « Déjà dans la classe » pour un élève présent, et « En double dans la liste » pour un nom écrit deux fois sur la feuille.
+- **L'import crée-t-il la classe ?** Il remplit une classe que vous avez déjà créée dans MyClassFlow. Créez d'abord la classe, puis ajoutez-y les élèves à partir de la photo.
+- **L'import des élèves par photo est-il gratuit ?** Oui, comme les fiches élèves, le cahier journal et l'emploi du temps. Le compte gratuit ne demande pas de carte bancaire.
+
+Page complète : [Import des élèves par photo](https://myclassflow.fr/enseignants/fonctionnalites/import-eleves-photo/).
+
+### Tâches
+
+Photocopies, autorisations de sortie, cahiers à rendre : MyClassFlow garde la liste de ce que vous avez à faire pour chaque classe, avec une échéance si vous en donnez une, et la relie aux élèves concernés quand il y en a.
+
+#### Comment garder vos tâches à portée de main ?
+
+1. **« Nouvelle tâche »** : Un titre ; si besoin, une échéance, une matière, des élèves et un détail.
+2. **Retrouvez-la** : Dans l'écran « Tâches » du téléphone, dans les cartes « À faire » de l'accueil sur ordinateur, et sur la fiche des élèves reliés.
+3. **Cochez-la** : Elle passe dans « Terminées ». Vous pouvez toujours la modifier ou la supprimer.
+
+#### À retenir
+
+- Les tâches avec une échéance se rangent avant les autres.
+- Une tâche peut être reliée aux élèves concernés.
+- Vous la passez dans « Terminées » d'un geste sur téléphone.
+
+#### Questions fréquentes
+
+- **Une tâche peut-elle ne concerner que quelques élèves ?** Oui : choisissez les élèves dans le champ « Élèves ». La tâche apparaît alors sur leur fiche, et depuis la tâche, un lien mène à la fiche de chaque élève.
+- **Tâche ou séance du cahier journal : où noter quoi ?** Ce qui se passe en classe, à une heure donnée, va dans le cahier journal. Ce que vous avez à faire, en classe ou en dehors, avant une date, est une tâche : photocopier, récupérer, commander, préparer.
+- **Les tâches fonctionnent-elles sur téléphone et sur ordinateur ?** Oui. Le téléphone a un écran « Tâches » avec « À faire » et « Terminées ». Sur ordinateur, les tâches s'affichent dans les cartes « À faire » de l'accueil, où vous les créez, les modifiez et les marquez faites.
+- **Lia peut-elle créer une tâche pour moi ?** Elle peut vous proposer d'en créer, d'en modifier ou d'en clore une ; rien n'est enregistré sans votre validation. Lia fait partie de l'abonnement Enseignant.
+- **Les tâches sont-elles gratuites dans MyClassFlow ?** Oui, comme le cahier journal, l'emploi du temps et les fiches élèves. Le compte gratuit ne demande pas de carte bancaire.
+
+Page complète : [Tâches](https://myclassflow.fr/enseignants/fonctionnalites/taches/).
+
+### Lia, votre assistante
+
+Lia est l'assistante intégrée à MyClassFlow. Elle s'appuie sur ce que l'app sait déjà, vos élèves, leur fil de suivi, vos tâches, pour répondre ; et quand votre demande appelle une écriture, elle la prépare et vous la soumet.
+
+#### Comment demander de l'aide à Lia ?
+
+1. **Formulez votre demande** : Avec le bouton rond, sur tous les écrans de l'ordinateur, ou « Demander à Lia », au centre de la barre du téléphone : au clavier, ou avec « Dicter ».
+2. **Lisez la réponse** : Elle s'appuie sur vos classes, vos élèves, leur fil de suivi et vos tâches pour répondre à votre demande.
+3. **Confirmez l'action éventuelle** : Si la réponse propose d'ajouter, de modifier ou de retirer un commentaire du fil de suivi, ou de créer, modifier ou clore une tâche, rien ne change avant votre confirmation.
+
+#### À retenir
+
+- Lia répond à partir de vos élèves, de leur fil de suivi et de vos tâches.
+- Elle prépare un commentaire ou une tâche à partir de votre demande.
+- Aucun changement n'est fait avant votre confirmation.
+
+#### Questions fréquentes
+
+- **Sur quelles données Lia s'appuie-t-elle ?** Sur vos classes, vos élèves, leur fil de suivi et vos tâches, afin de répondre à vos questions.
+- **Que peut faire Lia avec ces données ?** Répondre à vos questions, et vous proposer d'ajouter, de modifier ou de retirer un commentaire du fil de suivi, ou de créer, de modifier ou de clore une tâche. Elle répond aussi aux questions générales : gardez un œil critique sur ses conseils.
+- **Lia est-elle comprise dans le compte gratuit ?** Non, Lia fait partie de l'abonnement Enseignant, avec les adaptations des supports illimitées. Le cahier journal, l'emploi du temps, les fiches élèves et les tâches restent gratuits.
+- **Lia peut-elle enregistrer quelque chose sans moi ?** Non. Chaque proposition attend votre confirmation ; tant que vous n'avez pas confirmé, rien n'est enregistré.
+- **Peut-on parler à Lia à voix haute ?** Oui : avec le bouton « Dicter », vous posez votre question à voix haute. Vous pouvez aussi la taper.
+
+Page complète : [Lia, votre assistante](https://myclassflow.fr/enseignants/fonctionnalites/lia/).

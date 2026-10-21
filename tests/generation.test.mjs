@@ -96,7 +96,7 @@ test("llms.txt : titre, résumé, liens absolus vers des pages existantes, chaqu
   const { offreEnseignant, PLANCHER_ECOLE } = await import("../assets/js/tarifs.js");
   const txt = llms(PAGES);
   assert.match(txt, /^# MyClassFlow\n\n> .{80,}\n/);
-  const chemins = new Set(PAGES.map((p) => p.chemin));
+  const chemins = new Set([...PAGES.map((p) => p.chemin), "/llms-full.txt"]);
   const liens = [...txt.matchAll(/\]\((https:\/\/myclassflow\.fr)?([^)]*)\)/g)];
   assert.ok(liens.length >= 8);
   for (const [, absolu, chemin] of liens) {
@@ -403,5 +403,35 @@ test("Google Fonts : quatre familles utilisées, graisses limitées, display=swa
   for (const p of PAGES) {
     const fonts = page(p).match(/https:\/\/fonts\.googleapis\.com\/css2\?[^\"]+/)?.[0] ?? "";
     assert.equal(fonts, "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap", p.chemin);
+  }
+});
+
+test("llms-full.txt : Markdown strict, référencé par llms.txt, critères de l'app, pas à pas des fiches", async () => {
+  const { llmsFull, llms, critere } = await import("../outils/racine.mjs");
+  const { CRITERES_APP } = await import("../outils/corps/criteres-app.mjs");
+  const txt = readFileSync("llms-full.txt", "utf8");
+  assert.equal(txt, llmsFull(PAGES), "llms-full.txt n'est pas à jour");
+  assert.ok(llms(PAGES).includes("(https://myclassflow.fr/llms-full.txt)"));
+  assert.match(txt, /^# MyClassFlow : guide complet\n\n> .{80,}\n/);
+  for (const t of ["## Présentation", "## Pédagogie : les critères de l'app", "## Comment faire", "### Créer une classe et ajouter des élèves"]) assert.ok(txt.includes(`\n${t}\n`), t);
+  // Markdown strict : aucune balise HTML ni entité, liens absolus vers le site seulement.
+  assert.doesNotMatch(txt, /<\/?[a-z][^>]*>|&[a-z]+;|&#\d+;/i);
+  for (const [, url] of txt.matchAll(/\]\(([^)]+)\)/g)) assert.match(url, /^https:\/\/myclassflow\.fr\//, url);
+  assert.doesNotMatch(txt, /supabase|\bapi\b|app\.myclassflow|localhost|127\.0\.0\.1/i);
+  // Critères : tous ceux du catalogue actif, aucun critère inactif.
+  assert.equal(CRITERES_APP.flatMap(([, l]) => l).length, 49);
+  // Un réglage dont le libellé contient une virgule reste un seul réglage.
+  assert.ok(txt.includes("« Un peu moins » ; « Beaucoup moins, trois items au moins » ; « Beaucoup moins »"));
+  assert.ok(txt.includes("**Changer de police** : Le support est écrit dans une autre police de caractères. Réglage : plusieurs polices au choix."));
+  for (const [famille, liste] of CRITERES_APP) {
+    assert.ok(txt.includes(`### ${famille}`), famille);
+    for (const c of liste) assert.ok(txt.includes(`${critere(c)}\n`), c[0]);
+  }
+  assert.doesNotMatch(txt, /Agrandir le texte|Luciole/); // critère inactif, police non confirmée en prod
+  // Chaque fiche : sa section, ses étapes numérotées et son lien.
+  for (const f of FICHES) {
+    assert.ok(txt.includes(`### ${f.ariane}\n`), f.slug);
+    assert.ok(txt.includes(`(https://myclassflow.fr${adresseFiche(f)})`), f.slug);
+    assert.ok(txt.includes(`${f.etapes.length}. **`), `${f.slug} : étapes`);
   }
 });
