@@ -63,6 +63,9 @@ export const VUES = {
         { avant: "{ id: 1, name: 'fiche-fractions.pdf' },\n    { id: 2, name: 'annexe-schemas.png' },", apres: "{ id: 1, name: 'mesurer-des-segments.pdf' }," },
         { avant: 'subtitle="Déposez un support : il sera adapté aux besoins déclarés de la classe."', apres: 'subtitle="Dépose un support : il sera adapté aux critères pédagogiques de tes élèves."' },
         { avant: 'Formats acceptés : PDF, images (PNG, JPG…), Word (DOC, DOCX)', apres: 'Formats acceptés : PDF, images (PNG, JPG…), Word (DOC, DOCX)' },
+        // L'app tutoie (adaptation_screen.dart:688, MCF-App).
+        { avant: 'Glissez vos fichiers ici, ou ', apres: 'Glisse tes fichiers ici, ou ', toutes: true },
+        { avant: '>parcourez<', apres: '>parcours<', toutes: true },
       ] },
       { fichier: 'lancement.jsx', retrait: true },
     ],
@@ -84,6 +87,8 @@ export const VUES = {
       { fichier: 'lia.jsx', remplacements: [
         { avant: "'Contexte : CE2 · Mme Durand'", apres: "'Contexte : CE1 · Mme Moreau'" },
         { avant: "'Observation à ajouter'", apres: "'Commentaire à ajouter'" },
+        // L'app tutoie (lia_chat_overlay.dart:1094, MCF-App).
+        { avant: 'Demandez à Lia…', apres: 'Demande à Lia…', toutes: true },
       ] },
       { fichier: 'hifi-shell.jsx', constante: 'SUBJECTS', valeur: SUBJECTS },
       { fichier: 'prof.jsx', constante: 'MOCK_PROF', valeur: PROF },
