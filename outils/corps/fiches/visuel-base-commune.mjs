@@ -21,7 +21,7 @@ const carte = (c) => `<div class="bc-carte">
         <div class="bc-pied"><span>${c.avis}</span>${c.nouvelle ? '<span class="bc-nouvelle">Nouvelle</span>' : `<span>${c.reprises}</span>`}</div>
       </div>`;
 
-export const visuelBaseCommune = `<figure class="bc-visuel" aria-label="Illustration : l'écran Découvrir de la base commune dans MyClassFlow">
+export const visuelBaseCommune = `<figure class="bc-visuel" id="visuel-base-commune" aria-label="Illustration : l'écran Découvrir de la base commune dans MyClassFlow">
   <div class="bc-ecran" aria-hidden="true">
     <div class="bc-chemin">Fiches de prep › Base commune</div>
     <div class="bc-titre">Base commune</div>
