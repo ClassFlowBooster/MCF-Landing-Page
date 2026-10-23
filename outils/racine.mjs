@@ -38,7 +38,7 @@ export const llms = (pages) => {
   };
   return `# MyClassFlow
 
-> MyClassFlow est une application pour les enseignants, les écoles et les familles. Elle adapte les exercices et les leçons selon les critères pédagogiques cochés (interligne, lettres espacées, consignes en étapes…) et regroupe la gestion de classe de l'enseignant : fiches de préparation, cahier journal, emploi du temps, fiches élèves et tâches.
+> MyClassFlow est une application pour les enseignants, les écoles et les familles. Elle adapte les exercices et les leçons selon les critères pédagogiques cochés (interligne, lettres espacées, consignes en étapes…) et regroupe la gestion de classe de l'enseignant : fiches de préparation, cahier journal, emploi du temps, fiches élèves et tâches. Dans la base commune, les enseignants partagent leurs fiches de préparation entre collègues, sans aucune donnée d'élève.
 
 Trois espaces : les enseignants, les écoles (abonnement établissement pour toute l'équipe) et les familles (MyClassFlow Famille, qui adapte les devoirs à partir d'une photo). L'application s'installe sur Mac, Windows, Android, iPhone et iPad.
 
@@ -100,6 +100,7 @@ Ce guide reprend le contenu des pages de ${SITE}. Version courte et liens : [llm
 
 - Trois espaces : les enseignants ([accueil](${SITE}/enseignants/)), les écoles, avec un abonnement établissement pour toute l'équipe ([accueil](${SITE}/ecoles/)), et les familles, avec MyClassFlow Famille, qui adapte les devoirs à partir d'une photo ([accueil](${SITE}/parents-enfants/)).
 - L'application s'installe sur Mac, Windows, Android, iPhone et iPad, et fonctionne sur ordinateur comme sur téléphone.
+- Base commune : des enseignants y partagent leurs fiches de préparation, s'en inspirent, se suivent et se donnent des avis ; la consulter et suivre des collègues est gratuit, reprendre une fiche, partager les siennes et donner un avis font partie de l'abonnement ; une fiche qui contient le prénom ou le nom d'un élève ne peut pas être publiée ([page](${SITE}/enseignants/fonctionnalites/base-commune/)).
 - Enseignant : la gestion de classe est gratuite, avec 3 adaptations offertes ; l'abonnement Enseignant rend les adaptations illimitées et ajoute Lia, à ${prix(offreEnseignant(false).prix)} TTC par mois sans engagement, ou ${prix(offreEnseignant(true).prix)} par mois ${offreEnseignant(true).renvoi.replace(/^P/, "p")}
 - École : à partir de ${prix(PLANCHER_ECOLE)} TTC par enseignant et par mois ; le prix par enseignant baisse dès 5 enseignants.
 - Famille : essai gratuit de 3 adaptations sans carte bancaire, puis un abonnement pour tous les enfants du foyer ; formule Essentiel à ${prix(offreAdapter("essentiel", false).prix)} TTC par mois sans engagement, ou ${prix(offreAdapter("essentiel", true).prix)} par mois ${offreAdapter("essentiel", true).renvoi.replace(/^P/, "p")}

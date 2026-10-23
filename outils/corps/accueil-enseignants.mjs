@@ -1,7 +1,8 @@
 // Accueil de l'espace Enseignants (aussi affiché, flouté, derrière l'écran d'entrée de « / »).
 import { texteProf, prixHtml, renvoiHtml, insecables, badgeEnseignant } from "../../assets/js/tarifs-ui.js";
 import { THEMES, libelleBadge, nomLie } from "./catalogue.mjs";
-import { COCHE, FLECHE, comparateur, FAMILLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto, EQUIPE } from "./sections.mjs";
+import { COCHE, FLECHE, ICONES, comparateur, FAMILLES, douleur, confiance, HEBERGE, RGPD, carteConfiance, etapes, formulaireContact, bandeMailto, EQUIPE } from "./sections.mjs";
+import { visuelBaseCommune } from "./fiches/visuel-base-commune.mjs";
 import { castorDe } from "./castors.mjs";
 
 const prof = texteProf(true, false);
@@ -60,6 +61,25 @@ export default (titre) => `<div class="acc">
         ${THEMES.map((t) => `<div class="theme-carte"><h3>${t.titre}</h3><p>${t.sous}</p><ul>${t.outils.map((o) => `<li>${nomLie(o)} <span class="tg ${o.k}">${libelleBadge(o)}</span></li>`).join("")}</ul></div>`).join("\n        ")}
       </div>
       <p class="centre"><a class="lien-suite" href="/enseignants/fonctionnalites/">Voir toutes les fonctionnalités →</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="base-commune" aria-labelledby="titre-base-commune">
+    <div class="wrap bc-grid">
+      <div>
+        <span class="eyebrow">Entre collègues</span>
+        <h2 class="h-section" id="titre-base-commune" style="margin:16px 0 18px;">La base commune&nbsp;: <span class="serif-em text-coral">des fiches de prep partagées entre enseignants.</span></h2>
+        <p class="llede" style="margin-bottom:18px;">Une séance qui a bien marché dans votre classe peut servir à d'autres. Des enseignants y partagent leurs fiches de préparation, s'inspirent les uns des autres, se suivent et se donnent des avis.</p>
+        <ul class="bc-points">
+          <li>${COCHE}<span><b>Découvrez</b> les fiches des collègues, par niveau, matière, compétence ou auteur.</span></li>
+          <li>${COCHE}<span><b>Reprenez</b> celle qui vous inspire&nbsp;: c'est votre copie, l'original ne bouge pas.</span></li>
+          <li>${COCHE}<span><b>Partagez</b> les vôtres, sous votre nom ou un pseudonyme.</span></li>
+          <li>${COCHE}<span><b>Suivez</b> vos collègues et donnez-leur votre avis.</span></li>
+        </ul>
+        <p class="bc-note">${ICONES.cadenas}<span>Aucune donnée d'élève&nbsp;: une fiche qui contient le prénom ou le nom d'un de vos élèves ne peut pas être publiée.</span></p>
+        <a class="lien-suite" href="/enseignants/fonctionnalites/base-commune/">Comment fonctionne la base commune →</a>
+      </div>
+      ${visuelBaseCommune}
     </div>
   </section>
 

@@ -105,7 +105,9 @@ test("llms.txt : titre, résumé, liens absolus vers des pages existantes, chaqu
   }
   for (const f of FICHES) assert.ok(txt.includes(`(https://myclassflow.fr${adresseFiche(f)})`), f.slug);
   for (const v of [offreEnseignant(false).prix, offreEnseignant(true).prix, PLANCHER_ECOLE]) assert.ok(txt.includes(v.toFixed(2).replace(".", ",")), String(v));
-  assert.ok(!/\b(?:note|avis|étoiles?)\b/i.test(txt), "aucune note ni avis");
+  // Aucune note ni avis sur MyClassFlow ; seuls les avis entre collègues de la base commune sont décrits (#37).
+  const horsBaseCommune = txt.split("\n").filter((l) => !l.includes("/base-commune/")).join("\n");
+  assert.ok(!/\b(?:note|avis|étoiles?)\b/i.test(horsBaseCommune), "aucune note ni avis");
 });
 
 test("13 pages plus les fiches : l'entrée, quatre pages par espace, une page par fiche", () => {

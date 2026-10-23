@@ -10,11 +10,11 @@ test("basculer : clic ouvre / ferme, Échap ferme toujours", () => {
   assert.equal(basculer(false, "Escape"), false);
 });
 
-// 8 depuis le retrait de la carte « Évaluations », absente de l'app (MCF-App#374).
-test("méga-menu enseignants : 8 fonctionnalités, badges conformes", () => {
+// 8 depuis le retrait de la carte « Évaluations », absente de l'app (MCF-App#374) ; 9 avec la base commune (#37).
+test("méga-menu enseignants : 9 fonctionnalités, badges conformes", () => {
   const html = megaMenu("enseignants");
-  assert.equal((html.match(/class="mi"/g) ?? []).length, 8);
-  assert.equal((html.match(/tg pay/g) ?? []).length, 2);
+  assert.equal((html.match(/class="mi"/g) ?? []).length, 9);
+  assert.equal((html.match(/tg pay/g) ?? []).length, 3);
   assert.equal((html.match(/tg free/g) ?? []).length, 6);
   assert.ok(html.includes("Import des élèves par photo <span class=\"tg free\">Gratuit</span>"));
 });
