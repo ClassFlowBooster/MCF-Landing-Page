@@ -8,14 +8,17 @@ import { visuelBaseCommune } from "./visuel-base-commune.mjs";
 // ou un coin du programme, Mon fil ; avis réservés à ceux qui ont repris la fiche, réponse de l'auteur ;
 // publication bloquée si un mot correspond au prénom ou au nom d'un élève de ses classes ; profil
 // d'auteur limité au pseudonyme, aux niveaux et aux publications ; réservée aux comptes connectés.
-// Offres (offre_provider.dart) : le gratuit consulte et suit ; le payant reprend, partage et note.
+// Offres (offre_provider.dart, gratuit_logique.dart, gratuit_widgets.dart) : le gratuit consulte, suit et publie
+// par son propre parcours (ses fiches publiées sont publiques) ; le payant reprend, note, partage depuis Ma banque
+// et peut garder une fiche complète privée. Page d'auteur (auteur_widgets.dart) : pseudonyme, niveaux,
+// ancienneté, présentation facultative, fiches publiées et leurs totaux.
 // Rien sur la licence détaillée (texte pas encore validé), le signalement (inactif) ni le téléphone.
 
 const confidentialite = `<p>Une fiche partagée ne contient que la séance. Les informations sur vos élèves restent dans votre compte.</p>
     <ul class="bc-garanties">
       <li><b>Aucun nom d'élève ne passe.</b> Avant la publication, MyClassFlow compare la fiche aux prénoms et aux noms des élèves de vos classes. Si un mot correspond, la publication est bloquée : l'app vous montre le mot et la section où il se trouve, et « Modifier la fiche » vous y emmène.</li>
       <li><b>Vous choisissez le nom affiché.</b> Votre vrai nom ou un pseudonyme, jamais le nom d'un élève ni une adresse e-mail.</li>
-      <li><b>Votre page d'auteur reste sobre.</b> Les collègues y voient ce nom, vos niveaux et vos fiches partagées, rien d'autre.</li>
+      <li><b>Votre page d'auteur ne parle que de la base.</b> Les collègues y voient ce nom, vos niveaux, une présentation si vous en écrivez une, vos fiches partagées et combien de fois elles ont été reprises.</li>
       <li><b>Entre enseignants seulement.</b> La base commune est réservée aux comptes enseignants connectés.</li>
     </ul>`;
 
@@ -32,7 +35,7 @@ export default {
   // Carte de partage : outils/partage/gabarit.html?page=base-commune.
   carte: { fichier: "og-base-commune.png", alt: "MyClassFlow, fiche pour les enseignants : le castor professeur et l'accroche « Des fiches de prep partagées entre enseignants »." },
   accroche: "Des fiches de prep partagées entre enseignants : vous les découvrez, les reprenez, partagez les vôtres.",
-  k: "pay",
+  k: "free",
   titre: "Base commune : fiches de prep entre collègues — MyClassFlow",
   description: "Dans MyClassFlow, des enseignants partagent leurs fiches de préparation, s'en inspirent, se suivent et se donnent des avis. Sans aucune donnée d'élève.",
   h1: "Des fiches de prep partagées entre enseignants",
@@ -62,14 +65,14 @@ export default {
   ],
   offre: {
     titre: "La base commune, ouverte dès le compte gratuit",
-    texte: "Le compte gratuit consulte les fiches et suit les collègues. L'abonnement permet de les reprendre dans votre banque, de partager les vôtres et de donner votre avis.",
+    texte: "Avec le compte gratuit, vous consultez les fiches, suivez vos collègues et partagez les vôtres. L'abonnement ajoute la reprise dans votre banque et les avis.",
     bouton: "Créer mon compte gratuit",
     href: "https://app.myclassflow.fr",
   },
   questions: [
-    ["La base commune est-elle gratuite ?", "La consulter et suivre des collègues est gratuit, avec un compte enseignant. Reprendre une fiche dans votre banque, partager les vôtres et donner un avis font partie de l'abonnement."],
+    ["La base commune est-elle gratuite ?", "La consulter, suivre des collègues et y partager vos fiches est gratuit, avec un compte enseignant ; avec le compte gratuit, les fiches que vous publiez sont publiques. Reprendre une fiche dans votre banque, donner un avis et garder une fiche complète privée font partie de l'abonnement."],
     ["Si je modifie une fiche reprise, l'original change-t-il ?", "Non. « Reprendre dans ma banque » crée votre copie : vous l'adaptez à vos élèves, et la fiche de l'auteur reste telle qu'il l'a partagée."],
-    ["Puis-je partager une fiche sans donner mon vrai nom ?", "Oui. Vous choisissez le nom affiché sur vos fiches : votre vrai nom ou un pseudonyme. Les collègues ne voient que ce nom, vos niveaux et vos fiches partagées."],
+    ["Puis-je partager une fiche sans donner mon vrai nom ?", "Oui. Vous choisissez le nom affiché sur vos fiches : votre vrai nom ou un pseudonyme, jamais une adresse e-mail. C'est ce nom que les collègues voient sur vos fiches et sur votre page d'auteur."],
     ["Que se passe-t-il si ma fiche contient le prénom d'un élève ?", "La publication est bloquée. MyClassFlow vous montre le mot en cause et la section où il se trouve ; « Modifier la fiche » vous y emmène pour le corriger avant de partager."],
     ["Qui peut donner un avis sur une fiche ?", "Les enseignants abonnés qui ont repris la fiche : un avis n'a de sens que pour ceux qui l'ont utilisée. L'auteur peut répondre à chaque avis."],
   ],

@@ -14,8 +14,8 @@ test("basculer : clic ouvre / ferme, Échap ferme toujours", () => {
 test("méga-menu enseignants : 9 fonctionnalités, badges conformes", () => {
   const html = megaMenu("enseignants");
   assert.equal((html.match(/class="mi"/g) ?? []).length, 9);
-  assert.equal((html.match(/tg pay/g) ?? []).length, 3);
-  assert.equal((html.match(/tg free/g) ?? []).length, 6);
+  assert.equal((html.match(/tg pay/g) ?? []).length, 2);
+  assert.equal((html.match(/tg free/g) ?? []).length, 7);
   assert.ok(html.includes("Import des élèves par photo <span class=\"tg free\">Gratuit</span>"));
 });
 

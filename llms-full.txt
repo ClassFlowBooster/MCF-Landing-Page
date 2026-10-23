@@ -8,7 +8,7 @@ Ce guide reprend le contenu des pages de https://myclassflow.fr. Version courte 
 
 - Trois espaces : les enseignants ([accueil](https://myclassflow.fr/enseignants/)), les écoles, avec un abonnement établissement pour toute l'équipe ([accueil](https://myclassflow.fr/ecoles/)), et les familles, avec MyClassFlow Famille, qui adapte les devoirs à partir d'une photo ([accueil](https://myclassflow.fr/parents-enfants/)).
 - L'application s'installe sur Mac, Windows, Android, iPhone et iPad, et fonctionne sur ordinateur comme sur téléphone.
-- Base commune : des enseignants y partagent leurs fiches de préparation, s'en inspirent, se suivent et se donnent des avis ; la consulter et suivre des collègues est gratuit, reprendre une fiche, partager les siennes et donner un avis font partie de l'abonnement ; une fiche qui contient le prénom ou le nom d'un élève ne peut pas être publiée ([page](https://myclassflow.fr/enseignants/fonctionnalites/base-commune/)).
+- Base commune : des enseignants y partagent leurs fiches de préparation, s'en inspirent, se suivent et se donnent des avis ; la consulter, suivre des collègues et partager ses fiches est gratuit (avec le compte gratuit, les fiches publiées sont publiques), reprendre une fiche dans sa banque et donner un avis font partie de l'abonnement ; une fiche qui contient le prénom ou le nom d'un élève ne peut pas être publiée ([page](https://myclassflow.fr/enseignants/fonctionnalites/base-commune/)).
 - Enseignant : la gestion de classe est gratuite, avec 3 adaptations offertes ; l'abonnement Enseignant rend les adaptations illimitées et ajoute Lia, à 14,99 € TTC par mois sans engagement, ou 9,99 € par mois pendant 6 mois avec un engagement d’un an, puis 14,99 €/mois TTC.
 - École : à partir de 9,99 € TTC par enseignant et par mois ; le prix par enseignant baisse dès 5 enseignants.
 - Famille : essai gratuit de 3 adaptations sans carte bancaire, puis un abonnement pour tous les enfants du foyer ; formule Essentiel à 4,99 € TTC par mois sans engagement, ou 2,49 € par mois pendant 3 mois avec un engagement de 6 mois, puis 4,99 €/mois TTC.
@@ -134,9 +134,9 @@ Une séance qui a bien marché dans votre classe peut servir à d'autres. Dans l
 
 #### Questions fréquentes
 
-- **La base commune est-elle gratuite ?** La consulter et suivre des collègues est gratuit, avec un compte enseignant. Reprendre une fiche dans votre banque, partager les vôtres et donner un avis font partie de l'abonnement.
+- **La base commune est-elle gratuite ?** La consulter, suivre des collègues et y partager vos fiches est gratuit, avec un compte enseignant ; avec le compte gratuit, les fiches que vous publiez sont publiques. Reprendre une fiche dans votre banque, donner un avis et garder une fiche complète privée font partie de l'abonnement.
 - **Si je modifie une fiche reprise, l'original change-t-il ?** Non. « Reprendre dans ma banque » crée votre copie : vous l'adaptez à vos élèves, et la fiche de l'auteur reste telle qu'il l'a partagée.
-- **Puis-je partager une fiche sans donner mon vrai nom ?** Oui. Vous choisissez le nom affiché sur vos fiches : votre vrai nom ou un pseudonyme. Les collègues ne voient que ce nom, vos niveaux et vos fiches partagées.
+- **Puis-je partager une fiche sans donner mon vrai nom ?** Oui. Vous choisissez le nom affiché sur vos fiches : votre vrai nom ou un pseudonyme, jamais une adresse e-mail. C'est ce nom que les collègues voient sur vos fiches et sur votre page d'auteur.
 - **Que se passe-t-il si ma fiche contient le prénom d'un élève ?** La publication est bloquée. MyClassFlow vous montre le mot en cause et la section où il se trouve ; « Modifier la fiche » vous y emmène pour le corriger avant de partager.
 - **Qui peut donner un avis sur une fiche ?** Les enseignants abonnés qui ont repris la fiche : un avis n'a de sens que pour ceux qui l'ont utilisée. L'auteur peut répondre à chaque avis.
 
