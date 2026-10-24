@@ -734,3 +734,49 @@ html{scroll-padding-top:72px}
   .defile-indice{display:block}
   .exemple-fiche{padding:16px}
 }
+/* Base commune (MCF-Landing-Page#37) : écran Découvrir reconstitué, section de l'accueil Enseignants */
+.bc-visuel{margin:0;container-type:inline-size;min-width:0}
+.bc-ecran{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--sh-card);color:var(--ink-2);font-size:12.5px}
+.bc-chemin{font-size:11.5px;color:var(--ink-3)}
+.bc-titre{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);margin:4px 0 2px}
+.bc-sous{margin:0 0 12px;font-size:12.5px;line-height:1.4}
+.bc-filtres{display:flex;gap:6px;align-items:center;overflow:hidden;margin-bottom:14px}
+.bc-recherche{flex:0 1 230px;min-width:0;background:#fff;border:1px solid var(--line-2);border-radius:99px;padding:6px 12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bc-pilule{flex:none;background:#fff;border:1px solid var(--line-2);border-radius:99px;padding:6px 11px;font-weight:500;white-space:nowrap}
+.bc-pilule.on{background:var(--coral-50);border-color:var(--coral-300);color:var(--coral-700)}
+.bc-section{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.bc-section b{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink)}
+.bc-section small{font-size:11.5px;color:var(--ink-3)}
+.bc-cartes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.bc-carte{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.bc-auteur{display:flex;gap:8px;align-items:center}
+.bc-avatar{width:26px;height:26px;border-radius:99px;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;flex:none}
+.bc-auteur b{display:block;color:var(--ink);font-size:12.5px}
+.bc-auteur small{display:block;font-size:11px;color:var(--ink-3)}
+.bc-apercu{background:color-mix(in srgb,var(--bc-teinte) 9%,#fff);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.bc-apercu-tag{font:600 9px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--bc-teinte)}
+.bc-apercu b{font-family:var(--serif);font-size:12px;font-weight:600;color:var(--ink)}
+.bc-apercu-trait{height:2px;background:var(--bc-teinte);border-radius:2px;margin:2px 0}
+.bc-apercu-ligne{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bc-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;font-size:11.5px;color:var(--ink)}
+.bc-meta span:not(.bc-point){color:var(--ink-3)}
+.bc-point{width:7px;height:7px;border-radius:99px}
+.bc-carte-titre{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--ink);line-height:1.2}
+.bc-domaine{font-size:11.5px;color:var(--ink-3)}
+.bc-pied{display:flex;justify-content:space-between;gap:6px;border-top:1px solid var(--line);padding-top:8px;margin-top:auto;font-size:11px;color:var(--ink-3)}
+.bc-nouvelle{color:var(--coral-600);font-weight:600}
+.bc-visuel figcaption{font-size:12px;color:var(--ink-3);margin-top:8px;text-align:center}
+@container (max-width:620px){.bc-cartes{grid-template-columns:repeat(2,minmax(0,1fr))}.bc-carte:nth-child(3){display:none}}
+@container (max-width:400px){.bc-cartes{grid-template-columns:1fr}.bc-carte:nth-child(2){display:none}.bc-ecran{padding:14px}}
+.fiche-comment:has(> .bc-visuel){grid-template-columns:1fr}
+.bc-garanties{margin:12px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.bc-garanties li{font-size:15px;color:var(--ink-2)}
+.bc-garanties b{color:var(--ink)}
+.bc-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,64px);align-items:center}
+.bc-points{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:10px}
+.bc-points li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--ink-2)}
+.bc-points svg{width:18px;height:18px;flex:none;color:var(--coral);margin-top:3px}
+.bc-points b{color:var(--ink)}
+.bc-note{display:flex;gap:10px;align-items:flex-start;background:var(--amber-50);border:1px solid var(--amber-100);border-radius:var(--r-md);padding:12px 14px;font-size:14px;color:var(--ink-2);margin:0 0 18px}
+.bc-note svg{width:18px;height:18px;flex:none;color:var(--amber-700);margin-top:2px}
+@media (max-width: 980px){.bc-grid{grid-template-columns:1fr}}

@@ -17,6 +17,8 @@ export const THEMES = [
       long: "Cours, récréations et rituels posés une fois pour l'année : MyClassFlow additionne les heures de chaque matière." },
     { ico: "📝", nom: "Fiches de préparation", k: "free", fiche: "fiche-de-preparation", court: "Séances et séquences, simplement",
       long: "Séances et séquences, avec objectifs et compétences." },
+    { ico: "🤝", nom: "Base commune", k: "free", fiche: "base-commune", court: "Les fiches de prep partagées entre collègues",
+      long: "Des enseignants partagent leurs fiches de prep&nbsp;: vous les découvrez, les reprenez dans votre banque, suivez vos collègues et leur donnez votre avis." },
     { ico: "✅", nom: "Tâches", k: "free", fiche: "taches", court: "Les choses à faire, par classe et par échéance", page: false },
   ] },
   { titre: "Suivre ses élèves", sous: "Repérez d'un coup d'œil qui a besoin de quoi.", outils: [

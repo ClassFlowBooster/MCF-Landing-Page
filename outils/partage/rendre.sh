@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")/../.."
 SORTIE="${1:-assets/img}"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-for p in classflow ecoles enseignants parents-enfants fiche-de-preparation cahier-journal emploi-du-temps \
+for p in classflow ecoles enseignants parents-enfants fiche-de-preparation base-commune cahier-journal emploi-du-temps \
   adaptation-des-supports fiches-eleves import-eleves-photo taches lia; do
   "$CHROME" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files \
     --window-size=1200,630 --virtual-time-budget=8000 \
