@@ -55,7 +55,7 @@ export default {
   etapes: [
     ["Découvrez les fiches partagées", "Dans Fiches de prep, Découvrir rassemble les fiches des collègues, les plus récentes et les plus reprises. Cherchez par titre, compétence ou auteur, puis choisissez un niveau et une matière."],
     ["Reprenez celle qui vous inspire", "« Reprendre dans ma banque » en fait votre copie. Vous l'adaptez à vos élèves ; l'original ne bouge pas."],
-    ["Partagez les vôtres", "Depuis Ma banque, « Partager dans la base commune » offre votre fiche aux collègues, sous votre nom ou un pseudonyme. Vous publiez une mise à jour quand vous la retouchez, ou vous la retirez de la base."],
+    ["Partagez les vôtres", "Depuis Ma banque, « Partager dans la base commune » offre votre fiche aux collègues, sous votre nom ou un pseudonyme. Avec le compte gratuit, une fiche publiée est publique : tous les enseignants de la base commune la voient. Vous publiez une mise à jour quand vous la retouchez, ou vous la retirez de la base."],
     ["Suivez vos collègues et donnez votre avis", "Suivez des collègues ou un coin du programme : leurs nouvelles fiches arrivent dans Mon fil. Sur une fiche que vous avez reprise, laissez un avis à son auteur."],
   ],
   illustration: visuelBaseCommune,
@@ -65,7 +65,7 @@ export default {
   ],
   offre: {
     titre: "La base commune, ouverte dès le compte gratuit",
-    texte: "Avec le compte gratuit, vous consultez les fiches, suivez vos collègues et partagez les vôtres. L'abonnement ajoute la reprise dans votre banque et les avis.",
+    texte: "Avec le compte gratuit, vous consultez les fiches, suivez vos collègues et partagez les vôtres : une fiche publiée avec le compte gratuit est publique, visible de tous les enseignants dans la base commune. L'abonnement ajoute la reprise dans votre banque, les avis et la possibilité de garder une fiche complète privée.",
     bouton: "Créer mon compte gratuit",
     href: "https://app.myclassflow.fr",
   },
