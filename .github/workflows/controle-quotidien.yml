@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
       - name: Contrôler le site
         id: controle
         run: node outils/controle-en-ligne.mjs rapport.md
