@@ -3,7 +3,8 @@
 // detecter(), installationDirecte() et etapes() sont purs (testés, et utilisés
 // par le générateur pour écrire les étapes par défaut dans le HTML).
 
-// app.myclassflow.fr/installer est en prod depuis MCF-App#100 (PR #133, 2026-09-28).
+// app.myclassflow.fr/installer sert l'app enseignant ; l'app Famille n'a pas
+// d'écran d'installation, on ouvre donc l'app elle-même.
 export const INSTALLEUR_DISPONIBLE = true;
 
 export function detecter(ua, touchPoints, plateforme) {
@@ -20,9 +21,11 @@ export function installationDirecte(appareil, ua) {
 
 export function application(espace) {
   return espace === "parents-enfants"
-    ? { hote: "app.myclassflow.fr/famille/", nom: "MyClassFlow Famille" }
-    : { hote: "app.myclassflow.fr", nom: "MyClassFlow" };
+    ? { hote: "app.myclassflow.fr/famille/", nom: "MyClassFlow Famille", installation: "https://app.myclassflow.fr/famille/" }
+    : { hote: "app.myclassflow.fr", nom: "MyClassFlow", installation: "https://app.myclassflow.fr/installer" };
 }
+
+export const adresseInstallation = (espace) => application(espace).installation;
 
 export function etapes(appareil, espace) {
   const { hote, nom } = application(espace);
@@ -65,7 +68,7 @@ export function brancher(doc = document, nav = navigator) {
     if (!tuile) return;
     choisir(tuile);
     if (INSTALLEUR_DISPONIBLE && tuile.classList.contains("vous") && installationDirecte(tuile.dataset.o, nav.userAgent)) {
-      window.open(`https://${application(espace).hote}/installer`, "_blank", "noopener");
+      window.open(adresseInstallation(espace), "_blank", "noopener");
     }
   });
   // Présélection de l'appareil du visiteur, avec le tag « ✓ Votre appareil ».
