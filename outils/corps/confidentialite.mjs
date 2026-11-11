@@ -2,7 +2,6 @@ export default `<article class="page legal">
   <h1 class="t">Politique de confidentialité — MyClassFlow</h1>
   <p class="lead">Comment MyClassFlow traite les données personnelles de ses utilisateurs et des élèves.</p>
 
-  <p class="legal-avis">Projet à relire par Joseph ; à valider par un juriste</p>
 
   <h2>1. Responsable du traitement</h2>
   <ul>

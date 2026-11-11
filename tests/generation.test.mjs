@@ -131,7 +131,8 @@ test("salon et CGV : pages générées, tarifs centralisés, garde-fous et pied 
   assert.match(htmlSalon, /href="https:\/\/app\.myclassflow\.fr\/creer-compte\?offre=parent&amp;salon=1"/);
   assert.doesNotMatch(htmlSalon, /STRIPE_LIEN_|stripe\.com/iu);
   for (const prix of Object.values(PRIX_SALON)) assert.ok(htmlSalon.includes(`${euros(prix)}/mois TTC`), String(prix));
-  assert.match(htmlCgv, /Projet à relire par Joseph/);
+  assert.doesNotMatch(htmlCgv, /Projet à relire|À COMPLÉTER/u);
+  assert.match(htmlCgv, /SIRET : 100 495 142 00018/);
   assert.match(htmlSalon, /href="\/cgv\/"/);
   for (const p of PAGES) assert.match(page(p), /<a href="\/cgv\/">CGV<\/a>/, p.chemin);
 });

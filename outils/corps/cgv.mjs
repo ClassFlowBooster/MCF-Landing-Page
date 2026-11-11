@@ -6,7 +6,6 @@ export default `<article class="page legal">
   <h1 class="t">Conditions générales de vente — abonnements MyClassFlow</h1>
   <p class="lead">Version de travail applicable aux abonnements MyClassFlow.</p>
 
-  <p class="legal-avis">Projet à relire par Joseph ; à valider par un juriste</p>
 
   <h2>1. Identité de l’éditeur</h2>
   <ul>
