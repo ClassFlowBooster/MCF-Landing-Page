@@ -17,8 +17,9 @@ writeFileSync("404.html", page(PAGE_404));
 console.log("écrit 404.html");
 
 // Après l'écriture des pages : une page dont le HTML a changé prend la date du jour.
-writeFileSync("sitemap.xml", sitemap(PAGES.map((p) => ({ chemin: p.chemin, lastmod: dateModification(`.${p.chemin}index.html`) }))));
+const pagesIndexables = PAGES.filter((p) => p.indexable !== false);
+writeFileSync("sitemap.xml", sitemap(pagesIndexables.map((p) => ({ chemin: p.chemin, lastmod: dateModification(`.${p.chemin}index.html`) }))));
 writeFileSync("robots.txt", robots());
-writeFileSync("llms.txt", llms(PAGES));
-writeFileSync("llms-full.txt", llmsFull(PAGES));
+writeFileSync("llms.txt", llms(pagesIndexables));
+writeFileSync("llms-full.txt", llmsFull(pagesIndexables));
 console.log("écrit sitemap.xml, robots.txt, llms.txt et llms-full.txt");
