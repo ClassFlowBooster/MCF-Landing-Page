@@ -127,8 +127,9 @@ test("salon et CGV : pages générées, tarifs centralisés, garde-fous et pied 
   const htmlCgv = page(cgv);
   assert.ok(existsSync("./salon/index.html"));
   assert.ok(existsSync("./cgv/index.html"));
-  assert.match(htmlSalon, /STRIPE_LIEN_ENSEIGNANT/);
-  assert.match(htmlSalon, /STRIPE_LIEN_PARENT/);
+  assert.match(htmlSalon, /href="https:\/\/app\.myclassflow\.fr\/creer-compte\?offre=enseignant&amp;salon=1"/);
+  assert.match(htmlSalon, /href="https:\/\/app\.myclassflow\.fr\/creer-compte\?offre=parent&amp;salon=1"/);
+  assert.doesNotMatch(htmlSalon, /STRIPE_LIEN_|stripe\.com/iu);
   for (const prix of Object.values(PRIX_SALON)) assert.ok(htmlSalon.includes(`${euros(prix)}/mois TTC`), String(prix));
   assert.match(htmlCgv, /Projet à relire par Joseph/);
   assert.match(htmlSalon, /href="\/cgv\/"/);
