@@ -10,12 +10,12 @@ export default `<article class="page legal">
 
   <h2>1. Identité de l’éditeur</h2>
   <ul>
-    <li>Titulaire : Joseph Solier, entrepreneur individuel (EI)</li>
+    <li>Titulaire légal : [À COMPLÉTER]</li>
     <li>Nom commercial : MyClassFlow</li>
     <li>SIRET : [À COMPLÉTER]</li>
     <li>Adresse : [À COMPLÉTER]</li>
     <li>E-mail de contact : [À COMPLÉTER]</li>
-    <li>Directeur de la publication : Joseph Solier</li>
+    <li>Directeur de la publication : [À COMPLÉTER]</li>
   </ul>
 
   <h2>2. Objet</h2>
