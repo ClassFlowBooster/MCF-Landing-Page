@@ -4,7 +4,7 @@ const prixMensuel = (prix) => `${euros(prix)}/mois TTC`;
 
 export default `<article class="page legal">
   <h1 class="t">Conditions générales de vente — abonnements MyClassFlow</h1>
-  <p class="lead">Version de travail applicable aux abonnements MyClassFlow.</p>
+  <p class="lead">Conditions applicables aux abonnements MyClassFlow, en vigueur au 11 novembre 2026.</p>
 
 
   <h2>1. Identité de l’éditeur</h2>
