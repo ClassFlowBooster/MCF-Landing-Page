@@ -28,7 +28,7 @@ export function fonctionnalites(espace) {
     <div class="grid deux">
       ${ADAPTER.map((o) => carte(o)).join("\n      ")}
     </div></div>
-  ${ruban("Essayez gratuitement : 3 adaptations offertes", "Sans carte bancaire. Un abonnement couvre ensuite tous les enfants du foyer.", "Essayer gratuitement", "https://adapter.myclassflow.fr")}
+  ${ruban("Essayez gratuitement : 3 adaptations offertes", "Sans carte bancaire. Un abonnement couvre ensuite tous les enfants du foyer.", "Essayer gratuitement", "https://app.myclassflow.fr/famille/")}
 </section>`;
   }
   const ecoles = espace === "ecoles";

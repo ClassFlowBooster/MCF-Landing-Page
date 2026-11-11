@@ -17,7 +17,7 @@ export const ESPACES = {
   ecoles: { cle: "ecoles", libelle: "Espace Écoles",
     cta: { texte: "Demander un devis", href: "/ecoles/tarifs/#devis" }, tarifs: "Tarifs & devis" },
   "parents-enfants": { cle: "parents-enfants", libelle: "Espace Parents / Enfants",
-    cta: { texte: "Essayer gratuitement", href: "https://adapter.myclassflow.fr" }, tarifs: "Tarifs" },
+    cta: { texte: "Essayer gratuitement", href: "https://app.myclassflow.fr/famille/" }, tarifs: "Tarifs" },
 };
 
 // Logo de l'en-tête : il n'existe pas encore de logo MyClassFlow distinct des
