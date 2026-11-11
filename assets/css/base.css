@@ -120,6 +120,20 @@ input[type=range]{width:100%;margin:2px 0;accent-color:var(--coral)}
 .pop{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--coral);color:#fff;font:700 11px Inter;border-radius:99px;padding:4px 10px;white-space:nowrap;box-shadow:0 4px 12px rgba(240,85,43,.3);z-index:2}
 .reassure{display:flex;justify-content:center;gap:26px;margin-top:18px;font-size:13px;color:var(--ink-2);flex-wrap:wrap}
 
+/* ---------- Offre salon et conditions de vente ---------- */
+.salon-cartes{grid-template-columns:repeat(2,minmax(0,1fr));max-width:820px;margin:28px auto 0}
+.salon-carte .fine{min-height:0}
+.salon-cgv{display:block;text-align:center;margin-top:22px;font-size:13px;color:var(--ink-2)}
+.salon-cgv a{color:var(--coral-700);font-weight:600}
+.legal{max-width:860px;margin:0 auto;padding-top:32px;padding-bottom:48px}
+.legal .t{text-align:left}
+.legal .lead{text-align:left;max-width:720px}
+.legal-avis{background:var(--coral-100);border:1.5px solid var(--coral);border-radius:16px;padding:14px 18px;color:var(--coral-700);font-weight:700;margin:22px 0 30px}
+.legal h2{font-family:Fraunces,serif;font-size:23px;margin:30px 0 10px}
+.legal p,.legal li{line-height:1.6;color:var(--ink-2)}
+.legal ul{padding-left:22px}
+.legal a{color:var(--coral-700);text-decoration:underline}
+
 /* ---------- Formulaires ---------- */
 sup.astre{font-size:22px}
 .f label{font-size:0;display:block;position:relative}
@@ -517,7 +531,7 @@ html{scroll-padding-top:72px}
 
 /* @@responsive : garder en fin de fichier */
 @media (max-width: 900px){
-  .cards,.cards3,.calc,.steps,.grid,.grid.deux{grid-template-columns:1fr}
+  .cards,.cards3,.salon-cartes,.calc,.steps,.grid,.grid.deux{grid-template-columns:1fr}
   .ribbon{flex-direction:column;align-items:flex-start}
   .dl{grid-template-columns:1fr 1fr}
   .nav .nav-links,.nav .pill{display:none}

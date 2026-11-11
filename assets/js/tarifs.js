@@ -14,6 +14,13 @@ const ADAPTER = {
   moisPromo: 3,
 };
 
+// Offre réservée au salon : les montants restent rattachés aux tarifs publics
+// plutôt que recopiés dans la page ou les CGV.
+export const PRIX_SALON = {
+  enseignant: PROF.plein,
+  parent: ADAPTER.essentiel.plein,
+};
+
 export function indexPalier(n) {
   return Math.min(Math.floor(n / 5), 4);
 }

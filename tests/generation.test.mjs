@@ -16,7 +16,8 @@ test("chaque page a un titre, une description, un canonical et la barre de son e
     const html = page(p);
     assert.match(html, /<title>[^<]*ClassFlow[^<]*<\/title>/, p.chemin);
     assert.match(html, /<meta name="description" content="[^"]{50,}"/, p.chemin);
-    assert.ok(html.includes(`<link rel="canonical" href="https://myclassflow.fr${p.chemin}"`), p.chemin);
+    if (p.indexable === false) assert.match(html, /<meta name="robots" content="noindex"/);
+    else assert.ok(html.includes(`<link rel="canonical" href="https://myclassflow.fr${p.chemin}"`), p.chemin);
     if (p.espace) assert.ok(html.includes(ESPACES[p.espace].libelle), p.chemin);
   }
 });
@@ -67,15 +68,17 @@ test("tous les liens internes pointent vers une page existante", () => {
 
 test("sitemap.xml, robots.txt et llms.txt à jour", () => {
   const plan = readFileSync("sitemap.xml", "utf8");
-  for (const p of PAGES) assert.ok(plan.includes(`<loc>https://myclassflow.fr${p.chemin}</loc>`), p.chemin);
-  assert.equal(plan, sitemap(PAGES.map((p) => ({ chemin: p.chemin, lastmod: dateModification(`.${p.chemin}index.html`) }))), "sitemap.xml n'est pas à jour");
+  const indexables = PAGES.filter((p) => p.indexable !== false);
+  for (const p of indexables) assert.ok(plan.includes(`<loc>https://myclassflow.fr${p.chemin}</loc>`), p.chemin);
+  for (const p of PAGES.filter((p) => p.indexable === false)) assert.ok(!plan.includes(`<loc>https://myclassflow.fr${p.chemin}</loc>`), p.chemin);
+  assert.equal(plan, sitemap(indexables.map((p) => ({ chemin: p.chemin, lastmod: dateModification(`.${p.chemin}index.html`) }))), "sitemap.xml n'est pas à jour");
   assert.equal(readFileSync("robots.txt", "utf8"), robots(), "robots.txt n'est pas à jour");
   assert.equal(readFileSync("llms.txt", "utf8"), llms(PAGES), "llms.txt n'est pas à jour");
 });
 
 test("sitemap : une date de modification réelle par page, jamais dans le futur", () => {
   const dates = [...readFileSync("sitemap.xml", "utf8").matchAll(/<url><loc>[^<]+<\/loc><lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod><\/url>/g)].map((m) => m[1]);
-  assert.equal(dates.length, PAGES.length);
+  assert.equal(dates.length, PAGES.filter((p) => p.indexable !== false).length);
   for (const d of dates) assert.ok(d >= "2026-01-01" && d <= aujourdhui(), d);
 });
 
@@ -110,9 +113,26 @@ test("llms.txt : titre, résumé, liens absolus vers des pages existantes, chaqu
   assert.ok(!/\b(?:note|avis|étoiles?)\b/i.test(horsBaseCommune), "aucune note ni avis");
 });
 
-test("13 pages plus les fiches : l'entrée, quatre pages par espace, une page par fiche", () => {
-  assert.equal(PAGES.length, 13 + FICHES.length);
-  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 13 + FICHES.length);
+test("15 pages plus les fiches : l'entrée, quatre pages par espace, salon, CGV et une page par fiche", () => {
+  assert.equal(PAGES.length, 15 + FICHES.length);
+  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 15 + FICHES.length);
+});
+
+test("salon et CGV : pages générées, tarifs centralisés, garde-fous et pied commun", async () => {
+  const { PRIX_SALON, euros } = await import("../assets/js/tarifs.js");
+  const salon = PAGES.find((p) => p.chemin === "/salon/");
+  const cgv = PAGES.find((p) => p.chemin === "/cgv/");
+  assert.ok(salon && cgv);
+  const htmlSalon = page(salon);
+  const htmlCgv = page(cgv);
+  assert.ok(existsSync("./salon/index.html"));
+  assert.ok(existsSync("./cgv/index.html"));
+  assert.match(htmlSalon, /STRIPE_LIEN_ENSEIGNANT/);
+  assert.match(htmlSalon, /STRIPE_LIEN_PARENT/);
+  for (const prix of Object.values(PRIX_SALON)) assert.ok(htmlSalon.includes(`${euros(prix)}/mois TTC`), String(prix));
+  assert.match(htmlCgv, /Projet à relire par Joseph/);
+  assert.match(htmlSalon, /href="\/cgv\/"/);
+  for (const p of PAGES) assert.match(page(p), /<a href="\/cgv\/">CGV<\/a>/, p.chemin);
 });
 
 test("prix des écoles en TTC : aucun « HT » sur les pages tarifs, hors la ligne « Montant HT »", () => {
