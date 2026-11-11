@@ -13,6 +13,7 @@ import accueilParents from "./corps/accueil-parents.mjs";
 import introuvable from "./corps/introuvable.mjs";
 import salon from "./corps/salon.mjs";
 import cgv from "./corps/cgv.mjs";
+import confidentialite from "./corps/confidentialite.mjs";
 import { fiche, adresseFiche } from "./corps/fiche.mjs";
 import { FICHES } from "./corps/fiches/index.mjs";
 
@@ -25,6 +26,10 @@ export const PAGES = [
     titre: "Conditions générales de vente — MyClassFlow",
     description: "Les conditions générales de vente des abonnements MyClassFlow : essai de six mois, paiement, résiliation et droit de rétractation.",
     corps: cgv },
+  { chemin: "/confidentialite/",
+    titre: "Politique de confidentialité — MyClassFlow",
+    description: "Les données personnelles traitées par MyClassFlow, leurs finalités, leurs destinataires, leur durée de conservation et vos droits.",
+    corps: confidentialite },
   { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["entree.js"],
     titre: "MyClassFlow — adapter les supports et organiser la classe",
     description: "MyClassFlow accompagne les enseignants, les écoles et les familles avec des supports adaptés et une classe organisée.",

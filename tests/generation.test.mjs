@@ -113,9 +113,9 @@ test("llms.txt : titre, résumé, liens absolus vers des pages existantes, chaqu
   assert.ok(!/\b(?:note|avis|étoiles?)\b/i.test(horsBaseCommune), "aucune note ni avis");
 });
 
-test("15 pages plus les fiches : l'entrée, quatre pages par espace, salon, CGV et une page par fiche", () => {
-  assert.equal(PAGES.length, 15 + FICHES.length);
-  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 15 + FICHES.length);
+test("16 pages plus les fiches : l'entrée, quatre pages par espace, salon, CGV, confidentialité et une page par fiche", () => {
+  assert.equal(PAGES.length, 16 + FICHES.length);
+  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 16 + FICHES.length);
 });
 
 test("salon et CGV : pages générées, tarifs centralisés, garde-fous et pied commun", async () => {
@@ -134,6 +134,14 @@ test("salon et CGV : pages générées, tarifs centralisés, garde-fous et pied 
   assert.match(htmlCgv, /Projet à relire par Joseph/);
   assert.match(htmlSalon, /href="\/cgv\/"/);
   for (const p of PAGES) assert.match(page(p), /<a href="\/cgv\/">CGV<\/a>/, p.chemin);
+});
+
+test("confidentialité : page générée, liée depuis les CGV et le pied commun", () => {
+  const confidentialite = PAGES.find((p) => p.chemin === "/confidentialite/");
+  assert.ok(confidentialite);
+  assert.ok(existsSync("./confidentialite/index.html"));
+  assert.match(page(PAGES.find((p) => p.chemin === "/cgv/")), /href="\/confidentialite\/"/);
+  for (const p of PAGES) assert.match(page(p), /<a href="\/confidentialite\/">Confidentialité<\/a>/, p.chemin);
 });
 
 test("prix des écoles en TTC : aucun « HT » sur les pages tarifs, hors la ligne « Montant HT »", () => {

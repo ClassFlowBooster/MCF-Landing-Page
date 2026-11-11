@@ -10,11 +10,12 @@ export default `<article class="page legal">
 
   <h2>1. Identité de l’éditeur</h2>
   <ul>
-    <li>Titulaire légal : [À COMPLÉTER]</li>
+    <li>Titulaire légal : Benoist de Montgrand, entrepreneur individuel (EI)</li>
     <li>Nom commercial : MyClassFlow</li>
     <li>SIRET : 100 495 142 00018</li>
+    <li>Adresse : 9 rue Robert II, 21000 Dijon</li>
     <li>E-mail de contact : contact@myclassflow.fr</li>
-    <li>Directeur de la publication : [À COMPLÉTER]</li>
+    <li>Directeur de la publication : Benoist de Montgrand</li>
   </ul>
 
   <h2>2. Objet</h2>
@@ -38,11 +39,11 @@ export default `<article class="page legal">
   <h2>8. Paiement sécurisé</h2>
   <p>Les paiements sont traités de manière sécurisée par Stripe. L’éditeur ne conserve aucune donnée de carte bancaire.</p>
 
-  <h2>9. Médiation de la consommation</h2>
-  <p>En cas de litige non résolu après une réclamation écrite, le consommateur peut recourir gratuitement au médiateur de la consommation suivant : [À COMPLÉTER].</p>
+  <h2>9. Réclamations</h2>
+  <p>Toute réclamation peut être adressée par e-mail à contact@myclassflow.fr.</p>
 
   <h2>10. Données personnelles</h2>
-  <p>Les modalités de traitement des données personnelles sont décrites dans la politique de confidentialité : [À COMPLÉTER].</p>
+  <p>Les modalités de traitement des données personnelles sont décrites dans la <a href="/confidentialite/">politique de confidentialité</a>.</p>
 
   <h2>11. Droit applicable et juridiction</h2>
   <p>Les présentes CGV sont soumises au droit français. En cas de litige, les juridictions compétentes sont déterminées conformément aux règles légales applicables.</p>
