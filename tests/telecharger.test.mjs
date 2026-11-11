@@ -34,10 +34,10 @@ test("etapes : l'adresse et le nom de l'app suivent l'espace", () => {
   const prof = etapes("win", "enseignants");
   assert.equal(prof.l.length, 3);
   assert.ok(prof.l[0][0].includes("app.myclassflow.fr"));
+  assert.ok(!JSON.stringify(prof).includes("/famille/"));
   const parents = etapes("ios", "parents-enfants");
-  assert.ok(parents.l[0][0].includes("adapter.myclassflow.fr"));
+  assert.ok(parents.l[0][0].includes("app.myclassflow.fr/famille/"));
   assert.ok(parents.l[2][1].includes("MyClassFlow Famille"));
-  assert.ok(!JSON.stringify(parents).includes("app.myclassflow.fr"));
 });
 
 test("écran simulé : une seule ligne surlignée, l'option à toucher, jamais le titre", async () => {

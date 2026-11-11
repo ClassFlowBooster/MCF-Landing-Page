@@ -20,7 +20,7 @@ export function installationDirecte(appareil, ua) {
 
 export function application(espace) {
   return espace === "parents-enfants"
-    ? { hote: "adapter.myclassflow.fr", nom: "MyClassFlow Famille" }
+    ? { hote: "app.myclassflow.fr/famille/", nom: "MyClassFlow Famille" }
     : { hote: "app.myclassflow.fr", nom: "MyClassFlow" };
 }
 
