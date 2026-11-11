@@ -25,7 +25,7 @@ export default `<article class="page legal">
   <p>Les caractéristiques des offres sont présentées sur les pages <a href="/enseignants/tarifs/">Tarifs Enseignants</a> et <a href="/parents-enfants/tarifs/">Tarifs Famille</a>. Les prix sont indiqués toutes taxes comprises (TTC). Dans le cadre de l’offre salon, le prix mensuel applicable après l’essai est de ${prixMensuel(PRIX_SALON.enseignant)} pour l’offre Enseignant et de ${prixMensuel(PRIX_SALON.parent)} pour la formule Essentiel destinée aux parents.</p>
 
   <h2>4. Offre d’essai de 6 mois avec carte enregistrée</h2>
-  <p>L’offre salon comprend 6 mois offerts, soit une période d’essai de 180 jours à compter de la souscription. La carte bancaire du client est enregistrée lors de la souscription, mais aucun prélèvement n’est effectué pendant cette période d’essai. À l’issue des 6 mois, l’abonnement devient automatiquement payant au prix mensuel normal indiqué lors de la souscription, sauf résiliation préalable.</p>
+  <p>L’offre salon comprend une période d’essai gratuite de 180 jours à compter de la souscription (présentée comme « 6 mois offerts ») ; la date exacte de fin d’essai est indiquée lors de la souscription et dans l’e-mail de rappel. La carte bancaire du client est enregistrée lors de la souscription, mais aucun prélèvement n’est effectué pendant cette période d’essai. À l’issue des 6 mois, l’abonnement devient automatiquement payant au prix mensuel normal indiqué lors de la souscription, sauf résiliation préalable.</p>
 
   <h2>5. Information avant le premier prélèvement</h2>
   <p>Un e-mail rappelant la date et le montant du premier prélèvement est envoyé avant celui-ci. Le délai est de [À COMPLÉTER] ; proposition : 7 jours.</p>

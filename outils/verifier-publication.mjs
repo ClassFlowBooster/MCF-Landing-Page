@@ -5,7 +5,7 @@ import { resolve, relative, join, extname } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const DOSSIERS_EXCLUS = new Set([".git", "outils", "tests", "docs", "node_modules", ".github", ".claude"]);
-const EXTENSIONS_PUBLIEES = new Set([".html", ".txt", ".xml"]);
+const EXTENSIONS_PUBLIEES = new Set([".html", ".txt", ".xml", ".js"]);
 const MARQUE = /À COMPLÉTER|STRIPE_LIEN_/u;
 
 const extrait = (ligne) => {

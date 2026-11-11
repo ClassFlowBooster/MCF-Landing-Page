@@ -17,7 +17,7 @@ export default `<section class="page">
       <p class="d">Toutes les adaptations de vos supports et vos outils de préparation.</p>
       <div class="price">6 mois offerts</div>
       <p class="fine grow">Puis ${prixMensuel(PRIX_SALON.enseignant)}, sans engagement, résiliable en un clic, rappel par e-mail avant le premier prélèvement.</p>
-      <p class="fine">Votre carte est enregistrée de façon sécurisée ; rien n’est prélevé pendant les 6 mois offerts.</p>
+      <p class="fine">Votre carte est enregistrée de façon sécurisée ; rien n’est prélevé pendant les 6 mois offerts (180 jours).</p>
       <a class="btn" href="${STRIPE_LIEN_ENSEIGNANT}">Je suis enseignant</a>
     </article>
     <article class="card salon-carte">
@@ -26,10 +26,11 @@ export default `<section class="page">
       <p class="d">La formule Essentiel pour adapter les devoirs de votre enfant.</p>
       <div class="price">6 mois offerts</div>
       <p class="fine grow">Puis ${prixMensuel(PRIX_SALON.parent)}, sans engagement, résiliable en un clic, rappel par e-mail avant le premier prélèvement.</p>
-      <p class="fine">Votre carte est enregistrée de façon sécurisée ; rien n’est prélevé pendant les 6 mois offerts.</p>
+      <p class="fine">Votre carte est enregistrée de façon sécurisée ; rien n’est prélevé pendant les 6 mois offerts (180 jours).</p>
       <a class="btn" href="${STRIPE_LIEN_PARENT}">Je suis parent</a>
     </article>
   </div>
 
+  <p class="salon-cgv">Après l’enregistrement de votre carte, créez votre compte MyClassFlow avec la même adresse e-mail.</p>
   <p class="salon-cgv">En choisissant une offre, vous acceptez les <a href="/cgv/">conditions générales de vente</a>.</p>
 </section>`;
