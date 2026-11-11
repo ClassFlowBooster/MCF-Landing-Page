@@ -65,13 +65,15 @@ test("brancher ouvre l'URL d'installation exacte", () => {
     getElementById(id) { return id === "dl" ? dl : { textContent: "", innerHTML: "" }; },
   };
   const ouvertes = [];
+  const avaitFenetre = "window" in globalThis;
   const ancienneFenetre = globalThis.window;
   globalThis.window = { open: (...args) => ouvertes.push(args) };
   try {
     brancher(doc, { userAgent: UA.win, maxTouchPoints: 0, platform: "Win32" });
     dl.click({ target: { closest: () => tuile } });
   } finally {
-    globalThis.window = ancienneFenetre;
+    if (avaitFenetre) globalThis.window = ancienneFenetre;
+    else delete globalThis.window;
   }
   assert.deepEqual(ouvertes, [["https://app.myclassflow.fr/famille/", "_blank", "noopener"]]);
 });
