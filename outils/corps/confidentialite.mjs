@@ -39,9 +39,12 @@ export default `<article class="page legal">
   <h2>5. Durées de conservation</h2>
   <p>Les données du compte et des élèves sont conservées tant que le compte est actif. La suppression du compte, depuis l’application, efface le compte, les fiches des élèves et les données qui y sont liées. Les pièces de facturation sont conservées par Stripe et par l’éditeur pendant la durée imposée par la loi (10 ans pour les documents comptables).</p>
 
-  <h2>6. Cookies et stockage local</h2>
+  <h2>6. Sécurité</h2>
+  <p>Les échanges avec le site et l’application sont chiffrés (HTTPS). Les mots de passe ne sont jamais stockés en clair. L’accès aux données est réservé au compte qui les a créées, et les données de carte bancaire restent chez Stripe.</p>
+
+  <h2>7. Cookies et stockage local</h2>
   <p>Le site et l’application n’utilisent ni cookie publicitaire ni outil de mesure d’audience. L’application conserve sur l’appareil quelques préférences techniques (par exemple, la dernière session ouverte ou l’affichage de la visite guidée). La page de paiement Stripe dépose ses propres cookies, nécessaires à la sécurité du paiement.</p>
 
-  <h2>7. Vos droits</h2>
+  <h2>8. Vos droits</h2>
   <p>Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité de vos données. Pour les exercer, écrivez à contact@myclassflow.fr. Vous pouvez aussi introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr">www.cnil.fr</a>).</p>
 </article>`;
