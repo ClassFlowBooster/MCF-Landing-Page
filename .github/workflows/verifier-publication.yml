@@ -1,0 +1,24 @@
+# Garde-fou de publication (outils/verifier-publication.mjs) : échoue tant qu'une page
+# publiée contient « À COMPLÉTER » ou un lien de paiement provisoire STRIPE_LIEN_.
+# Règle de Joseph : rien ne part en production tant qu'il reste des informations à compléter.
+name: Vérification de publication
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: Vérifier les pages publiées
+        run: npm run verifier-publication
