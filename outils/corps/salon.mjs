@@ -26,6 +26,7 @@ export default `<section class="page">
       <a class="btn" href="https://app.myclassflow.fr/creer-compte?offre=parent&amp;salon=1">Je suis parent</a>
     </article>
   </div>
+  <a class="salon-decouvrir" href="https://myclassflow.fr/">Découvrir MyClassFlow en détail →</a>
 
   <p class="salon-cgv">Créez votre compte, puis enregistrez votre carte ; rien n’est prélevé pendant les 6 mois offerts (180 jours).</p>
   <p class="salon-cgv">En choisissant une offre, vous acceptez les <a href="/cgv/">conditions générales de vente</a>.</p>
