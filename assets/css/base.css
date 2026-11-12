@@ -146,7 +146,11 @@ input[type=range]{width:100%;margin:2px 0;accent-color:var(--coral)}
 .evenement-article section{margin-top:28px}
 .evenement-article p{line-height:1.6;color:var(--ink-2)}
 .evenement-article a:not(.btn){color:var(--coral-700);text-decoration:underline}
-.evenement-vignette{display:block;width:100%;height:220px;object-fit:cover;object-position:top;border-radius:12px;margin-bottom:12px}
+.evenement-carte.avec-affiche{max-width:680px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:22px;align-items:start}
+.evenement-texte{display:flex;flex-direction:column;min-width:0}.evenement-texte>.badge{align-self:flex-start}
+.evenement-vignette{display:block}
+.evenement-vignette img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 4px 14px rgba(31,26,20,.12)}
+@media (max-width:560px){.evenement-carte.avec-affiche{grid-template-columns:110px minmax(0,1fr);gap:14px}.evenement-carte.avec-affiche h2{font-size:19px}}
 .evenement-affiche{margin:24px 0 0;max-width:360px}
 .evenement-affiche img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 4px 18px rgba(31,26,20,.12)}
 .evenement-affiche figcaption{font-size:12px;color:var(--ink-3);margin-top:6px}

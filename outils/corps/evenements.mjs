@@ -18,14 +18,16 @@ export const EVENEMENTS = [
   },
 ];
 
-const carte = (evenement) => `<article class="card evenement-carte">
-  ${evenement.affiche ? `<img class="evenement-vignette" src="/assets/img/evenements/${evenement.affiche.fichier}" alt="" width="724" height="1024" loading="lazy" decoding="async">` : ""}
+const carte = (evenement) => `<article class="card evenement-carte${evenement.affiche ? " avec-affiche" : ""}">
+  ${evenement.affiche ? `<a class="evenement-vignette" href="/evenements/${evenement.slug}/" tabindex="-1" aria-hidden="true"><img src="/assets/img/evenements/${evenement.affiche.fichier}" alt="" width="724" height="1024" loading="lazy" decoding="async"></a>` : ""}
+  <div class="evenement-texte">
   <span class="badge">${evenement.statut === "a-venir" ? "À venir" : "Passé"}</span>
   <p class="d"><time datetime="${evenement.date}">${evenement.dateLisible}</time></p>
   <h2>${evenement.nom}</h2>
   <p class="d">${evenement.lieu}<br>${evenement.adresse}</p>
   <p class="fine grow">${evenement.accroche}</p>
   <a class="btn" href="/evenements/${evenement.slug}/">Lire l’article</a>
+  </div>
 </article>`;
 
 const partie = (titre, evenements, vide) => `<section class="evenements-partie">
