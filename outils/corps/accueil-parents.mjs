@@ -26,7 +26,7 @@ export default `<div class="acc">
         <h1 class="h-display">Les devoirs de votre enfant, <em>adaptés en une photo</em></h1>
         <p class="llede">Prenez en photo la leçon ou l'exercice : MyClassFlow Famille le transforme selon les critères pédagogiques que vous cochez&nbsp;: texte agrandi, lignes espacées, consignes en étapes…</p>
         <div class="hero-actions">
-          <a class="lbtn lbtn-primary lbtn-lg" href="https://adapter.myclassflow.fr">Essayer gratuitement ${FLECHE}</a>
+          <a class="lbtn lbtn-primary lbtn-lg" href="https://app.myclassflow.fr/famille/">Essayer gratuitement ${FLECHE}</a>
           <a class="lbtn lbtn-ghost lbtn-lg" href="#exemple">Voir un exemple</a>
         </div>
         <div class="hero-reassure"><span>${COCHE} 3 adaptations offertes</span><span>${COCHE} Sans carte bancaire</span><span>${COCHE} Hébergé en France</span></div>
@@ -70,7 +70,7 @@ export default `<div class="acc">
           <div class="price">0 €</div>
           <span class="quota"><i>3</i> adaptations offertes</span>
           <div class="grow"></div>
-          <a class="btn ghost" href="https://adapter.myclassflow.fr">J'essaie gratuitement</a>
+          <a class="btn ghost" href="https://app.myclassflow.fr/famille/">J'essaie gratuitement</a>
         </div>
         <div class="card">
           <span class="badge">${badgeAdapter("essentiel")}</span>
@@ -80,7 +80,7 @@ export default `<div class="acc">
           <div class="price">${prixHtml(e)}</div>
           <span class="quota"><i>${ADAPTATIONS_ESSENTIEL}</i> adaptations par mois</span>
           <div class="grow"></div>
-          <a class="btn ghost" href="https://adapter.myclassflow.fr">Je choisis Essentiel</a>
+          <a class="btn ghost" href="https://app.myclassflow.fr/famille/">Je choisis Essentiel</a>
         </div>
         <div class="card hl">
           <span class="pop">Le plus choisi</span>
@@ -91,7 +91,7 @@ export default `<div class="acc">
           <div class="price">${prixHtml(i)}</div>
           <span class="quota"><i>∞</i> adaptations illimitées</span>
           <div class="grow"></div>
-          <a class="btn" href="https://adapter.myclassflow.fr">Je choisis Illimité</a>
+          <a class="btn" href="https://app.myclassflow.fr/famille/">Je choisis Illimité</a>
         </div>
       </div>
       <p class="renvoi"><b>*</b> Pendant 3 mois avec un engagement de 6 mois.</p>

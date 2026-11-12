@@ -77,7 +77,7 @@ const APP = (offers) => application("MyClassFlow", "https://app.myclassflow.fr",
 // Fiche d'un outil gratuit : seule l'offre gratuite y est affichée. Une fiche
 // d'outil de l'abonnement ne montre aucun prix (lien vers les tarifs) : pas d'offre.
 const appFiche = (f) => APP(f.k === "free" ? [OFFRES_ENSEIGNANT[0]] : []);
-const FAMILLE = application("MyClassFlow Famille", "https://adapter.myclassflow.fr", OFFRES_FAMILLE);
+const FAMILLE = application("MyClassFlow Famille", "https://app.myclassflow.fr/famille/", OFFRES_FAMILLE);
 
 // Texte brut d'une réponse : sans balises ni entités.
 const brut = (html) => html.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();

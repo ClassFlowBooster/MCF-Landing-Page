@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { detecter, installationDirecte, etapes } from "../assets/js/telecharger.js";
+import { adresseInstallation, brancher, detecter, installationDirecte, etapes } from "../assets/js/telecharger.js";
 
 const UA = {
   win: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36",
@@ -34,10 +34,48 @@ test("etapes : l'adresse et le nom de l'app suivent l'espace", () => {
   const prof = etapes("win", "enseignants");
   assert.equal(prof.l.length, 3);
   assert.ok(prof.l[0][0].includes("app.myclassflow.fr"));
+  assert.ok(!JSON.stringify(prof).includes("/famille/"));
   const parents = etapes("ios", "parents-enfants");
-  assert.ok(parents.l[0][0].includes("adapter.myclassflow.fr"));
+  assert.ok(parents.l[0][0].includes("app.myclassflow.fr/famille/"));
   assert.ok(parents.l[2][1].includes("MyClassFlow Famille"));
-  assert.ok(!JSON.stringify(parents).includes("app.myclassflow.fr"));
+});
+
+test("adresse d'installation : Famille ouvre son app, enseignants et écoles l'installeur", () => {
+  assert.equal(adresseInstallation("parents-enfants"), "https://app.myclassflow.fr/famille/");
+  assert.equal(adresseInstallation("enseignants"), "https://app.myclassflow.fr/installer");
+  assert.equal(adresseInstallation("ecoles"), "https://app.myclassflow.fr/installer");
+  for (const espace of ["parents-enfants", "enseignants", "ecoles"]) {
+    assert.ok(!adresseInstallation(espace).replace(/^https?:\/\//, "").includes("//"));
+  }
+});
+
+test("brancher ouvre l'URL d'installation exacte", () => {
+  const classes = () => {
+    const valeurs = new Set();
+    return { contains: (x) => valeurs.has(x), toggle: (x, actif) => actif ? valeurs.add(x) : valeurs.delete(x) };
+  };
+  const tuile = { dataset: { o: "win" }, classList: classes(), setAttribute() {}, prepend() {} };
+  const dl = {
+    addEventListener(_, fn) { this.click = fn; },
+    querySelectorAll() { return [tuile]; },
+    querySelector() { return tuile; },
+  };
+  const doc = {
+    body: { dataset: { espace: "parents-enfants" } },
+    getElementById(id) { return id === "dl" ? dl : { textContent: "", innerHTML: "" }; },
+  };
+  const ouvertes = [];
+  const avaitFenetre = "window" in globalThis;
+  const ancienneFenetre = globalThis.window;
+  globalThis.window = { open: (...args) => ouvertes.push(args) };
+  try {
+    brancher(doc, { userAgent: UA.win, maxTouchPoints: 0, platform: "Win32" });
+    dl.click({ target: { closest: () => tuile } });
+  } finally {
+    if (avaitFenetre) globalThis.window = ancienneFenetre;
+    else delete globalThis.window;
+  }
+  assert.deepEqual(ouvertes, [["https://app.myclassflow.fr/famille/", "_blank", "noopener"]]);
 });
 
 test("écran simulé : une seule ligne surlignée, l'option à toucher, jamais le titre", async () => {

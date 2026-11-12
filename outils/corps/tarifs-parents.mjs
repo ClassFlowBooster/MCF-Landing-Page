@@ -23,7 +23,7 @@ export default `<section class="page" data-tarifs="parents-enfants">
       <div class="price">0 €</div>
       <span class="quota"><i>3</i> adaptations offertes</span>
       <div class="fine grow">Aucune carte demandée. Vos 3 adaptations restent accessibles ensuite.</div>
-      <a class="btn ghost" href="https://adapter.myclassflow.fr">J'essaie gratuitement</a>
+      <a class="btn ghost" href="https://app.myclassflow.fr/famille/">J'essaie gratuitement</a>
     </div>
 
     <div class="card">
@@ -34,7 +34,7 @@ export default `<section class="page" data-tarifs="parents-enfants">
       <div class="price" id="ePrice">${prixHtml(e)}</div>
       <span class="quota"><i>${ADAPTATIONS_ESSENTIEL}</i> adaptations par mois</span>
       <div class="fine grow" id="eFine">${renvoiHtml(e)}</div>
-      <a class="btn ghost" href="https://adapter.myclassflow.fr">Je choisis Essentiel</a>
+      <a class="btn ghost" href="https://app.myclassflow.fr/famille/">Je choisis Essentiel</a>
     </div>
 
     <div class="card hl avec-castor">
@@ -47,7 +47,7 @@ export default `<section class="page" data-tarifs="parents-enfants">
       <div class="price" id="iPrice">${prixHtml(i)}</div>
       <span class="quota"><i>∞</i> adaptations illimitées</span>
       <div class="fine grow" id="iFine">${renvoiHtml(i)}</div>
-      <a class="btn" href="https://adapter.myclassflow.fr">Je choisis Illimité</a>
+      <a class="btn" href="https://app.myclassflow.fr/famille/">Je choisis Illimité</a>
     </div>
   </div>
 

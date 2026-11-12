@@ -52,6 +52,7 @@ export default {
   titre: "Emploi du temps de classe : votre semaine type — MyClassFlow",
   description: "Construire l'emploi du temps de sa classe créneau par créneau et lire le volume horaire de chaque matière pendant la saisie. Exemple : une semaine de CM2 sur quatre jours et demi, ramenée aux horaires annuels du cycle 3.",
   carte: { fichier: "og-emploi-du-temps.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Votre semaine type, et le total d'heures de chaque matière »." },
+  accroche: "Votre semaine type, et le total d'heures de chaque matière.",
   h1: "L'emploi du temps de votre classe, et ses heures par matière",
   intro: "L'emploi du temps pose la semaine type de la classe : les cours, les récréations, les rituels. Sa vraie question est souvent : chaque matière a-t-elle son compte d'heures ? MyClassFlow fait l'addition pour vous, au fil des créneaux.",
   retenir: [

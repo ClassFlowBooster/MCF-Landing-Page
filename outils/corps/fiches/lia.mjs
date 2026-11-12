@@ -17,6 +17,7 @@ export default {
   titre: "Assistant IA pour les enseignants : Lia — MyClassFlow",
   description: "Lia, l'assistante IA de MyClassFlow : elle cherche dans vos élèves, leur fil de suivi et vos tâches pour répondre, puis prépare un commentaire ou une tâche que vous confirmez.",
   carte: { fichier: "og-lia.png", alt: "MyClassFlow, abonnement pour les enseignants : le castor professeur et l'accroche « Lia répond à partir de vos élèves, de leur suivi et de vos tâches »." },
+  accroche: "Lia répond à partir de vos élèves, de leur suivi et de vos tâches.",
   h1: "Lia répond à partir de vos élèves et de vos tâches",
   intro: "Lia est l'assistante intégrée à MyClassFlow. Elle s'appuie sur ce que l'app sait déjà, vos élèves, leur fil de suivi, vos tâches, pour répondre ; et quand votre demande appelle une écriture, elle la prépare et vous la soumet.",
   retenir: [
