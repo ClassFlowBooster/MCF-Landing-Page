@@ -58,6 +58,7 @@ export const articleEvenement = (slug, evenements = EVENEMENTS) => {
   <section>
     <h2>Le Forum Avenirs</h2>
     <p>Organisé par l’Enseignement catholique du Val-de-Marne, le Forum Avenirs réunit associations et professionnels qui proposent des solutions pour les enfants en situation de handicap ou à besoins éducatifs particuliers, de la maternelle à l’après-bac. Il s’adresse aux parents comme aux équipes éducatives.</p>
+    <p>Programme et informations pratiques : <a href="https://catholiques-val-de-marne.cef.fr/diocese/accueil/329937-forum-avenirs-handicap/" rel="noopener">la page officielle du Forum Avenirs</a>, sur le site du diocèse de Créteil.</p>
     <p>En savoir plus : le site de l’<a href="https://www.institut-montalembert.org/" rel="noopener">Institut Montalembert</a>, qui accueille le forum, et le <a href="https://enseignement-catholique.fr/des-perspectives-d-avenir-s/" rel="noopener">retour de l’Enseignement catholique sur la première édition</a>.</p>
   </section>
 
