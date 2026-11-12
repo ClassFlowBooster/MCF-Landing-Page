@@ -9,11 +9,17 @@ export const EVENEMENTS = [
     dateLisible: "Samedi 14 novembre 2026, de 9 h à 14 h",
     lieu: "Institut Montalembert",
     adresse: "28 boulevard Gambetta, 94130 Nogent-sur-Marne",
+    affiche: {
+      fichier: "forum-avenirs-2026.jpg",
+      alt: "Affiche du Forum Avenirs Handicap : samedi 14 novembre 2026, de 9 h à 14 h, Institut Montalembert, 28 boulevard Gambetta, Nogent-sur-Marne.",
+      credit: "Affiche : Enseignement catholique de l’Est-Francilien, diocèse de Créteil.",
+    },
     accroche: "L’équipe MyClassFlow présente comment adapter les supports pédagogiques pour les élèves à besoins particuliers, aux enseignants comme aux parents.",
   },
 ];
 
 const carte = (evenement) => `<article class="card evenement-carte">
+  ${evenement.affiche ? `<img class="evenement-vignette" src="/assets/img/evenements/${evenement.affiche.fichier}" alt="" width="724" height="1024" loading="lazy" decoding="async">` : ""}
   <span class="badge">${evenement.statut === "a-venir" ? "À venir" : "Passé"}</span>
   <p class="d"><time datetime="${evenement.date}">${evenement.dateLisible}</time></p>
   <h2>${evenement.nom}</h2>
@@ -44,6 +50,7 @@ export const articleEvenement = (slug, evenements = EVENEMENTS) => {
   <p class="fine"><a href="/evenements/">Événements</a></p>
   <h1 class="t">MyClassFlow au Forum Avenirs</h1>
   <p class="lead"><time datetime="${evenement.date}T09:00:00+01:00">${evenement.dateLisible}</time></p>
+  ${evenement.affiche ? `<figure class="evenement-affiche"><img src="/assets/img/evenements/${evenement.affiche.fichier}" alt="${evenement.affiche.alt}" width="724" height="1024" decoding="async"><figcaption>${evenement.affiche.credit}</figcaption></figure>` : ""}
 
   <section>
     <h2>Venez nous rencontrer</h2>

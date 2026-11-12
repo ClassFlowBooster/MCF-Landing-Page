@@ -146,6 +146,10 @@ input[type=range]{width:100%;margin:2px 0;accent-color:var(--coral)}
 .evenement-article section{margin-top:28px}
 .evenement-article p{line-height:1.6;color:var(--ink-2)}
 .evenement-article a:not(.btn){color:var(--coral-700);text-decoration:underline}
+.evenement-vignette{display:block;width:100%;height:220px;object-fit:cover;object-position:top;border-radius:12px;margin-bottom:12px}
+.evenement-affiche{margin:24px 0 0;max-width:360px}
+.evenement-affiche img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 4px 18px rgba(31,26,20,.12)}
+.evenement-affiche figcaption{font-size:12px;color:var(--ink-3);margin-top:6px}
 .evenement-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
 
 /* ---------- Formulaires ---------- */
