@@ -134,6 +134,20 @@ input[type=range]{width:100%;margin:2px 0;accent-color:var(--coral)}
 .legal ul{padding-left:22px}
 .legal a{color:var(--coral-700);text-decoration:underline}
 
+/* ---------- Événements ---------- */
+.evenements{max-width:960px}
+.evenements-partie{margin-top:32px}
+.evenements-partie h2,.evenement-article h2{font-family:Fraunces,serif;font-size:24px;margin:0 0 12px}
+.evenements-cartes{grid-template-columns:minmax(0,1fr)}
+.evenement-carte{max-width:560px}
+.evenement-carte h2{font-family:Fraunces,serif;font-size:22px;margin:10px 0 6px}
+.evenement-article{max-width:760px;padding-top:32px;padding-bottom:48px}
+.evenement-article .t,.evenement-article .lead{text-align:left}
+.evenement-article section{margin-top:28px}
+.evenement-article p{line-height:1.6;color:var(--ink-2)}
+.evenement-article a:not(.btn){color:var(--coral-700);text-decoration:underline}
+.evenement-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+
 /* ---------- Formulaires ---------- */
 sup.astre{font-size:22px}
 .f label{font-size:0;display:block;position:relative}
