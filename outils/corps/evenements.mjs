@@ -42,7 +42,7 @@ export const articleEvenement = (slug, evenements = EVENEMENTS) => {
   if (!evenement) throw new Error(`Événement introuvable : ${slug}`);
   return `<article class="page evenement-article">
   <p class="fine"><a href="/evenements/">Événements</a></p>
-  <h1 class="t">MyClassFlow au Forum Avenirs, samedi 14 novembre 2026</h1>
+  <h1 class="t">MyClassFlow au Forum Avenirs</h1>
   <p class="lead"><time datetime="${evenement.date}T09:00:00+01:00">${evenement.dateLisible}</time></p>
 
   <section>
