@@ -1,0 +1,67 @@
+# Publie le dossier statique qr/ sur le projet Cloudflare Pages `mcf-qr` (MCF-Landing-Page#47).
+# Ce site ne fait que rediriger (qr/_redirects, 302) vers https://myclassflow.fr/salon/ :
+# c'est l'adresse imprimée dans le QR code du kakemono. Aucun build : qr/ est publié tel quel.
+# Déclenché seulement par un push sur main qui touche qr/ ou ce fichier, ou à la main.
+# Secrets requis : CLOUDFLARE_API_TOKEN et CLOUDFLARE_ACCOUNT_ID (jamais de valeur en dur).
+# Retour arrière : tableau de bord Cloudflare Pages `mcf-qr` → Deployments → déploiement
+# précédent → Rollback.
+name: Déploiement mcf-qr
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'qr/**'
+      - '.github/workflows/deploy-qr.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-qr
+  cancel-in-progress: true
+
+jobs:
+  deployer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      # Vérifie seulement que les secrets sont renseignés : leur valeur n'est jamais affichée.
+      - name: Contrôle des secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          manquant=0
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::Secret CLOUDFLARE_API_TOKEN manquant (Settings → Secrets and variables → Actions)."
+            manquant=1
+          fi
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Secret CLOUDFLARE_ACCOUNT_ID manquant (Settings → Secrets and variables → Actions)."
+            manquant=1
+          fi
+          if [ "$manquant" -ne 0 ]; then
+            exit 1
+          fi
+          echo "Secrets Cloudflare présents."
+
+      - name: Contrôle du dossier qr/
+        run: |
+          set -eu
+          test -f qr/_redirects || { echo "::error::qr/_redirects absent"; exit 1; }
+          test -f qr/index.html || { echo "::error::qr/index.html absent"; exit 1; }
+          echo "qr/ conforme."
+
+      - name: Déployer sur Cloudflare Pages (mcf-qr)
+        run: npx wrangler@4.71.0 pages deploy qr --project-name=mcf-qr --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
