@@ -49,7 +49,7 @@ export const articleEvenement = (slug, evenements = EVENEMENTS) => {
   const evenement = evenements.find((item) => item.slug === slug);
   if (!evenement) throw new Error(`Événement introuvable : ${slug}`);
   return `<article class="page evenement-article">
-  <p class="fine"><a href="/evenements/">Événements</a></p>
+  <p class="fine"><a href="/evenements/">← Tous les événements</a></p>
   <h1 class="t">MyClassFlow au Forum Avenirs</h1>
   <p class="lead"><time datetime="${evenement.date}T09:00:00+01:00">${evenement.dateLisible}</time></p>
   ${evenement.affiche ? `<figure class="evenement-affiche"><img src="/assets/img/evenements/${evenement.affiche.fichier}" alt="${evenement.affiche.alt}" width="724" height="1024" decoding="async"><figcaption>${evenement.affiche.credit}</figcaption></figure>` : ""}

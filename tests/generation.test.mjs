@@ -38,7 +38,8 @@ test("référencement : titre, description et grand titre distincts sur chaque p
 });
 
 test("titres de l'entrée et de l'espace Enseignants : 50 à 60 caractères, la marque une seule fois", () => {
-  for (const p of PAGES.filter((x) => x.espace === "enseignants")) {
+  // Les pages Événements empruntent seulement la barre de l'espace Enseignants.
+  for (const p of PAGES.filter((x) => x.espace === "enseignants" && x.rubrique !== "evenements")) {
     assert.ok(p.titre.length >= 50 && p.titre.length <= 60, `${p.chemin} : ${p.titre.length} caractères`);
     assert.equal(p.titre.match(/MyClassFlow/g).length, 1, p.chemin);
   }
@@ -164,6 +165,13 @@ test("événements : pages générées, contenus convenus, pied commun et aucun 
     assert.ok(htmlArticle.includes(`href="${href}"`), href);
   for (const p of [...PAGES, PAGE_404]) assert.match(page(p), /<a href="\/evenements\/">Événements<\/a>/, p.chemin);
   for (const html of [htmlListe, htmlArticle]) assert.doesNotMatch(html, /href="\/salon\//);
+  // Onglet Événements dans la barre du haut de toute page à en-tête, actif sur les pages Événements.
+  for (const p of PAGES.filter((p) => p.espace)) assert.match(page(p), /<a class="nav-link[^"]*" href="\/evenements\/"/, p.chemin);
+  for (const html of [htmlListe, htmlArticle]) {
+    assert.match(html, /<header class="header">/);
+    assert.match(html, /<a class="nav-link cur" href="\/evenements\/" aria-current="page">Événements<\/a>/);
+  }
+  assert.match(htmlArticle, /<a href="\/evenements\/">← Tous les événements<\/a>/);
   assert.deepEqual(EVENEMENTS.map((e) => e.statut), ["a-venir"]);
 });
 
