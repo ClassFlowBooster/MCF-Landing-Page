@@ -4,6 +4,7 @@ import { offreEnseignant, offreAdapter, PLANCHER_ECOLE } from "../assets/js/tari
 import { QUESTIONS_PARENTS } from "./corps/accueil-parents.mjs";
 import { FICHES } from "./corps/fiches/index.mjs";
 import { adresseFiche, arianeFiche, ARIANE_FONCTIONNALITES } from "./corps/fiche.mjs";
+import { EVENEMENTS } from "./corps/evenements.mjs";
 
 export const SITE = "https://myclassflow.fr";
 
@@ -93,6 +94,26 @@ const ariane = (elements, chemin) => ({
   itemListElement: elements.map(([name, href], i) => ({ "@type": "ListItem", position: i + 1, name, item: `${SITE}${href ?? chemin}` })),
 });
 
+const evenementStructure = (evenement) => ({
+  "@type": "Event",
+  name: evenement.nom,
+  startDate: "2026-11-14T09:00:00+01:00",
+  endDate: "2026-11-14T14:00:00+01:00",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  eventStatus: "https://schema.org/EventScheduled",
+  location: {
+    "@type": "Place",
+    name: evenement.lieu,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "28 boulevard Gambetta",
+      postalCode: "94130",
+      addressLocality: "Nogent-sur-Marne",
+      addressCountry: "FR",
+    },
+  },
+});
+
 const PAR_PAGE = {
   "/": [ORGANISATION, SITE_WEB],
   "/enseignants/": [APP(OFFRES_ENSEIGNANT)],
@@ -102,6 +123,7 @@ const PAR_PAGE = {
   "/parents-enfants/": [FAMILLE, faq(QUESTIONS_PARENTS)],
   "/parents-enfants/tarifs/": [FAMILLE],
   "/enseignants/fonctionnalites/": [ariane(ARIANE_FONCTIONNALITES, "/enseignants/fonctionnalites/")],
+  "/evenements/forum-avenirs-2026/": [evenementStructure(EVENEMENTS.find((evenement) => evenement.slug === "forum-avenirs-2026"))],
   ...Object.fromEntries(FICHES.map((f) => [adresseFiche(f), [ariane(arianeFiche(f), adresseFiche(f)), articleFiche(f), appFiche(f), faq(f.questions)]])),
 };
 

@@ -10,6 +10,7 @@ import { megaMenu } from "../outils/corps/mega-menu.mjs";
 import { FICHES } from "../outils/corps/fiches/index.mjs";
 import { adresseFiche, arianeFiche } from "../outils/corps/fiche.mjs";
 import { sitemap, robots, llms, dateModification, aujourdhui, ROBOTS_IA } from "../outils/racine.mjs";
+import { EVENEMENTS } from "../outils/corps/evenements.mjs";
 
 test("chaque page a un titre, une description, un canonical et la barre de son espace", () => {
   for (const p of PAGES) {
@@ -37,7 +38,8 @@ test("référencement : titre, description et grand titre distincts sur chaque p
 });
 
 test("titres de l'entrée et de l'espace Enseignants : 50 à 60 caractères, la marque une seule fois", () => {
-  for (const p of PAGES.filter((x) => x.espace === "enseignants")) {
+  // Les pages Événements empruntent seulement la barre de l'espace Enseignants.
+  for (const p of PAGES.filter((x) => x.espace === "enseignants" && x.rubrique !== "evenements")) {
     assert.ok(p.titre.length >= 50 && p.titre.length <= 60, `${p.chemin} : ${p.titre.length} caractères`);
     assert.equal(p.titre.match(/MyClassFlow/g).length, 1, p.chemin);
   }
@@ -113,9 +115,9 @@ test("llms.txt : titre, résumé, liens absolus vers des pages existantes, chaqu
   assert.ok(!/\b(?:note|avis|étoiles?)\b/i.test(horsBaseCommune), "aucune note ni avis");
 });
 
-test("16 pages plus les fiches : l'entrée, quatre pages par espace, salon, CGV, confidentialité et une page par fiche", () => {
-  assert.equal(PAGES.length, 16 + FICHES.length);
-  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 16 + FICHES.length);
+test("18 pages plus les fiches : l'entrée, quatre pages par espace, événements, salon, CGV, confidentialité et une page par fiche", () => {
+  assert.equal(PAGES.length, 18 + FICHES.length);
+  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 18 + FICHES.length);
 });
 
 test("salon et CGV : pages générées, tarifs centralisés, garde-fous et pied commun", async () => {
@@ -143,6 +145,34 @@ test("confidentialité : page générée, liée depuis les CGV et le pied commun
   assert.ok(existsSync("./confidentialite/index.html"));
   assert.match(page(PAGES.find((p) => p.chemin === "/cgv/")), /href="\/confidentialite\/"/);
   for (const p of PAGES) assert.match(page(p), /<a href="\/confidentialite\/">Confidentialité<\/a>/, p.chemin);
+});
+
+test("événements : pages générées, contenus convenus, pied commun et aucun renvoi vers l'offre salon", () => {
+  const liste = PAGES.find((p) => p.chemin === "/evenements/");
+  const article = PAGES.find((p) => p.chemin === "/evenements/forum-avenirs-2026/");
+  assert.ok(liste && article);
+  assert.ok(existsSync("./evenements/index.html"));
+  assert.ok(existsSync("./evenements/forum-avenirs-2026/index.html"));
+  const htmlListe = page(liste);
+  const htmlArticle = page(article);
+  assert.match(htmlListe, /<h1 class="t">Événements<\/h1>/);
+  assert.match(htmlListe, /À venir/);
+  assert.match(htmlListe, /Passés/);
+  assert.match(htmlListe, /Les comptes rendus de nos événements apparaîtront ici\./);
+  for (const texte of ["Forum Avenirs", "Samedi 14 novembre 2026, de 9 h à 14 h", "Institut Montalembert", "28 boulevard Gambetta, 94130 Nogent-sur-Marne", "voir l’application en démonstration", "Une offre spéciale est réservée aux visiteurs sur place."])
+    assert.ok(htmlArticle.includes(texte), texte);
+  for (const href of ["/enseignants/", "/parents-enfants/", "https://www.openstreetmap.org/search?query=28%20boulevard%20Gambetta%2094130%20Nogent-sur-Marne"])
+    assert.ok(htmlArticle.includes(`href="${href}"`), href);
+  for (const p of [...PAGES, PAGE_404]) assert.match(page(p), /<a href="\/evenements\/">Événements<\/a>/, p.chemin);
+  for (const html of [htmlListe, htmlArticle]) assert.doesNotMatch(html, /href="\/salon\//);
+  // Onglet Événements dans la barre du haut de toute page à en-tête, actif sur les pages Événements.
+  for (const p of PAGES.filter((p) => p.espace)) assert.match(page(p), /<a class="nav-link[^"]*" href="\/evenements\/"/, p.chemin);
+  for (const html of [htmlListe, htmlArticle]) {
+    assert.match(html, /<header class="header">/);
+    assert.match(html, /<a class="nav-link cur" href="\/evenements\/" aria-current="page">Événements<\/a>/);
+  }
+  assert.match(htmlArticle, /<a href="\/evenements\/">← Tous les événements<\/a>/);
+  assert.deepEqual(EVENEMENTS.map((e) => e.statut), ["a-venir"]);
 });
 
 test("prix des écoles en TTC : aucun « HT » sur les pages tarifs, hors la ligne « Montant HT »", () => {
@@ -274,7 +304,7 @@ test("vocabulaire : les pages décrivent des adaptations, sans catégorie d'él�
   // « aménagement » autorisé depuis la phrase de la page écoles choisie par Joseph (14 oct. 2026, 13 h 35)
   const INTERDITS = /troubl|dys|tdah|\btsa\b|\beana\b|diagnost|\bppre\b|\bpai\b|geva|handicap|besoins? (?:particulier|spécifique|éducatif)|livret de parcours|\blpi\b|neuro|déficien|patholog|dispositif|\bprofils?\b/i;
   const sansImages = (t) => t.replace(/data:[a-z/+-]+;base64,[A-Za-z0-9+/=]+/g, "");
-  for (const p of PAGES) {
+  for (const p of PAGES.filter((p) => !p.chemin.startsWith("/evenements/"))) {
     const m = page(p).match(INTERDITS);
     assert.ok(!m, `${p.chemin} : « ${m?.[0]} »`);
   }
@@ -303,6 +333,20 @@ test("données structurées : JSON valide, prix affichés sur la page même, que
   const faq = graphes["/parents-enfants/"].find((o) => o["@type"] === "FAQPage");
   const visibles = [...html["/parents-enfants/"].matchAll(/<summary>(.*?)<\/summary>/g)].map((m) => m[1]);
   assert.deepEqual(faq.mainEntity.map((q) => q.name), visibles);
+  const evenement = graphes["/evenements/forum-avenirs-2026/"].find((o) => o["@type"] === "Event");
+  assert.deepEqual(evenement, {
+    "@type": "Event",
+    name: "Forum Avenirs",
+    startDate: "2026-11-14T09:00:00+01:00",
+    endDate: "2026-11-14T14:00:00+01:00",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    location: {
+      "@type": "Place",
+      name: "Institut Montalembert",
+      address: { "@type": "PostalAddress", streetAddress: "28 boulevard Gambetta", postalCode: "94130", addressLocality: "Nogent-sur-Marne", addressCountry: "FR" },
+    },
+  });
 });
 
 test("fiches explicatives : fil d'Ariane et questions balisés, identiques à la page", () => {

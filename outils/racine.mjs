@@ -5,6 +5,7 @@ import { FICHES } from "./corps/fiches/index.mjs";
 import { adresseFiche } from "./corps/fiche.mjs";
 import { offreEnseignant, offreAdapter, PLANCHER_ECOLE, euros } from "../assets/js/tarifs.js";
 import { CRITERES_APP } from "./corps/criteres-app.mjs";
+import { EVENEMENTS } from "./corps/evenements.mjs";
 
 export { aujourdhui, dateModification } from "./dates.mjs";
 
@@ -69,6 +70,11 @@ ${FICHES.map((f) => `- [Questions : ${f.ariane}](${SITE}${adresseFiche(f)}): ${f
 
 ${lien("/ecoles/", "Espace Écoles")}
 ${lien("/parents-enfants/", "Espace Parents / Enfants")}
+
+## Événements
+
+${lien("/evenements/", "Événements")}
+${EVENEMENTS.map((e) => lien(`/evenements/${e.slug}/`, e.nom)).join("\n")}
 
 ## Optional
 
@@ -135,4 +141,12 @@ ${f.retenir.map((r) => `- ${enMarkdown(r)}`).join("\n")}
 ${f.questions.map(([q, r]) => `- **${enMarkdown(q)}** ${enMarkdown(r)}`).join("\n")}
 
 Page complète : [${f.ariane}](${SITE}${adresseFiche(f)}).`).join("\n\n")}
+
+## Événements
+
+${EVENEMENTS.map((e) => `### ${e.nom}
+
+${e.dateLisible}. ${e.lieu}, ${e.adresse}. ${e.accroche} Venez nous rencontrer et voir l’application en démonstration. Une offre spéciale est réservée aux visiteurs sur place.
+
+Page complète : [${e.nom}](${SITE}/evenements/${e.slug}/).`).join("\n\n")}
 `;

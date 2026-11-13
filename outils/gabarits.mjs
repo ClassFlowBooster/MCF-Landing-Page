@@ -53,13 +53,14 @@ function barre(espace, rubrique, megaMenu) {
     <div class="navrel"><button class="nav-link mega-bouton${rubrique === "fonctionnalites" ? " cur" : ""}" type="button" aria-expanded="false" aria-controls="mega">Fonctionnalités</button>${megaMenu ?? ""}</div>
     ${lien("tarifs", e.tarifs)}
     ${lien("telecharger", "Télécharger")}
+    <a class="nav-link${rubrique === "evenements" ? " cur" : ""}" href="/evenements/"${rubrique === "evenements" ? ' aria-current="page"' : ""}>Événements</a>
   </div>
   <span class="sp"></span>
   <a class="btn" href="${e.cta.href}">${e.cta.texte}</a>
   <button class="nav-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuMobile"><span></span><span></span><span></span></button>
 </nav>
 <nav class="mobile-menu" id="menuMobile" hidden aria-label="Navigation mobile">
-  <a href="/${espace}/fonctionnalites/">Fonctionnalités</a><a href="/${espace}/tarifs/">${echap(e.tarifs)}</a><a href="/${espace}/telecharger/">Télécharger</a>${autres}
+  <a href="/${espace}/fonctionnalites/">Fonctionnalités</a><a href="/${espace}/tarifs/">${echap(e.tarifs)}</a><a href="/${espace}/telecharger/">Télécharger</a><a href="/evenements/">Événements</a>${autres}
 </nav></header>`;
 }
 
@@ -67,12 +68,12 @@ function pied() {
   return `<footer class="footer"><div class="footer-inner">
   <span>© MyClassFlow</span>
   <a href="/enseignants/">Enseignants</a><a href="/ecoles/">Écoles</a><a href="/parents-enfants/">Parents / Enfants</a>
-  <a href="/presentation/">Présentation</a><a href="/cgv/">CGV</a><a href="/confidentialite/">Confidentialité</a>
+  <a href="/presentation/">Présentation</a><a href="/evenements/">Événements</a><a href="/cgv/">CGV</a><a href="/confidentialite/">Confidentialité</a>
 </div></footer>`;
 }
 
 // indexable: false (page 404) : ni adresse canonique ni og:url, et « noindex ».
-export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "", indexable = true, carte = CARTES[chemin === "/" ? "" : espace ?? ""] }) {
+export function page({ espace, rubrique = "", titre, description, chemin, corps, scripts = [], megaMenu, classeBody = "", surcouche = "", indexable = true, carte = CARTES[chemin === "/" || rubrique === "evenements" ? "" : espace ?? ""] }) {
   const js = scripts.map((s) => `<script type="module" src="/assets/js/${s}"></script>`).join("\n");
   return `<!DOCTYPE html>
 <html lang="fr">

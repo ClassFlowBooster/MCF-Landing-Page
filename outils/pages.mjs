@@ -14,10 +14,20 @@ import introuvable from "./corps/introuvable.mjs";
 import salon from "./corps/salon.mjs";
 import cgv from "./corps/cgv.mjs";
 import confidentialite from "./corps/confidentialite.mjs";
+import { listeEvenements, articleEvenement } from "./corps/evenements.mjs";
 import { fiche, adresseFiche } from "./corps/fiche.mjs";
 import { FICHES } from "./corps/fiches/index.mjs";
 
 export const PAGES = [
+  // Barre de navigation de l'accueil (espace enseignants, comme « / »), onglet Événements actif.
+  { chemin: "/evenements/", espace: "enseignants", rubrique: "evenements",
+    titre: "Événements MyClassFlow : rencontres et actualités",
+    description: "Retrouvez les événements à venir et les comptes rendus des rencontres de MyClassFlow avec les enseignants et les parents.",
+    corps: listeEvenements() },
+  { chemin: "/evenements/forum-avenirs-2026/", espace: "enseignants", rubrique: "evenements",
+    titre: "Forum Avenirs 2026 : MyClassFlow vous rencontre",
+    description: "MyClassFlow sera au Forum Avenirs le samedi 14 novembre 2026, de 9 h à 14 h, à l’Institut Montalembert de Nogent-sur-Marne.",
+    corps: articleEvenement("forum-avenirs-2026") },
   { chemin: "/salon/", indexable: false,
     titre: "Offre salon MyClassFlow : 6 mois offerts",
     description: "Choisissez votre offre salon MyClassFlow : six mois offerts avec carte enregistrée, puis un abonnement mensuel résiliable en un clic.",
