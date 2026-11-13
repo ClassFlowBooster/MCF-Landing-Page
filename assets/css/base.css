@@ -128,6 +128,8 @@ input[type=range]{width:100%;margin:2px 0;accent-color:var(--coral)}
 .salon-carte .fine{min-height:0}
 .salon-cgv{display:block;text-align:center;margin-top:22px;font-size:13px;color:var(--ink-2)}
 .salon-cgv a{color:var(--coral-700);font-weight:600}
+.salon-decouvrir{display:block;width:fit-content;margin:18px auto 0;font-size:12.5px;color:var(--ink-2)}
+.salon-decouvrir:hover{text-decoration:underline}
 .legal{max-width:860px;margin:0 auto;padding-top:32px;padding-bottom:48px}
 .legal .t{text-align:left}
 .legal .lead{text-align:left;max-width:720px}
