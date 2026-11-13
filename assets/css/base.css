@@ -4,7 +4,10 @@
    ================================================================= */
 
 :root{--coral:#F0552B;--coral-50:#FFF5F0;--coral-100:#FFE4D6;--coral-700:#A82E0F;--paper:#FBF8F3;--paper-2:#F4EFE6;--ink:#1F1A14;--ink-2:#4A4238;--ink-3:#8A8278;--line:#E6DFCF;--good:#10B981;--largeur:1480px}
-body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);margin:0;overflow-x:hidden}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);margin:0;overflow-x:hidden;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+/* Pied de page collé en bas sur les pages courtes. */
+body>main{flex:1 0 auto}
+body>header,body>footer{flex-shrink:0}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit}
 [hidden]{display:none!important}
