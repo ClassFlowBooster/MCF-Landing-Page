@@ -48,6 +48,11 @@ Guide complet en un seul fichier (présentation, critères pédagogiques de l'ap
 - [Espace Écoles](https://myclassflow.fr/ecoles/): Une même démarche d'adaptation dans chaque classe et une seule facture pour l'établissement. Le prix par enseignant baisse dès 5 enseignants.
 - [Espace Parents / Enfants](https://myclassflow.fr/parents-enfants/): Photographiez la leçon ou l'exercice : MyClassFlow Famille le transforme selon les critères pédagogiques que vous cochez. Essai gratuit, sans carte bancaire.
 
+## Événements
+
+- [Événements](https://myclassflow.fr/evenements/): Retrouvez les événements à venir et les comptes rendus des rencontres de MyClassFlow avec les enseignants et les parents.
+- [Forum Avenirs](https://myclassflow.fr/evenements/forum-avenirs-2026/): MyClassFlow sera au Forum Avenirs le samedi 14 novembre 2026, de 9 h à 14 h, à l’Institut Montalembert de Nogent-sur-Marne.
+
 ## Optional
 
 - [Installer l'application](https://myclassflow.fr/enseignants/telecharger/): Installez MyClassFlow en quelques secondes sur Mac, Windows, Android, iPhone ou iPad : l'app s'ouvre depuis votre écran d'accueil ou votre Dock.

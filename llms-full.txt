@@ -328,3 +328,11 @@ Lia est l'assistante intégrée à MyClassFlow. Elle s'appuie sur ce que l'app s
 - **Peut-on parler à Lia à voix haute ?** Oui : avec le bouton « Dicter », vous posez votre question à voix haute. Vous pouvez aussi la taper.
 
 Page complète : [Lia, votre assistante](https://myclassflow.fr/enseignants/fonctionnalites/lia/).
+
+## Événements
+
+### Forum Avenirs
+
+Samedi 14 novembre 2026, de 9 h à 14 h. Institut Montalembert, 28 boulevard Gambetta, 94130 Nogent-sur-Marne. L’équipe MyClassFlow présente comment adapter les supports pédagogiques pour les élèves à besoins particuliers, aux enseignants comme aux parents. Venez nous rencontrer et voir l’application en démonstration. Une offre spéciale est réservée aux visiteurs sur place.
+
+Page complète : [Forum Avenirs](https://myclassflow.fr/evenements/forum-avenirs-2026/).

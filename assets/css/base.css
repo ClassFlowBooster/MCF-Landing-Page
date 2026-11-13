@@ -134,6 +134,28 @@ input[type=range]{width:100%;margin:2px 0;accent-color:var(--coral)}
 .legal ul{padding-left:22px}
 .legal a{color:var(--coral-700);text-decoration:underline}
 
+/* ---------- Événements ---------- */
+.evenements{max-width:960px}
+.evenements-partie{margin-top:32px}
+.evenements-partie h2,.evenement-article h2{font-family:Fraunces,serif;font-size:24px;margin:0 0 12px}
+.evenements-cartes{grid-template-columns:minmax(0,1fr)}
+.evenement-carte{max-width:560px}
+.evenement-carte h2{font-family:Fraunces,serif;font-size:22px;margin:10px 0 6px}
+.evenement-article{max-width:760px;padding-top:32px;padding-bottom:48px}
+.evenement-article .t,.evenement-article .lead{text-align:left}
+.evenement-article section{margin-top:28px}
+.evenement-article p{line-height:1.6;color:var(--ink-2)}
+.evenement-article a:not(.btn){color:var(--coral-700);text-decoration:underline}
+.evenement-carte.avec-affiche{max-width:680px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:22px;align-items:start}
+.evenement-texte{display:flex;flex-direction:column;min-width:0}.evenement-texte>.badge{align-self:flex-start}
+.evenement-vignette{display:block}
+.evenement-vignette img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 4px 14px rgba(31,26,20,.12)}
+@media (max-width:560px){.evenement-carte.avec-affiche{grid-template-columns:110px minmax(0,1fr);gap:14px}.evenement-carte.avec-affiche h2{font-size:19px}}
+.evenement-affiche{margin:24px 0 0;max-width:360px}
+.evenement-affiche img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 4px 18px rgba(31,26,20,.12)}
+.evenement-affiche figcaption{font-size:12px;color:var(--ink-3);margin-top:6px}
+.evenement-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+
 /* ---------- Formulaires ---------- */
 sup.astre{font-size:22px}
 .f label{font-size:0;display:block;position:relative}
