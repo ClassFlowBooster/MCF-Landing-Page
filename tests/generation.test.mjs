@@ -140,6 +140,38 @@ test("CGV : page générée, garde-fous et pied commun", () => {
   for (const p of PAGES) assert.match(page(p), /<a href="\/cgv\/">CGV<\/a>/, p.chemin);
 });
 
+test("CGV des abonnements (#549) : 13 rubriques dans l'ordre, montants de tarifs.js, plus de lien fixe de portail", async () => {
+  const { EN_VIGUEUR_LE } = await import("../outils/corps/cgv.mjs");
+  const { offreEnseignant, offreAdapter, PRIX_SALON, euros } = await import("../assets/js/tarifs.js");
+  const html = page(PAGES.find((p) => p.chemin === "/cgv/"));
+  const titres = [...html.matchAll(/<h2>([^<]+)<\/h2>/g)].map((m) => m[1]);
+  assert.deepEqual(titres, [
+    "1. Identité de l’éditeur",
+    "2. Objet",
+    "3. Offres et prix",
+    "4. Une seule offre par compte",
+    "5. Souscription et paiement",
+    "6. Abonnement avec engagement",
+    "7. Abonnement sans engagement",
+    "8. Gérer mon abonnement",
+    "9. Fin de l’abonnement",
+    "10. Offres passées",
+    "11. Réclamations",
+    "12. Données personnelles",
+    "13. Droit applicable et juridiction",
+  ]);
+  for (const o of [
+    offreEnseignant(false), offreEnseignant(true),
+    offreAdapter("essentiel", false), offreAdapter("essentiel", true),
+    offreAdapter("illimite", false), offreAdapter("illimite", true),
+  ]) assert.ok(html.includes(`${euros(o.prix)}/mois TTC`), euros(o.prix));
+  assert.ok(html.includes(`${euros(PRIX_SALON.enseignant)}/mois TTC`));
+  assert.ok(html.includes(`${euros(PRIX_SALON.parent)}/mois TTC`));
+  assert.ok(html.includes(`en vigueur au ${EN_VIGUEUR_LE}`));
+  assert.doesNotMatch(html, /billing\.stripe\.com/);
+  assert.match(html, /href="\/ecoles\/tarifs\/"/);
+});
+
 test("confidentialité : page générée, liée depuis les CGV et le pied commun", () => {
   const confidentialite = PAGES.find((p) => p.chemin === "/confidentialite/");
   assert.ok(confidentialite);
