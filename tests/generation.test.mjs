@@ -115,27 +115,28 @@ test("llms.txt : titre, résumé, liens absolus vers des pages existantes, chaqu
   assert.ok(!/\b(?:note|avis|étoiles?)\b/i.test(horsBaseCommune), "aucune note ni avis");
 });
 
-test("18 pages plus les fiches : l'entrée, quatre pages par espace, événements, salon, CGV, confidentialité et une page par fiche", () => {
-  assert.equal(PAGES.length, 18 + FICHES.length);
-  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 18 + FICHES.length);
+test("17 pages plus les fiches : l'entrée, quatre pages par espace, événements, CGV, confidentialité et une page par fiche", () => {
+  assert.equal(PAGES.length, 17 + FICHES.length);
+  assert.equal(new Set(PAGES.map((p) => p.chemin)).size, 17 + FICHES.length);
 });
 
-test("salon et CGV : pages générées, tarifs centralisés, garde-fous et pied commun", async () => {
-  const { PRIX_SALON, euros } = await import("../assets/js/tarifs.js");
-  const salon = PAGES.find((p) => p.chemin === "/salon/");
+test("offre salon fermée (MCF-App#549) : plus de page /salon/ ni de lien vers elle ou vers salon=1", () => {
+  assert.equal(PAGES.find((p) => p.chemin === "/salon/"), undefined);
+  assert.ok(!existsSync("./salon/index.html"));
+  for (const p of [...PAGES, PAGE_404]) {
+    const html = page(p);
+    assert.doesNotMatch(html, /href="(?:https:\/\/myclassflow\.fr)?\/salon\//, p.chemin);
+    assert.doesNotMatch(html, /salon=1/, p.chemin);
+  }
+});
+
+test("CGV : page générée, garde-fous et pied commun", () => {
   const cgv = PAGES.find((p) => p.chemin === "/cgv/");
-  assert.ok(salon && cgv);
-  const htmlSalon = page(salon);
+  assert.ok(cgv);
   const htmlCgv = page(cgv);
-  assert.ok(existsSync("./salon/index.html"));
   assert.ok(existsSync("./cgv/index.html"));
-  assert.match(htmlSalon, /href="https:\/\/app\.myclassflow\.fr\/creer-compte\?offre=enseignant&amp;salon=1"/);
-  assert.match(htmlSalon, /href="https:\/\/app\.myclassflow\.fr\/creer-compte\?offre=parent&amp;salon=1"/);
-  assert.doesNotMatch(htmlSalon, /STRIPE_LIEN_|stripe\.com/iu);
-  for (const prix of Object.values(PRIX_SALON)) assert.ok(htmlSalon.includes(`${euros(prix)}/mois TTC`), String(prix));
   assert.doesNotMatch(htmlCgv, /Projet à relire|À COMPLÉTER/u);
   assert.match(htmlCgv, /SIRET : 100 495 142 00018/);
-  assert.match(htmlSalon, /href="\/cgv\/"/);
   for (const p of PAGES) assert.match(page(p), /<a href="\/cgv\/">CGV<\/a>/, p.chemin);
 });
 

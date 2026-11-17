@@ -11,7 +11,6 @@ import accueilEnseignants, { TITRE_ENSEIGNANTS } from "./corps/accueil-enseignan
 import accueilEcoles from "./corps/accueil-ecoles.mjs";
 import accueilParents from "./corps/accueil-parents.mjs";
 import introuvable from "./corps/introuvable.mjs";
-import salon from "./corps/salon.mjs";
 import cgv from "./corps/cgv.mjs";
 import confidentialite from "./corps/confidentialite.mjs";
 import { listeEvenements, articleEvenement } from "./corps/evenements.mjs";
@@ -28,10 +27,6 @@ export const PAGES = [
     titre: "Forum Avenirs 2026 : MyClassFlow vous rencontre",
     description: "MyClassFlow sera au Forum Avenirs le samedi 14 novembre 2026, de 9 h à 14 h, à l’Institut Montalembert de Nogent-sur-Marne.",
     corps: articleEvenement("forum-avenirs-2026") },
-  { chemin: "/salon/", indexable: false,
-    titre: "Offre salon MyClassFlow : 6 mois offerts",
-    description: "Choisissez votre offre salon MyClassFlow : six mois offerts avec carte enregistrée, puis un abonnement mensuel résiliable en un clic.",
-    corps: salon },
   { chemin: "/cgv/",
     titre: "Conditions générales de vente — MyClassFlow",
     description: "Les conditions générales de vente des abonnements MyClassFlow : essai de six mois, paiement, résiliation et droit de rétractation.",
