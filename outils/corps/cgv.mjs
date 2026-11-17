@@ -47,7 +47,8 @@ export default `<article class="page legal">
   <p>Les caractéristiques des offres sont présentées sur les pages <a href="/enseignants/tarifs/">Tarifs Enseignants</a> et <a href="/parents-enfants/tarifs/">Tarifs Famille</a>. Les écoles et établissements bénéficient d’un tarif sur devis, hors paiement en ligne : voir la page <a href="/ecoles/tarifs/">Tarifs Écoles</a>.</p>
 
   <h2>4. Une seule offre par compte</h2>
-  <p>Une adresse e-mail correspond à un compte, et un compte ne peut avoir qu’une seule offre à la fois. Souscrire un abonnement met fin à l’offre gratuite ou à l’offre de lancement en cours. Un enseignant qui souscrit une offre Famille quitte l’offre Enseignant, et inversement : les offres ne se cumulent pas.</p>
+  <p>Une adresse e-mail correspond à un compte, et un compte ne peut avoir qu’une seule offre à la fois. Souscrire un abonnement met fin à l’offre gratuite ou à l’offre de lancement en cours, y compris celle de l’autre espace du compte (Enseignant ou Famille) : les offres ne se cumulent pas.</p>
+  <p>Un abonnement en cours ne se change pas directement en un autre : pour passer, par exemple, de l’offre Enseignant à une offre Famille, il faut d’abord résilier l’abonnement en cours, puis souscrire la nouvelle offre une fois qu’il a pris fin. Seul le passage entre Essentiel et Illimité sans engagement se fait directement depuis « Gérer mon abonnement » (rubrique 8).</p>
 
   <h2>5. Souscription et paiement</h2>
   <p>La souscription se fait depuis l’application, rubrique « Choisir mon offre ». Le paiement est traité par Stripe sur sa page de paiement sécurisée ; l’éditeur ne conserve aucune donnée de carte bancaire. Le premier prélèvement a lieu le jour de la souscription, puis chaque mois à la même date. Stripe envoie un reçu par e-mail à chaque prélèvement.</p>

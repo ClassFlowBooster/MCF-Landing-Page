@@ -170,6 +170,13 @@ test("CGV des abonnements (#549) : 13 rubriques dans l'ordre, montants de tarifs
   assert.ok(html.includes(`en vigueur au ${EN_VIGUEUR_LE}`));
   assert.doesNotMatch(html, /billing\.stripe\.com/);
   assert.match(html, /href="\/ecoles\/tarifs\/"/);
+  // T55, rubrique 4 (3e contrôle) : aucun changement direct d'offre laissé
+  // entendre ; il faut d'abord résilier, sauf Essentiel ↔ Illimité sans
+  // engagement dans « Gérer mon abonnement ».
+  const rubrique4 = html.split("<h2>4. Une seule offre par compte</h2>")[1].split("<h2>")[0];
+  assert.doesNotMatch(rubrique4, /quitte l’offre/);
+  assert.match(rubrique4, /il faut d’abord résilier l’abonnement en cours/);
+  assert.match(rubrique4, /Essentiel et Illimité sans engagement/);
 });
 
 test("confidentialité : page générée, liée depuis les CGV et le pied commun", () => {
