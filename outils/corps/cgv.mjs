@@ -1,10 +1,27 @@
-import { PRIX_SALON, euros } from "../../assets/js/tarifs.js";
+import {
+  ADAPTATIONS_ESSENTIEL,
+  PRIX_SALON,
+  euros,
+  offreAdapter,
+  offreEnseignant,
+} from "../../assets/js/tarifs.js";
 
 const prixMensuel = (prix) => `${euros(prix)}/mois TTC`;
 
+// Date d'entrée en vigueur des CGV des abonnements payables en ligne (#549),
+// fixée au 18 novembre 2026 par décision de Joseph du 18/11 (P13 de la spec).
+export const EN_VIGUEUR_LE = "18 novembre 2026";
+
+const ens = { libre: offreEnseignant(false), engage: offreEnseignant(true) };
+const ess = { libre: offreAdapter("essentiel", false), engage: offreAdapter("essentiel", true) };
+const ill = { libre: offreAdapter("illimite", false), engage: offreAdapter("illimite", true) };
+
+const ligneOffre = (nom, o) =>
+  `<li><strong>${nom}</strong> : sans engagement, ${prixMensuel(o.libre.prix)} ; avec engagement, ${prixMensuel(o.engage.prix)} (${o.engage.renvoi.replace(/^Pendant/, "pendant").replace(/\.$/, "")})</li>`;
+
 export default `<article class="page legal">
   <h1 class="t">Conditions générales de vente — abonnements MyClassFlow</h1>
-  <p class="lead">Conditions applicables aux abonnements MyClassFlow, en vigueur au 11 novembre 2026.</p>
+  <p class="lead">Conditions applicables aux abonnements MyClassFlow, en vigueur au ${EN_VIGUEUR_LE}.</p>
 
 
   <h2>1. Identité de l’éditeur</h2>
@@ -21,29 +38,48 @@ export default `<article class="page legal">
   <p>Les présentes conditions générales de vente (« CGV ») régissent la souscription et l’utilisation des abonnements MyClassFlow proposés aux enseignants et aux parents, ainsi que les modalités de paiement et de résiliation.</p>
 
   <h2>3. Offres et prix</h2>
-  <p>Les caractéristiques des offres sont présentées sur les pages <a href="/enseignants/tarifs/">Tarifs Enseignants</a> et <a href="/parents-enfants/tarifs/">Tarifs Famille</a>. Les prix sont indiqués toutes taxes comprises (TTC). Dans le cadre de l’offre salon, le prix mensuel applicable après l’essai est de ${prixMensuel(PRIX_SALON.enseignant)} pour l’offre Enseignant et de ${prixMensuel(PRIX_SALON.parent)} pour la formule Essentiel destinée aux parents.</p>
+  <p>Trois abonnements mensuels sont proposés en ligne. Les prix sont indiqués toutes taxes comprises (TTC).</p>
+  <ul>
+    ${ligneOffre("MyClassFlow Enseignant", ens)}
+    ${ligneOffre(`MyClassFlow Famille Essentiel (${ADAPTATIONS_ESSENTIEL} adaptations par mois)`, ess)}
+    ${ligneOffre("MyClassFlow Famille Illimité (adaptations illimitées)", ill)}
+  </ul>
+  <p>Les caractéristiques des offres sont présentées sur les pages <a href="/enseignants/tarifs/">Tarifs Enseignants</a> et <a href="/parents-enfants/tarifs/">Tarifs Famille</a>. Les écoles et établissements bénéficient d’un tarif sur devis, hors paiement en ligne : voir la page <a href="/ecoles/tarifs/">Tarifs Écoles</a>.</p>
 
-  <h2>4. Offre d’essai de 6 mois avec carte enregistrée</h2>
-  <p>L’offre salon comprend une période d’essai gratuite de 180 jours à compter de la souscription (présentée comme « 6 mois offerts ») ; la date exacte de fin d’essai est indiquée lors de la souscription et dans l’e-mail de rappel. La carte bancaire du client est enregistrée lors de la souscription, mais aucun prélèvement n’est effectué pendant cette période d’essai. À l’issue des 6 mois, l’abonnement devient automatiquement payant au prix mensuel normal indiqué lors de la souscription, sauf résiliation préalable.</p>
+  <h2>4. Une seule offre par compte</h2>
+  <p>Une adresse e-mail correspond à un compte, et un compte ne peut avoir qu’une seule offre à la fois. Souscrire un abonnement met fin à l’offre gratuite ou à l’offre de lancement en cours, y compris celle de l’autre espace du compte (Enseignant ou Famille) : les offres ne se cumulent pas.</p>
+  <p>Un abonnement en cours ne se change pas directement en un autre : pour passer, par exemple, de l’offre Enseignant à une offre Famille, il faut d’abord résilier l’abonnement en cours, puis souscrire la nouvelle offre une fois qu’il a pris fin. Seul le passage entre Essentiel et Illimité sans engagement se fait directement depuis « Gérer mon abonnement » (rubrique 8).</p>
 
-  <h2>5. Information avant le premier prélèvement</h2>
-  <p>Un e-mail rappelant la date et le montant du premier prélèvement est envoyé avant celui-ci. Il est envoyé 7 jours avant la fin de l’essai.</p>
+  <h2>5. Souscription et paiement</h2>
+  <p>La souscription se fait depuis l’application, rubrique « Choisir mon offre ». Le paiement est traité par Stripe sur sa page de paiement sécurisée ; l’éditeur ne conserve aucune donnée de carte bancaire. Le premier prélèvement a lieu le jour de la souscription, puis chaque mois à la même date. Stripe envoie un reçu par e-mail à chaque prélèvement.</p>
+  <p>Tout abonné, enseignant comme parent, qu’il souscrive à titre personnel ou pour son activité professionnelle, dispose d’un délai de 14 jours à compter de la souscription pour exercer son droit de rétractation, sans avoir à motiver sa décision. Ce droit, prévu par l’article L221-18 du Code de la consommation, est accordé à tous les abonnés, y compris à ceux qui ne sont pas des consommateurs au sens de ce code.</p>
+  <p>Pour se rétracter, l’abonné utilise le bouton « Me rétracter » de la rubrique « Mon compte » de l’application, présent pendant les 14 jours qui suivent la souscription : le montant remboursé est affiché avant la confirmation, l’abonnement s’arrête aussitôt et un accusé de réception est envoyé par e-mail. Il peut aussi adresser sa demande par e-mail à contact@myclassflow.fr, en utilisant le modèle de formulaire de rétractation ci-dessous ou toute autre déclaration dénuée d’ambiguïté : « À l’attention de MyClassFlow, 9 rue Robert II, 21000 Dijon, contact@myclassflow.fr : je vous notifie par la présente ma rétractation du contrat portant sur l’abonnement MyClassFlow ci-dessous. Abonnement souscrit le : … Nom de l’abonné : … Adresse e-mail du compte : … Date : … »</p>
+  <p>En validant le paiement, l’abonné demande expressément que l’abonnement commence immédiatement, sans attendre la fin du délai de rétractation. S’il se rétracte ensuite, il est remboursé de la somme payée, déduction faite d’un montant proportionnel à la période d’abonnement déjà écoulée jusqu’à sa demande. Le remboursement intervient dans les 14 jours suivant la réception de la demande, par le moyen de paiement utilisé lors de la souscription.</p>
 
-  <h2>6. Reconduction et résiliation</h2>
-  <p>Après l’essai, l’abonnement est reconduit tacitement chaque mois. Le client peut le résilier à tout moment depuis le <a href="https://billing.stripe.com/p/login/7sYaEX81Zeeq10U1iD3ZK00">portail client</a> (connexion avec l’adresse e-mail de l’abonnement) ou par e-mail à l’adresse contact@myclassflow.fr. La résiliation prend effet à la fin de la période en cours. En cas de résiliation pendant l’essai, aucun prélèvement n’est effectué.</p>
+  <h2>6. Abonnement avec engagement</h2>
+  <p>L’abonnement avec engagement bénéficie d’un prix réduit pendant les premiers mois (6 mois pour l’offre Enseignant, 3 mois pour les offres Famille), puis du plein tarif. L’engagement dure 12 mois pour l’offre Enseignant et 6 mois pour les offres Famille, à compter de la souscription. Une résiliation demandée pendant l’engagement prend effet à la fin de l’engagement : l’abonnement reste actif jusque-là et les mensualités continuent jusqu’à cette date.</p>
 
-  <h2>7. Droit de rétractation</h2>
-  <p>Conformément à l’article L221-18 du Code de la consommation, le consommateur dispose d’un délai de 14 jours à compter de la souscription pour exercer son droit de rétractation, sans avoir à motiver sa décision. Il peut adresser sa demande par e-mail à contact@myclassflow.fr ou utiliser toute déclaration dénuée d’ambiguïté. Si le client demande expressément que le service commence pendant ce délai, l’exécution peut débuter pendant l’essai ; l’exercice du droit de rétractation reste soumis aux règles applicables à ce commencement d’exécution.</p>
+  <h2>7. Abonnement sans engagement</h2>
+  <p>L’abonnement sans engagement est résiliable à tout moment. La résiliation prend effet à la fin de la période mensuelle déjà payée.</p>
 
-  <h2>8. Paiement sécurisé</h2>
-  <p>Les paiements sont traités de manière sécurisée par Stripe. L’éditeur ne conserve aucune donnée de carte bancaire.</p>
+  <h2>8. Gérer mon abonnement</h2>
+  <p>Le bouton « Gérer mon abonnement » de l’application ouvre l’espace client Stripe : changer de carte, changer de formule (offres Famille sans engagement), télécharger les factures ou résilier. Le client peut aussi écrire à contact@myclassflow.fr.</p>
 
-  <h2>9. Réclamations</h2>
+  <h2>9. Fin de l’abonnement</h2>
+  <p>À la fin de l’abonnement, le compte revient à l’offre gratuite (version gratuite pour les enseignants ; compte gratuit Famille avec 3 adaptations offertes). Les fiches et documents déjà créés ou adaptés restent accessibles.</p>
+  <p>En cas d’échec de paiement, Stripe procède automatiquement à de nouvelles tentatives pendant environ deux semaines et en informe le client par e-mail ; les fonctions restent disponibles pendant ce temps. Après la dernière tentative sans succès, l’abonnement prend fin, avec ou sans engagement, et le compte revient à l’offre gratuite.</p>
+  <p>La suppression du compte met fin immédiatement à l’abonnement en cours et, le cas échéant, à l’engagement, sans remboursement de la période entamée.</p>
+
+  <h2>10. Offres passées</h2>
+  <p>L’offre de lancement donne accès à la version complète jusqu’au 31 décembre 2026 aux comptes qui en bénéficient ; un avertissement est affiché du 1er au 10 janvier 2027 et l’offre prend fin le 11 janvier 2027.</p>
+  <p>L’offre salon reste applicable à ses abonnés : période d’essai gratuite de 180 jours à compter de la souscription (présentée comme « 6 mois offerts »), carte enregistrée sans prélèvement pendant l’essai, e-mail de rappel envoyé 7 jours avant la fin de l’essai, puis abonnement mensuel reconduit tacitement au prix de ${prixMensuel(PRIX_SALON.enseignant)} pour l’offre Enseignant et de ${prixMensuel(PRIX_SALON.parent)} pour la formule Essentiel destinée aux parents, résiliable à tout moment depuis « Gérer mon abonnement » avec effet à la fin de la période en cours.</p>
+
+  <h2>11. Réclamations</h2>
   <p>Toute réclamation peut être adressée par e-mail à contact@myclassflow.fr.</p>
 
-  <h2>10. Données personnelles</h2>
+  <h2>12. Données personnelles</h2>
   <p>Les modalités de traitement des données personnelles sont décrites dans la <a href="/confidentialite/">politique de confidentialité</a>.</p>
 
-  <h2>11. Droit applicable et juridiction</h2>
+  <h2>13. Droit applicable et juridiction</h2>
   <p>Les présentes CGV sont soumises au droit français. En cas de litige, les juridictions compétentes sont déterminées conformément aux règles légales applicables.</p>
 </article>`;
