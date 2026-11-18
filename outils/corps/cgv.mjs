@@ -8,9 +8,9 @@ import {
 
 const prixMensuel = (prix) => `${euros(prix)}/mois TTC`;
 
-// Date de mise en ligne des abonnements payables en ligne (#549) : à ajuster
-// au jour de la fusion, en même temps que l'app (P13 de la spec).
-export const EN_VIGUEUR_LE = "1er décembre 2026";
+// Date d'entrée en vigueur des CGV des abonnements payables en ligne (#549),
+// fixée au 18 novembre 2026 par décision de Joseph du 18/11 (P13 de la spec).
+export const EN_VIGUEUR_LE = "18 novembre 2026";
 
 const ens = { libre: offreEnseignant(false), engage: offreEnseignant(true) };
 const ess = { libre: offreAdapter("essentiel", false), engage: offreAdapter("essentiel", true) };
