@@ -122,7 +122,7 @@ export default (titre) => `<div class="acc">
   ${confiance([HEBERGE, RGPD, carteConfiance("equipe", "Conçu avec des enseignants",
     "Chaque fonctionnalité est imaginée et testée avec des professeurs des écoles. L'outil suit vos pratiques réelles, pas l'inverse.")],
   { texte: "Les informations sur vos élèves doivent être protégées. MyClassFlow est conçu pour cela, dès le premier jour.",
-    note: "MyClassFlow se construit avec les premiers établissements partenaires." })}
+    note: "MyClassFlow évolue avec les retours des enseignants et des directions qui l'utilisent." })}
 
   ${EQUIPE}
 
@@ -135,7 +135,7 @@ export default (titre) => `<div class="acc">
         <ul class="final-points">
           <li>${COCHE} Démonstration adaptée à votre cycle (2 ou 3)</li>
           <li>${COCHE} Échange sur l'hébergement et le RGPD</li>
-          <li>${COCHE} Conditions « premiers établissements »</li>
+          <li>${COCHE} Conditions adaptées à votre établissement</li>
         </ul>
         <a class="lbtn lbtn-primary lbtn-lg" href="https://app.myclassflow.fr">Créer mon compte gratuit ${FLECHE}</a>
       </div>
