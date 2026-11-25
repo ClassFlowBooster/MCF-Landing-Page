@@ -3,6 +3,7 @@
 import { megaMenu as megaMenuDe } from "./corps/mega-menu.mjs";
 import { castor, castorDe } from "./corps/castors.mjs";
 import { SITE, donneesStructurees } from "./donnees-structurees.mjs";
+import { balise as baliseAudience } from "./mesure-audience.mjs";
 
 export { SITE };
 
@@ -108,7 +109,7 @@ ${corps}
 ${pied()}
 <script type="module" src="/assets/js/navigation.js"></script>
 ${js}
-</body>
+${baliseAudience()}</body>
 </html>
 `;
 }
