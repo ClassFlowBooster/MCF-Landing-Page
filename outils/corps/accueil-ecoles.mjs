@@ -101,9 +101,8 @@ export default `<div class="acc">
   ${confiance([HEBERGE, RGPD, carteConfiance("equipe", "Conçu avec des enseignants",
     "Chaque fonctionnalité est imaginée et testée avec des professeurs des écoles. L'outil suit les pratiques réelles des équipes.")],
   { texte: "Les informations sur les élèves doivent être protégées. MyClassFlow est conçu pour cela, dès le premier jour.",
-    note: "MyClassFlow se construit avec les premiers établissements partenaires." })}
+    note: "MyClassFlow évolue avec les retours des enseignants et des directions qui l'utilisent." })}
 
-  <!-- Établissements partenaires : section à afficher quand nous aurons des logos ou des témoignages de directions. -->
 
   ${EQUIPE}
 
