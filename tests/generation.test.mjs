@@ -551,3 +551,37 @@ test("llms-full.txt : Markdown strict, référencé par llms.txt, critères de l
     assert.ok(txt.includes(`${f.etapes.length}. **`), `${f.slug} : étapes`);
   }
 });
+
+test("feuille du proto réduite par fiche : liée, écrite, plus légère, toujours scopée", async () => {
+  const { cssPourPage, adresseCssProto } = await import("../outils/css-page.mjs");
+  const complet = readFileSync("assets/css/visuels-proto.css", "utf8");
+  for (const p of PAGES) {
+    const html = page(p);
+    assert.ok(!html.includes('href="/assets/css/visuels-proto.css"'), `${p.chemin} : feuille complète du proto chargée`);
+    if (!html.includes('class="maquette-fiche appv-figure')) continue;
+    const adresse = adresseCssProto(p.chemin);
+    assert.ok(html.includes(`<link rel="stylesheet" href="${adresse}" />`), `${p.chemin} : feuille réduite non liée`);
+    const ecrit = readFileSync(`.${adresse}`, "utf8");
+    assert.equal(ecrit, cssPourPage(complet, html), `${adresse} : à régénérer (npm run generer)`);
+    assert.ok(ecrit.length < complet.length / 2, `${adresse} : ${ecrit.length} octets`);
+  }
+});
+
+test("feuille réduite : garde les règles utiles, :not() et @keyframes, retire le reste", async () => {
+  const { cssPourPage } = await import("../outils/css-page.mjs");
+  const css = ".a{x:1}.b{x:2}.a:not(.z){x:3}@media (max-width:9px){.b{x:4}.a .c{x:5}}@keyframes k{0%{x:6}}.a,.b{x:7}";
+  const sortie = cssPourPage(css, '<div class="a c"></div>');
+  for (const garde of [".a{x:1}", ".a:not(.z){x:3}", ".a .c{x:5}", "@keyframes k{0%{x:6}}", ".a,.b{x:7}"]) assert.ok(sortie.includes(garde), garde);
+  for (const retire of ["x:2", "x:4"]) assert.ok(!sortie.includes(retire), retire);
+});
+
+test("identité MyClassFlow : organisation décrite avec ses fondateurs, site et application liés, og:locale", () => {
+  const html = page(PAGES.find((p) => p.chemin === "/"));
+  const graphe = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])["@graph"];
+  const organisation = graphe.find((o) => o["@type"] === "Organization");
+  assert.match(organisation.description, /^MyClassFlow /);
+  assert.deepEqual(organisation.founder.map((f) => f.name), ["Joseph Solier", "Benoist de Montgrand"]);
+  assert.ok(html.includes('id="equipe"'), "fondateurs non présentés sur l'accueil");
+  assert.equal(graphe.find((o) => o["@type"] === "SoftwareApplication")["@id"], "https://myclassflow.fr/#application");
+  for (const p of PAGES) assert.ok(page(p).includes('<meta property="og:locale" content="fr_FR" />'), p.chemin);
+});
