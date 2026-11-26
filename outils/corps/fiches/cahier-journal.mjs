@@ -54,7 +54,7 @@ export default {
   ariane: "Cahier journal",
   k: "free",
   titre: "Cahier journal numérique : vos séances du jour — MyClassFlow",
-  description: "Le cahier journal dans MyClassFlow : chaque créneau relié à ce que la classe apprend, la fiche de préparation rattachée, les imprévus reportés, le PDF du jour ou de la semaine. Un mardi de CE1 et les formats PDF du cahier journal.",
+  description: "Le cahier journal numérique de MyClassFlow : chaque créneau relié à sa fiche de préparation, les imprévus reportés, le PDF du jour ou de la semaine.",
   carte: { fichier: "og-cahier-journal.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Chaque séance du jour, avec son objectif et son déroulé »." },
   accroche: "Chaque séance du jour, avec son objectif et son déroulé.",
   h1: "Votre cahier journal, au rythme de la classe",

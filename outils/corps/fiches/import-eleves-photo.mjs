@@ -40,7 +40,7 @@ export default {
   ariane: "Import des élèves par photo",
   k: "free",
   titre: "Importer sa liste d'élèves en une photo — MyClassFlow",
-  description: "À la rentrée, photographiez la liste de classe avec votre téléphone : MyClassFlow lit les prénoms et les noms, signale ce qui est à vérifier et les doublons, puis ajoute les élèves après votre relecture.",
+  description: "Photographiez la liste de classe : MyClassFlow lit prénoms et noms, signale les doublons et ce qui est à vérifier, puis ajoute les élèves après relecture.",
   carte: { fichier: "og-import-eleves-photo.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Une photo de la liste, et votre classe est créée »." },
   accroche: "Une photo de la liste, et votre classe est créée.",
   h1: "Votre classe remplie à partir d'une photo de la liste",
