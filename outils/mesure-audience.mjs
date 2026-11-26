@@ -3,7 +3,7 @@
 // « Add a site » → myclassflow.fr → valeur de "token" dans l'extrait JS), puis
 // `npm run generer`. Le jeton est public : il figure dans chaque page.
 // Vide : aucun script, et la politique de confidentialité dit qu'il n'y a pas de mesure.
-export const JETON_CLOUDFLARE_ANALYTICS = "";
+export const JETON_CLOUDFLARE_ANALYTICS = "2f5fa39ea16845999ed2d231ef7db04a";
 
 export const balise = (jeton = JETON_CLOUDFLARE_ANALYTICS) =>
   jeton
