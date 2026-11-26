@@ -8,20 +8,28 @@ import { EVENEMENTS } from "./corps/evenements.mjs";
 
 export const SITE = "https://myclassflow.fr";
 
+// Fondateurs, présentés dans la section Équipe des accueils (outils/corps/sections.mjs).
+const FONDATEURS = [
+  { "@type": "Person", "@id": `${SITE}/#joseph-solier`, name: "Joseph Solier", url: `${SITE}/enseignants/#equipe`, jobTitle: "Ingénieur en cybersécurité" },
+  { "@type": "Person", "@id": `${SITE}/#benoist-de-montgrand`, name: "Benoist de Montgrand", url: `${SITE}/enseignants/#equipe`, jobTitle: "Expert en intelligence artificielle" },
+];
+
+// Description reprise de llms.txt : elle distingue MyClassFlow des produits au nom voisin.
+const DESCRIPTION = "MyClassFlow est une application pour les enseignants, les écoles et les familles. Elle adapte les exercices et les leçons selon les critères pédagogiques cochés pour chaque élève et réunit la gestion de classe : fiches de préparation, cahier journal, emploi du temps, fiches élèves et tâches.";
+
 const ORGANISATION = {
   "@type": "Organization",
   "@id": `${SITE}/#organisation`,
   name: "MyClassFlow",
   url: `${SITE}/`,
   logo: `${SITE}/assets/img/apple-touch-icon.png`,
+  description: DESCRIPTION,
+  founder: FONDATEURS,
 };
 
-const SITE_WEB = { "@type": "WebSite", name: "MyClassFlow", url: `${SITE}/`, publisher: { "@id": ORGANISATION["@id"] } };
+const SITE_WEB = { "@type": "WebSite", "@id": `${SITE}/#site`, name: "MyClassFlow", url: `${SITE}/`, inLanguage: "fr-FR", description: DESCRIPTION, publisher: { "@id": ORGANISATION["@id"] } };
 
-const AUTEURS_FICHES = [
-  { "@type": "Person", name: "Joseph Solier", url: `${SITE}/enseignants/#equipe`, jobTitle: "Ingénieur en cybersécurité" },
-  { "@type": "Person", name: "Benoist de Montgrand", url: `${SITE}/enseignants/#equipe`, jobTitle: "Expert en intelligence artificielle" },
-];
+const AUTEURS_FICHES = FONDATEURS;
 
 const articleFiche = (f) => ({
   "@type": "Article",
@@ -74,7 +82,7 @@ const OFFRES_FAMILLE = [
   }),
 ];
 
-const APP = (offers) => application("MyClassFlow", "https://app.myclassflow.fr", offers);
+const APP = (offers) => ({ "@id": `${SITE}/#application`, ...application("MyClassFlow", "https://app.myclassflow.fr", offers), description: DESCRIPTION });
 // Fiche d'un outil gratuit : seule l'offre gratuite y est affichée. Une fiche
 // d'outil de l'abonnement ne montre aucun prix (lien vers les tarifs) : pas d'offre.
 const appFiche = (f) => APP(f.k === "free" ? [OFFRES_ENSEIGNANT[0]] : []);
@@ -115,7 +123,8 @@ const evenementStructure = (evenement) => ({
 });
 
 const PAR_PAGE = {
-  "/": [ORGANISATION, SITE_WEB],
+  // L'accueil n'affiche aucun prix, seulement des outils « Gratuit » : l'offre gratuite seule.
+  "/": [ORGANISATION, SITE_WEB, APP([OFFRES_ENSEIGNANT[0]])],
   "/enseignants/": [APP(OFFRES_ENSEIGNANT)],
   "/enseignants/tarifs/": [APP(OFFRES_ENSEIGNANT)],
   "/ecoles/": [APP([OFFRE_ECOLE])],

@@ -51,7 +51,7 @@ export default {
   ariane: "Adaptation des supports",
   k: "pay",
   titre: "Adapter un exercice selon des critères — MyClassFlow",
-  description: "Adapter un exercice ou une leçon selon des critères pédagogiques cochés : interligne, lettres espacées, consignes courtes. Les critères de l'app, une mesure en CE1 du document importé au résultat, les versions par élève ou par groupe.",
+  description: "Adaptez exercices et leçons selon les critères cochés : interligne, lettres espacées, consignes courtes. Une version par élève ou par groupe.",
   carte: { fichier: "og-adaptation-des-supports.png", alt: "MyClassFlow, abonnement pour les enseignants : le castor professeur et l'accroche « Un même support, adapté selon les critères de vos élèves »." },
   accroche: "Un même support, adapté selon les critères de vos élèves.",
   h1: "Du support de la classe aux versions à imprimer",

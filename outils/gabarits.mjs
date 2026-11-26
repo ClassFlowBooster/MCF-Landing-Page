@@ -90,6 +90,7 @@ ${chemin === "/" && VERIFICATION_GOOGLE ? `<meta name="google-site-verification"
 <meta property="og:description" content="${echap(description)}" />
 ${indexable ? `<meta property="og:url" content="${SITE}${chemin}" />\n` : ""}<meta property="og:type" content="website" />
 <meta property="og:site_name" content="MyClassFlow" />
+<meta property="og:locale" content="fr_FR" />
 <meta property="og:image" content="${SITE}/assets/img/${carte.fichier}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -98,7 +99,9 @@ ${indexable ? `<meta property="og:url" content="${SITE}${chemin}" />\n` : ""}<me
 ${donneesStructurees(chemin)}<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap" />
-<link rel="stylesheet" href="/assets/css/base.css" />${corps.includes('class="maquette-fiche appv-figure') ? '\n<link rel="stylesheet" href="/assets/css/visuels-proto.css" />\n<link rel="stylesheet" href="/assets/css/visuels-fiches.css" />' : ""}
+<link rel="stylesheet" href="/assets/css/base.css" />${corps.includes('class="maquette-fiche appv-figure')
+  // Feuille du proto réduite à la page (outils/css-page.mjs, écrite par generer.mjs).
+  ? `\n<link rel="stylesheet" href="/assets/css/visuels-proto/${chemin.split("/").filter(Boolean).pop()}.css" />\n<link rel="stylesheet" href="/assets/css/visuels-fiches.css" />` : ""}
 </head>
 <body${classeBody ? ` class="${classeBody}"` : ""} data-espace="${espace ?? ""}">
 ${surcouche}${espace ? barre(espace, rubrique, megaMenu ?? megaMenuDe(espace)) : ""}

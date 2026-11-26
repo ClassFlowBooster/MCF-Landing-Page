@@ -34,7 +34,7 @@ export default {
   ariane: "Tâches",
   k: "free",
   titre: "To do list enseignant : vos tâches de classe — MyClassFlow",
-  description: "La liste des tâches de MyClassFlow : chaque chose à faire, avec ou sans échéance, rangée par classe, reliée aux élèves concernés et cochée d'un geste sur téléphone. Une semaine de CE1 en exemple.",
+  description: "Vos tâches de classe dans MyClassFlow : avec ou sans échéance, rangées par classe, reliées aux élèves et cochées d'un geste sur téléphone.",
   carte: { fichier: "og-taches.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Les choses à faire, par classe, par échéance et par élève »." },
   accroche: "Les choses à faire, par classe, par échéance et par élève.",
   h1: "Vos choses à faire, rangées par classe",

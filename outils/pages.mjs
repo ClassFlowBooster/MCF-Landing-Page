@@ -37,7 +37,7 @@ export const PAGES = [
     corps: confidentialite },
   { chemin: "/", espace: "enseignants", rubrique: "", scripts: ["entree.js"],
     titre: "MyClassFlow — adapter les supports et organiser la classe",
-    description: "MyClassFlow accompagne les enseignants, les écoles et les familles avec des supports adaptés et une classe organisée.",
+    description: "MyClassFlow adapte exercices et leçons aux critères pédagogiques de chaque élève et organise la classe : préparations, cahier journal, emploi du temps.",
     surcouche: entree, corps: accueil },
   { chemin: "/enseignants/", espace: "enseignants", rubrique: "", scripts: ["comparateur.js", "formulaire.js"],
     titre: "Exercices et leçons adaptés à chaque élève — MyClassFlow",
