@@ -24,7 +24,7 @@ export default `<div class="acc">
   <section class="section who" aria-labelledby="choisir-espace"><div class="wrap">
     <div class="sec-head center"><span class="eyebrow center">Choisir votre espace</span><h2 class="h-section" id="choisir-espace">MyClassFlow selon votre quotidien</h2></div>
     <div class="who-grid trois">
-      ${espaces.map(([cle, titre, texte]) => `<article class="persona"><div>${castorDe(cle, "castor-menu", 80)}</div><h3>${titre}</h3><p>${texte}</p><a class="lien-suite" href="/${cle}/">Découvrir l'espace ${titre} →</a></article>`).join("\n      ")}
+      ${espaces.map(([cle, titre, texte]) => `<article class="persona"><h3 class="persona-titre">${castorDe(cle, "castor-titre", 40)}${titre}</h3><p>${texte}</p><a class="lien-suite" href="/${cle}/">Découvrir l'espace ${titre} →</a></article>`).join("\n      ")}
     </div>
   </div></section>
 

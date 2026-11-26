@@ -15,7 +15,7 @@ export default {
   ariane: "Lia, votre assistante",
   k: "pay",
   titre: "Assistant IA pour les enseignants : Lia — MyClassFlow",
-  description: "Lia, l'assistante IA de MyClassFlow : elle cherche dans vos élèves, leur fil de suivi et vos tâches pour répondre, puis prépare un commentaire ou une tâche que vous confirmez.",
+  description: "Lia, l'assistante IA de MyClassFlow, répond à partir de vos élèves, de leur fil de suivi et de vos tâches, puis prépare un commentaire ou une tâche à confirmer.",
   carte: { fichier: "og-lia.png", alt: "MyClassFlow, abonnement pour les enseignants : le castor professeur et l'accroche « Lia répond à partir de vos élèves, de leur suivi et de vos tâches »." },
   accroche: "Lia répond à partir de vos élèves, de leur suivi et de vos tâches.",
   h1: "Lia répond à partir de vos élèves et de vos tâches",

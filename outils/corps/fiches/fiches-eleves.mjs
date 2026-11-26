@@ -28,7 +28,7 @@ export default {
   ariane: "Fiche élève",
   k: "free",
   titre: "Fiche élève : critères et fil de suivi — MyClassFlow",
-  description: "La fiche élève de MyClassFlow : les critères pédagogiques qui aident chaque élève, son fil de suivi et ses tâches, réunis au même endroit et repris quand vous adaptez un support. Un exemple de fiche de CE1.",
+  description: "La fiche élève de MyClassFlow : critères pédagogiques, fil de suivi et tâches au même endroit, repris quand vous adaptez un support. Exemple en CE1.",
   carte: { fichier: "og-fiches-eleves.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Les critères et le fil de suivi de chaque élève, réunis »." },
   accroche: "Les critères et le fil de suivi de chaque élève, réunis.",
   h1: "Une fiche par élève, pour adapter sans tout retenir",

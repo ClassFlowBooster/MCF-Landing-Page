@@ -67,8 +67,8 @@ export default {
   carte: { fichier: "og-fiche-de-preparation.png", alt: "MyClassFlow, fiche gratuite pour les enseignants : le castor professeur et l'accroche « Chaque séance préparée, puis retrouvée dans votre cahier journal »." },
   accroche: "Une séance de CE1 sur la mesure, pensée moment par moment, puis copiée dans le cahier journal.",
   k: "free",
-  titre: "Fiche de préparation : trame et exemple en CE1 — MyClassFlow",
-  description: "Une trame de fiche de préparation en sept rubriques, une séance de CE1 sur la mesure des longueurs, et le lien avec le cahier journal de MyClassFlow.",
+  titre: "Exemple de fiche de préparation CE1 et trame — MyClassFlow",
+  description: "Un exemple de fiche de préparation en CE1 sur la mesure des longueurs, une trame en sept rubriques, à reprendre gratuitement dans MyClassFlow.",
   h1: "Une fiche de préparation pour chaque séance, sur une page",
   intro: "Une fiche de préparation, c'est une séance pensée avant d'être vécue : son but, son déroulé minute par minute, les difficultés que vous voyez venir. Voici une trame en sept rubriques et une séance de CE1 rédigée avec elle.",
   retenir: [
